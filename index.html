@@ -78,7 +78,7 @@
       </div>
 
       <div class="flex items-center gap-4 text-xs font-medium text-editorial-muted">
-        <span class="hidden md:inline">Koleksi 4 Publikasi Internasional</span>
+        <span class="hidden md:inline">Koleksi 5 Publikasi Internasional</span>
         <a href="#panduan" class="px-2.5 py-1 border border-editorial-line rounded hover:bg-editorial-softbg text-editorial-ink transition-colors">
           Panduan Format
         </a>
@@ -101,17 +101,17 @@
       </h1>
 
       <p class="text-base sm:text-lg font-serif italic text-editorial-body leading-relaxed max-w-3xl mb-8">
-        Portal kurasi publikasi ilmiah bereputasi (Elsevier & Cell Press) yang ditransformasikan dari laporan teknis kaku menjadi pengalaman membaca naratif, bersih, dan memikat. Dirancang khusus bagi mahasiswa, dosen, dan peneliti yang membutuhkan pemahaman mendalam tanpa terhalang bahasa yang dingin.
+        Portal kurasi publikasi ilmiah bereputasi (Elsevier, Cell Press, IOP Publishing) yang ditransformasikan dari laporan teknis kaku menjadi pengalaman membaca naratif, bersih, dan memikat. Dirancang khusus bagi mahasiswa, dosen, dan peneliti yang membutuhkan pemahaman mendalam tanpa terhalang bahasa yang dingin.
       </p>
 
       <!-- STATS STRIP -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-editorial-line text-left">
         <div>
-          <div class="text-2xl font-bold text-editorial-ink font-sans">4</div>
+          <div class="text-2xl font-bold text-editorial-ink font-sans">5</div>
           <div class="text-xs text-editorial-muted">Paper Tertelaah</div>
         </div>
         <div>
-          <div class="text-2xl font-bold text-editorial-accent font-sans">30</div>
+          <div class="text-2xl font-bold text-editorial-accent font-sans">37</div>
           <div class="text-xs text-editorial-muted">Gambar Asli Beresolusi Tinggi</div>
         </div>
         <div>
@@ -134,13 +134,13 @@
       <!-- Category Filter Buttons -->
       <div class="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto text-xs font-medium" id="filter-container">
         <button onclick="filterCategory('all')" id="btn-all" class="filter-btn px-3 py-1.5 rounded bg-editorial-ink text-white">
-          Semua (4)
+          Semua (5)
         </button>
         <button onclick="filterCategory('material')" id="btn-material" class="filter-btn px-3 py-1.5 rounded bg-white border border-editorial-line text-editorial-muted hover:text-editorial-ink">
-          Material 2D & Energi (2)
+          Material 2D & Energi (3)
         </button>
         <button onclick="filterCategory('thermo')" id="btn-thermo" class="filter-btn px-3 py-1.5 rounded bg-white border border-editorial-line text-editorial-muted hover:text-editorial-ink">
-          Fisika Termoelektrik (2)
+          Fisika Termoelektrik (3)
         </button>
         <button onclick="filterCategory('ai')" id="btn-ai" class="filter-btn px-3 py-1.5 rounded bg-white border border-editorial-line text-editorial-muted hover:text-editorial-ink">
           Kecerdasan Buatan (1)
@@ -388,6 +388,61 @@
         </a>
       </article>
 
+      <!-- CARD 5: MoX2 Monolayer Thermoelectric -->
+      <article class="paper-card bg-white border border-editorial-line rounded p-6 flex flex-col justify-between" data-category="material thermo" data-keywords="mox2 mos2 mose2 mote2 tmdc monolayer 2d termoelektrik zt seebeck kcm fonon brin uin manchester iop physica scripta">
+        <div>
+          <!-- Header Meta -->
+          <div class="flex items-center justify-between text-xs text-editorial-muted mb-3">
+            <span class="font-semibold uppercase tracking-wider text-editorial-accent">Material 2D & Termoelektrik</span>
+            <span class="font-mono text-[11px]">Phys. Scr. (2024)</span>
+          </div>
+
+          <!-- Title -->
+          <h2 class="text-xl font-bold font-sans text-editorial-ink tracking-tight leading-snug mb-3">
+            <a href="papers/05-mox2-thermoelectric/index.html" class="hover:text-editorial-accent transition-colors">
+              Transport Termal dan Sifat Termoelektrik Monolayer MoX₂: Rekor ZT = 2.77 pada MoTe₂
+            </a>
+          </h2>
+
+          <!-- Excerpt -->
+          <p class="text-sm font-serif italic text-editorial-body leading-relaxed mb-4">
+            Kalkulasi DFT terpadu dengan Model Kinetik-Kolektif (KCM) mengungkap paradoks TMDC 2D: MoTe₂ yang memiliki koefisien Seebeck paling rendah justru mengukir figur kebaikan ZT fantastis 2.77 pada 550 K dan 3.55 pada 900 K berkat ultra-rendahnya konduktivitas kisi.
+          </p>
+
+          <!-- Thumbnail Image Preview -->
+          <div class="border border-editorial-line/80 rounded bg-editorial-softbg p-2 mb-4 overflow-hidden flex items-center justify-center">
+            <img src="papers/05-mox2-thermoelectric/assets/fig1_mox2_crystal_structure.png" alt="Struktur kristal monolayer MoX2" class="max-h-36 w-auto object-contain">
+          </div>
+
+          <!-- Highlight Metrics Strip -->
+          <div class="grid grid-cols-3 gap-2 py-3 border-y border-editorial-line text-center text-xs font-sans mb-4">
+            <div>
+              <div class="text-[10px] text-editorial-muted uppercase">κ_ph MoTe₂</div>
+              <div class="font-bold text-editorial-ink">43.3 W/m·K</div>
+            </div>
+            <div>
+              <div class="text-[10px] text-editorial-muted uppercase">ZT (550 K)</div>
+              <div class="font-bold text-editorial-accent">2.77 (p-type)</div>
+            </div>
+            <div>
+              <div class="text-[10px] text-editorial-muted uppercase">ZT Rekor (900 K)</div>
+              <div class="font-bold text-editorial-accent">3.55 (p-type)</div>
+            </div>
+          </div>
+
+          <!-- Author Byline -->
+          <div class="text-xs text-editorial-muted mb-6">
+            <span class="font-semibold text-editorial-ink">R. Wisesa, A. Azhar, E. Suprayoga*</span> • UIN Syarif Hidayatullah, Univ. of Manchester (UK), BRIN
+          </div>
+        </div>
+
+        <!-- Read Action Button -->
+        <a href="papers/05-mox2-thermoelectric/index.html" class="w-full py-2.5 px-4 bg-editorial-softbg hover:bg-editorial-accent hover:text-white border border-editorial-line hover:border-editorial-accent rounded text-xs font-bold text-editorial-ink text-center transition-all flex items-center justify-center gap-1.5">
+          <span>Buka Telaah Lengkap</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </article>
+
     </div>
   </main>
 
@@ -423,7 +478,10 @@ paper-hub/<br>
 &nbsp; &nbsp; ├── 03-camno3-thermoelectric/ &nbsp;# Paper 3: Bi-doped CaMnO3 Termoelektrik<br>
 &nbsp; &nbsp; │ &nbsp; ├── index.html<br>
 &nbsp; &nbsp; │ &nbsp; └── assets/ (fig1–fig9)<br>
-&nbsp; &nbsp; └── 04-sip2-thermoelectric/ &nbsp; &nbsp;# Paper 4: Monolayer SiP2 2D Termoelektrik<br>
+&nbsp; &nbsp; ├── 04-sip2-thermoelectric/ &nbsp; &nbsp;# Paper 4: Monolayer SiP2 2D Termoelektrik<br>
+&nbsp; &nbsp; │ &nbsp; ├── index.html<br>
+&nbsp; &nbsp; │ &nbsp; └── assets/ (fig1–fig7)<br>
+&nbsp; &nbsp; └── 05-mox2-thermoelectric/ &nbsp; &nbsp;# Paper 5: TMDC MoX2 Termoelektrik & ZT Rekor<br>
 &nbsp; &nbsp; &nbsp; &nbsp; ├── index.html<br>
 &nbsp; &nbsp; &nbsp; &nbsp; └── assets/ (fig1–fig7)
         </div>

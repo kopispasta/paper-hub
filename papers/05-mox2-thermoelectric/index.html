@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transport Termal dan Sifat Termoelektrik Monolayer MoX₂ (X=S, Se, Te) | Telaah Ilmiah Physica Scripta</title>
+  
+  <!-- Fonts: Newsreader (Editorial Serif) & Plus Jakarta Sans (Clean Modern Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            editorial: {
+              ink: '#18181b',        /* Deep charcoal */
+              body: '#27272a',       /* Warm reading text */
+              muted: '#71717a',      /* Neutral secondary */
+              lightmuted: '#a1a1aa', /* Captions */
+              line: '#e4e4e7',       /* Hairline border */
+              softbg: '#fafafa',     /* Off-white background */
+              paper: '#ffffff',      /* Card white */
+              accent: '#0a74c0',     /* Royal scientific blue */
+              accentDark: '#075997', /* Dark hover blue */
+              accentLight: '#f0f7fc' /* Subtle highlight */
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            serif: ['"Newsreader"', 'Georgia', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #fafafa;
+      color: #27272a;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .article-body p {
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 1.125rem; /* 18px */
+      line-height: 1.82;
+      color: #27272a;
+      margin-bottom: 1.6rem;
+    }
+
+    .article-body p strong {
+      font-weight: 600;
+      color: #18181b;
+    }
+
+    .editorial-dropcap::first-letter {
+      font-size: 3.9rem;
+      float: left;
+      line-height: 0.82;
+      margin-right: 0.65rem;
+      margin-top: 0.25rem;
+      font-weight: 600;
+      color: #18181b;
+      font-family: "Newsreader", Georgia, serif;
+    }
+
+    /* Publication-style Scientific Table */
+    .pub-table {
+      border-top: 2px solid #18181b;
+      border-bottom: 2px solid #18181b;
+      width: 100%;
+    }
+    .pub-table th {
+      border-bottom: 1px solid #18181b;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 600;
+      font-size: 0.8125rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.75rem 0.6rem;
+      color: #18181b;
+    }
+    .pub-table td {
+      border-bottom: 1px solid #f4f4f5;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 0.875rem;
+      padding: 0.75rem 0.6rem;
+      color: #27272a;
+    }
+    .pub-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Figure Box */
+    .figure-container {
+      background: #ffffff;
+      border: 1px solid #e4e4e7;
+      border-radius: 4px;
+      padding: 1.25rem;
+      margin: 2.5rem 0;
+    }
+
+    #reading-progress {
+      transition: width 0.1s ease-out;
+    }
+  </style>
+</head>
+
+<body class="selection:bg-editorial-accentLight selection:text-editorial-accent">
+
+  <!-- TOP PROGRESS BAR -->
+  <div class="fixed top-0 left-0 w-full h-[3px] bg-transparent z-50">
+    <div id="reading-progress" class="h-full bg-editorial-accent w-0"></div>
+  </div>
+
+  <!-- MASTHEAD & TOP NAVIGATION -->
+  <header class="bg-white border-b border-editorial-line sticky top-0 z-40">
+    <!-- Top Journal Meta -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-editorial-line/60 py-1.5 flex items-center justify-between text-[11px] text-editorial-muted font-sans">
+      <div class="flex items-center gap-2">
+        <span class="font-bold tracking-wider uppercase text-editorial-ink">FISIKA MATERIAL DUA DIMENSI</span>
+        <span class="text-editorial-line">•</span>
+        <span class="hidden sm:inline">Physica Scripta 99 (2024) 035929</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://doi.org/10.1088/1402-4896/ad25b8" target="_blank" rel="noopener" class="text-editorial-accent hover:underline flex items-center gap-1 font-medium">
+          <span>DOI: 10.1088/1402-4896/ad25b8</span>
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+      <div class="flex items-center gap-6">
+        <a href="../../index.html" class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium text-zinc-600 hover:text-blue-600 rounded border border-zinc-200 hover:bg-zinc-50 transition-colors shadow-2xs" title="Kembali ke Katalog Utama">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          <span class="hidden sm:inline">Katalog Utama</span>
+        </a>
+        <a href="#" class="text-2xl font-serif font-bold tracking-tight text-editorial-ink">
+          Kalkogen<span class="text-editorial-accent italic font-normal">Termo</span>
+        </a>
+        <span class="hidden md:inline-block h-5 w-px bg-editorial-line"></span>
+        <nav class="hidden md:flex items-center gap-5 text-xs font-semibold uppercase tracking-wider text-editorial-muted font-sans">
+          <a href="#latar-belakang" class="hover:text-editorial-accent transition-colors">Konteks</a>
+          <a href="#struktur-mox2" class="hover:text-editorial-accent transition-colors">Struktur 2D (Fig. 1)</a>
+          <a href="#pita-elektron" class="hover:text-editorial-accent transition-colors">Pita Energi (Fig. 2)</a>
+          <a href="#fonon-kcm" class="hover:text-editorial-accent transition-colors">Fonon & KCM (Fig. 3-4)</a>
+          <a href="#relaksasi" class="hover:text-editorial-accent transition-colors">Relaksasi (Fig. 5)</a>
+          <a href="#kinerja-zt" class="hover:text-editorial-accent transition-colors">Rekor ZT (Fig. 6-7)</a>
+        </nav>
+      </div>
+
+      <div class="flex items-center gap-3 text-xs font-medium text-editorial-muted font-sans">
+        <span>Waktu baca ~6 menit</span>
+        <button onclick="window.print()" class="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 border border-editorial-line rounded hover:bg-editorial-softbg text-editorial-ink transition-colors" title="Cetak atau Simpan PDF">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+          Cetak
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ARTICLE HEADER (Editorial Style Hero) -->
+  <header class="bg-white border-b border-editorial-line pt-12 pb-10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Category Tag & Meta -->
+      <div class="flex items-center gap-3 text-xs font-semibold tracking-wider uppercase text-editorial-accent mb-4 font-sans">
+        <span>Fisika Zat Mampat & Nanoteknologi</span>
+        <span class="text-editorial-line">•</span>
+        <span class="text-editorial-muted">Kalkulasi Prinsip Pertama TMDC Monolayer</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-3xl sm:text-4xl lg:text-[42px] font-bold text-editorial-ink tracking-tight font-sans leading-[1.18] mb-6">
+        Transport Termal dan Sifat Termoelektrik Monolayer MoX₂ (X=S, Se, Te): Mengapa MoTe₂ Meraih Rekor ZT = 2.77?
+      </h1>
+
+      <!-- Standfirst (Lead Paragraph) -->
+      <p class="text-lg sm:text-xl font-serif italic text-editorial-body leading-relaxed mb-8 border-l-2 border-editorial-accent pl-5">
+        Meskipun grafena unggul dalam mobilitas muatan, konduktivitas termalnya yang tinggi menggagalkan potensinya sebagai material termoelektrik. Menggunakan Density Functional Theory yang dipadukan dengan Model Kinetik-Kolektif (KCM) dan hamburan elektron-fonon ab initio, tim peneliti mengungkap paradoks menarik pada keluarga kalkogenida molibdenum: MoTe₂ yang memiliki koefisien Seebeck paling rendah justru mengukir rekor figur kebaikan ZT fantastis sebesar 2.77 pada 550 K dan 3.55 pada 900 K.
+      </p>
+
+      <!-- Authors & Affiliations -->
+      <div class="pt-6 border-t border-editorial-line flex flex-wrap items-center justify-between gap-4 text-xs text-editorial-muted font-sans">
+        <div>
+          <div class="text-cell-ink font-semibold text-sm">
+            Radityo Wisesa, Anugrah Azhar, Edi Suprayoga*
+          </div>
+          <div class="mt-1 text-editorial-muted">
+            Program Studi Fisika UIN Syarif Hidayatullah Jakarta • The University of Manchester (UK) • Pusat Riset Fisika Kuantum BRIN
+          </div>
+        </div>
+        <div class="text-right">
+          <div class="text-editorial-ink font-medium">Physica Scripta (IOP Publishing)</div>
+          <div>Vol. 99 (2024) 035929 • Terbit 13 Februari 2024</div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- KEY FINDINGS AT A GLANCE (Monochrome Editorial Banner) -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="bg-white border border-editorial-line rounded p-6 shadow-sm font-sans">
+      <h2 class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-4 flex items-center justify-between border-b border-editorial-line pb-2">
+        <span>Rangkuman Fisik Kunci: Komparasi Termoelektrik Monolayer MoX₂</span>
+        <span class="text-editorial-muted font-normal lowercase font-mono">Wisesa, Azhar, & Suprayoga (2024)</span>
+      </h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-left">
+        <div>
+          <div class="text-xs text-editorial-muted">Figur Kebaikan (ZT @550 K)</div>
+          <div class="text-2xl font-bold text-editorial-ink mt-0.5">2.77 <span class="text-xs font-normal text-editorial-muted">(MoTe₂)</span></div>
+          <div class="text-[11px] text-editorial-muted mt-1">Jauh melampaui MoS₂ (2.13) & MoSe₂ (1.34)</div>
+        </div>
+        <div>
+          <div class="text-xs text-editorial-muted">ZT Maksimum (@900 K)</div>
+          <div class="text-2xl font-bold text-editorial-accent mt-0.5">3.55 <span class="text-xs font-normal text-editorial-muted">(MoTe₂)</span></div>
+          <div class="text-[11px] text-editorial-muted mt-1">Efisiensi luar biasa untuk suhu tinggi</div>
+        </div>
+        <div>
+          <div class="text-xs text-editorial-muted">Konduktivitas Termal Kisi (κ_ph)</div>
+          <div class="text-2xl font-bold text-editorial-ink mt-0.5">43.3 <span class="text-xs font-normal text-editorial-muted">W·m⁻¹·K⁻¹</span></div>
+          <div class="text-[11px] text-editorial-muted mt-1">MoTe₂ paling rendah (vs MoS₂ 84.3 W/mK)</div>
+        </div>
+        <div>
+          <div class="text-xs text-editorial-muted">Akurasi Model Fonon</div>
+          <div class="text-2xl font-bold text-editorial-ink mt-0.5">KCM</div>
+          <div class="text-[11px] text-editorial-muted mt-1">Presisi mencocokkan data eksperimen riil</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN ARTICLE LAYOUT (Text + Sticky TOC) -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      
+      <!-- ARTICLE TEXT (Cols 1-8) -->
+      <main class="lg:col-span-8 article-body">
+
+        <!-- EXECUTIVE SUMMARY ACCORDION (Clean Minimalist) -->
+        <div class="border border-editorial-line bg-white rounded p-5 mb-10 font-sans">
+          <div class="flex items-center justify-between cursor-pointer select-none" onclick="toggleSummary()">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-editorial-accent"></span>
+              <h3 class="text-sm font-bold text-editorial-ink tracking-tight">
+                Ringkasan Eksekutif untuk Peneliti (4 Poin Inti)
+              </h3>
+            </div>
+            <span id="summary-chevron" class="text-xs font-mono text-editorial-muted">[- tutup]</span>
+          </div>
+
+          <div id="summary-content" class="mt-4 pt-4 border-t border-editorial-line text-xs sm:text-sm text-editorial-body space-y-2.5 leading-relaxed">
+            <p><strong>1. Keterbatasan Grafena & Potensi TMDC 2D:</strong> Grafena memiliki konduktivitas termal yang luar biasa tinggi dan koefisien Seebeck yang rendah, sehingga angka ZT-nya buruk. Sebaliknya, kalkogenida logam transisi monolayer MoX₂ (X = S, Se, Te) merupakan semikonduktor dengan celah pita langsung, kopling spin-orbit (SOC) kuat, dan konduktivitas termal kisi yang jauh lebih terkendali.</p>
+            <p><strong>2. Penerapan Model Kinetik-Kolektif (KCM):</strong> Teori konvensional (RTA dan LBTE standar) kerap gagal memprediksi konduktivitas termal kisi 2D yang cocok dengan eksperimen. Dengan memisahkan kontribusi kinetik (partikel bebas) dan kolektif (kopling moda fonon) melalui KCM, hasil kalkulasi berhasil mereproduksi data eksperimental laboratorium secara presisi.</p>
+            <p><strong>3. Efek Massa Atomik Kalkogen:</strong> Semakin berat atom kalkogenida (Te > Se > S), semakin rendah frekuensi vibrasi fononnya (maksimum hanya 285 cm⁻¹ pada MoTe₂). Hal ini memangkas konduktivitas termal kisi MoTe₂ hingga 43.3 W·m⁻¹·K⁻¹ pada suhu ruang (separuh dari MoS₂ yang mencapai 84.3 W·m⁻¹·K⁻¹).</p>
+            <p><strong>4. Paradoks Kemenangan MoTe₂:</strong> MoS₂ memiliki koefisien Seebeck tertinggi (1.54 mV/K @550 K) dan MoSe₂ memiliki power factor tertinggi. Namun, MoTe₂ memenangkan efisiensi konversi akhir dengan ZT = 2.77 pada 550 K (dan menembus 3.55 pada 900 K) berkat konduktivitas listriknya yang tinggi dan peredaman konduksi panas kisi yang sangat superior.</p>
+          </div>
+        </div>
+
+        <!-- SECTION 1: Latar Belakang & Urgensi -->
+        <section id="latar-belakang" class="pt-2">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            1. Mengapa Monolayer Kalkogenida Logam Transisi (TMDC)?
+          </h2>
+          
+          <p class="editorial-dropcap">
+            Sejak eksfoliasi grafena memicu revolusi material dua dimensi (2D), para fisikawan terus berburu material berketebalan satu atom yang memiliki sifat termoelektrik unggul untuk mengubah panas lingkungan atau panas buangan industri menjadi energi listrik bersih. Kinerja termoelektrik dinyatakan oleh figur kebaikan tanpa dimensi <em>ZT</em>:
+          </p>
+
+          <div class="my-5 p-4 bg-editorial-softbg border border-editorial-line rounded font-mono text-center text-sm text-editorial-ink font-semibold">
+            ZT = (S² × σ × T) / (κ_e + κ_ph)
+          </div>
+
+          <p>
+            Di mana <em>S</em> adalah koefisien Seebeck, <em>σ</em> adalah konduktivitas listrik, <em>T</em> adalah temperatur operasional, <em>κ_e</em> adalah konduktivitas termal elektron, dan <em>κ_ph</em> adalah konduktivitas termal kisi fonon. Sayangnya, grafena memiliki koefisien Seebeck yang sangat rendah dan konduktivitas termal yang terlampau tinggi, sehingga figur kebaikan ZT-nya sangat mengecewakan.
+          </p>
+
+          <p>
+            Monolayer kalkogenida logam transisi (<em>Transition Metal Dichalcogenides</em> / TMDC) dengan rumus umum <strong>MoX₂ (di mana X = S, Se, Te)</strong> menghadirkan kombinasi sifat elektronik yang jauh lebih ideal. Saat direduksi dari kristal curah (bulk) menjadi lembaran tunggal, MoX₂ mengalami transisi dari semikonduktor celah pita tak langsung menjadi <strong>celah pita langsung (direct bandgap)</strong>, diiringi peningkatan konduktivitas listrik tanpa merusak koefisien Seebeck.
+          </p>
+        </section>
+
+        <!-- SECTION 2: Struktur Kristal & Efek Celah Pita (FIG. 1 & Table 1) -->
+        <section id="struktur-mox2" class="pt-8">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            2. Arsitektur Hexagonal Kisi Sarang Lebah MoX₂
+          </h2>
+
+          <p>
+            Secara geometris, monolayer MoX₂ tersusun atas lapisan atom logam transisi molibdenum (Mo) yang diapit secara simetris di antara dua lapisan atom kalkogenida (S, Se, atau Te) membentuk kisi hexagonal sarang lebah (Gambar 1). Ikatan antarlapisan pada fasa curah diikat oleh gaya van der Waals yang lemah, sehingga lapisan tunggal dapat diproduksi menggunakan teknik eksfoliasi mekanis maupun kimiawi.
+          </p>
+
+          <!-- FIGURE 1 EMBEDDED -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig1_mox2_crystal_structure.png" 
+                alt="Gambar 1: Struktur geometris monolayer MoX2 dengan kisi heksagonal" 
+                class="w-full max-w-lg h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig1_mox2_crystal_structure.png', 'Gambar 1: Struktur geometris monolayer MoX₂ (X = S, Se, Te) dengan kisi heksagonal tampak atas dan tampak samping')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 1 | Struktur geometris monolayer MoX₂ berpenataan kisi heksagonal.</span> 
+              <strong>(a) Tampak Atas (Top View):</strong> Kisi hexagonal dengan parameter kisi a;
+              <strong>(b) Tampak Samping (Side View):</strong> Atom logam transisi Mo (ungu) diapit secara simetris oleh dua atom kalkogenida X = S, Se, Te (hijau). Ruang hampa (<em>vacuum layer</em>) sebesar 20 Å ditambahkan pada simulasi untuk mengeliminasi interaksi periodik antarlapis.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Wisesa, Azhar, & Suprayoga, Phys. Scr. 99 (2024) 035929 / IOP Publishing. (Klik gambar untuk perbesar)</div>
+            </figcaption>
+          </figure>
+
+          <!-- PUBLICATION TABLE 1 -->
+          <div class="my-6">
+            <div class="text-xs font-semibold text-editorial-muted uppercase tracking-wider mb-2 font-sans">
+              Tabel 1 | Konstanta Kisi (a) dan Energi Celah Pita (E_g) Monolayer MoS₂, MoSe₂, dan MoTe₂
+            </div>
+            <div class="overflow-x-auto">
+              <table class="pub-table font-sans">
+                <thead>
+                  <tr>
+                    <th class="text-left">Material Monolayer</th>
+                    <th class="text-right">a Terhitung (Å)</th>
+                    <th class="text-right">a Eksperimen (Å)</th>
+                    <th class="text-right">E_g Terhitung (eV)</th>
+                    <th class="text-right">E_g Eksperimen (eV)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="font-semibold text-editorial-ink">MoS₂ (Molibdenum Disulfida)</td>
+                    <td class="text-right font-mono">3.18</td>
+                    <td class="text-right font-mono text-editorial-muted">3.15</td>
+                    <td class="text-right font-mono">1.69</td>
+                    <td class="text-right font-mono text-editorial-muted">1.90</td>
+                  </tr>
+                  <tr>
+                    <td class="font-semibold text-editorial-ink">MoSe₂ (Molibdenum Diselenida)</td>
+                    <td class="text-right font-mono">3.32</td>
+                    <td class="text-right font-mono text-editorial-muted">3.30</td>
+                    <td class="text-right font-mono">1.46</td>
+                    <td class="text-right font-mono text-editorial-muted">1.57</td>
+                  </tr>
+                  <tr class="font-semibold text-editorial-accent bg-editorial-accentLight/40">
+                    <td>MoTe₂ (Molibdenum Ditellurida)</td>
+                    <td class="text-right font-mono font-bold">3.56</td>
+                    <td class="text-right font-mono text-editorial-muted">3.52</td>
+                    <td class="text-right font-mono font-bold">1.08</td>
+                    <td class="text-right font-mono text-editorial-muted">1.10</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <p>
+            Sebagaimana dirangkum pada Tabel 1, seiring membesarnya jari-jari atom dari belerang (S) ke tellurium (Te), konstanta kisi meningkat dari 3.18 Å ke 3.56 Å, sementara celah pita energi menyempit secara bertahap dari 1.69 eV (MoS₂) menjadi 1.08 eV (MoTe₂).
+          </p>
+        </section>
+
+        <!-- SECTION 3: Struktur Pita Elektronik & Kopling Spin-Orbit (FIG. 2) -->
+        <section id="pita-elektron" class="pt-8">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            3. Struktur Pita Elektronik dan Efek Kopling Spin-Orbit (SOC)
+          </h2>
+
+          <p>
+            Kalkulasi kerapatan keadaan elektronik (DOS) dan dispersi pita (Gambar 2) mengonfirmasi bahwa ketiga material MoX₂ adalah semikonduktor celah langsung di titik K zona Brillouin. Kehadiran efek relativistik kopling spin-orbit (<em>spin-orbit coupling</em> / SOC) membelah pita energi secara signifikan, di mana pembelahan pita valensi tampak jauh lebih besar daripada pita konduksi.
+          </p>
+
+          <!-- FIGURE 2 EMBEDDED -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig2_electronic_band_structure_dos.png" 
+                alt="Gambar 2: Struktur pita elektronik dan DOS monolayer MoS2, MoSe2, dan MoTe2" 
+                class="w-full max-w-xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig2_electronic_band_structure_dos.png', 'Gambar 2: Struktur pita elektronik dan Density of States (DOS) monolayer (a) MoS₂, (b) MoSe₂, dan (c) MoTe₂ tanpa dan dengan kopling spin-orbit (SOC)')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 2 | Struktur pita elektronik dan kerapatan keadaan (DOS).</span> 
+              Garis solid dan putus-putus masing-masing merepresentasikan kalkulasi tanpa dan dengan efek spin-orbit coupling (SOC). Seluruh material memperlihatkan kecuraman profil DOS di dekat tepi pita yang menjadi prasyarat tingginya koefisien Seebeck. Analisis PDOS membuktikan orbital Mo-4d mendominasi pita konduksi, sedangkan hibridisasi Mo-4d dan X-p mendominasi pita valensi.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Wisesa et al., Phys. Scr. (2024).</div>
+            </figcaption>
+          </figure>
+        </section>
+
+        <!-- SECTION 4: Dinamika Fonon & Model Kinetik-Kolektif (FIG. 3 & FIG. 4) -->
+        <section id="fonon-kcm" class="pt-8">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            4. Dinamika Fonon dan Terobosan Model Kinetik-Kolektif (KCM)
+          </h2>
+
+          <p>
+            Untuk memahami perambatan panas kisi, kurva dispersi fonon dihitung di sepanjang jalur simetri tinggi Γ–K–M–Γ (Gambar 3). Sel satuan monolayer MoX₂ memuat 3 cabang akustik (TA, LA, dan moda fleksural luar bidang ZA) serta 9 cabang fonon optik.
+          </p>
+
+          <!-- FIGURE 3 EMBEDDED -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig3_phonon_dispersion.png" 
+                alt="Gambar 3: Dispersi fonon monolayer MoS2, MoSe2, dan MoTe2" 
+                class="w-full max-w-xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig3_phonon_dispersion.png', 'Gambar 3: Kurva dispersi fonon monolayer (a) MoS₂, (b) MoSe₂, dan (c) MoTe₂. Ketiadaan frekuensi negatif membuktikan stabilitas kisi')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 3 | Kurva dispersi fonon monolayer MoX₂.</span> 
+              Tidak ada frekuensi negatif (imajiner), menandakan stabilitas kisi dinamik yang kokoh. Frekuensi batas fonon mengalami penurunan dramatis dari MoS₂ (~470 cm⁻¹) ke MoSe₂ (~350 cm⁻¹) dan MoTe₂ (~285 cm⁻¹) seiring membesarnya massa atomik kalkogen.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Wisesa et al., Phys. Scr. (2024).</div>
+            </figcaption>
+          </figure>
+
+          <p>
+            Dalam kalkulasi konduktivitas termal kisi sebelumnya, metode Relaxation Time Approximation (RTA) dan Linearized Boltzmann Transport Equation (LBTE) standar kerap menghasilkan simpangan besar terhadap data laboratorium. Di sini, para penulis menerapkan <strong>Kinetic-Collective Model (KCM)</strong>, yang membedah konduksi fonon menjadi kontribusi kinetik partikel bebas (κ_k) dan kontribusi kolektif kopling moda (κ_c) menggunakan faktor sakelar Σ (Gambar 4).
+          </p>
+
+          <!-- FIGURE 4 EMBEDDED -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig4_lattice_thermal_conductivity.png" 
+                alt="Gambar 4: Konduktivitas termal kisi dihitung dengan KCM, RTA, dan LBTE dibandingkan data eksperimen" 
+                class="w-full max-w-xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig4_lattice_thermal_conductivity.png', 'Gambar 4: Konduktivitas termal kisi monolayer MoS₂, MoSe₂, dan MoTe₂ dihitung menggunakan metode KCM, RTA, dan LBTE vs data eksperimen')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 4 | Konduktivitas termal kisi (κ_ph) terhadap suhu.</span> 
+              Pendekatan KCM (garis biru) terbukti paling akurat dan mereproduksi data eksperimen riil (titik-titik hitam) secara presisi. Pada 300 K, konduktivitas termal MoS₂ mencapai <strong>84.3 W·m⁻¹·K⁻¹</strong>, sedangkan MoTe₂ merosot tajam menjadi hanya <strong>43.3 W·m⁻¹·K⁻¹</strong> akibat massa atomik Te yang sangat berat meredam getaran kisi.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Wisesa et al., Phys. Scr. (2024).</div>
+            </figcaption>
+          </figure>
+        </section>
+
+        <!-- SECTION 5: Waktu Relaksasi Elektron Ab Initio (FIG. 5) -->
+        <section id="relaksasi" class="pt-8">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            5. Hamburan Elektron-Fonon dan Waktu Relaksasi Ab Initio
+          </h2>
+
+          <p>
+            Alih-alih mengasumsikan waktu relaksasi elektron (τ) sebagai konstanta sembarang (seperti 10⁻¹⁴ s yang biasa dilakukan pada telaah sederhana), penelitian ini menghitung hamburan elektron-fonon secara <em>first-principles</em> menggunakan paket <strong>EPW</strong> melalui bagian imajiner dari energi-diri elektron (<em>electron self-energy</em>, Im[Σ_n,k]).
+          </p>
+
+          <!-- FIGURE 5 EMBEDDED -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig5_electron_relaxation_time.png" 
+                alt="Gambar 5: Waktu relaksasi elektron sebagai fungsi energi pada suhu 550 K" 
+                class="w-full max-w-xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig5_electron_relaxation_time.png', 'Gambar 5: Laju hamburan elektron (1/τ) sebagai fungsi energi elektron untuk MoS₂, MoSe₂, dan MoTe₂ pada 550 K')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 5 | Laju hamburan elektron (1/τ) terhadap energi pada suhu 550 K.</span> 
+              Profil laju hamburan (kebalikan dari waktu relaksasi) selaras dengan kerapatan keadaan elektron (DOS) masing-masing material, memvalidasi model Boltzmann transport tanpa asumsi parameter empiris.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Wisesa et al., Phys. Scr. (2024).</div>
+            </figcaption>
+          </figure>
+        </section>
+
+        <!-- SECTION 6: Kinerja Termoelektrik & Rekor ZT MoTe2 (FIG. 6 & FIG. 7) -->
+        <section id="kinerja-zt" class="pt-8">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            6. Evaluasi Termoelektrik: Mengapa MoTe₂ Memecahkan Rekor ZT = 2.77?
+          </h2>
+
+          <p>
+            Dengan menyatukan struktur pita elektronik, koefisien Boltzmann, dan waktu relaksasi EPW, seluruh koefisien termoelektrik dipetakan terhadap potensial kimia (Gambar 6) dan suhu operasional (Gambar 7).
+          </p>
+
+          <!-- FIGURE 6 EMBEDDED -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig6_te_coefficients_chemical_potential.png" 
+                alt="Gambar 6: Koefisien Seebeck, konduktivitas listrik, konduktivitas termal elektron, power factor, dan ZT pada 550 K" 
+                class="w-full max-w-xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig6_te_coefficients_chemical_potential.png', 'Gambar 6: Sifat termoelektrik (S, σ, κ_e, PF, ZT) MoX₂ pada suhu 550 K sebagai fungsi potensial kimia μ')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 6 | Koefisien transport termoelektrik pada suhu 550 K sebagai fungsi potensial kimia (μ).</span> 
+              <strong>(a) Koefisien Seebeck (S):</strong> MoS₂ mencatatkan nilai tertinggi (1.54 mV/K), disusul MoSe₂ (1.32 mV/K) dan MoTe₂ (0.95 mV/K);
+              <strong>(b, c) Konduktivitas Listrik (σ) & Termal Elektron (κ_e):</strong> MoTe₂ mendominasi berkat celah pitanya yang sempit (1.08 eV);
+              <strong>(d) Power Factor (PF = S²σ):</strong> MoSe₂ memimpin pada puncak doping tertentu;
+              <strong>(e) Figur Kebaikan (ZT):</strong> MoTe₂ merebut nilai puncak tertinggi mencapai <strong>2.77</strong>!
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Wisesa et al., Phys. Scr. (2024).</div>
+            </figcaption>
+          </figure>
+
+          <p>
+            Di sinilah paradoks ilmiah terungkap. Secara intuitif, banyak peneliti mengira MoS₂ atau MoSe₂ yang akan memiliki nilai ZT tertinggi karena koefisien Seebeck dan faktor dayanya yang besar. Namun, rumus ZT membagi faktor daya dengan konduktivitas termal total:
+          </p>
+
+          <div class="my-5 p-4 bg-editorial-softbg border border-editorial-line rounded font-mono text-center text-sm text-editorial-ink font-semibold">
+            ZT = (S² × σ × T) / (κ_e + κ_ph)
+          </div>
+
+          <p>
+            Karena konduktivitas termal kisi fonon (κ_ph) jauh lebih mendominasi dibandingkan kontribusi elektron (κ_e), <strong>rendahnya konduktivitas termal MoTe₂ (hanya 43.3 W·m⁻¹·K⁻¹) berpadu dengan konduktivitas listriknya yang tinggi berhasil mengantarkan MoTe₂ meraih ZT = 2.77 pada 550 K</strong>, mengalahkan MoS₂ (2.13) dan MoSe₂ (1.34).
+          </p>
+
+          <!-- FIGURE 7 EMBEDDED -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig7_temperature_dependent_te_properties.png" 
+                alt="Gambar 7: Sifat termoelektrik terhadap temperatur dari 300 K hingga 900 K" 
+                class="w-full max-w-xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig7_temperature_dependent_te_properties.png', 'Gambar 7: Karakteristik termoelektrik terhadap suhu (300–900 K): ZT MoTe₂ menembus angka 3.55 pada 900 K')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 7 | Sifat termoelektrik terhadap temperatur (300 K s/d 900 K).</span> 
+              Seiring naiknya temperatur operasi, eksitasi termal mendongkrak konduktivitas listrik. Pada suhu 900 K, figur kebaikan ZT maksimum MoTe₂ melonjak ke angka fantastis <strong>3.55</strong>.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Wisesa et al., Phys. Scr. (2024).</div>
+            </figcaption>
+          </figure>
+        </section>
+
+        <!-- SECTION 7: Kesimpulan & Prospek -->
+        <section id="kesimpulan" class="pt-8 border-t border-editorial-line mt-10">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            7. Kesimpulan dan Implikasi untuk Perangkat Fleksibel
+          </h2>
+
+          <p>
+            Penelitian komputasional ini memberikan peta jalan yang sangat terang bagi pemanfaatan keluarga monolayer TMDC dalam konversi energi termoelektrik:
+          </p>
+
+          <ol class="list-decimal pl-5 space-y-2 font-sans text-xs sm:text-sm text-cell-body mb-6">
+            <li><strong>Model KCM Terbukti Unggul:</strong> Pendekatan kinetik-kolektif mampu memprediksi transport fonon 2D yang selaras dengan kenyataan eksperimen.</li>
+            <li><strong>MoTe₂ sebagai Juara Termoelektrik:</strong> Meskipun koefisien Seebeck-nya lebih moderat, kombinasi konduktivitas listrik unggul dan konduktivitas termal kisi ultra-rendah menjadikan MoTe₂ kandidat terbaik dengan ZT = 2.77 (550 K) dan 3.55 (900 K).</li>
+            <li><strong>Potensi Wearable Electronics:</strong> Ketebalan skala atom dan stabilitas mekanik monolayer MoX₂ membuka peluang penciptaan generator termoelektrik fleksibel mandiri-daya (*self-powered wearable devices*) yang memanen panas tubuh atau panas buangan elektronik mikro.</li>
+          </ol>
+
+          <!-- CITATION BLOCK -->
+          <div class="mt-8 p-5 bg-white border border-editorial-line rounded font-sans text-xs">
+            <div class="font-bold uppercase tracking-wider text-editorial-ink mb-2">
+              Sitasi Paper Resmi (APA Format)
+            </div>
+            <p class="font-mono text-cell-body leading-relaxed select-all">
+              Wisesa, R., Azhar, A., & Suprayoga, E. (2024). Thermal transport and thermoelectric properties of transition metal dichalcogenides MoX₂ from first-principles calculation. <em>Physica Scripta</em>, 99(3), 035929. https://doi.org/10.1088/1402-4896/ad25b8
+            </p>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- SIDEBAR (Cols 9-12) -->
+      <aside class="lg:col-span-4 space-y-8 font-sans">
+        
+        <!-- STICKY TABLE OF CONTENTS -->
+        <div class="sticky top-20 space-y-6">
+          
+          <div class="bg-white border border-editorial-line rounded p-5">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-3 pb-2 border-b border-editorial-line">
+              Daftar Isi Ulasan
+            </h4>
+            <nav class="space-y-1.5 text-xs text-editorial-muted" id="toc-list">
+              <a href="#latar-belakang" class="block py-1 hover:text-editorial-accent transition-colors">• 1. Urgensi Material TMDC 2D</a>
+              <a href="#struktur-mox2" class="block py-1 hover:text-editorial-accent transition-colors">• 2. Struktur Hexagonal (Fig. 1)</a>
+              <a href="#pita-elektron" class="block py-1 hover:text-editorial-accent transition-colors">• 3. Struktur Pita & SOC (Fig. 2)</a>
+              <a href="#fonon-kcm" class="block py-1 hover:text-editorial-accent transition-colors">• 4. Dinamika Fonon & KCM (Fig. 3-4)</a>
+              <a href="#relaksasi" class="block py-1 hover:text-editorial-accent transition-colors">• 5. Waktu Relaksasi EPW (Fig. 5)</a>
+              <a href="#kinerja-zt" class="block py-1 hover:text-editorial-accent transition-colors">• 6. Rekor ZT = 2.77 MoTe₂ (Fig. 6-7)</a>
+              <a href="#kesimpulan" class="block py-1 hover:text-editorial-accent transition-colors">• 7. Kesimpulan & Wearable Device</a>
+            </nav>
+          </div>
+
+          <!-- MINI GLOSSARY FOR STUDENTS -->
+          <div class="bg-white border border-editorial-line rounded p-5 space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-editorial-ink pb-2 border-b border-editorial-line">
+              Glosarium Istilah Kunci
+            </h4>
+            <div class="space-y-3 text-xs">
+              <div>
+                <span class="font-semibold text-editorial-ink">TMDC Monolayer:</span>
+                <p class="text-editorial-muted mt-0.5">Material 2D tiga lapis atom (X–Mo–X) dengan ikatan kovalen kuat di dalam bidang dan gaya van der Waals antar bidang.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">Kinetic-Collective Model (KCM):</span>
+                <p class="text-editorial-muted mt-0.5">Model transport termal yang menggabungkan kontribusi kinetik partikel bebas dan kontribusi kolektif moda fonon untuk akurasi tinggi pada sistem 2D.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">Kopling Spin-Orbit (SOC):</span>
+                <p class="text-editorial-muted mt-0.5">Interaksi kuantum antara spin elektron dengan medan magnetik orbitnya di sekitar inti berat Mo dan X, membelah degenerasi pita energi.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">Figur Kebaikan (ZT):</span>
+                <p class="text-editorial-muted mt-0.5">Parameter efisiensi termoelektrik ZT = S²σT/(κ_e + κ_ph). Nilai ZT > 2 menandakan potensi konversi energi yang sangat kompetitif untuk komersialisasi.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FIGURE INDEX QUICK JUMP -->
+          <div class="bg-white border border-editorial-line rounded p-5">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-3 pb-2 border-b border-editorial-line">
+              Indeks Gambar Paper
+            </h4>
+            <ul class="text-xs space-y-2 text-editorial-muted">
+              <li>
+                <a href="#struktur-mox2" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 1: Geometri Kisi Hexagonal</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 3</span>
+                </a>
+              </li>
+              <li>
+                <a href="#pita-elektron" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 2: Pita Energi HSE & SOC</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 5</span>
+                </a>
+              </li>
+              <li>
+                <a href="#fonon-kcm" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 3: Dispersi Fonon MoX₂</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 5</span>
+                </a>
+              </li>
+              <li>
+                <a href="#fonon-kcm" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 4: Konduktivitas Termal KCM</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 6</span>
+                </a>
+              </li>
+              <li>
+                <a href="#relaksasi" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 5: Waktu Relaksasi Elektron</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 6</span>
+                </a>
+              </li>
+              <li>
+                <a href="#kinerja-zt" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 6: Koefisien Termoelektrik @550K</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 7</span>
+                </a>
+              </li>
+              <li>
+                <a href="#kinerja-zt" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 7: ZT Maksimum s/d 900 K</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 7</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightbox" class="fixed inset-0 bg-black/80 z-50 hidden flex flex-col items-center justify-center p-4 backdrop-blur-sm" onclick="closeLightbox()">
+    <div class="relative max-w-5xl max-h-[90vh] bg-white rounded p-3 shadow-2xl flex flex-col" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between pb-2 mb-2 border-b border-editorial-line text-xs font-sans text-editorial-ink">
+        <span id="lightbox-caption" class="font-bold"></span>
+        <button onclick="closeLightbox()" class="p-1 hover:bg-editorial-softbg rounded text-editorial-muted hover:text-editorial-ink font-semibold">
+          ✕ Tutup
+        </button>
+      </div>
+      <div class="overflow-auto max-h-[80vh] flex items-center justify-center p-2">
+        <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[75vh] object-contain">
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-editorial-line bg-white py-10 text-xs text-editorial-muted font-sans">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <span class="font-bold text-editorial-ink">KalkogenTermo</span> — Serial Diseminasi Riset Fisika Material 2D & Energi Mandiri.
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://doi.org/10.1088/1402-4896/ad25b8" target="_blank" class="hover:underline text-editorial-accent font-medium">Artikel Asli di IOP Publishing</a>
+        <span>•</span>
+        <a href="#" class="hover:text-editorial-ink">Kembali ke Atas ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    // 1. Reading Progress Bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('reading-progress').style.width = scrolled + '%';
+    });
+
+    // 2. Minimalist Summary Toggle
+    function toggleSummary() {
+      const content = document.getElementById('summary-content');
+      const chevron = document.getElementById('summary-chevron');
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        chevron.textContent = '[- tutup]';
+      } else {
+        content.classList.add('hidden');
+        chevron.textContent = '[+ buka]';
+      }
+    }
+
+    // 3. Lightbox Functionality
+    function openLightbox(src, caption) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox-caption').textContent = caption;
+      document.getElementById('lightbox').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+
+</body>
+</html>

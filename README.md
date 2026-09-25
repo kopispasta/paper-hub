@@ -21,8 +21,11 @@ paper-hub/
     ├── 03-camno3-thermoelectric/        # Paper 3: Bi-doped CaMnO3 Termoelektrik
     │   ├── index.html                   # Showcase lengkap Paper 3
     │   └── assets/                      # 9 Gambar resolusi tinggi (Fig. 1 s/d Fig. 9)
-    └── 04-sip2-thermoelectric/          # Paper 4: Monolayer SiP2 2D Termoelektrik
-        ├── index.html                   # Showcase lengkap Paper 4
+    ├── 04-sip2-thermoelectric/          # Paper 4: Monolayer SiP2 2D Termoelektrik
+    │   ├── index.html                   # Showcase lengkap Paper 4
+    │   └── assets/                      # 7 Gambar resolusi tinggi (Fig. 1 s/d Fig. 7)
+    └── 05-mox2-thermoelectric/          # Paper 5: TMDC MoX2 Termoelektrik & Rekor ZT
+        ├── index.html                   # Showcase lengkap Paper 5
         └── assets/                      # 7 Gambar resolusi tinggi (Fig. 1 s/d Fig. 7)
 ```
 
@@ -36,6 +39,7 @@ paper-hub/
 | 02 | **AlphaML: A clear, legible, explainable, transparent, and elucidative binary classification platform for tabular data** | *Patterns* 5 (Cell Press, 2024) | CLETE, 15 Algoritma, SHAP, LIME, custom_score, Optuna | [Buka Paper 02](papers/02-alphaml-clete/index.html) |
 | 03 | **Investigation of electron and phonon transport in Bi-doped CaMnO₃ for thermoelectric applications** | *Materials Research Bulletin* 141 (Elsevier, 2021) | Termoelektrik, Pelanggaran Hukum WF, Bilangan Lorenz 4× L₀, Doping Bismut | [Buka Paper 03](papers/03-camno3-thermoelectric/index.html) |
 | 04 | **Potential thermoelectric candidate monolayer silicon diphosphide (SiP₂) from a first-principles calculation** | *Computational Materials Science* 188 (Elsevier, 2021) | Monolayer SiP₂, Anisotropi Termal 7.3×, Seebeck >3 mV/K, ZT 0.90 | [Buka Paper 04](papers/04-sip2-thermoelectric/index.html) |
+| 05 | **Thermal transport and thermoelectric properties of transition metal dichalcogenides MoX₂ from first-principles calculation** | *Physica Scripta* 99 (IOP Publishing, 2024) | TMDC MoX₂, Model Kinetik-Kolektif KCM, MoTe₂ ZT Rekor 2.77 @550K & 3.55 @900K | [Buka Paper 05](papers/05-mox2-thermoelectric/index.html) |
 
 ---
 
@@ -44,13 +48,13 @@ paper-hub/
 ### Opsi 1: Langsung Buka di Browser (Mac)
 Cukup jalankan perintah berikut di terminal:
 ```zsh
-open /Users/gadgetline/.gemini/antigravity/scratch/paper-hub/index.html
+open /Users/gadgetline/paper-hub/index.html
 ```
 
 ### Opsi 2: Menggunakan Server Lokal
 Jalankan server Python dari dalam folder `paper-hub`:
 ```zsh
-cd /Users/gadgetline/.gemini/antigravity/scratch/paper-hub
+cd /Users/gadgetline/paper-hub
 python3 -m http.server 8080
 ```
 Lalu buka peramban Anda di: `http://localhost:8080`
