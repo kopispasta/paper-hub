@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kimia Klik Bioortogonal SQ3370: Aktivasi Obat Kanker Presisi di Sarang Tumor | Telaah Ilmiah Advanced Therapeutics</title>
+  
+  <!-- Fonts: Newsreader (Editorial Serif) & Plus Jakarta Sans (Clean Modern Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            editorial: {
+              ink: '#18181b',        /* Deep charcoal */
+              body: '#27272a',       /* Warm reading text */
+              muted: '#71717a',      /* Neutral secondary */
+              lightmuted: '#a1a1aa', /* Captions */
+              line: '#e4e4e7',       /* Hairline border */
+              softbg: '#fafafa',     /* Off-white background */
+              paper: '#ffffff',      /* Card white */
+              accent: '#0a74c0',     /* Royal scientific blue */
+              accentDark: '#075997', /* Dark hover blue */
+              accentLight: '#f0f7fc' /* Subtle highlight */
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            serif: ['"Newsreader"', 'Georgia', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #fafafa;
+      color: #27272a;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .article-body p {
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 1.125rem; /* 18px */
+      line-height: 1.82;
+      color: #27272a;
+      margin-bottom: 1.6rem;
+    }
+
+    .article-body p strong {
+      font-weight: 600;
+      color: #18181b;
+    }
+
+    .article-body h2 {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: #18181b;
+      letter-spacing: -0.02em;
+      line-height: 1.28;
+      margin-top: 3.5rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #e4e4e7;
+    }
+
+    .article-body h3 {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #18181b;
+      letter-spacing: -0.01em;
+      line-height: 1.35;
+      margin-top: 2.25rem;
+      margin-bottom: 0.85rem;
+    }
+
+    /* Publication Table Styling */
+    .pub-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-size: 0.875rem;
+    }
+    .pub-table th {
+      border-top: 2px solid #18181b;
+      border-bottom: 1px solid #18181b;
+      padding: 0.75rem 0.6rem;
+      text-align: left;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 600;
+      color: #18181b;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+    .pub-table td {
+      border-bottom: 1px solid #f4f4f5;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 0.875rem;
+      padding: 0.75rem 0.6rem;
+      color: #27272a;
+    }
+    .pub-table tr:last-child td {
+      border-bottom: 2px solid #18181b;
+    }
+
+    /* Figure Box */
+    .figure-container {
+      background: #ffffff;
+      border: 1px solid #e4e4e7;
+      border-radius: 4px;
+      padding: 1.25rem;
+      margin: 2.5rem 0;
+    }
+
+    #reading-progress {
+      transition: width 0.1s ease-out;
+    }
+  </style>
+</head>
+
+<body class="selection:bg-editorial-accentLight selection:text-editorial-accent">
+
+  <!-- TOP PROGRESS BAR -->
+  <div class="fixed top-0 left-0 w-full h-[3px] bg-transparent z-50">
+    <div id="reading-progress" class="h-full bg-editorial-accent w-0"></div>
+  </div>
+
+  <!-- MASTHEAD & TOP NAVIGATION -->
+  <header class="bg-white border-b border-editorial-line sticky top-0 z-40">
+    <!-- Top Journal Meta -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-editorial-line/60 py-1.5 flex items-center justify-between text-[11px] text-editorial-muted font-sans">
+      <div class="flex items-center gap-2">
+        <span class="font-bold tracking-wider uppercase text-editorial-ink">KIMIA BIOORTOGONAL & IMMUNO-ONCOLOGY</span>
+        <span class="text-editorial-line">•</span>
+        <span class="hidden sm:inline">Advanced Therapeutics 4 (2021) 2000243</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://doi.org/10.1002/adtp.202000243" target="_blank" rel="noopener" class="text-editorial-accent hover:underline flex items-center gap-1 font-medium">
+          <span>DOI: 10.1002/adtp.202000243</span>
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+      <div class="flex items-center gap-6">
+        <a href="../../index.html" class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium text-zinc-600 hover:text-blue-600 rounded border border-zinc-200 hover:bg-zinc-50 transition-colors shadow-2xs" title="Kembali ke Katalog Utama">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          <span class="hidden sm:inline">Katalog Utama</span>
+        </a>
+        <a href="#" class="text-2xl font-serif font-bold tracking-tight text-editorial-ink">
+          KimiaKlik<span class="text-editorial-accent italic font-normal">Onko</span>
+        </a>
+        <span class="hidden md:inline-block h-5 w-px bg-editorial-line"></span>
+        <nav class="hidden md:flex items-center gap-5 text-xs font-semibold uppercase tracking-wider text-editorial-muted font-sans">
+          <a href="#latar-belakang" class="hover:text-editorial-accent transition-colors">Konteks & CAPAC</a>
+          <a href="#arsitektur-sq3370" class="hover:text-editorial-accent transition-colors">Arsitektur Kimia</a>
+          <a href="#efikasi-dua-tumor" class="hover:text-editorial-accent transition-colors">Model Dua Tumor</a>
+          <a href="#profil-imun-tils" class="hover:text-editorial-accent transition-colors">Pemetaan Imun TILs</a>
+          <a href="#kombinasi-tlr9a" class="hover:text-editorial-accent transition-colors">Sinergi TLR9a</a>
+          <a href="#translasi-klinis" class="hover:text-editorial-accent transition-colors">Translasi Klinis</a>
+        </nav>
+      </div>
+
+      <div class="flex items-center gap-3 text-xs font-medium text-editorial-muted font-sans">
+        <span>Waktu baca ~8 menit</span>
+        <button onclick="window.print()" class="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 border border-editorial-line rounded hover:bg-editorial-softbg text-editorial-ink transition-colors" title="Cetak atau Simpan PDF">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+          Cetak
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ARTICLE HEADER (Editorial Style Hero) -->
+  <header class="bg-white border-b border-editorial-line pt-12 pb-10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Category Tag & Meta -->
+      <div class="flex items-center gap-3 text-xs font-semibold tracking-wider uppercase text-editorial-accent mb-4 font-sans">
+        <span>Kimia Medisinal & Terapi Bertarget In Vivo</span>
+        <span class="text-editorial-line">•</span>
+        <span class="text-editorial-muted">Platform Click Activated Protodrugs Against Cancer (CAPAC)</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-3xl sm:text-4xl lg:text-[42px] font-bold text-editorial-ink tracking-tight font-sans leading-[1.18] mb-6">
+        Kimia Klik Bioortogonal di Dalam Tubuh: Mengaktivasi Obat Kanker SQ3370 Langsung di Sarang Tumor
+      </h1>
+
+      <!-- Standfirst (Lead Paragraph) -->
+      <p class="text-lg sm:text-xl font-serif italic text-editorial-body leading-relaxed mb-8 border-l-2 border-editorial-accent pl-5">
+        Kemoterapi konvensional seperti doksorubisin dibatasi oleh toksisitas sistemik dan imunosupresi yang mematikan. Menggunakan platform CAPAC berbasis reaksi klik tetrazin–trans-cyclooctene (TCO), peneliti di Shasqi dan University of Albany merekayasa biopolimer asam hialuronat yang diinjeksikan secara lokal ke tumor primer untuk menangkap protodrug yang disuntikkan secara intravena. Reaksi bioortogonal ini mengizinkan pemberian dosis doksorubisin hingga 5.9 kali lipat dari batas toksisitas maksimum, memicu efek abscopal sistemik pada lesi metastasis jauh, dan menggandakan kesintasan mencit hingga 101 hari saat dipadukan dengan adjuvan imun TLR9.
+      </p>
+
+      <!-- Authors & Affiliations -->
+      <div class="pt-6 border-t border-editorial-line flex flex-wrap items-center justify-between gap-4 text-xs text-editorial-muted font-sans">
+        <div>
+          <div class="text-editorial-ink font-semibold text-sm">
+            Sangeetha Srinivasan, Nathan Alexander Yee, Kui Wu, Michael Zakharian, Amir Mahmoodi, Maksim Royzen*, José Manuel Mejía Oneto*
+          </div>
+          <div class="mt-1 text-editorial-muted">
+            Shasqi, Inc. (San Francisco, CA) • Department of Chemistry, University of Albany, SUNY (Albany, NY, USA)
+          </div>
+        </div>
+        <div class="font-mono text-[11px] bg-editorial-softbg px-3 py-1.5 border border-editorial-line rounded">
+          Publikasi: Wiley-VCH • Adv. Therap. 2021, 4, 2000243 • Uji Klinis: NCT04106492
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- KEY METRICS STRIP -->
+  <section class="border-b border-editorial-line bg-editorial-softbg py-6">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <div class="text-xs uppercase tracking-wider text-editorial-muted font-sans font-medium">Batas Toleransi Dosis</div>
+          <div class="text-2xl font-bold font-sans text-editorial-ink mt-1">5.9× <span class="text-xs font-normal text-editorial-muted">MTD Dox</span></div>
+          <div class="text-[11px] text-editorial-accent font-sans mt-0.5">143 mg/kg kumulatif tanpa hilang bobot</div>
+        </div>
+        <div>
+          <div class="text-xs uppercase tracking-wider text-editorial-muted font-sans font-medium">Kesintasan Median</div>
+          <div class="text-2xl font-bold font-sans text-editorial-ink mt-1">101 <span class="text-xs font-normal text-editorial-muted">Hari</span></div>
+          <div class="text-[11px] text-emerald-600 font-sans mt-0.5">Kombinasi SQ3370 + TLR9a vs 26 hari Salin</div>
+        </div>
+        <div>
+          <div class="text-xs uppercase tracking-wider text-editorial-muted font-sans font-medium">Remisi Komplit Distal</div>
+          <div class="text-2xl font-bold font-sans text-editorial-ink mt-1">80% <span class="text-xs font-normal text-editorial-muted">(8/10 mencit)</span></div>
+          <div class="text-[11px] text-teal-600 font-sans mt-0.5">Lesi jauh lenyap tanpa suntikan lokal</div>
+        </div>
+        <div>
+          <div class="text-xs uppercase tracking-wider text-editorial-muted font-sans font-medium">Kelarutan Protodrug</div>
+          <div class="text-2xl font-bold font-sans text-editorial-ink mt-1">71.8 <span class="text-xs font-normal text-editorial-muted">mg/mL</span></div>
+          <div class="text-[11px] text-amber-700 font-sans mt-0.5">Naik 10.000× lipat via konjugasi glisin</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN ARTICLE CONTENT -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 article-body">
+
+    <!-- SECTION 1: CONTEXT & CAPAC PLATFORM -->
+    <section id="latar-belakang">
+      <p class="text-xl font-serif leading-relaxed text-editorial-ink first-letter:text-5xl first-letter:font-bold first-letter:float-left first-letter:mr-3 first-letter:text-editorial-accent first-letter:font-serif">
+        Revolusi imunoterapi kanker—khususnya penghambat pos pemeriksaan imun (immune checkpoint inhibitors seperti anti-PD-1 dan anti-CTLA-4)—telah memberikan harapan kesembuhan spektakuler bagi sebagian pasien onkologi. Namun, kenyataan klinis yang pahit menunjukkan bahwa hanya sebagian kecil pasien (sering kali di bawah 20–30%) yang benar-benar memetik manfaat jangka panjang. Sebagian besar tumor bersifat "dingin" (cold tumors): miskin infiltrasi sel T sitotoksik, tidak mengekspresikan biomarker imun yang memadai, atau dilindungi oleh mikro-lingkungan imunosupresif yang padat.
+      </p>
+
+      <p>
+        Akibatnya, kemoterapi sitotoksik konvensional seperti <strong>doksorubisin (Dox)</strong> tetap menjadi pilar utama perawatan kanker di seluruh dunia, mulai dari sarkoma jaringan lunak, kanker payudara, karsinoma kolorektal, hingga limfoma. Padahal, doksorubisin memiliki jendela terapeutik yang teramat sempit: dosis obat yang dibutuhkan untuk membasmi tumor sering kali memicu kardiotoksisitas ireversibel (gagal jantung kongestif) serta limfopenia berat yang justru melumpuhkan sistem kekebalan tubuh pasien sendiri.
+      </p>
+
+      <p>
+        Pendekatan bertarget modern seperti <em>Antibody-Drug Conjugates</em> (ADC), formulasi liposomal, dan nanopartikel dirancang untuk mengatasi masalah ini. Sayangnya, seluruh teknologi tersebut masih bersandar pada perbedaan biologis alami antara sel sehat dan sel kanker—seperti ekspresi antigen permukaan tertentu, aktivitas enzim ekstraseluler, derajat keasaman (pH tumor), atau kadar spesies oksigen reaktif (ROS). Karena jaringan normal juga mengekspresikan faktor-faktor biologis ini (meski dalam kadar lebih rendah), terapi bertarget biologis tetap menghasilkan toksisitas di luar sasaran (<em>off-target toxicity</em>) atau menjadi tidak berdaya saat sel kanker mengalami mutasi resistensi.
+      </p>
+
+      <!-- FIGURE 1: CAPAC Platform Mechanism -->
+      <figure class="figure-container">
+        <img 
+          src="assets/fig1_capac_platform_mechanism.png" 
+          alt="Mekanisme Platform CAPAC dan Komponen SQ3370" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 1.</strong> Mekanisme kerja platform CAPAC dan komponen kimia SQ3370: (a) Biopolimer SQL70 diinjeksikan secara lokal di situs tumor primer. Protodrug SQP33 kemudian diinfuskan secara sistemik intravena. SQL70 menangkap SQP33 melalui reaksi klik kovalen ultra-cepat antara gugus tetrazin (biru) dan trans-cyclooctene (TCO, oranye), diikuti penataan ulang kimiawi spontan untuk melepaskan doksorubisin aktif tepat di sarang tumor. (b) Struktur biopolimer SQL70 berbasis asam hialuronat termodifikasi tetrazin. (c) Struktur protodrug SQP33 yang memuat doksorubisin terkonjugasi gugus TCO reaktif dan ligan glisin hidrofilik.
+        </figcaption>
+      </figure>
+
+      <p>
+        Untuk mendobrak keterbatasan biologis tersebut, tim peneliti dari <strong>Shasqi, Inc.</strong> bekerja sama dengan <strong>University of Albany (SUNY)</strong> menciptakan platform <strong>Click Activated Protodrugs Against Cancer (CAPAC)</strong>. Alih-alih bergantung pada biologi tumor yang rapuh dan heterogen, CAPAC memanfaatkan prinsip <strong>kimia bioortogonal</strong> murni: reaksi kimia sintetis buatan manusia yang saling bereaksi secara eksklusif, instan, ireversibel, dan inert terhadap molekul biologis alami apa pun di dalam darah maupun jaringan tubuh.
+      </p>
+    </section>
+
+    <!-- SECTION 2: CHEMICAL ARCHITECTURE -->
+    <section id="arsitektur-sq3370">
+      <h2>Arsitektur Molekuler SQ3370: Mengunci Reaktivitas Tetrazin–TCO</h2>
+
+      <p>
+        Jantung dari platform CAPAC adalah pasangan reaksi klik <em>Inverse Electron-Demand Diels-Alder</em> (IEDDA) antara <strong>1,2,4,5-tetrazin</strong> dan <strong>trans-cyclooctene (TCO)</strong>. Reaksi ini merupakan salah satu reaksi kimia buatan paling cepat yang pernah tercatat dalam sistem biologi (konstanta laju orde 10⁴–10⁵ M⁻¹s⁻¹), berlangsung spontan tanpa katalis logam, dan menghasilkan gas nitrogen (N₂) sebagai satu-satunya produk sampingan tak berbahaya.
+      </p>
+
+      <p>
+        Kandidat utama platform ini dinamai <strong>SQ3370</strong>, yang terdiri atas dua komponen yang diproduksi dan diadministrasikan secara terpisah:
+      </p>
+
+      <h3>1. SQL70 Biopolymer: Jangkar Tetrazin Berbasis Asam Hialuronat</h3>
+      <p>
+        Sebagai jangkar penangkap di jaringan tumor, tim peneliti memilih polimer alami <strong>asam hialuronat (HA / sodium hyaluronate)</strong> dengan bobot molekul 12 kDa. Asam hialuronat dipilih menggantikan polimer alginat generasi pertama karena profil tolerabilitasnya yang telah teruji secara klinis selama lebih dari lima dekade pada manusia, serta perannya sebagai regulator inflamasi alami di matriks ekstraseluler.
+      </p>
+
+      <!-- SCHEME 1: SQL70 Synthesis -->
+      <figure class="figure-container">
+        <img 
+          src="assets/scheme1_sql70_biopolymer_synthesis.png" 
+          alt="Skema sintesis biopolimer SQL70 berbasis asam hialuronat dan derivat tetrazin" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Skema 1.</strong> Jalur sintesis biopolimer SQL70: Kondensasi gugus karboksilat pada sodium hyaluronate (12 kDa) dengan derivat tetrazin (4-(6-metil-1,2,4,5-tetrazin-3-il)fenil)metanamina menggunakan aktivator EDC dan sulfo-NHS dalam larutan penyangga MES (pH 4.5), menghasilkan substitusi tetrazin terstandardisasi ~19 wt%.
+        </figcaption>
+      </figure>
+
+      <p>
+        Melalui proses optimasi kimia, derajat substitusi tetrazin diformulasikan tepat pada <strong>~19 weight%</strong>. Viskositas dan fluiditas SQL70 diatur secara presisi sehingga dapat disuntikkan dengan mudah melalui jarum suntik tipis langsung ke sekitar tumor (peritumoral) atau ke dalam massa tumor (intratumoral). Sekali disuntikkan, biopolimer ini membentuk depot lokal yang menetap di tumor selama berminggu-minggu, siap menangkap protodrug yang lewat dalam peredaran darah.
+      </p>
+
+      <h3>2. SQP33 Protodrug: Doksorubisin Hidrofilik Generasi Baru</h3>
+      <p>
+        Kelemahan terbesar protodrug generasi pertama ("TCO-Dox") adalah kelarutannya yang sangat buruk dalam air (&lt;0.001 mg/mL), sehingga membatasi jumlah dosis yang dapat diinfuskan. Untuk mengatasinya, tim kimia memasukkan ligan residu asam amino <strong>glisin hidrofilik</strong> pada cincin TCO (Skema 2).
+      </p>
+
+      <!-- SCHEME 2: SQP33 Synthesis -->
+      <figure class="figure-container">
+        <img 
+          src="assets/scheme2_sqp33_protodrug_synthesis.png" 
+          alt="Skema sintesis protodrug SQP33 terkonjugasi ligan glisin" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Skema 2.</strong> Jalur sintesis protodrug SQP33 generasi kedua: Konjugasi doksorubisin hidroklorida dengan prekursor TCO karbonat (1) dalam DMF, diikuti reaksi transfer dengan glisin terlindungi TMS dalam DCM, menghasilkan SQP33 dengan rendemen 62% setelah pemurnian HPLC preparatif fase terbalik.
+        </figcaption>
+      </figure>
+
+      <p>
+        Penambahan residu glisin menghasilkan terobosan spektakuler: kelarutan SQP33 dalam larutan dapar fosfat (PBS, pH 7.0) melesat menjadi <strong>71.8 mg/mL—peningkatan lebih dari 4 orde magnitudo (naik 10.000× lipat)</strong> dibanding generasi pendahulunya. Uji sitotoksisitas in vitro menunjukkan bahwa SQP33 bersifat <strong>82 kali lipat lebih tidak toksik</strong> terhadap sel kanker kolorektal MC38 dibandingkan doksorubisin bebas. Artinya, molekul ini bersirkulasi di pembuluh darah dalam keadaan dorman (inaktif), tidak merusak sel-sel sumsum tulang, endotel pembuluh darah, maupun kardiomiosit jantung.
+      </p>
+
+      <!-- FIGURE 2: Tolerability -->
+      <figure class="figure-container">
+        <div class="max-w-md mx-auto">
+          <img 
+            src="assets/fig2_sq3370_dose_tolerability_5_9x.png" 
+            alt="Perbandingan dosis kumulatif SQ3370 vs doksorubisin hidroklorida pada mencit" 
+            class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+            onclick="openLightbox(this.src, this.alt)"
+          >
+        </div>
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 2.</strong> Perbandingan batas dosis kumulatif yang dapat ditoleransi (MTD): Dosis maksimal konvensional doksorubisin (merah) hanya 24.3 mg/kg. Sebaliknya, pemberian 5 dosis harian SQP33 pasca injeksi tunggal SQL70 (biru) mencapai <strong>143 mg/kg Dox ekuivalen (5.9× lipat dosis maksimal)</strong> tanpa memicu penurunan berat badan mencit maupun kematian toksik.
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- SECTION 3: DUAL-TUMOR EFFICACY -->
+    <section id="efikasi-dua-tumor">
+      <h2>Efikasi pada Model Dua Tumor: Ledakan Efek Sistemik Abscopal</h2>
+
+      <p>
+        Keberhasilan menginjeksi obat sitotoksik secara lokal sering kali memunculkan skeptisisme di kalangan onkolog: <em>bagaimana mungkin injeksi lokal dapat menolong pasien kanker metastasis yang memiliki puluhan anak sebar mikroskopis di organ lain?</em>
+      </p>
+
+      <p>
+        Untuk menjawab keraguan tersebut, para peneliti merancang eksperimen model dua tumor (<em>syngeneic dual-tumor model</em>) pada mencit imunokompeten C57BL/6. Pada hari ke-0, mencit diinokulasi dengan dua tumor kanker kolorektal MC38 terpisah:
+      </p>
+
+      <ul>
+        <li class="mb-2"><strong>Tumor Primer ("Injected Tumor"):</strong> 5 × 10⁵ sel diinokulasikan pada panggul kanan mencit. Pada hari ke-7 (ketika volume mencapai ~100 mm³), tumor ini menerima injeksi tunggal biopolimer SQL70.</li>
+        <li class="mb-2"><strong>Tumor Distal ("Non-Injected Tumor"):</strong> 1 × 10⁵ sel diinokulasikan pada panggul kiri mencit. Tumor ini <strong>tidak pernah menerima injeksi biopolimer apa pun</strong>, berfungsi sebagai model lesi metastasis jauh.</li>
+      </ul>
+
+      <!-- FIGURE 3: Dual Tumor Survival & Regressions -->
+      <figure class="figure-container">
+        <img 
+          src="assets/fig3_tumor_response_survival_dual_tumor.png" 
+          alt="Respon tumor dan kesintasan hidup mencit model dua tumor dengan terapi SQ3370" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 3.</strong> Kinerja terapi SQ3370 pada mencit dengan dua tumor MC38: (a) Skema protokol perlakuan. (b) Jadwal pemberian dosis. (c) Kurva kesintasan Kaplan-Meier: SQ3370 meningkatkan median survival menjadi 50.5 hari (p &lt; 0.001 vs Dox 31 hari dan Salin 26 hari). (d) Kurva penekanan volume tumor primer terinjeksi. (e–g) <em>Spider plots</em> lintasan volume tumor distal non-terinjeksi: hanya kelompok SQ3370 (e) yang menunjukkan regresi tumor distal yang nyata dan berkelanjutan, sementara pada kelompok Dox konvensional (f) dan Salin (g) tumor terus membesar liar.
+        </figcaption>
+      </figure>
+
+      <p>
+        Hasil eksperimen ini sangat mencengangkan:
+      </p>
+
+      <div class="my-4 p-4 bg-editorial-softbg border-l-2 border-editorial-accent rounded text-xs font-mono text-editorial-ink space-y-1">
+        <div>• Kesintasan Median Salin : 26 hari</div>
+        <div>• Kesintasan Median Dox IV : 31 hari (+19% vs Salin)</div>
+        <div>• Kesintasan Median SQ3370 : 50.5 hari (+63% vs Dox, +94% vs Salin, p &lt; 0.001)</div>
+      </div>
+
+      <p>
+        Pada tumor primer, SQ3370 menekan pertumbuhan massa tumor secara berkelanjutan (p &lt; 0.05). Namun, fenomena paling spektakuler terlihat pada <strong>tumor distal yang tidak pernah disuntik biopolimer</strong> (Gambar 3e). Sementara doksorubisin IV standar gagal total menahan pertumbuhan tumor distal, kelompok yang diobati dengan SQ3370 memperlihatkan penyusutan dan regresi tumor distal yang signifikan! Karena tumor distal tidak mengandung tetrazin dan tidak mengalami pelepasan doksorubisin secara lokal, regresi lesi jauh ini hanya dapat dijelaskan oleh satu mekanisme: <strong>aktivasi sistem imun adaptif tubuh yang menyebar secara sistemik (efek abscopal / anenestic response)</strong>.
+      </p>
+    </section>
+
+    <!-- SECTION 4: IMMUNE PROFILING TILS -->
+    <section id="profil-imun-tils">
+      <h2>Pemetaan Imun Tumor: Mengapa Lesi Distal Ikut Menyusut?</h2>
+
+      <p>
+        Guna mengungkap rahasia biologis di balik lenyapnya tumor non-terinjeksi, para peneliti memanen jaringan tumor pada 2 minggu pasca perlakuan dan melakukan analisis sitometri alir multi-warna (<em>multi-color flow cytometry</em>) untuk memetakan populasi <em>Tumor-Infiltrating Lymphocytes</em> (TILs).
+      </p>
+
+      <!-- TABLE 1: FACS Markers -->
+      <div class="overflow-x-auto">
+        <table class="pub-table">
+          <thead>
+            <tr>
+              <th>Biomarker Permukaan</th>
+              <th>Populasi Sel Imun Sasaran</th>
+              <th>Peran Fungsional dalam Tumor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-mono font-bold">CD45+</td>
+              <td>Sel imun total penginfiltrasi</td>
+              <td>Membedakan leukosit darah dari sel tumor MC38 epitelial</td>
+            </tr>
+            <tr>
+              <td class="font-mono font-bold">CD45+ CD3+</td>
+              <td>Sel limfosit T total</td>
+              <td>Populasi efektor imun seluler garis depan</td>
+            </tr>
+            <tr>
+              <td class="font-mono font-bold">CD45+ CD3+ CD4+</td>
+              <td>Sel T Pembantu (Helper T cells)</td>
+              <td>Mengorkestrasi sinyal sitokin dan rekrutmen sel efektor</td>
+            </tr>
+            <tr>
+              <td class="font-mono font-bold">CD45+ CD3+ CD8+</td>
+              <td>Sel T Sitotoksik (Cytotoxic CTLs)</td>
+              <td>Membunuh sel tumor secara langsung melalui perforin/granzim</td>
+            </tr>
+            <tr>
+              <td class="font-mono font-bold">PD-1+ dalam CD4+/CD8+</td>
+              <td>Sel T teraktivasi / tanda kelelahan</td>
+              <td>Pos pemeriksaan imun sasaran antibodi anti-PD-1</td>
+            </tr>
+            <tr>
+              <td class="font-mono font-bold">CD25+ FoxP3+ (CD4+)</td>
+              <td>Sel T Regulator (Tregs)</td>
+              <td>Imunosupresor yang melindungi sel kanker dari serangan imun</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- FIGURE 4: Immune Profiling FACS -->
+      <figure class="figure-container">
+        <div class="max-w-2xl mx-auto">
+          <img 
+            src="assets/fig4_tumor_infiltrating_immune_cells.png" 
+            alt="Profil fenotipe sel imun infiltrasi tumor 2 minggu pasca terapi SQ3370" 
+            class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+            onclick="openLightbox(this.src, this.alt)"
+          >
+        </div>
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 4.</strong> Analisis sitometri alir TILs pada 2 minggu pasca terapi SQ3370: (a) Alur eksperimen panen tumor primer dan distal. (b) Komposisi subset sel imun pada tumor primer terinjeksi: peningkatan signifikan CD3+ T cells, CD4+ helper T cells, CD8+ cytotoxic T cells (p &lt; 0.05), serta kenaikan ekspresi PD-1+. (c) Komposisi subset sel imun pada tumor distal non-terinjeksi: peningkatan CD3+ dan CD4+ T cells, disertai penurunan drastis sel T regulator imunosupresif FoxP3+ Tregs (p &lt; 0.01).
+        </figcaption>
+      </figure>
+
+      <p>
+        Hasil analisis FACS memperlihatkan perbedaan fenotipik yang sangat tajam dan komplementer antara kedua tumor:
+      </p>
+
+      <ol class="list-decimal pl-5 space-y-2 font-serif text-lg text-editorial-body">
+        <li>
+          <strong>Pada Tumor Primer (Injected):</strong> Terjadi influks besar-besaran <strong>sel T sitotoksik CD8+ (p &lt; 0.05)</strong> dan sel T pembantu CD4+ (p &lt; 0.05). Dosis doksorubisin lokal super-tinggi memicu kematian sel imunogenik (<em>Immunogenic Cell Death / ICD</em>), memuntahkan ribuan antigen terkait tumor (TAA) yang segera ditangkap oleh sel dendritik.
+        </li>
+        <li>
+          <strong>Pada Tumor Distal (Non-Injected):</strong> Terjadi lonjakan sel CD4+ yang dibarengi dengan <strong>penurunan drastis populasi sel T regulator (FoxP3+ Tregs, p &lt; 0.01)</strong>. Penurunan Tregs meruntuhkan perisai imunosupresi pada tumor metastatik, memungkinkan sel T efektor mengenali dan menghancurkan massa tumor distal tanpa hambatan.
+        </li>
+        <li>
+          <strong>Upregulasi PD-1 pada Tumor Primer:</strong> Terapi SQ3370 secara spesifik meningkatkan ekspresi molekul pos pemeriksaan PD-1 pada sel CD4+ di tumor terinjeksi. Ini adalah sinyal biologis kritis: sel kanker mencoba bertahan hidup dengan mengekspresikan ligan PD-L1. Temuan ini menjadi landasan rasional yang sangat kuat untuk mengombinasikan SQ3370 dengan imunoterapi antibodi anti-PD-1 di masa depan.
+        </li>
+      </ol>
+    </section>
+
+    <!-- SECTION 5: SYNERGY WITH TLR9 AGONIST -->
+    <section id="kombinasi-tlr9a">
+      <h2>Sinergi Sempurna dengan TLR9 Agonist: Kesintasan 101 Hari & Remisi 80%</h2>
+
+      <p>
+        Menyadari bahwa aktivasi lokal doksorubisin bertindak sebagai "vaksin in situ" yang memicu respon imun adaptif, para peneliti menguji hipotesis lanjutan: <em>dapatkah respon anti-tumor ini dilipatgandakan dengan menambahkan adjuvan imun spesifik?</em>
+      </p>
+
+      <p>
+        Mereka memilih agonis <strong>Toll-like Receptor 9 (TLR9a)</strong>, suatu oligonukleotida CpG sintetis yang meniru DNA bakteri untuk mengaktifkan reseptor TLR9 pada sel dendritik dan sel B. TLR9a (25 µg) disuntikkan secara intratumoral ke tumor primer setelah siklus infus SQP33 terakhir selesai.
+      </p>
+
+      <!-- FIGURE 5: SQ3370 + TLR9a Efficacy -->
+      <figure class="figure-container">
+        <img 
+          src="assets/fig5_sq3370_tlr9a_combination_survival.png" 
+          alt="Kombinasi SQ3370 dan TLR9 agonist melipatgandakan kesintasan dan memicu remisi komplit lesi distal" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 5.</strong> Terapi kombinasi SQ3370 + TLR9a pada model dua tumor MC38: (a, b) Skema protokol injeksi intratumoral TLR9a pada tumor primer. (c) Kurva kesintasan Kaplan-Meier: penambahan TLR9a melipatgandakan kesintasan median menjadi <strong>101 hari</strong> (p &lt; 0.01 vs SQ3370 tunggal 50.5 hari; p &lt; 0.001 vs Salin 26 hari dan Dox+TLR9a 42 hari). (d) Kontrol volume tumor primer terinjeksi. (e–g) <em>Spider plots</em> tumor distal non-terinjeksi: kombinasi SQ3370 + TLR9a (f) menghasilkan <strong>remisi komplit pada 8 dari 10 mencit (80%)</strong>, mengungguli SQ3370 monoterapi (e, 1 dari 10 remisi) dan kontrol konvensional Dox + TLR9a (g, 0 remisi).
+        </figcaption>
+      </figure>
+
+      <p>
+        Hasil kombinasi ini membuktikan sinergi biologis tingkat tinggi:
+      </p>
+
+      <ul>
+        <li class="mb-2"><strong>Lonjakan Kesintasan Hidup:</strong> Median survival melonjak dari 50.5 hari pada SQ3370 tunggal menjadi <strong>101 hari</strong> pada kelompok SQ3370 + TLR9a. Sebagai kontras, kombinasi Dox konvensional dengan TLR9a hanya menghasilkan median survival 42 hari.</li>
+        <li class="mb-2"><strong>Remisi Komplit Metastasis Distal:</strong> Pada kelompok SQ3370 + TLR9a, sebanyak <strong>8 dari 10 mencit (80%) mengalami remisi komplit total</strong> pada tumor distal mereka yang tidak pernah diinjeksi. Tumor lenyap tak berbekas.</li>
+        <li class="mb-2"><strong>Memori Imun Protektif Permanen:</strong> Pada hari ke-70, mencit-mencit yang sembuh total dari kelompok SQ3370 dan SQ3370 + TLR9a diinokulasi ulang (<em>re-challenge</em>) dengan 5 × 10⁵ sel tumor MC38 segar di panggul kiri mereka. Seluruh mencit yang sembuh berhasil menolak dan memusnahkan sel kanker baru tersebut secara spontan tanpa perlu pengobatan tambahan apa pun, membuktikan terciptanya memori imunologis seumur hidup.</li>
+      </ul>
+    </section>
+
+    <!-- SECTION 6: MECHANISTIC INSIGHT & CLINICAL TRANSLATION -->
+    <section id="translasi-klinis">
+      <h2>Mekanisme Biologis & Peluang Translasi Klinis</h2>
+
+      <p>
+        Sintesis mekanisme kerja lengkap dari teknologi SQ3370 dirangkum secara elegan pada Gambar 6. Ketika protodrug SQP33 ditangkap oleh biopolimer SQL70, doksorubisin terlepas dalam konsentrasi lokal yang sangat masif tanpa meracuni sirkulasi sistemik. Sel kanker yang mati memancarkan sinyal bahaya (<em>Damage-Associated Molecular Patterns / DAMPs</em>) yang mengaktifkan sel dendritik imatur (iDCs).
+      </p>
+
+      <!-- FIGURE 6: Mechanistic Cascade -->
+      <figure class="figure-container">
+        <div class="max-w-2xl mx-auto">
+          <img 
+            src="assets/fig6_systemic_immune_activation_mechanism.png" 
+            alt="Mekanisme aktivasi imun sistemik yang dipicu oleh pelepasan obat lokal SQ3370" 
+            class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+            onclick="openLightbox(this.src, this.alt)"
+          >
+        </div>
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 6.</strong> Kaskade imunologis aktivasi obat lokal SQ3370: Pelepasan doksorubisin pekat di tumor primer mengaktifkan sel dendritik imatur (iDC) menjadi sel dendritik matang (mDC). mDC bermigrasi ke kelenjar getah bening dan mempresentasikan antigen tumor (TAA) kepada sel T naif. Interaksi ini memicu ekspansi klonal sel T efektor spesifik tumor (CD8+ CTLs dan CD4+ Th1) serta menekan sel T regulator (Tregs). Sel T efektor kemudian menyebar ke sirkulasi perifer dan menginfiltrasi seluruh sarang metastasis di penjuru tubuh.
+        </figcaption>
+      </figure>
+
+      <p>
+        Mengapa fenomena imunologis yang dahsyat ini tidak pernah terwujud pada kemoterapi doksorubisin intravena konvensional? Kuncinya terletak pada <strong>ketiadaan imunosupresi sistemik</strong>:
+      </p>
+
+      <div class="my-6 p-4 bg-editorial-softbg border border-editorial-line rounded">
+        <div class="text-xs font-bold uppercase tracking-wider text-editorial-accent font-sans mb-1">
+          Paradoks Toksisitas Kemoterapi Konvensional
+        </div>
+        <p class="text-sm font-serif italic text-editorial-body m-0 leading-relaxed">
+          Pada kemoterapi intravena biasa, doksorubisin membanjiri sumsum tulang dan organ limfoid, membunuh limfosit T dan sel dendritik sebelum mereka sempat mengenali antigen tumor (limfopenia parah). Akibatnya, potensi doksorubisin sebagai pemicu respon imun mati suri. Platform CAPAC memecahkan paradoks ini: dengan membatasi sitotoksisitas ekstrem hanya di dalam matriks tumor primer, kompartemen imun sistemik tetap utuh, sehat, dan bebas berevolusi menjadi pasukan pembasmi kanker yang perkasa.
+        </p>
+      </div>
+
+      <h3>Aplikasi Klinis Masa Depan & Perkembangan Terkini</h3>
+
+      <p>
+        Karakter biologi-agnostik dari kimia klik tetrazin–TCO membuka spektrum aplikasi klinis yang luar biasa luas:
+      </p>
+
+      <ol class="list-decimal pl-5 space-y-3 font-serif text-lg text-editorial-body">
+        <li>
+          <strong>Tumor Sulit Dioperasi (Unresectable Tumors):</strong> Pasien kanker kepala dan leher, melanoma lokal lanjut, atau karsinoma kolorektal yang tumornya berdekatan dengan pembuluh darah vital dapat menerima injeksi biopolimer SQL70 terpandu USG/CT-scan, diikuti infus protodrug sistemik untuk mengecilkan massa tumor secara aman.
+        </li>
+        <li>
+          <strong>Terapi Adjuvan Pasca-Reseksi Bedah:</strong> Biopolimer SQL70 dapat disemprotkan atau diinjeksikan langsung ke dalam rongga bekas sayatan tumor (<em>resection cavity</em>) sebelum luka operasi dijahit. Ketika pasien kemudian menerima infus protodrug intravena, obat sitotoksik terkonsentrasi di tepi rongga bedah untuk membabat habis sisa-sisa sel mikro-kanker tanpa mengganggu proses penyembuhan luka operasi.
+        </li>
+        <li>
+          <strong>Konversi "Cold Tumors" Menjadi "Hot Tumors":</strong> Mengubah tumor padat yang kebal imunoterapi menjadi sangat imunogenik, membuka jalan bagi kombinasi efektif dengan antibodi monoklonal anti-PD-1 (misalnya pembrolizumab atau nivolumab).
+        </li>
+        <li>
+          <strong>Uji Klinis Perdana pada Manusia (Phase I):</strong> Keberhasilan preklinis SQ3370 telah mengantarkannya memperoleh izin Investigational New Drug (IND) dari FDA Amerika Serikat. Uji klinis Fase I pada manusia bertajuk <strong>SQ3370-001 (NCT04106492)</strong> saat ini tengah berlangsung di berbagai pusat kanker terkemuka di Amerika Serikat dan Australia, menguji keamanan dan efikasi platform ini pada pasien dengan tumor padat stadium lanjut yang telah gagal terapi lini pertama.
+        </li>
+      </ol>
+    </section>
+
+    <!-- METADATA & CITATION SECTION -->
+    <section class="mt-16 pt-8 border-t border-editorial-line text-xs font-sans text-editorial-muted">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <div class="font-bold text-editorial-ink uppercase tracking-wider mb-2">Informasi Publikasi Resmi</div>
+          <ul class="space-y-1">
+            <li><strong>Judul Asli:</strong> SQ3370 Activates Cytotoxic Drug via Click Chemistry at Tumor and Elicits Sustained Responses in Injected and Non-Injected Lesions</li>
+            <li><strong>Penulis:</strong> S. Srinivasan, N.A. Yee, K. Wu, M. Zakharian, A. Mahmoodi, M. Royzen*, J.M. Mejía Oneto*</li>
+            <li><strong>Afiliasi:</strong> Shasqi, Inc. (San Francisco) & University of Albany, SUNY (New York, USA)</li>
+            <li><strong>Jurnal:</strong> Advanced Therapeutics, Vol. 4, No. 3 (2021) 2000243</li>
+            <li><strong>Penerbit:</strong> Wiley-VCH GmbH</li>
+            <li><strong>DOI:</strong> <a href="https://doi.org/10.1002/adtp.202000243" target="_blank" class="text-editorial-accent hover:underline">10.1002/adtp.202000243</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-bold text-editorial-ink uppercase tracking-wider mb-2">Parameter Kimia & In Vivo Kunci</div>
+          <ul class="space-y-1">
+            <li><strong>Reaksi Kimia:</strong> IEDDA Klik Tetrazin–trans-Cyclooctene (TCO)</li>
+            <li><strong>Biopolimer SQL70:</strong> Asam Hialuronat 12 kDa, ~19 wt% Tetrazin</li>
+            <li><strong>Protodrug SQP33:</strong> Doksorubisin-TCO-Glisin (Kelarutan 71.8 mg/mL, 82× lebih aman)</li>
+            <li><strong>Model In Vivo:</strong> Mencit C57BL/6 Dua Tumor MC38 (Kolorektal Imunokompeten)</li>
+            <li><strong>Hasil Utama:</strong> Dosis 5.9× MTD, Survival 101 Hari (+TLR9a), Remisi Distal 80%</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-editorial-line flex items-center justify-between">
+        <a href="../../index.html" class="inline-flex items-center gap-1.5 text-xs font-semibold text-editorial-ink hover:text-editorial-accent">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          Kembali ke Katalog Utama Paper-Hub
+        </a>
+        <span class="text-editorial-lightmuted">TelaahSains Hub • Format Editorial Sains Bebas AI Workslop</span>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- LIGHTBOX MODAL FOR FULL RESOLUTION IMAGE INSPECTION -->
+  <div id="lightbox" class="fixed inset-0 bg-black/80 z-50 hidden flex flex-col items-center justify-center p-4 backdrop-blur-xs" onclick="closeLightbox()">
+    <div class="relative max-w-5xl max-h-[90vh] flex flex-col items-center" onclick="event.stopPropagation()">
+      <button onclick="closeLightbox()" class="absolute -top-10 right-0 text-white hover:text-zinc-300 text-sm font-mono flex items-center gap-1">
+        <span>Tutup [ESC]</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[80vh] object-contain rounded bg-white p-2 shadow-2xl">
+      <p id="lightbox-caption" class="text-zinc-200 text-xs text-center mt-3 max-w-2xl font-sans"></p>
+    </div>
+  </div>
+
+  <script>
+    // Reading Progress Indicator
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('reading-progress').style.width = scrolled + '%';
+    });
+
+    // Lightbox Controls
+    function openLightbox(src, caption) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox-caption').textContent = caption;
+      document.getElementById('lightbox').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+
+</body>
+</html>

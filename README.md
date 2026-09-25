@@ -27,9 +27,12 @@ paper-hub/
     ├── 05-mox2-thermoelectric/          # Paper 5: TMDC MoX2 Termoelektrik & Rekor ZT
     │   ├── index.html                   # Showcase lengkap Paper 5
     │   └── assets/                      # 7 Gambar resolusi tinggi (Fig. 1 s/d Fig. 7)
-    └── 06-mch-dehydrogenation-pt13/     # Paper 6: Katalisis Dehidrogenasi LOHC Pt13
-        ├── index.html                   # Showcase lengkap Paper 6
-        └── assets/                      # 13 Gambar resolusi tinggi (Fig. 1 s/d Fig. 13)
+    ├── 06-mch-dehydrogenation-pt13/     # Paper 6: Katalisis Dehidrogenasi LOHC Pt13
+    │   ├── index.html                   # Showcase lengkap Paper 6
+    │   └── assets/                      # 13 Gambar resolusi tinggi (Fig. 1 s/d Fig. 13)
+    └── 07-sq3370-click-chemistry-cancer/# Paper 7: Kimia Klik SQ3370 Immuno-Onkologi
+        ├── index.html                   # Showcase lengkap Paper 7
+        └── assets/                      # 8 Gambar resolusi tinggi (Fig. 1 s/d Fig. 6, Scheme 1–2)
 ```
 
 ---
@@ -44,6 +47,7 @@ paper-hub/
 | 04 | **Potential thermoelectric candidate monolayer silicon diphosphide (SiP₂) from a first-principles calculation** | *Computational Materials Science* 188 (Elsevier, 2021) | Monolayer SiP₂, Anisotropi Termal 7.3×, Seebeck >3 mV/K, ZT 0.90 | [Buka Paper 04](papers/04-sip2-thermoelectric/index.html) |
 | 05 | **Thermal transport and thermoelectric properties of transition metal dichalcogenides MoX₂ from first-principles calculation** | *Physica Scripta* 99 (IOP Publishing, 2024) | TMDC MoX₂, Model Kinetik-Kolektif KCM, MoTe₂ ZT Rekor 2.77 @550K & 3.55 @900K | [Buka Paper 05](papers/05-mox2-thermoelectric/index.html) |
 | 06 | **Substituent effect on the reactivity of liquid organic hydrogen carriers: A DFT study on methylcyclohexane dehydrogenation over Pt13 cluster** | *International Journal of Hydrogen Energy* 193 (Elsevier, 2025) | LOHC, MCH, MCA, MNC, Klaster Pt₁₃, DFT DMol3, Efek Substituen, RDS, ΔG, E_a | [Buka Paper 06](papers/06-mch-dehydrogenation-pt13/index.html) |
+| 07 | **SQ3370 Activates Cytotoxic Drug via Click Chemistry at Tumor and Elicits Sustained Responses in Injected and Non-Injected Lesions** | *Advanced Therapeutics* 4 (Wiley-VCH, 2021) | Kimia Klik Bioortogonal, CAPAC, SQ3370, Tetrazin, TCO, Doksorubisin, Abscopal, MC38 | [Buka Paper 07](papers/07-sq3370-click-chemistry-cancer/index.html) |
 
 ---
 
