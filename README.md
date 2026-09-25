@@ -30,9 +30,12 @@ paper-hub/
     ├── 06-mch-dehydrogenation-pt13/     # Paper 6: Katalisis Dehidrogenasi LOHC Pt13
     │   ├── index.html                   # Showcase lengkap Paper 6
     │   └── assets/                      # 13 Gambar resolusi tinggi (Fig. 1 s/d Fig. 13)
-    └── 07-sq3370-click-chemistry-cancer/# Paper 7: Kimia Klik SQ3370 Immuno-Onkologi
-        ├── index.html                   # Showcase lengkap Paper 7
-        └── assets/                      # 8 Gambar resolusi tinggi (Fig. 1 s/d Fig. 6, Scheme 1–2)
+    ├── 07-sq3370-click-chemistry-cancer/# Paper 7: Kimia Klik SQ3370 Immuno-Onkologi
+    │   ├── index.html                   # Showcase lengkap Paper 7
+    │   └── assets/                      # 8 Gambar resolusi tinggi (Fig. 1 s/d Fig. 6, Scheme 1–2)
+    └── 08-pyridotetrazine-anticancer-jak2/ # Paper 8: Piridotetrazin Antikanker JAK2 & DFT
+        ├── index.html                   # Showcase lengkap Paper 8
+        └── assets/                      # 12 Gambar resolusi tinggi (Fig. 1 s/d Fig. 12)
 ```
 
 ---
@@ -48,6 +51,7 @@ paper-hub/
 | 05 | **Thermal transport and thermoelectric properties of transition metal dichalcogenides MoX₂ from first-principles calculation** | *Physica Scripta* 99 (IOP Publishing, 2024) | TMDC MoX₂, Model Kinetik-Kolektif KCM, MoTe₂ ZT Rekor 2.77 @550K & 3.55 @900K | [Buka Paper 05](papers/05-mox2-thermoelectric/index.html) |
 | 06 | **Substituent effect on the reactivity of liquid organic hydrogen carriers: A DFT study on methylcyclohexane dehydrogenation over Pt13 cluster** | *International Journal of Hydrogen Energy* 193 (Elsevier, 2025) | LOHC, MCH, MCA, MNC, Klaster Pt₁₃, DFT DMol3, Efek Substituen, RDS, ΔG, E_a | [Buka Paper 06](papers/06-mch-dehydrogenation-pt13/index.html) |
 | 07 | **SQ3370 Activates Cytotoxic Drug via Click Chemistry at Tumor and Elicits Sustained Responses in Injected and Non-Injected Lesions** | *Advanced Therapeutics* 4 (Wiley-VCH, 2021) | Kimia Klik Bioortogonal, CAPAC, SQ3370, Tetrazin, TCO, Doksorubisin, Abscopal, MC38 | [Buka Paper 07](papers/07-sq3370-click-chemistry-cancer/index.html) |
+| 08 | **Synthesis of pyrido-annelated [1,2,4,5]tetrazines, [1,2,4]triazepine, and [1,2,4,5]tetrazepines for anticancer, DFT, and molecular docking studies** | *Scientific Reports* 13 (Springer Nature, 2023) | Sintesis PASE Hijau, NCI-60, Kanker Kolon HCT-116 77.9%, Docking JAK2 -7.25 kcal/mol, DFT B3LYP | [Buka Paper 08](papers/08-pyridotetrazine-anticancer-jak2/index.html) |
 
 ---
 

@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sintesis Hijau Heterosiklik Piridotetrazin & Azepin: Uji Antikanker NCI-60, DFT, dan Docking JAK2 | Telaah Ilmiah Scientific Reports</title>
+  
+  <!-- Fonts: Newsreader (Editorial Serif) & Plus Jakarta Sans (Clean Modern Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            editorial: {
+              ink: '#18181b',        /* Deep charcoal */
+              body: '#27272a',       /* Warm reading text */
+              muted: '#71717a',      /* Neutral secondary */
+              lightmuted: '#a1a1aa', /* Captions */
+              line: '#e4e4e7',       /* Hairline border */
+              softbg: '#fafafa',     /* Off-white background */
+              paper: '#ffffff',      /* Card white */
+              accent: '#0a74c0',     /* Royal scientific blue */
+              accentDark: '#075997', /* Dark hover blue */
+              accentLight: '#f0f7fc' /* Subtle highlight */
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            serif: ['"Newsreader"', 'Georgia', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #fafafa;
+      color: #27272a;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .article-body p {
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 1.125rem; /* 18px */
+      line-height: 1.82;
+      color: #27272a;
+      margin-bottom: 1.6rem;
+    }
+
+    .article-body p strong {
+      font-weight: 600;
+      color: #18181b;
+    }
+
+    .article-body h2 {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: #18181b;
+      letter-spacing: -0.02em;
+      line-height: 1.28;
+      margin-top: 3.5rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #e4e4e7;
+    }
+
+    .article-body h3 {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #18181b;
+      letter-spacing: -0.01em;
+      line-height: 1.35;
+      margin-top: 2.25rem;
+      margin-bottom: 0.85rem;
+    }
+
+    /* Publication Table Styling */
+    .pub-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-size: 0.875rem;
+    }
+    .pub-table th {
+      border-top: 2px solid #18181b;
+      border-bottom: 1px solid #18181b;
+      padding: 0.75rem 0.6rem;
+      text-align: left;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 600;
+      color: #18181b;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+    .pub-table td {
+      border-bottom: 1px solid #f4f4f5;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 0.875rem;
+      padding: 0.75rem 0.6rem;
+      color: #27272a;
+    }
+    .pub-table tr:last-child td {
+      border-bottom: 2px solid #18181b;
+    }
+
+    /* Figure Box */
+    .figure-container {
+      background: #ffffff;
+      border: 1px solid #e4e4e7;
+      border-radius: 4px;
+      padding: 1.25rem;
+      margin: 2.5rem 0;
+    }
+
+    #reading-progress {
+      transition: width 0.1s ease-out;
+    }
+  </style>
+</head>
+
+<body class="selection:bg-editorial-accentLight selection:text-editorial-accent">
+
+  <!-- TOP PROGRESS BAR -->
+  <div class="fixed top-0 left-0 w-full h-[3px] bg-transparent z-50">
+    <div id="reading-progress" class="h-full bg-editorial-accent w-0"></div>
+  </div>
+
+  <!-- MASTHEAD & TOP NAVIGATION -->
+  <header class="bg-white border-b border-editorial-line sticky top-0 z-40">
+    <!-- Top Journal Meta -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-editorial-line/60 py-1.5 flex items-center justify-between text-[11px] text-editorial-muted font-sans">
+      <div class="flex items-center gap-2">
+        <span class="font-bold tracking-wider uppercase text-editorial-ink">KIMIA MEDISINAL & PEMODELAN MOLEKULER</span>
+        <span class="text-editorial-line">•</span>
+        <span class="hidden sm:inline">Scientific Reports 13:5585 (2023)</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://doi.org/10.1038/s41598-023-32421-x" target="_blank" rel="noopener" class="text-editorial-accent hover:underline flex items-center gap-1 font-medium">
+          <span>DOI: 10.1038/s41598-023-32421-x</span>
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+      <div class="flex items-center gap-6">
+        <a href="../../index.html" class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium text-zinc-600 hover:text-blue-600 rounded border border-zinc-200 hover:bg-zinc-50 transition-colors shadow-2xs" title="Kembali ke Katalog Utama">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          <span class="hidden sm:inline">Katalog Utama</span>
+        </a>
+        <a href="#" class="text-2xl font-serif font-bold tracking-tight text-editorial-ink">
+          Tetrazin<span class="text-editorial-accent italic font-normal">Kinase</span>
+        </a>
+        <span class="hidden md:inline-block h-5 w-px bg-editorial-line"></span>
+        <nav class="hidden md:flex items-center gap-5 text-xs font-semibold uppercase tracking-wider text-editorial-muted font-sans">
+          <a href="#latar-belakang" class="hover:text-editorial-accent transition-colors">Konteks PASE</a>
+          <a href="#sintesis-heterosiklik" class="hover:text-editorial-accent transition-colors">Rute Sintesis (Fig. 1–3)</a>
+          <a href="#aktivitas-nci60" class="hover:text-editorial-accent transition-colors">Skrining NCI-60 (Fig. 4–5)</a>
+          <a href="#docking-jak2" class="hover:text-editorial-accent transition-colors">Docking JAK2 (Fig. 6–9)</a>
+          <a href="#dft-orbital" class="hover:text-editorial-accent transition-colors">Kuantum DFT (Fig. 10–12)</a>
+          <a href="#farmakokinetika-adme" class="hover:text-editorial-accent transition-colors">ADME & Evaluasi</a>
+        </nav>
+      </div>
+
+      <div class="flex items-center gap-3 text-xs font-medium text-editorial-muted font-sans">
+        <span>Waktu baca ~8 menit</span>
+        <button onclick="window.print()" class="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 border border-editorial-line rounded hover:bg-editorial-softbg text-editorial-ink transition-colors" title="Cetak atau Simpan PDF">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+          Cetak
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ARTICLE HEADER (Editorial Style Hero) -->
+  <header class="bg-white border-b border-editorial-line pt-12 pb-10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Category Tag & Meta -->
+      <div class="flex items-center gap-3 text-xs font-semibold tracking-wider uppercase text-editorial-accent mb-4 font-sans">
+        <span>Kimia Organik Sintetis & Desain Obat In Silico</span>
+        <span class="text-editorial-line">•</span>
+        <span class="text-editorial-muted">Solvent-Free PASE Annulation • NCI-60 Screening • DFT / MOE</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-3xl sm:text-4xl lg:text-[42px] font-bold text-editorial-ink tracking-tight font-sans leading-[1.18] mb-6">
+        Sintesis Hijau Heterosiklik Kaya Nitrogen: Eksplorasi Antikanker Piridotetrazin dan Azepin terhadap Kinase JAK2
+      </h1>
+
+      <!-- Standfirst (Lead Paragraph) -->
+      <p class="text-lg sm:text-xl font-serif italic text-editorial-body leading-relaxed mb-8 border-l-2 border-editorial-accent pl-5">
+        Menerapkan filosofi ekonomi pot, atom, dan langkah (PASE) tanpa pelarut, tim kimiawan Al-Azhar University mengonstruksi cincin heterosiklik terpadu pirido[1,2,4,5]tetrazin dan azepin dengan rendemen hingga 89%. Skrining 60 lini sel kanker National Cancer Institute (NCI-60) di Amerika Serikat membuktikan Senyawa 9 menghambat pertumbuhan kanker kolon HCT-116 hingga 77.94% dan leukemia RPMI-8226 sebesar 51.58%. Pemodelan komputasi DFT dan penambatan molekuler mengonfirmasi afinitas tinggi pada situs aktif Janus Kinase-2 (JAK2, -7.25 kcal/mol) yang bersaing ketat dengan ligan klinis referensi 2HB, didukung oleh celah HOMO-LUMO sempit (0.0875 eV) dan kepatuhan sempurna terhadap aturan Lipinski tanpa hambatan pompa efluks P-glikoprotein.
+      </p>
+
+      <!-- Authors & Affiliations -->
+      <div class="pt-6 border-t border-editorial-line flex flex-wrap items-center justify-between gap-4 text-xs text-editorial-muted font-sans">
+        <div>
+          <div class="text-editorial-ink font-semibold text-sm">
+            Aisha Y. Hassan, Sara N. Shabaan, Samiha A. El-Sebaey, Eman S. Abou-Amra*
+          </div>
+          <div class="mt-1 text-editorial-muted">
+            Faculty of Science (Girls) & Faculty of Pharmacy (Girls), Al-Azhar University, Nasr City, Cairo, Mesir
+          </div>
+        </div>
+        <div class="font-mono text-[11px] bg-editorial-softbg px-3 py-1.5 border border-editorial-line rounded">
+          Publikasi: Springer Nature • Scientific Reports 13:5585 (2023)
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- KEY METRICS STRIP -->
+  <section class="border-b border-editorial-line bg-editorial-softbg py-6">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <div class="text-xs uppercase tracking-wider text-editorial-muted font-sans font-medium">Hambatan Kanker Kolon</div>
+          <div class="text-2xl font-bold font-sans text-editorial-ink mt-1">77.94% <span class="text-xs font-normal text-editorial-muted">GI</span></div>
+          <div class="text-[11px] text-editorial-accent font-sans mt-0.5">Senyawa 9 pada sel HCT-116</div>
+        </div>
+        <div>
+          <div class="text-xs uppercase tracking-wider text-editorial-muted font-sans font-medium">Hambatan Leukemia</div>
+          <div class="text-2xl font-bold font-sans text-editorial-ink mt-1">51.58% <span class="text-xs font-normal text-editorial-muted">GI</span></div>
+          <div class="text-[11px] text-emerald-600 font-sans mt-0.5">Senyawa 9 pada sel RPMI-8226</div>
+        </div>
+        <div>
+          <div class="text-xs uppercase tracking-wider text-editorial-muted font-sans font-medium">Skor Docking JAK2</div>
+          <div class="text-2xl font-bold font-sans text-editorial-ink mt-1">-7.25 <span class="text-xs font-normal text-editorial-muted">kcal/mol</span></div>
+          <div class="text-[11px] text-teal-600 font-sans mt-0.5">Senyawa 9 setara ligan klinis 2HB (-7.45)</div>
+        </div>
+        <div>
+          <div class="text-xs uppercase tracking-wider text-editorial-muted font-sans font-medium">Celah HOMO–LUMO</div>
+          <div class="text-2xl font-bold font-sans text-editorial-ink mt-1">0.0875 <span class="text-xs font-normal text-editorial-muted">eV</span></div>
+          <div class="text-[11px] text-amber-700 font-sans mt-0.5">Reaktivitas kimia & transfer elektron tinggi</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN ARTICLE CONTENT -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 article-body">
+
+    <!-- SECTION 1: CONTEXT & PASE -->
+    <section id="latar-belakang">
+      <p class="text-xl font-serif leading-relaxed text-editorial-ink first-letter:text-5xl first-letter:font-bold first-letter:float-left first-letter:mr-3 first-letter:text-editorial-accent first-letter:font-serif">
+        Cincin heterosiklik yang kaya akan atom nitrogen merupakan inti dari lebih dari 75% molekul obat onkologi modern yang telah disetujui badan regulasi dunia. Di antara berbagai arsitektur nitrogen, kerangka <strong>piridina</strong>, <strong>1,2,4,5-tetrazin</strong>, serta cincin beranggota tujuh <strong>azepin (triazepin dan tetrazepin)</strong> menempati posisi istimewa berkat kemampuannya membentuk ikatan hidrogen multipel, berinteraksi pi-pi dengan residu enzim, dan menembus membran biologis dengan efisiensi tinggi.
+      </p>
+
+      <p>
+        Namun, sintesis cincin tetrazin dan azepin terpadu (<em>fused bridgehead heterocycles</em>) selama berpuluh-puluh tahun dihadapkan pada tantangan berat: reaksi multitahap yang rumit, penggunaan pelarut organik beracun yang boros, kebutuhan katalis logam berat yang mahal, serta rendemen akhir yang rendah. Untuk menjawab tantangan kimia hijau abad ke-21, tim peneliti gabungan Fakultas Sains dan Farmasi <strong>Al-Azhar University, Kairo, Mesir</strong> (Aisha Y. Hassan, Sara N. Shabaan, Samiha A. El-Sebaey, dan dipimpin oleh Dr. Eman S. Abou-Amra) mengadopsi filosofi <strong>Pot, Atom, and Step Economy (PASE)</strong>.
+      </p>
+
+      <p>
+        Konsep PASE bertujuan memangkas jumlah tahapan sintetis dengan menggabungkan bahan awal dalam satu wadah reaksi (<em>one-pot</em>) pada kondisi <strong>bebas pelarut (solvent-free thermal fusion)</strong> tanpa memerlukan penambahan katalis eksternal. Pendekatan ramah lingkungan ini menghasilkan perpustakaan senyawa heterosiklik baru dalam waktu reaksi singkat (2–3 jam) dengan rendemen isolasi sangat tinggi (67–89%).
+      </p>
+    </section>
+
+    <!-- SECTION 2: SYNTHETIC ROUTES -->
+    <section id="sintesis-heterosiklik">
+      <h2>Arsitektur Kimia Hijau: Dari Piridinakarbonitril Menuju Tetrazin & Azepin</h2>
+
+      <p>
+        Blok pembangun utama (<em>versatile building block</em>) yang dirancang dalam riset ini adalah <strong>1-amino-4-metil-2-oxo-6-fenil-1,2-dihidropiridina-3-karbonitril (1)</strong>. Molekul ini memiliki reaktivitas bifungsional ganda yang sangat kaya: gugus amina primer nukleofilik (-NH₂), gugus karbonil elektrofilik (C=O), serta gugus siano orto (-C≡N) yang siap mengalami anelasi cincin heterosiklik.
+      </p>
+
+      <!-- FIGURE 1: Synthesis 2-5 -->
+      <figure class="figure-container">
+        <img 
+          src="assets/fig1_synthesis_compounds_2_5.png" 
+          alt="Sintesis Senyawa 2 hingga 5 dari Bahan Awal 1" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 1.</strong> Skema sintesis derivat 2 hingga 5: Reaksi fusi termal bahan awal 1 dengan sianoguanidina menghasilkan triazolopiridina 2 via eliminasi H₂O dan NH₃. Alkilasi dengan kloroaseton menghasilkan intermediat rantai terbuka 3, yang dilanjutkan siklokondensasi dengan fenilhidrazina membentuk pirido[1,2-b][1,2,4,5]tetrazepina 4. Fusi dengan asam antranilat menghasilkan sistem cincin terpadu (6:7:6) benzo[e]pyrido[1,2-b][1,2,4]triazepina 5.
+        </figcaption>
+      </figure>
+
+      <p>
+        Dari bahan awal 1, tim peneliti mengembangkan empat rute anelasi cincin berlainan ukuran (Gambar 1, 2, dan 3):
+      </p>
+
+      <ol class="list-decimal pl-5 space-y-2 font-serif text-lg text-editorial-body">
+        <li>
+          <strong>Anelasi Triazolopiridina dan Azepin (Gambar 1):</strong>
+          Fusi 1 dengan sianoguanidina pada 150–170 °C menghasilkan triazolopiridina <strong>2</strong> (rendemen 79%). Di sisi lain, kondensasi dengan asam antranilat binukleofilik melahirkan sistem cincin trisiklik (6:7:6) benzopiridotriazepina <strong>5</strong> (rendemen 78%). Alkilasi 1 dengan kloroaseton menghasilkan rantai terbuka <strong>3</strong>, yang ketika difusikan dengan fenilhidrazina menutup menjadi cincin tujuh piridotetrazepina <strong>4</strong> (rendemen 72%).
+        </li>
+        <li>
+          <strong>Anelasi [3+3] dan [5+1] Piridotetrazin (Gambar 2):</strong>
+          Reaksi fusi bebas pelarut antara 1 dengan tiosemikarbazida melalui anelasi [3+3] melahirkan 3-aminopirido[1,2-b][1,2,4,5]tetrazina <strong>7</strong> dengan rendemen spektakuler <strong>89%</strong> via eliminasi H₂O dan H₂S. Sebaliknya, fusi dengan hidrazinakarbonitril menghasilkan tautomer 3-iminopiridotetrazina <strong>6</strong> (67%). Keberadaan gugus amina primer orto pada tetrazin 7 dimanfaatkan sebagai jembatan anelasi sekunder: fusi dengan dietil malonat menghasilkan dihidropirimidinon <strong>8</strong> (rendemen 78%), sedangkan fusi dengan fenasil bromida atau dietil oksalat menghasilkan cincin imidazopiridotetrazin <strong>9</strong> (rendemen 85%) dan <strong>10</strong> (rendemen 74%).
+        </li>
+      </ol>
+
+      <!-- FIGURE 2: Synthesis 6-10 -->
+      <figure class="figure-container">
+        <img 
+          src="assets/fig2_synthesis_compounds_6_10.png" 
+          alt="Sintesis Senyawa 6 hingga 10 melalui Rute Anelasi Tetrazin" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 2.</strong> Rute sintesis senyawa 6–10 via anelasi [3+3]: Pembentukan aminotetrazin 7 dan pemanfaatannya sebagai prekursor trisiklik terpadu menuju pirimidinon 8, imidazopiridotetrazin 9, dan dihidroimidazolon 10.
+        </figcaption>
+      </figure>
+
+      <p>
+        Rute ketiga memanfaatkan derivat hidrazon <strong>11</strong> yang diperoleh dari hidrazinolisis langsung senyawa 1. Fusi 11 dengan fenilisotiosianat membentuk piridotetrazin <strong>12</strong> (rendemen 71%), sementara fusi dengan alfa-halo karbonil (kloroaseton dan fenasil bromida) menghasilkan piridotetrazepin cincin tujuh <strong>13</strong> (83%) dan <strong>14</strong> (86%). Fusi dengan dietil oksalat menghasilkan tetrazepindion <strong>15</strong> (86%), serta kondensasi dengan 3,4-dimetoksibenzaldehida membentuk basa Schiff <strong>16</strong> (88%).
+      </p>
+
+      <!-- FIGURE 3: Synthesis 11-16 -->
+      <figure class="figure-container">
+        <img 
+          src="assets/fig3_synthesis_compounds_11_16.png" 
+          alt="Sintesis Senyawa 11 hingga 16 berbasis Prekursor Hidrazon" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 3.</strong> Rute sintesis senyawa 11–16: Konversi intermediat hidrazon 11 melalui anelasi [5+1] dan [5+2] bebas pelarut menghasilkan tetrazin 12, tetrazepina 13–15, serta basa Schiff 16.
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- SECTION 3: NCI-60 SCREENING -->
+    <section id="aktivitas-nci60">
+      <h2>Uji Aktivitas Antikanker NCI-60 (National Cancer Institute, USA)</h2>
+
+      <p>
+        Sebanyak dua belas kandidat senyawa heterosiklik terpadu (<strong>2, 4, 5, 7–10, 12–16</strong>) terpilih oleh <em>Developmental Therapeutics Program (DTP)</em> National Cancer Institute (NCI, Bethesda, Maryland, AS) untuk dievaluasi aktivitas sitotoksik in vitro pada panel 60 lini sel kanker manusia (NCI-60) pada dosis tinggi tunggal <strong>10⁻⁵ M (10 µM)</strong>.
+      </p>
+
+      <p>
+        Panel NCI-60 mencakup 9 spektrum keganasan manusia: leukemia, kanker paru non-sel kecil (NSCLC), kanker kolon, kanker sistem saraf pusat (CNS), melanoma, kanker ovarium, kanker ginjal (renal), kanker prostat, dan kanker payudara. Hasil penghambatan pertumbuhan sel (<em>Growth Inhibition / GI%</em>) dianalisis menggunakan diagram sunburst dan grafik batang radial (Gambar 4 dan 5).
+      </p>
+
+      <!-- FIGURE 4: Sunburst Chart -->
+      <figure class="figure-container">
+        <div class="max-w-2xl mx-auto">
+          <img 
+            src="assets/fig4_sunburst_nci60_anticancer_screening.png" 
+            alt="Sunburst chart penghambatan pertumbuhan sel NCI-60 (GI% > 15%)" 
+            class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+            onclick="openLightbox(this.src, this.alt)"
+          >
+        </div>
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 4.</strong> Diagram <em>sunburst</em> yang merepresentasikan persentase penghambatan pertumbuhan sel (GI% > 15%) untuk senyawa aktif 4, 5, 7, 8, 10, 12, dan 16 pada 9 panel kanker manusia NCI-60.
+        </figcaption>
+      </figure>
+
+      <p>
+        Di antara seluruh senyawa yang diuji, tiga kandidat tampil dengan potensi antikanker paling superior: <strong>Senyawa 4, 8, dan 9</strong>.
+      </p>
+
+      <!-- FIGURE 5: Radial Bar Charts -->
+      <figure class="figure-container">
+        <img 
+          src="assets/fig5_radial_chart_cell_growth_inhibition.png" 
+          alt="Diagram batang radial GI% senyawa 9 dan senyawa lainnya pada panel kanker NCI" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 5.</strong> Diagram batang radial selektivitas antikanker NCI-60: (a) Profil penghambatan spektral Senyawa 9 yang mendominasi kanker kolon HCT-116 (77.94%) dan leukemia RPMI-8226 (51.58%). (b) Profil penghambatan senyawa 2, 13, 14, dan 15 yang menunjukkan aktivitas moderat terhadap lini NSCLC dan renal.
+        </figcaption>
+      </figure>
+
+      <p>
+        Sorotan efikasi sitotoksik paling menonjol pada panel NCI meliputi:
+      </p>
+
+      <ul>
+        <li class="mb-2"><strong>Senyawa 9 (Imidazopiridotetrazin):</strong> Menjadi "juara" sitotoksisitas dengan menghambat pertumbuhan sel kanker kolon <strong>HCT-116 sebesar 77.94% GI</strong> dan sel leukemia <strong>RPMI-8226 sebesar 51.58% GI</strong>. Selain itu, senyawa ini juga aktif melawan kanker renal UO-31 (36.84% GI) dan melanoma UACC-62 (19.56% GI).</li>
+        <li class="mb-2"><strong>Senyawa 8 (Piridopirimidinotetrazin):</strong> Menunjukkan efikasi luar biasa pada kanker ovarium <strong>SK-OV-3 (36.25% GI)</strong>, leukemia RPMI-8226 (29.42% GI), kanker paru HOP-62 (29.39% GI), dan melanoma UACC-62 (28.57% GI).</li>
+        <li class="mb-2"><strong>Senyawa 4 (Piridotetrazepin):</strong> Sangat aktif pada kanker payudara <strong>T-47D (32.30% GI)</strong>, kanker ginjal UO-31 (32.07% GI), serta kanker paru HOP-62 (23.38% GI).</li>
+      </ul>
+    </section>
+
+    <!-- SECTION 4: MOLECULAR DOCKING JAK2 -->
+    <section id="docking-jak2">
+      <h2>Penambatan Molekuler pada Janus Kinase-2 (JAK2, PDB ID: 4P7E)</h2>
+
+      <p>
+        Untuk memahami mekanisme molekuler di balik aktivitas sitotoksik senyawa 4, 8, dan 9, para peneliti melakukan studi penambatan molekuler (<em>molecular docking</em>) menggunakan perangkat lunak MOE (<em>Molecular Operating Environment</em>). Enzim target yang dipilih adalah <strong>Janus Kinase-2 (JAK2)</strong> (kode PDB: <strong>4P7E</strong>), suatu tirosin kinase sitoplasmik yang memainkan peran sentral dalam jalur sinyal JAK-STAT. Hiperaktivitas JAK2 diketahui memicu proliferasi tak terkendali pada leukemia, limfoma, mieloma, serta berbagai tumor padat.
+      </p>
+
+      <!-- FIGURE 6: Reference 2HB Docking -->
+      <figure class="figure-container">
+        <div class="max-w-xl mx-auto">
+          <img 
+            src="assets/fig6_molecular_docking_jak2_reference_2hb.png" 
+            alt="Interaksi 2D dan 3D ligan ko-kristal 2HB pada situs aktif Janus Kinase JAK2" 
+            class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+            onclick="openLightbox(this.src, this.alt)"
+          >
+        </div>
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 6.</strong> Interaksi 2D dan 3D ligan ko-kristal referensi 2HB di dalam kantong pengikatan JAK2 (PDB ID: 4P7E). Skor energi penambatan tercatat S = -7.45 kcal/mol dengan ikatan hidrogen pada Lys 882 dan kontak arene-H pada Gly 856, Ser 936, dan Leu 855.
+        </figcaption>
+      </figure>
+
+      <p>
+        Validasi protokol docking dilakukan dengan menambat-ulang (<em>re-docking</em>) ligan ko-kristal referensi <strong>2HB</strong>, yang menghasilkan skor energi pengikatan <strong>S = -7.45 kcal/mol</strong>. Penambatan senyawa uji 4, 8, dan 9 ke dalam kantong katalitik JAK2 mengungkap interaksi yang sangat kompetitif:
+      </p>
+
+      <!-- TABLE 2: Docking Results -->
+      <div class="overflow-x-auto">
+        <table class="pub-table">
+          <thead>
+            <tr>
+              <th>Senyawa</th>
+              <th>Skor Energi (S)</th>
+              <th>Residu Ikatan H</th>
+              <th>Panjang Ikatan (Å)</th>
+              <th>Residu Interaksi Arene / Pi-H</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-bold">Ligan 2HB (Referensi)</td>
+              <td class="font-bold text-editorial-ink">-7.45 kcal/mol</td>
+              <td>Lys 882 (gugus SO₂)</td>
+              <td>3.31 Å</td>
+              <td>Gly 856, Ser 936, Leu 855</td>
+            </tr>
+            <tr>
+              <td class="font-bold">Senyawa 9</td>
+              <td class="font-bold text-emerald-700">-7.25 kcal/mol</td>
+              <td>Val 911 (gugus C≡N)</td>
+              <td>3.93 Å</td>
+              <td>Leu 855, Ser 936, Val 863, Leu 983 (8 kontak arene-H)</td>
+            </tr>
+            <tr>
+              <td class="font-bold">Senyawa 4</td>
+              <td class="font-bold text-emerald-700">-7.24 kcal/mol</td>
+              <td>Leu 932 (C≡N), Met 929 (CH₃)</td>
+              <td>2.78, 3.23, 3.91 Å</td>
+              <td>Leu 855, Val 863, Leu 983 (7 kontak arene-H)</td>
+            </tr>
+            <tr>
+              <td class="font-bold">Senyawa 8</td>
+              <td class="font-bold text-editorial-accent">-6.56 kcal/mol</td>
+              <td>Leu 932 (C≡N), Leu 855 (N-tetrazin)</td>
+              <td>2.79, 2.26, 3.92 Å</td>
+              <td>Leu 855, Val 863, Leu 983 (6 kontak arene-H)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- FIGURE 7: Compound 4 Docking -->
+      <figure class="figure-container">
+        <div class="max-w-xl mx-auto">
+          <img 
+            src="assets/fig7_molecular_docking_jak2_compound_4.png" 
+            alt="Interaksi 2D dan 3D Senyawa 4 pada situs aktif JAK2" 
+            class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+            onclick="openLightbox(this.src, this.alt)"
+          >
+        </div>
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 7.</strong> Konformasi penambatan molekuler Senyawa 4 (S = -7.24 kcal/mol) di situs aktif JAK2: dua ikatan hidrogen terbentuk antara gugus siano (C≡N) dengan Leu 932, satu ikatan H antara gugus metil dengan Met 929, serta 7 kontak pi-H/arene-H dengan Leu 855, Val 863, dan Leu 983.
+        </figcaption>
+      </figure>
+
+      <p>
+        <strong>Senyawa 9</strong> (Gambar 9) menunjukkan skor energi afinitas pengikatan <strong>S = -7.25 kcal/mol</strong> yang hampir identik dengan obat referensi 2HB (-7.45 kcal/mol). Cincin imidazopiridotetrazin yang pipih dan terkonjugasi penuh memfasilitasi <strong>delapan interaksi arene-H</strong> sekaligus dengan dinding kantong hidrofobik JAK2 (Leu 855, Ser 936, Val 863, dan Leu 983), sementara gugus siano (-C≡N) bertindak sebagai akseptor ikatan hidrogen dengan residu Val 911.
+      </p>
+
+      <!-- FIGURE 8: Compound 8 Docking -->
+      <figure class="figure-container">
+        <div class="max-w-xl mx-auto">
+          <img 
+            src="assets/fig8_molecular_docking_jak2_compound_8.png" 
+            alt="Interaksi 2D dan 3D Senyawa 8 pada situs aktif JAK2" 
+            class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+            onclick="openLightbox(this.src, this.alt)"
+          >
+        </div>
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 8.</strong> Interaksi 2D dan 3D Senyawa 8 (S = -6.56 kcal/mol) pada JAK2: gugus siano membentuk dua ikatan hidrogen kuat dengan Leu 932 (2.79 Å dan 2.26 Å), atom nitrogen tetrazin mengikat Leu 855 (3.92 Å), dan inti piridina berinteraksi rapat dengan Leu 983 dan Val 863.
+        </figcaption>
+      </figure>
+
+      <!-- FIGURE 9: Compound 9 Docking -->
+      <figure class="figure-container">
+        <div class="max-w-xl mx-auto">
+          <img 
+            src="assets/fig9_molecular_docking_jak2_compound_9.png" 
+            alt="Interaksi 2D dan 3D Senyawa 9 pada situs aktif JAK2" 
+            class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+            onclick="openLightbox(this.src, this.alt)"
+          >
+        </div>
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 9.</strong> Interaksi 2D dan 3D Senyawa 9 (S = -7.25 kcal/mol) di situs aktif JAK2, memperlihatkan jaringan 8 kontak hidrofobik arene-H yang mengunci molekul secara kokoh di celah katalitik kinase.
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- SECTION 5: DFT FRONTIER ORBITALS & MEP -->
+    <section id="dft-orbital">
+      <h2>Kalkulasi Kuantum DFT: Orbital Molekuler Perbatasan (FMO) & Peta MEP</h2>
+
+      <p>
+        Untuk menyelidiki stabilitas elektronik, polarisabilitas, dan reaktivitas kimia pada tingkat kuantum mekanik, dilakukan kalkulasi <strong>Density Functional Theory (DFT)</strong> menggunakan perangkat lunak Gaussian 09 dengan fungsional hibrida B3LYP dan basis set 6-31G(d,p).
+      </p>
+
+      <p>
+        Analisis <em>Frontier Molecular Orbitals</em> (FMO) difokuskan pada orbital molekul terisi tertinggi (HOMO) dan orbital molekul tak terisi terendah (LUMO). Celah energi (<em>energy gap / ΔE = E_LUMO - E_HOMO</em>) merupakan indikator krusial stabilitas kinetik dan reaktivitas kimiawi: celah yang semakin sempit menandakan polarisabilitas tinggi, kemudahan eksitasi elektron, dan reaktivitas biologis yang lebih responsif terhadap target enzim.
+      </p>
+
+      <!-- FIGURE 10: FMO HOMO-LUMO -->
+      <figure class="figure-container">
+        <img 
+          src="assets/fig10_fmo_homo_lumo_frontier_orbitals.png" 
+          alt="Distribusi orbital molekuler HOMO dan LUMO untuk senyawa 4, 8, 9, dan 2HB" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 10.</strong> Distribusi spasial orbital molekuler perbatasan (HOMO dan LUMO) untuk senyawa 4, 8, 9, dan ligan referensi 2HB. Celah pita energi tercatat: 0.1052 eV (4), 0.1153 eV (8), 0.0875 eV (9), dan 0.1594 eV (2HB).
+        </figcaption>
+      </figure>
+
+      <!-- TABLE 3: DFT FMO Parameters -->
+      <div class="overflow-x-auto">
+        <table class="pub-table">
+          <thead>
+            <tr>
+              <th>Senyawa</th>
+              <th>Momen Dipol (µ, Debye)</th>
+              <th>E_HOMO (eV)</th>
+              <th>E_LUMO (eV)</th>
+              <th>Celah Pita Energi (ΔE, eV)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-bold">Senyawa 4</td>
+              <td>8.2089</td>
+              <td>-0.1707</td>
+              <td>-0.0655</td>
+              <td class="font-mono">0.1052</td>
+            </tr>
+            <tr>
+              <td class="font-bold">Senyawa 8</td>
+              <td class="font-bold text-editorial-ink">9.7371</td>
+              <td>-0.2054</td>
+              <td>-0.0901</td>
+              <td class="font-mono">0.1153</td>
+            </tr>
+            <tr>
+              <td class="font-bold">Senyawa 9</td>
+              <td>5.0329</td>
+              <td>-0.1795</td>
+              <td>-0.0920</td>
+              <td class="font-bold text-emerald-700 font-mono">0.0875</td>
+            </tr>
+            <tr>
+              <td class="font-bold">Ligan 2HB (Ref)</td>
+              <td>7.2947</td>
+              <td>-0.2283</td>
+              <td>-0.0689</td>
+              <td class="font-mono">0.1594</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Data kuantum pada Tabel 3 mengungkap bahwa seluruh senyawa hasil sintesis (4, 8, dan 9) memiliki <strong>celah energi HOMO–LUMO yang jauh lebih sempit (0.0875–0.1153 eV)</strong> dibandingkan ligan referensi 2HB (0.1594 eV). Senyawa 9 mencatat celah terkecil (0.0875 eV), membuktikan bahwa molekul ini memiliki fleksibilitas transfer elektron dan kecenderungan donor-akseptor yang paling aktif saat berinteraksi dengan residu asam amino di situs aktif kinase.
+      </p>
+
+      <!-- FIGURE 11: Optimized Structures -->
+      <figure class="figure-container">
+        <img 
+          src="assets/fig11_optimized_structures_dft_b3lyp.png" 
+          alt="Struktur kimia dan geometri teroptimasi DFT-B3LYP/6-31G senyawa 4, 8, 9, dan 2HB" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 11.</strong> Struktur kimia dan konformasi 3D teroptimasi minimum energi (DFT B3LYP/6-31G) untuk senyawa 4, 8, 9, dan 2HB, memperlihatkan koplanaritas cincin terpadu piridotetrazin.
+        </figcaption>
+      </figure>
+
+      <!-- FIGURE 12: MEP Maps -->
+      <figure class="figure-container">
+        <img 
+          src="assets/fig12_mep_molecular_electrostatic_potential.png" 
+          alt="Peta potensial elektrostatik molekuler (MEP) senyawa 4, 8, 9, dan 2HB" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 12.</strong> Peta Potensial Elektrostatik Molekuler (MEP): Zona merah menunjukkan wilayah potensial negatif maksimum (kerapatan elektron tinggi di sekitar atom nitrogen tetrazin dan karbonitril, menjadi target serangan elektrofilik), zona biru menunjukkan potensial positif (serangan nukleofilik), dan zona hijau menunjukkan wilayah netral.
+        </figcaption>
+      </figure>
+
+      <p>
+        Peta Potensial Elektrostatik Molekuler (MEP) pada Gambar 12 memvisualisasikan gradien distribusi muatan: zona merah pekat terkonsentrasi di sekeliling atom-atom nitrogen cincin tetrazin dan gugus -C≡N, mengindikasikan situs afinitas utama untuk bertindak sebagai akseptor ikatan hidrogen dengan residu enzim donor seperti Leu 932 dan Lys 882.
+      </p>
+    </section>
+
+    <!-- SECTION 6: ADME & PHARMACOKINETICS -->
+    <section id="farmakokinetika-adme">
+      <h2>Evaluasi ADME In Silico: Profil Farmakokinetika & "Drug-Likeness"</h2>
+
+      <p>
+        Keberhasilan molekul obat tidak hanya ditentukan oleh potensinya di cawan petri (in vitro), melainkan juga oleh kelayakan farmakokinetikanya (ADME: <em>Absorption, Distribution, Metabolism, and Excretion</em>). Analisis bioinformatika komputasional menggunakan modul <strong>SwissADME</strong> dan model <em>Boiled-Egg</em> dilakukan untuk mengevaluasi sifat kelayakan obat (<em>drug-likeness</em>) dari senyawa 4, 8, dan 9.
+      </p>
+
+      <!-- TABLE 4: Physicochemical & Drug-Likeness -->
+      <div class="overflow-x-auto">
+        <table class="pub-table">
+          <thead>
+            <tr>
+              <th>Molekul</th>
+              <th>Bobot Molekul (MW &le; 500)</th>
+              <th>Log P (Lipofilisitas &le; 5)</th>
+              <th>TPSA (&le; 140 Å²)</th>
+              <th>Rotatable Bonds (NRB &le; 10)</th>
+              <th>Kelarutan (Log S)</th>
+              <th>Akseptor H (HBA &le; 10)</th>
+              <th>Donor H (HBD &le; 5)</th>
+              <th>Pelanggaran Lipinski</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-bold">Senyawa 4</td>
+              <td>353.42</td>
+              <td>4.73</td>
+              <td>61.81 Å²</td>
+              <td>2</td>
+              <td>-5.9 (Moderat)</td>
+              <td>2</td>
+              <td>1</td>
+              <td class="font-bold text-emerald-700">0 (Nol)</td>
+            </tr>
+            <tr>
+              <td class="font-bold">Senyawa 8</td>
+              <td>332.32</td>
+              <td>1.35</td>
+              <td>105.08 Å²</td>
+              <td>1</td>
+              <td>-3.45 (Larut)</td>
+              <td>5</td>
+              <td>1</td>
+              <td class="font-bold text-emerald-700">0 (Nol)</td>
+            </tr>
+            <tr>
+              <td class="font-bold">Senyawa 9</td>
+              <td>364.40</td>
+              <td>3.69</td>
+              <td>71.27 Å²</td>
+              <td>2</td>
+              <td>-5.17 (Moderat)</td>
+              <td>4</td>
+              <td>0</td>
+              <td class="font-bold text-emerald-700">0 (Nol)</td>
+            </tr>
+            <tr>
+              <td class="font-bold">Ligan 2HB (Ref)</td>
+              <td>425.50</td>
+              <td>2.27</td>
+              <td>105.05 Å²</td>
+              <td>6</td>
+              <td>-3.31 (Larut)</td>
+              <td>6</td>
+              <td>1</td>
+              <td class="font-bold text-emerald-700">0 (Nol)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Berdasarkan kriteria <strong>Lipinski's Rule of Five</strong> (Tabel 4), ketiga kandidat (4, 8, dan 9) mencatat <strong>nol pelanggaran (zero violations)</strong>, membuktikan kelayakan permeabilitas membran sel dan bioavailabilitas oral yang sangat baik.
+      </p>
+
+      <!-- TABLE 5: Pharmacokinetics Profile -->
+      <div class="overflow-x-auto">
+        <table class="pub-table">
+          <thead>
+            <tr>
+              <th>Senyawa</th>
+              <th>Penetrasi Sawar Darah Otak (BBB)</th>
+              <th>Absorpsi Saluran Cerna (GI)</th>
+              <th>Substrat P-glikoprotein (Pgp)</th>
+              <th>Inhibisi CYP1A2</th>
+              <th>Inhibisi CYP2C19</th>
+              <th>Inhibisi CYP2C9</th>
+              <th>Inhibisi CYP2D6</th>
+              <th>Inhibisi CYP3A4</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-bold">Senyawa 4</td>
+              <td class="text-amber-700 font-semibold">Ya (Tembus)</td>
+              <td class="text-emerald-700 font-bold">Tinggi</td>
+              <td class="font-bold text-emerald-700">Bukan (No)</td>
+              <td>Ya</td>
+              <td>Ya</td>
+              <td>Ya</td>
+              <td>Ya</td>
+              <td>Tidak</td>
+            </tr>
+            <tr>
+              <td class="font-bold">Senyawa 8</td>
+              <td class="text-editorial-ink font-semibold">Tidak (Aman CNS)</td>
+              <td class="text-emerald-700 font-bold">Tinggi</td>
+              <td class="font-bold text-emerald-700">Bukan (No)</td>
+              <td class="font-bold text-emerald-700">Tidak</td>
+              <td class="font-bold text-emerald-700">Tidak</td>
+              <td class="font-bold text-emerald-700">Tidak</td>
+              <td class="font-bold text-emerald-700">Tidak</td>
+              <td class="font-bold text-emerald-700">Tidak</td>
+            </tr>
+            <tr>
+              <td class="font-bold">Senyawa 9</td>
+              <td class="text-amber-700 font-semibold">Ya (Tembus)</td>
+              <td class="text-emerald-700 font-bold">Tinggi</td>
+              <td class="font-bold text-emerald-700">Bukan (No)</td>
+              <td>Ya</td>
+              <td>Ya</td>
+              <td>Ya</td>
+              <td>Tidak</td>
+              <td>Tidak</td>
+            </tr>
+            <tr>
+              <td class="font-bold">Ligan 2HB (Ref)</td>
+              <td>Tidak</td>
+              <td class="text-emerald-700 font-bold">Tinggi</td>
+              <td class="text-red-700 font-semibold">Ya (Substrat)</td>
+              <td>Tidak</td>
+              <td>Tidak</td>
+              <td>Ya</td>
+              <td>Tidak</td>
+              <td>Ya</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Profil farmakokinetika pada Tabel 5 menyingkap keunggulan kritis senyawa hasil sintesis dibanding ligan referensi 2HB:
+      </p>
+
+      <ol class="list-decimal pl-5 space-y-2 font-serif text-lg text-editorial-body">
+        <li>
+          <strong>Bebas Hambatan Pompa Efluks P-Glikoprotein (Pgp):</strong>
+          Ketiga senyawa (4, 8, dan 9) <strong>bukan merupakan substrat P-glikoprotein</strong>. Ini adalah keunggulan terapeutik raksasa dibandingkan obat referensi 2HB (yang merupakan substrat Pgp), karena sel tumor ganas sering kali mengalami resistensi obat kemoterapi (<em>multidrug resistance / MDR</em>) dengan memompa keluar obat via Pgp. Senyawa 4, 8, dan 9 mampu menetap di dalam sitoplasma sel kanker tanpa terefluks.
+        </li>
+        <li>
+          <strong>Profil Keamanan Enzim Hepar Senyawa 8:</strong>
+          Senyawa 8 <strong>tidak menghambat satu pun dari 5 isoform sitokrom P450 hati (CYP1A2, 2C19, 2C9, 2D6, 3A4)</strong>. Hal ini meminimalkan risiko interaksi obat yang merugikan (<em>drug-drug interactions</em>) jika diresepkan bersamaan dengan rejimen kemoterapi kombinasi lain. Senyawa 8 juga tidak menembus sawar darah otak (BBB), menjauhkannya dari efek samping neurotoksisitas sistem saraf pusat.
+        </li>
+        <li>
+          <strong>Potensi Sasaran Metastasis Otak (Senyawa 4 dan 9):</strong>
+          Kemampuan senyawa 4 dan 9 menembus sawar darah otak (BBB permeant) membuka prospek menarik untuk dikembangkan sebagai agen terapeutik kanker otak primer (seperti glioblastoma) atau metastasis intrakranial dari kanker kolon dan payudara.
+        </li>
+      </ol>
+
+      <div class="my-6 p-4 bg-editorial-softbg border border-editorial-line rounded">
+        <div class="text-xs font-bold uppercase tracking-wider text-editorial-accent font-sans mb-1">
+          Kesimpulan Integratif Riset
+        </div>
+        <p class="text-sm font-serif italic text-editorial-body m-0 leading-relaxed">
+          Kombinasi sintesis hijau bebas pelarut dengan skrining in vitro NCI-60 dan pemodelan kuantum-molekuler berhasil mengidentifikasi <strong>Senyawa 9</strong> (imidazopiridotetrazin) dan <strong>Senyawa 8</strong> (piridopirimidinotetrazin) sebagai <em>lead compounds</em> berdaya hambat tinggi terhadap kanker kolon dan leukemia. Dengan afinitas penambatan JAK2 yang setara dengan obat referensi klinis, celah HOMO-LUMO sempit, ketiadaan efluks P-glikoprotein, dan kepatuhan penuh aturan Lipinski, heterosiklik kaya nitrogen ini menjadi kandidat obat antikanker bertarget generasi baru yang sangat menjanjikan untuk optimasi praklinis lebih lanjut.
+        </p>
+      </div>
+    </section>
+
+    <!-- METADATA & CITATION SECTION -->
+    <section class="mt-16 pt-8 border-t border-editorial-line text-xs font-sans text-editorial-muted">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <div class="font-bold text-editorial-ink uppercase tracking-wider mb-2">Informasi Publikasi Resmi</div>
+          <ul class="space-y-1">
+            <li><strong>Judul Asli:</strong> Synthesis of pyrido-annelated [1,2,4,5]tetrazines, [1,2,4]triazepine, and [1,2,4,5]tetrazepines for anticancer, DFT, and molecular docking studies</li>
+            <li><strong>Penulis:</strong> Aisha Y. Hassan, Sara N. Shabaan, Samiha A. El-Sebaey, Eman S. Abou-Amra*</li>
+            <li><strong>Afiliasi:</strong> Faculty of Science (Girls) & Faculty of Pharmacy (Girls), Al-Azhar University, Kairo, Mesir</li>
+            <li><strong>Jurnal:</strong> Scientific Reports, Vol. 13, Article 5585 (2023)</li>
+            <li><strong>Penerbit:</strong> Springer Nature / Nature Portfolio</li>
+            <li><strong>DOI:</strong> <a href="https://doi.org/10.1038/s41598-023-32421-x" target="_blank" class="text-editorial-accent hover:underline">10.1038/s41598-023-32421-x</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-bold text-editorial-ink uppercase tracking-wider mb-2">Metodologi & Alat Komputasi</div>
+          <ul class="space-y-1">
+            <li><strong>Sintesis Kimia:</strong> Solvent-free Thermal Fusion (Konsep PASE, Rendemen 67–89%)</li>
+            <li><strong>Uji Biologis:</strong> Skrining 60 Lini Sel Kanker Manusia NCI-60 (Dosis 10 µM)</li>
+            <li><strong>Penambatan Molekuler:</strong> MOE 2015.10 terhadap Janus Kinase-2 (JAK2, PDB ID: 4P7E)</li>
+            <li><strong>Kalkulasi Kuantum:</strong> Gaussian 09, DFT B3LYP/6-31G(d,p) (FMO & MEP)</li>
+            <li><strong>Farmakokinetika In Silico:</strong> SwissADME, Aturan Lipinski & Model Boiled-Egg</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-editorial-line flex items-center justify-between">
+        <a href="../../index.html" class="inline-flex items-center gap-1.5 text-xs font-semibold text-editorial-ink hover:text-editorial-accent">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          Kembali ke Katalog Utama Paper-Hub
+        </a>
+        <span class="text-editorial-lightmuted">TelaahSains Hub • Format Editorial Sains Bebas AI Workslop</span>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- LIGHTBOX MODAL FOR FULL RESOLUTION IMAGE INSPECTION -->
+  <div id="lightbox" class="fixed inset-0 bg-black/80 z-50 hidden flex flex-col items-center justify-center p-4 backdrop-blur-xs" onclick="closeLightbox()">
+    <div class="relative max-w-5xl max-h-[90vh] flex flex-col items-center" onclick="event.stopPropagation()">
+      <button onclick="closeLightbox()" class="absolute -top-10 right-0 text-white hover:text-zinc-300 text-sm font-mono flex items-center gap-1">
+        <span>Tutup [ESC]</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[80vh] object-contain rounded bg-white p-2 shadow-2xl">
+      <p id="lightbox-caption" class="text-zinc-200 text-xs text-center mt-3 max-w-2xl font-sans"></p>
+    </div>
+  </div>
+
+  <script>
+    // Reading Progress Indicator
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('reading-progress').style.width = scrolled + '%';
+    });
+
+    // Lightbox Controls
+    function openLightbox(src, caption) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox-caption').textContent = caption;
+      document.getElementById('lightbox').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+
+</body>
+</html>
