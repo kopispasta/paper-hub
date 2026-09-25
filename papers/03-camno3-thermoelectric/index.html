@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transport Elektron dan Fonon pada CaMnO₃ Terdoping Bismut untuk Termoelektrik | Telaah Ilmiah</title>
+  
+  <!-- Fonts: Newsreader (Editorial Serif) & Plus Jakarta Sans (Clean Modern Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            editorial: {
+              ink: '#18181b',        /* Deep charcoal */
+              body: '#27272a',       /* Warm reading text */
+              muted: '#71717a',      /* Neutral secondary */
+              lightmuted: '#a1a1aa', /* Captions */
+              line: '#e4e4e7',       /* Hairline border */
+              softbg: '#fafafa',     /* Off-white background */
+              paper: '#ffffff',      /* Card white */
+              accent: '#0a74c0',     /* Authoritative royal blue */
+              accentDark: '#075997', /* Dark hover blue */
+              accentLight: '#f0f7fc' /* Subtle highlight */
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            serif: ['"Newsreader"', 'Georgia', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #fafafa;
+      color: #27272a;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .article-body p {
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 1.125rem; /* 18px */
+      line-height: 1.82;
+      color: #27272a;
+      margin-bottom: 1.6rem;
+    }
+
+    .article-body p strong {
+      font-weight: 600;
+      color: #18181b;
+    }
+
+    .editorial-dropcap::first-letter {
+      font-size: 3.9rem;
+      float: left;
+      line-height: 0.82;
+      margin-right: 0.65rem;
+      margin-top: 0.25rem;
+      font-weight: 600;
+      color: #18181b;
+      font-family: "Newsreader", Georgia, serif;
+    }
+
+    /* Publication-style Scientific Table */
+    .pub-table {
+      border-top: 2px solid #18181b;
+      border-bottom: 2px solid #18181b;
+      width: 100%;
+    }
+    .pub-table th {
+      border-bottom: 1px solid #18181b;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 600;
+      font-size: 0.8125rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.75rem 0.6rem;
+      color: #18181b;
+    }
+    .pub-table td {
+      border-bottom: 1px solid #f4f4f5;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 0.875rem;
+      padding: 0.75rem 0.6rem;
+      color: #27272a;
+    }
+    .pub-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Figure Box */
+    .figure-container {
+      background: #ffffff;
+      border: 1px solid #e4e4e7;
+      border-radius: 4px;
+      padding: 1.25rem;
+      margin: 2.5rem 0;
+    }
+
+    #reading-progress {
+      transition: width 0.1s ease-out;
+    }
+  </style>
+</head>
+
+<body class="selection:bg-editorial-accentLight selection:text-editorial-accent">
+
+  <!-- TOP PROGRESS BAR -->
+  <div class="fixed top-0 left-0 w-full h-[3px] bg-transparent z-50">
+    <div id="reading-progress" class="h-full bg-editorial-accent w-0"></div>
+  </div>
+
+  <!-- MASTHEAD & TOP NAVIGATION -->
+  <header class="bg-white border-b border-editorial-line sticky top-0 z-40">
+    <!-- Top Journal Meta -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-editorial-line/60 py-1.5 flex items-center justify-between text-[11px] text-editorial-muted font-sans">
+      <div class="flex items-center gap-2">
+        <span class="font-bold tracking-wider uppercase text-editorial-ink">FISIKA MATERIAL & TERMOELEKTRIK</span>
+        <span class="text-editorial-line">•</span>
+        <span class="hidden sm:inline">Materials Research Bulletin 141 (2021) 111359</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://doi.org/10.1016/j.materresbull.2021.111359" target="_blank" rel="noopener" class="text-editorial-accent hover:underline flex items-center gap-1 font-medium">
+          <span>DOI: 10.1016/j.materresbull.2021.111359</span>
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+      <div class="flex items-center gap-6">
+        <a href="../../index.html" class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium text-zinc-600 hover:text-blue-600 rounded border border-zinc-200 hover:bg-zinc-50 transition-colors shadow-2xs" title="Kembali ke Katalog Utama">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          <span class="hidden sm:inline">Katalog Utama</span>
+        </a>
+        <a href="#" class="text-2xl font-serif font-bold tracking-tight text-editorial-ink">
+          Termo<span class="text-editorial-accent italic font-normal">Fisika</span>
+        </a>
+        <span class="hidden md:inline-block h-5 w-px bg-editorial-line"></span>
+        <nav class="hidden md:flex items-center gap-5 text-xs font-semibold uppercase tracking-wider text-editorial-muted font-sans">
+          <a href="#latar-belakang" class="hover:text-editorial-accent transition-colors">Dilema WF</a>
+          <a href="#struktur-cmo" class="hover:text-editorial-accent transition-colors">Struktur CMO (Fig. 1-2)</a>
+          <a href="#transport-cmo" class="hover:text-editorial-accent transition-colors">Anomali Lorenz (Fig. 3-4)</a>
+          <a href="#rekayasa-bcmo" class="hover:text-editorial-accent transition-colors">Doping Bi (Fig. 5-7)</a>
+          <a href="#kinerja-zt" class="hover:text-editorial-accent transition-colors">Evaluasi ZT (Fig. 8-9)</a>
+        </nav>
+      </div>
+
+      <div class="flex items-center gap-3 text-xs font-medium text-editorial-muted font-sans">
+        <span>Waktu baca ~6 menit</span>
+        <button onclick="window.print()" class="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 border border-editorial-line rounded hover:bg-editorial-softbg text-editorial-ink transition-colors" title="Cetak atau Simpan PDF">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+          Cetak
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ARTICLE HEADER (Chemistry World / Nature Style) -->
+  <header class="bg-white border-b border-editorial-line pt-12 pb-10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Category Tag & Meta -->
+      <div class="flex items-center gap-3 text-xs font-semibold tracking-wider uppercase text-editorial-accent mb-4 font-sans">
+        <span>Kajian Material Termoelektrik</span>
+        <span class="text-editorial-line">•</span>
+        <span class="text-editorial-muted">Korelasi Elektron & Hamburan Fonon</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-3xl sm:text-4xl lg:text-[42px] font-bold text-editorial-ink tracking-tight font-sans leading-[1.18] mb-6">
+        Menyingkap Transport Elektron dan Fonon pada CaMnO₃ Terdoping Bismut untuk Pemanenan Energi Termoelektrik
+      </h1>
+
+      <!-- Standfirst (Lead Paragraph) -->
+      <p class="text-lg sm:text-xl font-serif italic text-editorial-body leading-relaxed mb-8 border-l-2 border-editorial-accent pl-5">
+        Material termoelektrik efisien menuntut sifat paradoksal: menghantar listrik sebaik logam namun menahan panas selayaknya kaca. Melalui kombinasi eksperimen transport dan kalkulasi prinsip pertama (DFT+U), tim peneliti mengungkap bagaimana isolator antiferomagnetik CaMnO₃ melanggar hukum Wiedemann–Franz, serta bagaimana doping 3% bismut memicu mekanisme pertukaran ganda yang meruntuhkan resistivitas sekaligus meredam konduktivitas termal kisi.
+      </p>
+
+      <!-- Authors & Affiliations -->
+      <div class="pt-6 border-t border-editorial-line flex flex-wrap items-center justify-between gap-4 text-xs text-editorial-muted font-sans">
+        <div>
+          <div class="text-cell-ink font-semibold text-sm">
+            Edi Suprayoga*, Witha B.K. Putri, Kunchit Singsoog, Supasit Paengson, Muhammad Y. Hanna, Ahmad R.T. Nugraha, Dicky R. Munazat, Budhy Kurniawan, Muhammad Nurhuda, Tosawat Seetawan*, Eddwi H. Hasdeo*
+          </div>
+          <div class="mt-1 text-editorial-muted">
+            Pusat Penelitian Fisika LIPI (kini BRIN) • Sakon Nakhon Rajabhat University (Thailand) • Universitas Indonesia • Universitas Brawijaya • University of Luxembourg
+          </div>
+        </div>
+        <div class="text-right">
+          <div class="text-editorial-ink font-medium">Materials Research Bulletin (Elsevier)</div>
+          <div>Vol. 141 (2021) 111359 • Diterima 12 April 2021</div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- KEY FINDINGS AT A GLANCE (Monochrome Editorial Banner) -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="bg-white border border-editorial-line rounded p-6 shadow-sm font-sans">
+      <h2 class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-4 flex items-center justify-between border-b border-editorial-line pb-2">
+        <span>Rangkuman Fisik Kunci: Transformasi CaMnO₃ ke Bi₀.₀₃Ca₀.₉₇MnO₃</span>
+        <span class="text-editorial-muted font-normal lowercase font-mono">Suprayoga et al., 2021</span>
+      </h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-left">
+        <div>
+          <div class="text-xs text-editorial-muted">Resistivitas Listrik (ρ)</div>
+          <div class="text-2xl font-bold text-editorial-ink mt-0.5">↓ 10× <span class="text-xs font-normal text-editorial-muted">Lipat</span></div>
+          <div class="text-[11px] text-editorial-muted mt-1">Turun satu orde dari skala 10⁻³ ke 10⁻⁴ Ω·m</div>
+        </div>
+        <div>
+          <div class="text-xs text-editorial-muted">Konsentrasi Pembawa (n)</div>
+          <div class="text-2xl font-bold text-editorial-ink mt-0.5">↑ 10³× <span class="text-xs font-normal text-editorial-muted">Lipat</span></div>
+          <div class="text-[11px] text-editorial-muted mt-1">Meningkat dari 10¹⁹ ke 5×10²² cm⁻³</div>
+        </div>
+        <div>
+          <div class="text-xs text-editorial-muted">Kecepatan Suara Fonon (ν)</div>
+          <div class="text-2xl font-bold text-editorial-ink mt-0.5">0.81 <span class="text-xs font-normal text-editorial-muted">km/s</span></div>
+          <div class="text-[11px] text-editorial-muted mt-1">Melambat dari 1.38 km/s pada CMO murni</div>
+        </div>
+        <div>
+          <div class="text-xs text-editorial-muted">Anomali Bilangan Lorenz</div>
+          <div class="text-2xl font-bold text-editorial-ink mt-0.5">4× L₀ <span class="text-xs font-normal text-editorial-muted">di CMO</span></div>
+          <div class="text-[11px] text-editorial-muted mt-1">Pulih mendekati 1× L₀ pasca-doping bismut</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN ARTICLE LAYOUT (Text + Sticky TOC) -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      
+      <!-- ARTICLE TEXT (Cols 1-8) -->
+      <main class="lg:col-span-8 article-body">
+
+        <!-- EXECUTIVE SUMMARY ACCORDION (Clean Minimalist) -->
+        <div class="border border-editorial-line bg-white rounded p-5 mb-10 font-sans">
+          <div class="flex items-center justify-between cursor-pointer select-none" onclick="toggleSummary()">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-editorial-accent"></span>
+              <h3 class="text-sm font-bold text-editorial-ink tracking-tight">
+                Ringkasan Eksekutif untuk Peneliti (4 Poin Inti)
+              </h3>
+            </div>
+            <span id="summary-chevron" class="text-xs font-mono text-editorial-muted">[- tutup]</span>
+          </div>
+
+          <div id="summary-content" class="mt-4 pt-4 border-t border-editorial-line text-xs sm:text-sm text-editorial-body space-y-2.5 leading-relaxed">
+            <p><strong>1. Tantangan Hukum Wiedemann–Franz (WF):</strong> Untuk memanen listrik dari panas buangan, material termoelektrik harus memiliki rasio konduktivitas listrik terhadap termal yang tinggi. Pada logam biasa, hukum WF menyatakan panas elektron berbanding lurus dengan konduktivitas listrik. Namun, CaMnO₃ murni justru melanggar hukum ini dengan bilangan Lorenz 4 kali lebih besar dari logam biasa, karena elektron terlokalisasi pada orbital Mn 3d lebih efisien menghantar panas daripada muatan.</p>
+            <p><strong>2. Efek Doping Bismut (BCMO):</strong> Mengganti 3% kation Ca²⁺ dengan Bi³⁺ memicu mekanisme pertukaran ganda (<em>double-exchange</em>) antara ion Mn³⁺ dan Mn⁴⁺ yang dijembatani oksigen. Elektron mengalami delokalisasi, mengubah fasa dari isolator antiferomagnetik menjadi konduktor feromagnetik logam semu (*half-metallic*).</p>
+            <p><strong>3. Rekayasa Hamburan Fonon:</strong> Atom bismut yang sangat berat menyumbang hamburan fonon anharmonik dan memperlambat kecepatan rambat suara kisi dari 1.38 km/s menjadi 0.81 km/s. Konduktivitas termal kisi (κ_ph) pun anjlok drastis dari ~8.5 W·m⁻¹·K⁻¹ menjadi ~4.5 W·m⁻¹·K⁻¹.</p>
+            <p><strong>4. Lonjakan Figur Kebaikan (ZT):</strong> Penurunan resistivitas listrik sebesar 10 kali lipat mendominasi penurunan koefisien Seebeck (2x), sehingga *Power Factor* (PF) dan figur kebaikan termoelektrik (ZT) melonjak signifikan. Teori memprediksi kinerja ini dapat digandakan lebih jauh jika tingkat doping diarahkan ke tepi pita konduksi (μ = -0.5 eV).</p>
+          </div>
+        </div>
+
+        <!-- SECTION 1: Latar Belakang & Dilema Termoelektrik -->
+        <section id="latar-belakang" class="pt-2">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            1. Dilema Termoelektrik: Menyelaraskan Aliran Muatan dan Panas
+          </h2>
+          
+          <p class="editorial-dropcap">
+            Pemanenan energi panas terbuang menjadi listrik melalui modul termoelektrik (TE) memegang peranan vital dalam efisiensi energi industri modern. Namun, merancang material termoelektrik berkinerja tinggi merupakan salah satu teka-teki paling rumit dalam fisika zat mampat. Kinerja suatu material termoelektrik diukur melalui figur kebaikan tak berdimensi <em>ZT</em>, yang dirumuskan sebagai:
+          </p>
+
+          <div class="my-5 p-4 bg-editorial-softbg border border-editorial-line rounded font-mono text-center text-sm text-editorial-ink font-semibold">
+            ZT = (S² × T) / (ρ × κ)
+          </div>
+
+          <p>
+            Di mana <em>S</em> adalah koefisien Seebeck, <em>T</em> adalah suhu mutlak, <em>ρ</em> adalah resistivitas listrik, dan <em>κ</em> adalah konduktivitas termal total (penjumlahan kontribusi elektron κ_e dan kisi fonon κ_ph). Material yang ideal harus bertindak sebagai <em>"phonon glass, electron crystal"</em> (PGEC)—yakni menghantar elektron sebebas kristal logam murni, tetapi meredam konduksi panas fonon seburuk kaca amorf.
+          </p>
+
+          <p>
+            Tantangan mendasar timbul dari hukum <strong>Wiedemann–Franz (WF)</strong> pada logam konvensional: rasio konduktivitas termal elektron (κ_e) terhadap konduktivitas listrik (σ = 1/ρ) berbanding lurus dengan suhu, terikat oleh bilangan Lorenz standar L₀ ≈ 2.44 × 10⁻⁸ W·Ω·K⁻². Ketika kita berusaha menaikkan konduktivitas listrik, laju perambatan panas oleh elektron pun ikut melonjak, menahan peningkatan nilai ZT.
+          </p>
+
+          <p>
+            Oksida perovskit CaMnO₃ (CMO) menarik perhatian besar karena sifatnya yang tidak beracun, ramah lingkungan, dan stabil secara struktural bahkan pada suhu melampaui 900 °C. Pada kondisi dasar (<em>ground state</em>), CMO merupakan isolator antiferomagnetik (AFM) akibat korelasi elektron Mott yang kuat. Riset kolaboratif antara peneliti LIPI, Universitas Indonesia, Universitas Brawijaya, dan Sakon Nakhon Rajabhat University Thailand ini menyelidiki bagaimana korelasi elektron tersebut memicu anomali hukum WF, dan bagaimana substitusi kationik bismut (Bi) membuka terobosan baru.
+          </p>
+        </section>
+
+        <!-- SECTION 2: Karakterisasi Struktur & Sifat Dasar CMO (FIG. 1 & FIG. 2) -->
+        <section id="struktur-cmo" class="pt-8">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            2. Struktur Kristal Ortorombik dan Fasa Dasar CaMnO₃
+          </h2>
+
+          <p>
+            Sintesis CaMnO₃ murni dilakukan melalui reaksi fasa padat (<em>solid-state reaction</em>) berbahan dasar CaCO₃ dan MnO₂, dilanjutkan dengan teknik <em>hot-pressing</em> pada suhu 1173 K bertekanan 60 MPa dalam atmosfer argon, serta penataan anil pada 1473 K selama 36 jam di udara.
+          </p>
+
+          <!-- FIGURE 1 EMBEDDED -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig1_cmo_structure_xrd.png" 
+                alt="Gambar 1: Struktur kristal geometri, ground state AFM, dan pola XRD CaMnO3" 
+                class="w-full max-w-xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig1_cmo_structure_xrd.png', 'Gambar 1: Karakterisasi struktur geometris, penataan spin antiferomagnetik (AFM), dan pola difraksi XRD CaMnO₃')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 1 | Karakterisasi struktur geometris dan kristalografi CaMnO₃.</span> 
+              <strong>(a) Sel satuan ortorombik perovskite:</strong> Kation Ca (merah) menempati pusat kisi ortorombik, ion Mn (biru) berada pada sudut-sudut kisi yang dikelilingi oleh 6 atom O (hijau) membentuk koordinasi oktahedral [MnO₆];
+              <strong>(b) Penataan spin AFM:</strong> Kondisi dasar menunjukkan konfigurasi spin antiferomagnetik pada subkisi Mn⁴⁺;
+              <strong>(c) Pola Difraksi Sinar-X (XRD):</strong> Data eksperimen (garis biru) berimpit presisi dengan kalkulasi teori DFT fungsional PBEsol (garis putus-putus merah) dengan parameter kisi terhitung a = 5.3265 Å, b = 7.4319 Å, dan c = 5.2523 Å (selisih hanya ~0.5%).
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Suprayoga et al., Mater. Res. Bull. 141 (2021) 111359 / Elsevier. (Klik gambar untuk perbesar)</div>
+            </figcaption>
+          </figure>
+
+          <p>
+            Melalui kalkulasi fungsional kerapatan terpolarisasi-spin (DFT+U dengan potensial Coulomb pada orbital Mn sebesar U = 5 eV), struktur pita elektronik CaMnO₃ berhasil dipetakan secara akurat (Gambar 2).
+          </p>
+
+          <!-- FIGURE 2 EMBEDDED -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig2_cmo_electronic_structure.png" 
+                alt="Gambar 2: Struktur pita elektronik dan kerapatan keadaan (DOS) CaMnO3" 
+                class="w-full max-w-xs h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig2_cmo_electronic_structure.png', 'Gambar 2: Struktur pita elektronik dan Density of States (DOS) CaMnO₃ murni')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 2 | Struktur elektronik CaMnO₃ murni.</span> 
+              <strong>(a) Dispersi Energi Pita:</strong> Menunjukkan celah pita tak langsung (<em>indirect bandgap</em>) sebesar 0.76 eV;
+              <strong>(b) Density of States (DOS):</strong> Simetri antara keadaan spin-up (garis biru) dan spin-down (garis merah) menegaskan fasa isolator antiferomagnetik murni pada keadaan dasar.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Suprayoga et al., Mater. Res. Bull. (2021).</div>
+            </figcaption>
+          </figure>
+        </section>
+
+        <!-- SECTION 3: Anomali Hukum Wiedemann-Franz pada CMO (FIG. 3 & FIG. 4) -->
+        <section id="transport-cmo" class="pt-8">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            3. Anomali Bilangan Lorenz: Pelanggaran Hukum Wiedemann–Franz
+          </h2>
+
+          <p>
+            Pengukuran eksperimental sifat transport pada rentang suhu 300–473 K memperlihatkan bahwa CaMnO₃ murni bertindak sebagai semikonduktor tipe-n (ditandai dengan nilai koefisien Seebeck <em>S</em> yang bernilai negatif). Pada suhu ruang, Seebeck terukur mencapai -300 μV/K, dengan resistivitas listrik <em>ρ</em> yang menurun seiring kenaikan suhu khas model semikonduktor Drude (Gambar 3).
+          </p>
+
+          <!-- FIGURE 3 EMBEDDED -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig3_cmo_transport_properties.png" 
+                alt="Gambar 3: Sifat transport listrik dan termoelektrik CaMnO3 murni" 
+                class="w-full max-w-lg h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig3_cmo_transport_properties.png', 'Gambar 3: Sifat transport listrik CaMnO₃ murni: Seebeck S, mobilitas, konsentrasi pembawa, dan resistivitas')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 3 | Sifat transport elektronik CaMnO₃ murni.</span> 
+              <strong>(a) Koefisien Seebeck (S):</strong> Data eksperimen (titik hitam) berimpit dengan kurva Boltzmann Transport Theory pada potensial kimia μ = 0.5 eV (tepi pita konduksi);
+              <strong>(b) S terhadap potensial kimia (μ):</strong> Teori menunjukkan jika μ digeser mendekati 0, nilai Seebeck dapat dioptimalkan hingga mencapai ~1600 μV/K;
+              <strong>(c) Konsentrasi & Mobilitas Pembawa:</strong> Konsentrasi muatan pada suhu ruang sebesar ~5 × 10¹⁹ cm⁻³ dengan mobilitas elektron antara 0.02–0.05 cm²/V·s;
+              <strong>(d) Resistivitas Listrik (ρ):</strong> Berkurang terhadap suhu mengikuti laju relaksasi τ⁻¹ = αT + β.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Suprayoga et al., Mater. Res. Bull. (2021).</div>
+            </figcaption>
+          </figure>
+
+          <p>
+            Namun, temuan paling mengejutkan terungkap saat menghitung konduktivitas termal elektron (κ_e) dan bilangan Lorenz (<em>L = κ_e × ρ / T</em>). Pada logam biasa, nilai <em>L</em> konstan pada angka L₀ = (π k_B / e)² / 3.
+          </p>
+
+          <!-- FIGURE 4 EMBEDDED -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig4_cmo_wf_law_lorenz.png" 
+                alt="Gambar 4: Konduktivitas termal elektron dan rasio bilangan Lorenz L/L0 pada CaMnO3" 
+                class="w-full max-w-lg h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig4_cmo_wf_law_lorenz.png', 'Gambar 4: Pelanggaran hukum Wiedemann-Franz pada CaMnO₃ dengan rasio L/L₀ mencapai 4 kali lipat')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 4 | Pelanggaran hukum Wiedemann–Franz pada CaMnO₃ murni.</span> 
+              <strong>(a) Konduktivitas Termal Elektron (κ_e):</strong> Nilai κ_e terhitung (garis merah) berada jauh di atas prediksi hukum WF konvensional (garis putus-putus hitam);
+              <strong>(b) Rasio Bilangan Lorenz (L/L₀):</strong> Pada suhu ruang, rasio L/L₀ mencapai ~4 kali lipat dari nilai logam biasa. Hal ini membuktikan bahwa elektron terlokalisasi pada orbital Mn d menghantarkan panas secara jauh lebih efisien daripada muatan listrik.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Suprayoga et al., Mater. Res. Bull. (2021).</div>
+            </figcaption>
+          </figure>
+
+          <p>
+            Anomali ini bersumber dari sifat elektron berkorelasi kuat (<em>strongly correlated electrons</em>) di dalam kisi manganit. Korelasi Coulomb yang intensif memisahkan mekanisme penghantaran panas dan muatan listrik, yang secara inheren merugikan performa termoelektrik CaMnO₃ murni.
+          </p>
+        </section>
+
+        <!-- SECTION 4: Solusi Doping Bi & Mekanisme Double Exchange (FIG. 5 - FIG. 7) -->
+        <section id="rekayasa-bcmo" class="pt-8">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            4. Doping Bismut: Delokalisasi Elektron & Pemulihan Sifat Logam
+          </h2>
+
+          <p>
+            Untuk mengatasi hambatan tersebut, peneliti mensubstitusi 3% atom kalsium (Ca²⁺) dengan kation bismut (Bi³⁺), menghasilkan senyawa <strong>Bi₀.₀₃Ca₀.₉₇MnO₃ (BCMO)</strong>. Karena bismut membawa valensi +3, kehadiran kation ini memaksa sebagian ion Mn⁴⁺ di sebelahnya tereduksi menjadi ion Mn³⁺.
+          </p>
+
+          <p>
+            Kemunculan pasangan Mn³⁺ (konfigurasi t₂g³ e_g¹) dan Mn⁴⁺ (t₂g³ e_g⁰) memicu terjadinya <strong>mekanisme pertukaran ganda (<em>Double-Exchange / DE interaction</em>)</strong> yang dijembatani oleh atom oksigen:
+          </p>
+
+          <div class="my-5 p-4 bg-editorial-softbg border border-editorial-line rounded font-mono text-center text-sm text-editorial-ink font-semibold">
+            Mn³⁺ — O²⁻ — Mn⁴⁺  ⇌  Mn⁴⁺ — O²⁻ — Mn³⁺
+          </div>
+
+          <!-- FIGURE 5 EMBEDDED -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig5_bcmo_electronic_band_structure.png" 
+                alt="Gambar 5: Struktur pita elektronik dan DOS dari Bi0.03Ca0.97MnO3 (BCMO)" 
+                class="w-full max-w-lg h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig5_bcmo_electronic_band_structure.png', 'Gambar 5: Struktur pita energi dan kerapatan keadaan (DOS) BCMO: Delokalisasi elektron')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 5 | Struktur pita elektronik dan DOS dari BCMO.</span> 
+              <strong>(a, b) Dispersi Pita Spin-Up & Spin-Down:</strong> Energi Fermi bergeser masuk ke dalam pita konduksi dengan asimetri spin yang nyata;
+              <strong>(c) Kerapatan Keadaan (DOS):</strong> Populasi spin-up melintasi tingkat Fermi, menandai transisi fasa dari isolator antiferomagnetik menjadi konduktor logam semu feromagnetik (*ferromagnetic metallic state*).
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Suprayoga et al., Mater. Res. Bull. (2021).</div>
+            </figcaption>
+          </figure>
+
+          <p>
+            Delokalisasi elektron ini mentransformasikan sifat transport secara radikal (Gambar 6). Konsentrasi pembawa muatan (<em>n</em>) melonjak seribu kali lipat, mencapai <strong>~5 × 10²² cm⁻³</strong> (dibandingkan 5 × 10¹⁹ cm⁻³ pada CMO murni). Akibatnya, resistivitas listrik <em>ρ</em> anjlok hingga <strong>satu orde besaran (10 kali lebih konduktif)</strong>.
+          </p>
+
+          <!-- FIGURE 6 EMBEDDED -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig6_bcmo_transport_properties.png" 
+                alt="Gambar 6: Sifat transport listrik dan termoelektrik BCMO" 
+                class="w-full max-w-lg h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig6_bcmo_transport_properties.png', 'Gambar 6: Sifat transport BCMO: Seebeck S linier terhadap T dan penurunan resistivitas 1 orde')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 6 | Sifat transport elektronik BCMO.</span> 
+              <strong>(a) Seebeck S vs T:</strong> Hubungan linier terhadap suhu khas gas Fermi logam (|S| ∝ T);
+              <strong>(b) S vs Potensial Kimia (μ):</strong> Nilai optimum Seebeck terhitung ~500 μV/K jika μ digeser ke tepi celah pita;
+              <strong>(c) Konsentrasi Pembawa:</strong> Melejit ke 5 × 10²² cm⁻³ akibat injeksi elektron dari dopan Bi;
+              <strong>(d) Resistivitas ρ vs T:</strong> Menunjukkan sifat konduksi metalik dengan peningkatan linier terhadap suhu, tereduksi 10 kali dibanding CMO murni.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Suprayoga et al., Mater. Res. Bull. (2021).</div>
+            </figcaption>
+          </figure>
+
+          <p>
+            Selain itu, sifat metalik BCMO berhasil <strong>memulihkan keabsahan hukum Wiedemann–Franz</strong> (Gambar 7). Rasio bilangan Lorenz (L/L₀) kini berada sangat dekat dengan angka 1, membuktikan bahwa anomali pemisahan transport panas dan muatan telah dihilangkan.
+          </p>
+
+          <!-- FIGURE 7 EMBEDDED -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig7_bcmo_wf_law_lorenz.png" 
+                alt="Gambar 7: Pemulihan hukum Wiedemann-Franz pada BCMO" 
+                class="w-full max-w-lg h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig7_bcmo_wf_law_lorenz.png', 'Gambar 7: Pemulihan korespondensi hukum Wiedemann-Franz pada BCMO (L/L₀ mendekati 1)')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 7 | Pemulihan hukum Wiedemann–Franz pada BCMO.</span> 
+              <strong>(a) Konduktivitas Termal Elektron (κ_e):</strong> Mengikuti tren linier yang selaras dengan hukum WF;
+              <strong>(b) Bilangan Lorenz (L/L₀):</strong> Tidak lagi menyimpang jauh dari satu, membuktikan regenerasi karakter transport logam yang teratur.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Suprayoga et al., Mater. Res. Bull. (2021).</div>
+            </figcaption>
+          </figure>
+        </section>
+
+        <!-- SECTION 5: Hamburan Fonon, Raman, dan Figur Kebaikan ZT (FIG. 8 & FIG. A.9) -->
+        <section id="kinerja-zt" class="pt-8">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            5. Peredaman Fonon Kisi dan Lonjakan Figur Kebaikan ZT
+          </h2>
+
+          <p>
+            Dalam material oksida perovskit, konduktivitas termal elektron (κ_e) sebenarnya dua orde besaran lebih kecil dibandingkan konduktivitas termal kisi yang dibawa oleh fonon (κ_ph). Artinya, peredaman fonon kisi adalah kunci sesungguhnya untuk menekan nilai <em>κ</em> total.
+          </p>
+
+          <p>
+            Atom bismut memiliki massa atomik yang jauh lebih besar (massa molar Bi = 208.98 g/mol vs Ca = 40.08 g/mol). Kehadiran atom berat ini di dalam kisi memicu ketidaksesuaian massa dan memperkuat derajat anharmonisitas kisi (dipertegas oleh parameter Grüneisen γ ≈ 3.47). Menggunakan model Callaway–Debye, kecepatan rambat suara efektif terhitung melambat dari <strong>1.38 km/s pada CMO menjadi hanya 0.81 km/s pada BCMO</strong>, diiringi pemendekan masa hidup fonon (<em>phonon lifetime</em>).
+          </p>
+
+          <!-- FIGURE 8 EMBEDDED -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig8_te_properties_cmo_bcmo.png" 
+                alt="Gambar 8: Sifat termoelektrik komparatif antara CMO dan BCMO" 
+                class="w-full max-w-lg h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig8_te_properties_cmo_bcmo.png', 'Gambar 8: Perbandingan sifat termoelektrik CMO vs BCMO: Konduktivitas termal κ, Power Factor, dan ZT')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 8 | Evaluasi komparatif performa termoelektrik CMO (merah) vs BCMO (biru).</span> 
+              <strong>(a) Konduktivitas Termal Total (κ):</strong> BCMO menunjukkan penurunan konduktivitas termal drastis dari ~8.5 ke ~4.5 W·m⁻¹·K⁻¹ pada suhu ruang akibat hamburan fonon massa berat Bi;
+              <strong>(b) Faktor Daya (Power Factor, PF = S²/ρ):</strong> Penurunan resistivitas sebesar 10× mengompensasi penurunan Seebeck (2×), mendongkrak PF BCMO secara signifikan;
+              <strong>(c) Figur Kebaikan Termoelektrik (ZT):</strong> ZT BCMO melonjak tajam melampaui CMO murni di seluruh rentang suhu ukur. Kurva garis tebal menunjukkan batas optimum teoritis yang dapat diraih bila Fermi level disetel presisi ke tepi pita (μ = -0.5 eV).
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Suprayoga et al., Mater. Res. Bull. (2021).</div>
+            </figcaption>
+          </figure>
+
+          <p>
+            Spektroskopi Raman (Gambar 9) memvalidasi peran hamburan fonon tersebut. Munculnya lonjakan intensitas modus vibrasi pada 513 cm⁻¹ pada sampel BCMO dikonfirmasi sebagai tanda hamburan cacat kisi (<em>defect scattering</em>) yang diinduksi oleh substitusi bismut.
+          </p>
+
+          <!-- FIGURE 9 EMBEDDED -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig9_raman_spectroscopy.png" 
+                alt="Gambar A.9: Spektroskopi Raman eksperimen CMO dan BCMO" 
+                class="w-full max-w-xs h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig9_raman_spectroscopy.png', 'Gambar A.9: Spektroskopi Raman eksperimental CMO murni dan BCMO')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 9 (Appendix A.9) | Spektra Raman eksperimen CMO murni (garis putus merah) dan BCMO (garis biru).</span> 
+              Garis-garis hijau vertikal di bawah spektrum menandai posisi modus aktif Raman teoritis. Peningkatan tajam intensitas puncak pada 513 cm⁻¹ pada BCMO mengindikasikan hamburan fonon akibat defek substitusi bismut.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Suprayoga et al., Mater. Res. Bull. (2021).</div>
+            </figcaption>
+          </figure>
+
+          <!-- PUBLICATION TABLE: SUMMARY OF PARAMETERS -->
+          <div class="my-6">
+            <div class="text-xs font-semibold text-editorial-muted uppercase tracking-wider mb-2 font-sans">
+              Tabel 1 | Perbandingan Parameter Transport Elektron dan Fonon antara CMO dan BCMO (Data dari Paper)
+            </div>
+            <div class="overflow-x-auto">
+              <table class="pub-table font-sans">
+                <thead>
+                  <tr>
+                    <th class="text-left">Parameter Fisis</th>
+                    <th class="text-right">CaMnO₃ (Pristine CMO)</th>
+                    <th class="text-right">Bi₀.₀₃Ca₀.₉₇MnO₃ (BCMO)</th>
+                    <th class="text-left">Efek Doping Bismut</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="font-semibold text-editorial-ink">Fasa Keadaan Dasar</td>
+                    <td class="text-right">Isolator Antiferomagnetik (AFM)</td>
+                    <td class="text-right font-semibold text-editorial-accent">Logam Feromagnetik (FM)</td>
+                    <td>Transisi fase melalui interaksi pertukaran ganda (DE)</td>
+                  </tr>
+                  <tr>
+                    <td class="font-semibold text-editorial-ink">Konsentrasi Pembawa (n) @300K</td>
+                    <td class="text-right font-mono">5 × 10¹⁹ cm⁻³</td>
+                    <td class="text-right font-mono font-bold text-editorial-accent">5 × 10²² cm⁻³</td>
+                    <td>Meningkat ~1000 kali lipat</td>
+                  </tr>
+                  <tr>
+                    <td class="font-semibold text-editorial-ink">Resistivitas Listrik (ρ) @300K</td>
+                    <td class="text-right font-mono">~1.1 × 10⁻³ Ω·m</td>
+                    <td class="text-right font-mono font-bold text-editorial-accent">~6.5 × 10⁻⁵ Ω·m</td>
+                    <td>Turun drastis lebih dari 10 kali lipat</td>
+                  </tr>
+                  <tr>
+                    <td class="font-semibold text-editorial-ink">Koefisien Seebeck (S) @300K</td>
+                    <td class="text-right font-mono">-300 μV/K</td>
+                    <td class="text-right font-mono">-150 μV/K</td>
+                    <td>Turun 2 kali (khas gas Fermi metalik)</td>
+                  </tr>
+                  <tr>
+                    <td class="font-semibold text-editorial-ink">Rasio Bilangan Lorenz (L/L₀)</td>
+                    <td class="text-right font-mono text-red-600 font-bold">~4.0 (Melanggar Hukum WF)</td>
+                    <td class="text-right font-mono text-editorial-accent font-bold">~1.0 (Memulihkan Hukum WF)</td>
+                    <td>Menghilangkan disparitas transport muatan dan panas</td>
+                  </tr>
+                  <tr>
+                    <td class="font-semibold text-editorial-ink">Kecepatan Suara Fonon (ν)</td>
+                    <td class="text-right font-mono">1.38 km/s</td>
+                    <td class="text-right font-mono font-bold text-editorial-accent">0.81 km/s</td>
+                    <td>Melambat 41% akibat massa berat Bi</td>
+                  </tr>
+                  <tr>
+                    <td class="font-semibold text-editorial-ink">Konduktivitas Termal (κ) @300K</td>
+                    <td class="text-right font-mono">~8.5 W·m⁻¹·K⁻¹</td>
+                    <td class="text-right font-mono font-bold text-editorial-accent">~4.5 W·m⁻¹·K⁻¹</td>
+                    <td>Tereduksi hampir separuh (hambatan fonon meningkat)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 6: Kesimpulan & Prospek -->
+        <section id="kesimpulan" class="pt-8 border-t border-editorial-line mt-10">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            6. Kesimpulan dan Peta Jalan Optimasi Lanjutan
+          </h2>
+
+          <p>
+            Studi komprehensif ini membuktikan bahwa strategi substitusi kationik dengan atom berat berkemampuan donor elektron seperti bismut berhasil memecahkan kebuntuan paradoks termoelektrik pada oksida perovskit:
+          </p>
+
+          <ol class="list-decimal pl-5 space-y-2 font-sans text-xs sm:text-sm text-cell-body mb-6">
+            <li><strong>Di Sektor Elektronik:</strong> Doping Bi menginduksi interaksi pertukaran ganda Mn³⁺–O–Mn⁴⁺, mengubah material menjadi konduktor metalik yang menurunkan resistivitas listrik sebesar 10 kali lipat serta memulihkan korespondensi hukum Wiedemann–Franz.</li>
+            <li><strong>Di Sektor Fononik:</strong> Ketidaksesuaian massa atomik bismut memicu hamburan kisi anharmonik, memangkas kecepatan suara dan memperpendek masa hidup fonon, sehingga konduktivitas termal kisi anjlok secara substansial.</li>
+          </ol>
+
+          <p>
+            Kombinasi kedua efek ini menghasilkan peningkatan terukur pada faktor daya (PF) dan figur kebaikan termoelektrik <em>ZT</em>. Hasil simulasi teoritis Boltzmann transport menunjukkan bahwa potensi sesungguhnya dari material ini masih menyimpan ruang peningkatan hingga dua kali lipat bila konsentrasi dopan dapat disetel secara presisi di rentang 2.8–3.2% agar tingkat Fermi tepat berada pada celah pita konduksi (μ = -0.5 eV).
+          </p>
+
+          <!-- CITATION BLOCK -->
+          <div class="mt-8 p-5 bg-white border border-editorial-line rounded font-sans text-xs">
+            <div class="font-bold uppercase tracking-wider text-editorial-ink mb-2">
+              Sitasi Paper Resmi (APA Format)
+            </div>
+            <p class="font-mono text-cell-body leading-relaxed select-all">
+              Suprayoga, E., Putri, W. B., Singsoog, K., Paengson, S., Hanna, M. Y., Nugraha, A. R., Munazat, D. R., Kurniawan, B., Nurhuda, M., Seetawan, T., & Hasdeo, E. H. (2021). Investigation of electron and phonon transport in Bi-doped CaMnO₃ for thermoelectric applications. <em>Materials Research Bulletin</em>, 141, 111359. https://doi.org/10.1016/j.materresbull.2021.111359
+            </p>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- SIDEBAR (Cols 9-12) -->
+      <aside class="lg:col-span-4 space-y-8 font-sans">
+        
+        <!-- STICKY TABLE OF CONTENTS -->
+        <div class="sticky top-20 space-y-6">
+          
+          <div class="bg-white border border-editorial-line rounded p-5">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-3 pb-2 border-b border-editorial-line">
+              Daftar Isi Ulasan
+            </h4>
+            <nav class="space-y-1.5 text-xs text-editorial-muted" id="toc-list">
+              <a href="#latar-belakang" class="block py-1 hover:text-editorial-accent transition-colors">• 1. Dilema Termoelektrik & WF</a>
+              <a href="#struktur-cmo" class="block py-1 hover:text-editorial-accent transition-colors">• 2. Struktur Kristal Ortorombik (Fig. 1-2)</a>
+              <a href="#transport-cmo" class="block py-1 hover:text-editorial-accent transition-colors">• 3. Pelanggaran Hukum WF (Fig. 3-4)</a>
+              <a href="#rekayasa-bcmo" class="block py-1 hover:text-editorial-accent transition-colors">• 4. Doping Bi & Double Exchange (Fig. 5-7)</a>
+              <a href="#kinerja-zt" class="block py-1 hover:text-editorial-accent transition-colors">• 5. Fonon Kisi & Figur ZT (Fig. 8-9)</a>
+              <a href="#kesimpulan" class="block py-1 hover:text-editorial-accent transition-colors">• 6. Kesimpulan & Optimasi Lanjutan</a>
+            </nav>
+          </div>
+
+          <!-- MINI GLOSSARY FOR STUDENTS -->
+          <div class="bg-white border border-editorial-line rounded p-5 space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-editorial-ink pb-2 border-b border-editorial-line">
+              Glosarium Istilah Kunci
+            </h4>
+            <div class="space-y-3 text-xs">
+              <div>
+                <span class="font-semibold text-editorial-ink">Hukum Wiedemann–Franz (WF):</span>
+                <p class="text-editorial-muted mt-0.5">Hukum fisika yang menyatakan bahwa rasio konduktivitas termal elektron terhadap konduktivitas listrik pada logam berbanding lurus dengan suhu (κ_e / σ = L₀ T).</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">Bilangan Lorenz (L):</span>
+                <p class="text-editorial-muted mt-0.5">Konstanta kesetaraan transport muatan dan panas (L₀ ≈ 2.44 × 10⁻⁸ W·Ω·K⁻²). CMO murni menunjukkan L = 4× L₀, tanda pemisahan transport panas dan muatan.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">Pertukaran Ganda (Double-Exchange):</span>
+                <p class="text-editorial-muted mt-0.5">Mekanisme transfer elektron terdelokalisasi antara ion Mn³⁺ dan Mn⁴⁺ melalui jembatan ligan oksigen, memicu feromagnetisme dan konduksi listrik metalik.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">Figur Kebaikan (ZT):</span>
+                <p class="text-editorial-muted mt-0.5">Indikator efisiensi konversi termoelektrik ZT = S²T/(ρκ). Nilai ZT tinggi menuntut kombinasi koefisien Seebeck tinggi, resistivitas rendah, dan konduktivitas termal rendah.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FIGURE INDEX QUICK JUMP -->
+          <div class="bg-white border border-editorial-line rounded p-5">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-3 pb-2 border-b border-editorial-line">
+              Indeks Gambar & Grafik
+            </h4>
+            <ul class="text-xs space-y-2 text-editorial-muted">
+              <li>
+                <a href="#struktur-cmo" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 1: Sel Kisi, Spin AFM, & XRD</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 2</span>
+                </a>
+              </li>
+              <li>
+                <a href="#struktur-cmo" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 2: Pita Energi & DOS CMO</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 3</span>
+                </a>
+              </li>
+              <li>
+                <a href="#transport-cmo" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 3: Seebeck, Mobilitas, & Resistivitas CMO</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 3</span>
+                </a>
+              </li>
+              <li>
+                <a href="#transport-cmo" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 4: Anomali WF & Lorenz CMO</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 4</span>
+                </a>
+              </li>
+              <li>
+                <a href="#rekayasa-bcmo" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 5: Pita Energi & DOS BCMO</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 4</span>
+                </a>
+              </li>
+              <li>
+                <a href="#rekayasa-bcmo" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 6: Sifat Transport Listrik BCMO</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 5</span>
+                </a>
+              </li>
+              <li>
+                <a href="#rekayasa-bcmo" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 7: Pemulihan Hukum WF BCMO</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 5</span>
+                </a>
+              </li>
+              <li>
+                <a href="#kinerja-zt" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 8: Evaluasi κ, Power Factor, & ZT</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 6</span>
+                </a>
+              </li>
+              <li>
+                <a href="#kinerja-zt" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 9: Spektroskopi Raman (Defek)</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 7</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightbox" class="fixed inset-0 bg-black/80 z-50 hidden flex flex-col items-center justify-center p-4 backdrop-blur-sm" onclick="closeLightbox()">
+    <div class="relative max-w-5xl max-h-[90vh] bg-white rounded p-3 shadow-2xl flex flex-col" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between pb-2 mb-2 border-b border-editorial-line text-xs font-sans text-editorial-ink">
+        <span id="lightbox-caption" class="font-bold"></span>
+        <button onclick="closeLightbox()" class="p-1 hover:bg-editorial-softbg rounded text-editorial-muted hover:text-editorial-ink font-semibold">
+          ✕ Tutup
+        </button>
+      </div>
+      <div class="overflow-auto max-h-[80vh] flex items-center justify-center p-2">
+        <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[75vh] object-contain">
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-editorial-line bg-white py-10 text-xs text-editorial-muted font-sans">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <span class="font-bold text-editorial-ink">TermoFisika</span> — Serial Diseminasi Riset Fisika Zat Mampat & Rekayasa Energi Terbarukan.
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://doi.org/10.1016/j.materresbull.2021.111359" target="_blank" class="hover:underline text-editorial-accent font-medium">Artikel Asli di Elsevier</a>
+        <span>•</span>
+        <a href="#" class="hover:text-editorial-ink">Kembali ke Atas ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    // 1. Reading Progress Bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('reading-progress').style.width = scrolled + '%';
+    });
+
+    // 2. Minimalist Summary Toggle
+    function toggleSummary() {
+      const content = document.getElementById('summary-content');
+      const chevron = document.getElementById('summary-chevron');
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        chevron.textContent = '[- tutup]';
+      } else {
+        content.classList.add('hidden');
+        chevron.textContent = '[+ buka]';
+      }
+    }
+
+    // 3. Lightbox Functionality
+    function openLightbox(src, caption) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox-caption').textContent = caption;
+      document.getElementById('lightbox').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+
+</body>
+</html>

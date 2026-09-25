@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Telaah Sains | Koleksi Showcase Paper Ilmiah Interaktif</title>
+  
+  <!-- Fonts: Newsreader (Editorial Serif) & Plus Jakarta Sans (Clean Modern Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            editorial: {
+              ink: '#18181b',        /* Deep charcoal */
+              body: '#27272a',       /* Warm reading text */
+              muted: '#71717a',      /* Neutral secondary */
+              lightmuted: '#a1a1aa', /* Captions */
+              line: '#e4e4e7',       /* Hairline border */
+              softbg: '#fafafa',     /* Off-white canvas */
+              card: '#ffffff',       /* White card background */
+              accent: '#0a74c0',     /* Royal scientific blue */
+              accentDark: '#075997', /* Dark hover blue */
+              accentLight: '#f0f7fc' /* Subtle highlight */
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            serif: ['"Newsreader"', 'Georgia', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #fafafa;
+      color: #27272a;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .paper-card {
+      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, border-color 0.15s ease-out;
+    }
+    .paper-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+      border-color: #0a74c0;
+    }
+  </style>
+</head>
+
+<body class="selection:bg-editorial-accentLight selection:text-editorial-accent font-sans">
+
+  <!-- MASTHEAD & TOP NAVIGATION -->
+  <header class="bg-white border-b border-editorial-line sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded bg-editorial-ink flex items-center justify-center text-white font-bold text-sm tracking-tighter">
+          TS
+        </div>
+        <div>
+          <span class="text-xl font-serif font-bold tracking-tight text-editorial-ink">
+            Telaah<span class="text-editorial-accent italic font-normal">Sains</span>
+          </span>
+          <span class="hidden sm:inline-block ml-2 text-[11px] text-editorial-muted uppercase tracking-wider font-sans border-l border-editorial-line pl-2">
+            Showcase Repository
+          </span>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4 text-xs font-medium text-editorial-muted">
+        <span class="hidden md:inline">Koleksi 4 Publikasi Internasional</span>
+        <a href="#panduan" class="px-2.5 py-1 border border-editorial-line rounded hover:bg-editorial-softbg text-editorial-ink transition-colors">
+          Panduan Format
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION (Editorial Style) -->
+  <section class="bg-white border-b border-editorial-line pt-14 pb-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
+      
+      <div class="inline-flex items-center gap-2 px-2.5 py-1 bg-editorial-softbg border border-editorial-line rounded text-xs font-semibold uppercase tracking-wider text-editorial-muted mb-4">
+        <span>Arsip Diseminasi Ilmiah Interaktif</span>
+        <span class="text-editorial-line">•</span>
+        <span class="text-editorial-accent">Format Majalah Sains Populer</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-editorial-ink tracking-tight font-sans leading-tight mb-4">
+        Koleksi Telaah Paper Ilmiah Internasional
+      </h1>
+
+      <p class="text-base sm:text-lg font-serif italic text-editorial-body leading-relaxed max-w-3xl mb-8">
+        Portal kurasi publikasi ilmiah bereputasi (Elsevier & Cell Press) yang ditransformasikan dari laporan teknis kaku menjadi pengalaman membaca naratif, bersih, dan memikat. Dirancang khusus bagi mahasiswa, dosen, dan peneliti yang membutuhkan pemahaman mendalam tanpa terhalang bahasa yang dingin.
+      </p>
+
+      <!-- STATS STRIP -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-editorial-line text-left">
+        <div>
+          <div class="text-2xl font-bold text-editorial-ink font-sans">4</div>
+          <div class="text-xs text-editorial-muted">Paper Tertelaah</div>
+        </div>
+        <div>
+          <div class="text-2xl font-bold text-editorial-accent font-sans">30</div>
+          <div class="text-xs text-editorial-muted">Gambar Asli Beresolusi Tinggi</div>
+        </div>
+        <div>
+          <div class="text-2xl font-bold text-editorial-ink font-sans">100%</div>
+          <div class="text-xs text-editorial-muted">Bebas Format AI Berlebihan</div>
+        </div>
+        <div>
+          <div class="text-2xl font-bold text-editorial-ink font-sans">Q1</div>
+          <div class="text-xs text-editorial-muted">Jurnal Bereputasi Global</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SEARCH & FILTER TOOLBAR -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-editorial-line pb-6">
+      
+      <!-- Category Filter Buttons -->
+      <div class="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto text-xs font-medium" id="filter-container">
+        <button onclick="filterCategory('all')" id="btn-all" class="filter-btn px-3 py-1.5 rounded bg-editorial-ink text-white">
+          Semua (4)
+        </button>
+        <button onclick="filterCategory('material')" id="btn-material" class="filter-btn px-3 py-1.5 rounded bg-white border border-editorial-line text-editorial-muted hover:text-editorial-ink">
+          Material 2D & Energi (2)
+        </button>
+        <button onclick="filterCategory('thermo')" id="btn-thermo" class="filter-btn px-3 py-1.5 rounded bg-white border border-editorial-line text-editorial-muted hover:text-editorial-ink">
+          Fisika Termoelektrik (2)
+        </button>
+        <button onclick="filterCategory('ai')" id="btn-ai" class="filter-btn px-3 py-1.5 rounded bg-white border border-editorial-line text-editorial-muted hover:text-editorial-ink">
+          Kecerdasan Buatan (1)
+        </button>
+      </div>
+
+      <!-- Live Search Box -->
+      <div class="relative w-full sm:w-72">
+        <input 
+          type="text" 
+          id="search-input" 
+          onkeyup="liveSearch()" 
+          placeholder="Cari judul, penulis, kata kunci..." 
+          class="w-full pl-8 pr-3 py-1.5 bg-white border border-editorial-line rounded text-xs text-editorial-ink placeholder-editorial-lightmuted focus:outline-none focus:border-editorial-accent transition-colors"
+        >
+        <svg class="w-3.5 h-3.5 text-editorial-muted absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+        </svg>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PAPER CATALOG GRID (2 Columns Desktop) -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="paper-grid">
+
+      <!-- CARD 1: MoS2 / Ti3C2 MXene -->
+      <article class="paper-card bg-white border border-editorial-line rounded p-6 flex flex-col justify-between" data-category="material" data-keywords="mos2 mxene her hidrogen elektrolisis alkali universitas indonesia overpotensial tafrel elsevier">
+        <div>
+          <!-- Header Meta -->
+          <div class="flex items-center justify-between text-xs text-editorial-muted mb-3">
+            <span class="font-semibold uppercase tracking-wider text-editorial-accent">Material Elektrokimia</span>
+            <span class="font-mono text-[11px]">Mater. Res. Bull. (2025)</span>
+          </div>
+
+          <!-- Title -->
+          <h2 class="text-xl font-bold font-sans text-editorial-ink tracking-tight leading-snug mb-3">
+            <a href="papers/01-mos2-mxene-her/index.html" class="hover:text-editorial-accent transition-colors">
+              Sinergi 2D/2D MoS₂ dan Ti₃C₂ MXene: Akselerasi Kinetika Evolusi Hidrogen dalam Media Alkali
+            </a>
+          </h2>
+
+          <!-- Excerpt -->
+          <p class="text-sm font-serif italic text-editorial-body leading-relaxed mb-4">
+            Menggabungkan tepi aktif molibdenum disulfida bermorfologi bunga dengan lembaran konduktif Ti₃C₂ MXene untuk memangkas hambatan transfer muatan dan mengikis overpotensial disosiasi air secara drastis dalam 1 M NaOH.
+          </p>
+
+          <!-- Thumbnail Image Preview -->
+          <div class="border border-editorial-line/80 rounded bg-editorial-softbg p-2 mb-4 overflow-hidden flex items-center justify-center">
+            <img src="papers/01-mos2-mxene-her/assets/fig1_synthesis_scheme.png" alt="Skema sintesis MoS2 MXene" class="max-h-36 w-auto object-contain">
+          </div>
+
+          <!-- Highlight Metrics Strip -->
+          <div class="grid grid-cols-3 gap-2 py-3 border-y border-editorial-line text-center text-xs font-sans mb-4">
+            <div>
+              <div class="text-[10px] text-editorial-muted uppercase">Overpotensial</div>
+              <div class="font-bold text-editorial-ink">421 mV</div>
+            </div>
+            <div>
+              <div class="text-[10px] text-editorial-muted uppercase">Tafel Slope</div>
+              <div class="font-bold text-editorial-ink">217 mV dec⁻¹</div>
+            </div>
+            <div>
+              <div class="text-[10px] text-editorial-muted uppercase">Resistansi R_ct</div>
+              <div class="font-bold text-editorial-accent">1.66 kΩ</div>
+            </div>
+          </div>
+
+          <!-- Author Byline -->
+          <div class="text-xs text-editorial-muted mb-6">
+            <span class="font-semibold text-editorial-ink">R. Hasanah, M. Khalil* dkk.</span> • Universitas Indonesia, Sunway Univ, Lancaster Univ, Tyndall Inst.
+          </div>
+        </div>
+
+        <!-- Read Action Button -->
+        <a href="papers/01-mos2-mxene-her/index.html" class="w-full py-2.5 px-4 bg-editorial-softbg hover:bg-editorial-accent hover:text-white border border-editorial-line hover:border-editorial-accent rounded text-xs font-bold text-editorial-ink text-center transition-all flex items-center justify-center gap-1.5">
+          <span>Buka Telaah Lengkap</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </article>
+
+      <!-- CARD 2: AlphaML -->
+      <article class="paper-card bg-white border border-editorial-line rounded p-6 flex flex-col justify-between" data-category="ai" data-keywords="alphaml machine learning tabular binary classification cell press patterns clete shap lime optuna aml kanker leukemia">
+        <div>
+          <!-- Header Meta -->
+          <div class="flex items-center justify-between text-xs text-editorial-muted mb-3">
+            <span class="font-semibold uppercase tracking-wider text-teal-700">Kecerdasan Buatan Biomedis</span>
+            <span class="font-mono text-[11px]">Patterns (Cell Press, 2024)</span>
+          </div>
+
+          <!-- Title -->
+          <h2 class="text-xl font-bold font-sans text-editorial-ink tracking-tight leading-snug mb-3">
+            <a href="papers/02-alphaml-clete/index.html" class="hover:text-editorial-accent transition-colors">
+              AlphaML: Platform Klasifikasi Biner Terbuka, Terjelaskan (CLETE), dan Tanpa Kode untuk Data Tabular
+            </a>
+          </h2>
+
+          <!-- Excerpt -->
+          <p class="text-sm font-serif italic text-editorial-body leading-relaxed mb-4">
+            Ekosistem machine learning berbasis GUI tanpa kode yang transparan untuk peneliti biomedis, dilengkapi metrik khusus pencegah overfitting (custom_score), 15 algoritma mutakhir, dan penjelasan SHAP/LIME hingga level per pasien.
+          </p>
+
+          <!-- Thumbnail Image Preview -->
+          <div class="border border-editorial-line/80 rounded bg-editorial-softbg p-2 mb-4 overflow-hidden flex items-center justify-center">
+            <img src="papers/02-alphaml-clete/assets/graphical_abstract.png" alt="Abstrak Grafis AlphaML" class="max-h-36 w-auto object-contain">
+          </div>
+
+          <!-- Highlight Metrics Strip -->
+          <div class="grid grid-cols-3 gap-2 py-3 border-y border-editorial-line text-center text-xs font-sans mb-4">
+            <div>
+              <div class="text-[10px] text-editorial-muted uppercase">Algoritma</div>
+              <div class="font-bold text-editorial-ink">15 Model</div>
+            </div>
+            <div>
+              <div class="text-[10px] text-editorial-muted uppercase">Metrik Baru</div>
+              <div class="font-bold text-editorial-ink">custom_score</div>
+            </div>
+            <div>
+              <div class="text-[10px] text-editorial-muted uppercase">Interpretabilitas</div>
+              <div class="font-bold text-teal-700">SHAP & LIME</div>
+            </div>
+          </div>
+
+          <!-- Author Byline -->
+          <div class="text-xs text-editorial-muted mb-6">
+            <span class="font-semibold text-editorial-ink">A. Nasimian, J.U. Kazi* dkk.</span> • Lund University (Swedia) & Johns Hopkins University (USA)
+          </div>
+        </div>
+
+        <!-- Read Action Button -->
+        <a href="papers/02-alphaml-clete/index.html" class="w-full py-2.5 px-4 bg-editorial-softbg hover:bg-editorial-accent hover:text-white border border-editorial-line hover:border-editorial-accent rounded text-xs font-bold text-editorial-ink text-center transition-all flex items-center justify-center gap-1.5">
+          <span>Buka Telaah Lengkap</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </article>
+
+      <!-- CARD 3: CaMnO3 Thermoelectric -->
+      <article class="paper-card bg-white border border-editorial-line rounded p-6 flex flex-col justify-between" data-category="thermo" data-keywords="camno3 bcmo bismut termoelektrik wiedemann-franz lorenz double exchange perovskite lipi brin ugm ui brawijaya elsevier">
+        <div>
+          <!-- Header Meta -->
+          <div class="flex items-center justify-between text-xs text-editorial-muted mb-3">
+            <span class="font-semibold uppercase tracking-wider text-editorial-accent">Fisika Termoelektrik Oksida</span>
+            <span class="font-mono text-[11px]">Mater. Res. Bull. (2021)</span>
+          </div>
+
+          <!-- Title -->
+          <h2 class="text-xl font-bold font-sans text-editorial-ink tracking-tight leading-snug mb-3">
+            <a href="papers/03-camno3-thermoelectric/index.html" class="hover:text-editorial-accent transition-colors">
+              Transport Elektron dan Fonon pada CaMnO₃ Terdoping Bismut: Anomali Hukum Wiedemann–Franz
+            </a>
+          </h2>
+
+          <!-- Excerpt -->
+          <p class="text-sm font-serif italic text-editorial-body leading-relaxed mb-4">
+            Mengungkap mengapa isolator antiferomagnetik CaMnO₃ melanggar hukum Wiedemann–Franz dengan bilangan Lorenz 4× lipat, serta bagaimana doping 3% bismut memicu interaksi pertukaran ganda yang meredam resistivitas dan konduktivitas termal.
+          </p>
+
+          <!-- Thumbnail Image Preview -->
+          <div class="border border-editorial-line/80 rounded bg-editorial-softbg p-2 mb-4 overflow-hidden flex items-center justify-center">
+            <img src="papers/03-camno3-thermoelectric/assets/fig8_te_properties_cmo_bcmo.png" alt="Sifat termoelektrik CaMnO3 dan BCMO" class="max-h-36 w-auto object-contain">
+          </div>
+
+          <!-- Highlight Metrics Strip -->
+          <div class="grid grid-cols-3 gap-2 py-3 border-y border-editorial-line text-center text-xs font-sans mb-4">
+            <div>
+              <div class="text-[10px] text-editorial-muted uppercase">Resistivitas</div>
+              <div class="font-bold text-editorial-ink">Turun 10× Lipat</div>
+            </div>
+            <div>
+              <div class="text-[10px] text-editorial-muted uppercase">Bilangan Lorenz</div>
+              <div class="font-bold text-editorial-ink">Pulih ke ~1× L₀</div>
+            </div>
+            <div>
+              <div class="text-[10px] text-editorial-muted uppercase">Kecepatan Suara</div>
+              <div class="font-bold text-editorial-accent">0.81 km/s</div>
+            </div>
+          </div>
+
+          <!-- Author Byline -->
+          <div class="text-xs text-editorial-muted mb-6">
+            <span class="font-semibold text-editorial-ink">E. Suprayoga, E.H. Hasdeo* dkk.</span> • LIPI (BRIN), SNRU Thailand, UI, Univ. Brawijaya, Univ. Luxembourg
+          </div>
+        </div>
+
+        <!-- Read Action Button -->
+        <a href="papers/03-camno3-thermoelectric/index.html" class="w-full py-2.5 px-4 bg-editorial-softbg hover:bg-editorial-accent hover:text-white border border-editorial-line hover:border-editorial-accent rounded text-xs font-bold text-editorial-ink text-center transition-all flex items-center justify-center gap-1.5">
+          <span>Buka Telaah Lengkap</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </article>
+
+      <!-- CARD 4: SiP2 Thermoelectric Monolayer -->
+      <article class="paper-card bg-white border border-editorial-line rounded p-6 flex flex-col justify-between" data-category="material thermo" data-keywords="sip2 silikon difosfida monolayer 2d termoelektrik seebeck zt anisotropi xiangtan elsevier computational materials science">
+        <div>
+          <!-- Header Meta -->
+          <div class="flex items-center justify-between text-xs text-editorial-muted mb-3">
+            <span class="font-semibold uppercase tracking-wider text-editorial-accent">Material 2D Semikonduktor</span>
+            <span class="font-mono text-[11px]">Comput. Mater. Sci. (2021)</span>
+          </div>
+
+          <!-- Title -->
+          <h2 class="text-xl font-bold font-sans text-editorial-ink tracking-tight leading-snug mb-3">
+            <a href="papers/04-sip2-thermoelectric/index.html" class="hover:text-editorial-accent transition-colors">
+              Potensi Termoelektrik Monolayer Silikon Difosfida (SiP₂): Konduktivitas Termal Rendah & ZT = 0.90
+            </a>
+          </h2>
+
+          <!-- Excerpt -->
+          <p class="text-sm font-serif italic text-editorial-body leading-relaxed mb-4">
+            Kalkulasi prinsip pertama dan teori transport Boltzmann menyingkap energi eksfoliasi SiP₂ yang lebih rendah daripada fosfor hitam (18.6 meV/Å²), anisotropi termal 7.3× lipat, serta koefisien Seebeck raksasa melampaui 3 mV/K.
+          </p>
+
+          <!-- Thumbnail Image Preview -->
+          <div class="border border-editorial-line/80 rounded bg-editorial-softbg p-2 mb-4 overflow-hidden flex items-center justify-center">
+            <img src="papers/04-sip2-thermoelectric/assets/fig1_crystal_structure_sip2.png" alt="Struktur kristal SiP2" class="max-h-36 w-auto object-contain">
+          </div>
+
+          <!-- Highlight Metrics Strip -->
+          <div class="grid grid-cols-3 gap-2 py-3 border-y border-editorial-line text-center text-xs font-sans mb-4">
+            <div>
+              <div class="text-[10px] text-editorial-muted uppercase">Energi Eksfoliasi</div>
+              <div class="font-bold text-editorial-ink">18.6 meV/Å²</div>
+            </div>
+            <div>
+              <div class="text-[10px] text-editorial-muted uppercase">Seebeck Puncak</div>
+              <div class="font-bold text-editorial-ink">3.15 mV/K</div>
+            </div>
+            <div>
+              <div class="text-[10px] text-editorial-muted uppercase">ZT Suhu Ruang</div>
+              <div class="font-bold text-editorial-accent">0.90 (Sumbu-b)</div>
+            </div>
+          </div>
+
+          <!-- Author Byline -->
+          <div class="text-xs text-editorial-muted mb-6">
+            <span class="font-semibold text-editorial-ink">P. Zhang, T. Ouyang* dkk.</span> • Xiangtan University & Hunan Applied Technology Univ, China
+          </div>
+        </div>
+
+        <!-- Read Action Button -->
+        <a href="papers/04-sip2-thermoelectric/index.html" class="w-full py-2.5 px-4 bg-editorial-softbg hover:bg-editorial-accent hover:text-white border border-editorial-line hover:border-editorial-accent rounded text-xs font-bold text-editorial-ink text-center transition-all flex items-center justify-center gap-1.5">
+          <span>Buka Telaah Lengkap</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- PANDUAN PENGELOLAAN & PENAMBAHAN PAPER (Collapsible Minimalist) -->
+  <section id="panduan" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div class="bg-white border border-editorial-line rounded p-6 shadow-sm">
+      <div class="flex items-center justify-between cursor-pointer select-none" onclick="toggleGuide()">
+        <div class="flex items-center gap-2">
+          <div class="w-2 h-2 rounded-full bg-editorial-accent"></div>
+          <h2 class="text-sm font-bold text-editorial-ink tracking-tight font-sans">
+            Panduan Struktur Folder & Cara Menambahkan Paper Baru
+          </h2>
+        </div>
+        <span id="guide-chevron" class="text-xs font-mono text-editorial-muted">[+ buka]</span>
+      </div>
+
+      <div id="guide-content" class="hidden mt-4 pt-4 border-t border-editorial-line text-xs font-sans text-editorial-body space-y-4 leading-relaxed">
+        <p>
+          Repositori ini dirancang dengan struktur modular portabel mandiri. Setiap paper memiliki direktori tersendiri lengkap dengan berkas HTML dan folder aset gambar resolusi tingginya:
+        </p>
+
+        <div class="p-3 bg-editorial-softbg border border-editorial-line rounded font-mono text-[11px] text-editorial-ink leading-relaxed select-all">
+paper-hub/<br>
+├── index.html &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # Portal utama (halaman katalog ini)<br>
+├── README.md &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;# Dokumentasi repositori & indeks sitasi<br>
+└── papers/<br>
+&nbsp; &nbsp; ├── 01-mos2-mxene-her/ &nbsp; &nbsp; &nbsp; &nbsp; # Paper 1: MoS2/Ti3C2 MXene HER<br>
+&nbsp; &nbsp; │ &nbsp; ├── index.html<br>
+&nbsp; &nbsp; │ &nbsp; └── assets/ (fig1–fig5)<br>
+&nbsp; &nbsp; ├── 02-alphaml-clete/ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;# Paper 2: AlphaML Cell Patterns<br>
+&nbsp; &nbsp; │ &nbsp; ├── index.html<br>
+&nbsp; &nbsp; │ &nbsp; └── assets/ (abstract, fig1–fig8)<br>
+&nbsp; &nbsp; ├── 03-camno3-thermoelectric/ &nbsp;# Paper 3: Bi-doped CaMnO3 Termoelektrik<br>
+&nbsp; &nbsp; │ &nbsp; ├── index.html<br>
+&nbsp; &nbsp; │ &nbsp; └── assets/ (fig1–fig9)<br>
+&nbsp; &nbsp; └── 04-sip2-thermoelectric/ &nbsp; &nbsp;# Paper 4: Monolayer SiP2 2D Termoelektrik<br>
+&nbsp; &nbsp; &nbsp; &nbsp; ├── index.html<br>
+&nbsp; &nbsp; &nbsp; &nbsp; └── assets/ (fig1–fig7)
+        </div>
+
+        <div>
+          <div class="font-bold text-editorial-ink mb-1">Langkah Menambahkan Paper Baru:</div>
+          <ol class="list-decimal pl-5 space-y-1.5 text-editorial-muted">
+            <li>Buat folder baru di dalam <code>papers/05-nama-topik/</code>.</li>
+            <li>Ekstrak gambar-gambar dari PDF paper ke dalam subfolder <code>papers/05-nama-topik/assets/</code>.</li>
+            <li>Buat berkas <code>index.html</code> dengan template editorial monokromatik bebas LaTeX delimiters.</li>
+            <li>Tambahkan satu kartu ringkasan baru di dalam berkas <code>paper-hub/index.html</code> ini.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-editorial-line bg-white py-10 text-xs text-editorial-muted font-sans">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <span class="font-bold text-editorial-ink">TelaahSains Hub</span> — Repositori Terpadu Telaah Paper Ilmiah.
+      </div>
+      <div class="flex items-center gap-4">
+        <span>Lokasi: <code>scratch/paper-hub/</code></span>
+        <span>•</span>
+        <a href="#" class="hover:text-editorial-ink">Kembali ke Atas ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT: FILTER & LIVE SEARCH -->
+  <script>
+    // 1. Live Filter by Category
+    function filterCategory(cat) {
+      // Update buttons
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('bg-editorial-ink', 'text-white');
+        btn.classList.add('bg-white', 'border', 'border-editorial-line', 'text-editorial-muted');
+      });
+      const activeBtn = document.getElementById('btn-' + cat);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-white', 'border', 'border-editorial-line', 'text-editorial-muted');
+        activeBtn.classList.add('bg-editorial-ink', 'text-white');
+      }
+
+      // Filter cards
+      const cards = document.querySelectorAll('.paper-card');
+      cards.forEach(card => {
+        if (cat === 'all') {
+          card.classList.remove('hidden');
+        } else {
+          const cardCats = card.getAttribute('data-category').split(' ');
+          if (cardCats.includes(cat)) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        }
+      });
+    }
+
+    // 2. Real-time Live Search
+    function liveSearch() {
+      const query = document.getElementById('search-input').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.paper-card');
+
+      cards.forEach(card => {
+        const text = (card.innerText + ' ' + card.getAttribute('data-keywords')).toLowerCase();
+        if (text.includes(query)) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    // 3. Toggle Guide Accordion
+    function toggleGuide() {
+      const content = document.getElementById('guide-content');
+      const chevron = document.getElementById('guide-chevron');
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        chevron.textContent = '[- tutup]';
+      } else {
+        content.classList.add('hidden');
+        chevron.textContent = '[+ buka]';
+      }
+    }
+  </script>
+
+</body>
+</html>

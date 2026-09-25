@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nanokomposit 2D MoS₂/Ti₃C₂ MXene: Lompatan Elektrokatalis Hidrogen Basa | Fitur Editorial</title>
+  
+  <!-- Fonts: Newsreader (Classic Editorial Serif) & Plus Jakarta Sans (Clean Modern Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            editorial: {
+              ink: '#161616',        /* Deep charcoal black for text */
+              body: '#262626',       /* Warm reading body text */
+              muted: '#666666',      /* Subtle secondary meta */
+              lightmuted: '#8c8c8c', /* Captions & tiny labels */
+              line: '#e5e5e5',       /* Hairline dividers */
+              softbg: '#fafafa',     /* Off-white background */
+              paper: '#ffffff',      /* Pure white card backgrounds */
+              accent: '#0a74c0',     /* Royal Society of Chemistry editorial blue */
+              accentDark: '#08538a', /* Deep hover blue */
+              accentLight: '#f0f7fc' /* Minimalist blue wash for active states */
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            serif: ['"Newsreader"', 'Georgia', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Editorial Typographic Rhythm */
+    body {
+      background-color: #fafafa;
+      color: #262626;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .article-body p {
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 1.125rem; /* 18px */
+      line-height: 1.82;
+      color: #262626;
+      margin-bottom: 1.6rem;
+    }
+
+    .article-body p strong {
+      font-weight: 600;
+      color: #161616;
+    }
+
+    .editorial-dropcap::first-letter {
+      font-size: 4rem;
+      float: left;
+      line-height: 0.8;
+      margin-right: 0.65rem;
+      margin-top: 0.25rem;
+      font-weight: 600;
+      color: #161616;
+      font-family: "Newsreader", Georgia, serif;
+    }
+
+    /* Publication-style Scientific Table */
+    .pub-table {
+      border-top: 2px solid #161616;
+      border-bottom: 2px solid #161616;
+      width: 100%;
+    }
+    .pub-table th {
+      border-bottom: 1px solid #161616;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 600;
+      font-size: 0.8125rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.75rem 0.5rem;
+    }
+    .pub-table td {
+      border-bottom: 1px solid #eeeeee;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 0.875rem;
+      padding: 0.75rem 0.5rem;
+    }
+    .pub-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Reading Indicator */
+    #reading-progress {
+      transition: width 0.1s ease-out;
+    }
+
+    /* Figure Box */
+    .figure-container {
+      background: #ffffff;
+      border: 1px solid #e5e5e5;
+      border-radius: 4px;
+      padding: 1.25rem;
+      margin: 2.5rem 0;
+    }
+  </style>
+</head>
+
+<body class="selection:bg-editorial-accentLight selection:text-editorial-accent">
+
+  <!-- TOP PROGRESS BAR -->
+  <div class="fixed top-0 left-0 w-full h-[3px] bg-transparent z-50">
+    <div id="reading-progress" class="h-full bg-editorial-accent w-0"></div>
+  </div>
+
+  <!-- MASTHEAD & NAVIGATION -->
+  <header class="bg-white border-b border-editorial-line sticky top-0 z-40">
+    <!-- Top Micro Bar -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-editorial-line/60 py-1.5 flex items-center justify-between text-[11px] text-editorial-muted">
+      <div class="flex items-center gap-2">
+        <span class="font-bold tracking-wider uppercase text-editorial-ink">TELAAH PAPER ILMIAH</span>
+        <span class="text-editorial-line">•</span>
+        <span class="hidden sm:inline">Materials Research Bulletin 190 (2025) 113514</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://doi.org/10.1016/j.materresbull.2025.113514" target="_blank" rel="noopener" class="text-editorial-accent hover:underline flex items-center gap-1">
+          <span>DOI: 10.1016/j.materresbull.2025.113514</span>
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-6">
+        <a href="../../index.html" class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium text-zinc-600 hover:text-blue-600 rounded border border-zinc-200 hover:bg-zinc-50 transition-colors shadow-2xs" title="Kembali ke Katalog Utama">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          <span class="hidden sm:inline">Katalog Utama</span>
+        </a>
+        <a href="#" class="text-2xl font-serif font-bold tracking-tight text-editorial-ink">
+          Kimia<span class="text-editorial-accent italic font-normal">Fokus</span>
+        </a>
+        <span class="hidden md:inline-block h-5 w-px bg-editorial-line"></span>
+        <nav class="hidden md:flex items-center gap-6 text-xs font-semibold uppercase tracking-wider text-editorial-muted">
+          <a href="#latar-belakang" class="hover:text-editorial-accent transition-colors">Konteks</a>
+          <a href="#arsitektur" class="hover:text-editorial-accent transition-colors">Sintesis (Fig. 1)</a>
+          <a href="#spektroskopi" class="hover:text-editorial-accent transition-colors">Struktur (Fig. 2-3)</a>
+          <a href="#kinerja" class="hover:text-editorial-accent transition-colors">Elektrokimia (Fig. 4)</a>
+          <a href="#mekanisme" class="hover:text-editorial-accent transition-colors">Mekanisme (Fig. 5)</a>
+        </nav>
+      </div>
+
+      <div class="flex items-center gap-3 text-xs font-medium text-editorial-muted">
+        <span>Waktu baca ~6 menit</span>
+        <button onclick="window.print()" class="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 border border-editorial-line rounded hover:bg-editorial-softbg text-editorial-ink transition-colors" title="Cetak atau Simpan PDF">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+          Cetak
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ARTICLE HEADER (Chemistry World Style Hero) -->
+  <header class="bg-white border-b border-editorial-line pt-12 pb-10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Category Tag & Meta -->
+      <div class="flex items-center gap-3 text-xs font-semibold tracking-wider uppercase text-editorial-accent mb-4">
+        <span>Fitur Material & Energi</span>
+        <span class="text-editorial-line">•</span>
+        <span class="text-editorial-muted">Katalisis Reaksi Evolusi Hidrogen</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-3xl sm:text-4xl lg:text-[42px] font-bold text-editorial-ink tracking-tight font-sans leading-[1.18] mb-6">
+        Rekayasa Heterostruktur 2D/2D MoS₂ dan Ti₃C₂ MXene: Akselerasi Kinetika Produksi Hidrogen dalam Elektrolit Basa
+      </h1>
+
+      <!-- Standfirst (Lead Paragraph) -->
+      <p class="text-lg sm:text-xl font-serif italic text-editorial-body leading-relaxed mb-8 border-l-2 border-editorial-accent pl-5">
+        Menggantikan platina yang mahal membutuhkan strategi material cerdas. Menggabungkan tepi aktif molibdenum disulfida bermorfologi bunga dengan lembaran konduktif Ti₃C₂ MXene terbukti memangkas hambatan transfer muatan dan mengikis overpotensial reaksi secara drastis dalam larutan 1 M NaOH.
+      </p>
+
+      <!-- Authors & Affiliations -->
+      <div class="pt-6 border-t border-editorial-line flex flex-wrap items-center justify-between gap-4 text-xs text-editorial-muted">
+        <div>
+          <div class="text-editorial-ink font-semibold text-sm">
+            Rachmadani Hasanah, Yoga Romdoni, Vivi Fauzia, A. Arifutzzaman, Farihahusnah Hussin, Mohamed Kheireddine Aroua, Munawar Khalil*
+          </div>
+          <div class="mt-1 text-editorial-muted">
+            Departemen Kimia & Fisika FMIPA Universitas Indonesia • Sunway University • Lancaster University • Tyndall National Institute
+          </div>
+        </div>
+        <div class="text-right">
+          <div class="text-editorial-ink font-medium">Materials Research Bulletin (Elsevier)</div>
+          <div>Diterima 26 April 2025 • Tersedia Daring 2025</div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- KEY FINDINGS AT A GLANCE (Restrained, Monochrome Table) -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="bg-white border border-editorial-line rounded p-6 shadow-sm">
+      <h2 class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-4 flex items-center justify-between border-b border-editorial-line pb-2">
+        <span>Rangkuman Angka Kunci Kinerja Elektrokimia (1 M NaOH)</span>
+        <span class="text-editorial-muted font-normal lowercase">Hasanah et al., 2025</span>
+      </h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-left">
+        <div>
+          <div class="text-xs text-editorial-muted">Overpotensial (@10 mA cm⁻²)</div>
+          <div class="text-2xl font-bold text-editorial-ink mt-0.5">421 <span class="text-xs font-normal text-editorial-muted">mV vs RHE</span></div>
+          <div class="text-[11px] text-editorial-muted mt-1">60 mV lebih hemat dari MoS₂ murni (481 mV)</div>
+        </div>
+        <div>
+          <div class="text-xs text-editorial-muted">Tafel Slope (Kinetika)</div>
+          <div class="text-2xl font-bold text-editorial-ink mt-0.5">217 <span class="text-xs font-normal text-editorial-muted">mV dec⁻¹</span></div>
+          <div class="text-[11px] text-editorial-muted mt-1">Lebih rendah dari MoS₂ (292) & MXene (356)</div>
+        </div>
+        <div>
+          <div class="text-xs text-editorial-muted">Resistansi Muatan (R_ct)</div>
+          <div class="text-2xl font-bold text-editorial-ink mt-0.5">1.66 <span class="text-xs font-normal text-editorial-muted">kΩ</span></div>
+          <div class="text-[11px] text-editorial-muted mt-1">Turun dari 6.09 kΩ pada glassy carbon (GCE)</div>
+        </div>
+        <div>
+          <div class="text-xs text-editorial-muted">Uji Ketahanan Arus</div>
+          <div class="text-2xl font-bold text-editorial-ink mt-0.5">9000 <span class="text-xs font-normal text-editorial-muted">Detik</span></div>
+          <div class="text-[11px] text-editorial-muted mt-1">Stabil pada 10 mA cm⁻² + 100 siklus CV</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN ARTICLE LAYOUT (Text + Sticky TOC) -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      
+      <!-- ARTICLE TEXT (Cols 1-8) -->
+      <main class="lg:col-span-8 article-body">
+
+        <!-- EXECUTIVE SUMMARY ACCORDION (Clean Minimalist) -->
+        <div class="border border-editorial-line bg-white rounded p-5 mb-10">
+          <div class="flex items-center justify-between cursor-pointer select-none" onclick="toggleSummary()">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-editorial-accent"></span>
+              <h3 class="text-sm font-bold text-editorial-ink tracking-tight font-sans">
+                Ringkasan Singkat untuk Peneliti (4 Poin Utama)
+              </h3>
+            </div>
+            <span id="summary-chevron" class="text-xs font-mono text-editorial-muted">[- tutup]</span>
+          </div>
+
+          <div id="summary-content" class="mt-4 pt-4 border-t border-editorial-line text-xs sm:text-sm font-sans text-editorial-body space-y-2.5 leading-relaxed">
+            <p><strong>1. Kebutuhan Media Basa:</strong> Reaksi evolusi hidrogen (HER) di lingkungan basa sangat diminati industri karena tidak mengikis elektroda layaknya media asam. Namun, reaksinya lambat karena membutuhkan energi tinggi untuk memecah molekul H₂O (tahap Volmer).</p>
+            <p><strong>2. Keterbatasan Komponen Murni:</strong> MoS₂ memiliki tepi aktif berkemampuan tinggi menangkap hidrogen, tetapi bidang dasarnya lembam dan konduktivitas listriknya rendah. Sebaliknya, Ti₃C₂ MXene sangat konduktif dan hidrofilik, namun rentan mengalami restacking.</p>
+            <p><strong>3. Rekayasa Hidrotermal 2D/2D:</strong> Menumbuhkan partikel MoS₂ bermorfologi bunga mekar di permukaan dan sela lapisan Ti₃C₂ MXene memperluas jarak antarlapis, mencegah agregasi, dan menciptakan antarmuka kontak listrik yang intim.</p>
+            <p><strong>4. Hasil Uji Nyata:</strong> Menghasilkan overpotensial 421 mV pada 10 mA cm⁻², nilai Tafel slope 217 mV dec⁻¹, hambatan transfer muatan anjlok ke 1.66 kΩ, serta stabil selama 9000 detik pengujian kronoamperometri.</p>
+          </div>
+        </div>
+
+        <!-- SECTION 1: Latar Belakang -->
+        <section id="latar-belakang" class="pt-2">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            1. Tantangan Kinetika Basa dan Urgensi Pengganti Platina
+          </h2>
+          
+          <p class="editorial-dropcap">
+            Eksplorasi hidrogen sebagai vektor energi masa depan kini memasuki babak krusial. Selama beberapa dekade, produksi hidrogen dunia bertumpu pada perengkahan uap gas alam (<em>steam reforming</em>)—sebuah metode yang menghasilkan jejak karbon dioksida masif. Elektrolisis air menawarkan jalur bersih yang ideal, namun kelayakannya ditentukan oleh efisiensi elektrokatalis pada elektroda katoda tempat reaksi evolusi hidrogen (HER) berlangsung.
+          </p>
+
+          <p>
+            Dalam skala industri, HER pada media basa (seperti 1 M NaOH atau KOH) jauh lebih disukai dibandingkan media asam. Hal ini disebabkan stabilitas material elektroda yang jauh lebih tinggi akibat berkurangnya laju korosi dan disolusi. Namun, media basa menghadirkan tantangan kinetika yang berat. Berbeda dengan lingkungan asam yang kaya akan proton bebas (H⁺), larutan basa mengharuskan katalis untuk memutus ikatan molekul air (H₂O) terlebih dahulu guna menghasilkan proton teradsorpsi. Proses disosiasi air ini membutuhkan energi aktivasi tinggi sehingga reaksi berlangsung lamban (<em>sluggish reaction kinetics</em>).
+          </p>
+
+          <p>
+            Hingga kini, platina (Pt) tetap menjadi katalis rujukan dengan overpotensial yang sangat rendah (pada penelitian ini terukur hanya 16 mV pada 10 mA cm⁻²). Namun, kelangkaan dan biaya tinggi platina menjadi batu sandungan bagi produksi hidrogen terdesentralisasi skala besar. Oleh karena itu, para peneliti berfokus merancang material berlimpah berbasis kalkogenida logam transisi (TMD) dan karbida dua dimensi (MXene).
+          </p>
+        </section>
+
+        <!-- SECTION 2: Sintesis & Desain Material (FIG. 1) -->
+        <section id="arsitektur" class="pt-8">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            2. Desain Heterostruktur 2D/2D: Menautkan MoS₂ pada Ti₃C₂ MXene
+          </h2>
+
+          <p>
+            Molibdenum disulfida (MoS₂) merupakan salah satu material TMD yang paling menjanjikan karena energi bebas Gibbs adsorpsi hidrogennya pada bagian tepi (<em>edge sites</em>) mendekati nilai platina. MoS₂ tersusun atas lapisan atom S–Mo–S yang terikat gaya van der Waals. Sayangnya, aktivitas katalitik MoS₂ hanya terkonsentrasi pada sisi tepi, sedangkan bidang dasarnya (<em>basal plane</em>) bersifat lembam. Selain itu, konduktivitas listrik MoS₂ murni relatif rendah dan lembaran nanosheet-nya cenderung saling menumpuk (<em>aggregating</em>).
+          </p>
+
+          <p>
+            Untuk mengatasi kelemahan tersebut, tim peneliti dari Universitas Indonesia mengintegrasikan MoS₂ dengan Ti₃C₂ MXene. Ti₃C₂ disintesis melalui pengikisan kimia selektif (<em>selective chemical etching</em>) terhadap lapisan aluminium dari fasa induk MAX (Ti₃AlC₂) menggunakan campuran LiF dan asam klorida (HCl), dilanjutkan dengan delaminasi menggunakan DMSO. Ti₃C₂ MXene memiliki konduktivitas logam yang luar biasa, permukaan hidrofilik dengan gugus terminasi aktif (–O, –OH, –F), serta luas permukaan yang lapang.
+          </p>
+
+          <!-- FIGURE 1 EMBEDDED -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig1_synthesis_scheme.png" 
+                alt="Skema diagram sintesis nanokomposit MoS2/Ti3C2 MXene" 
+                class="w-full max-w-2xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig1_synthesis_scheme.png', 'Gambar 1: Skema tahapan sintesis nanokomposit MoS₂/Ti₃C₂ MXene')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 1 | Skema rute sintesis nanokomposit MoS₂/Ti₃C₂ MXene.</span> 
+              Sintesis melibatkan dua jalur paralel: pembentukan serbuk MoS₂ melalui rute hidrotermal prekursor natrium molibdat dan tiourea pada 200 °C (atas), serta etsa fasa MAX Ti₃AlC₂ dengan LiF + HCl yang dilanjutkan delaminasi DMSO untuk menghasilkan lembaran eksfoliasi Ti₃C₂ MXene (bawah). Keduanya kemudian dikopel secara hidrotermal pada 100 °C menghasilkan arsitektur 2D/2D terintegrasi.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Hasanah et al., Mater. Res. Bull. 190 (2025) 113514 / Elsevier. (Klik gambar untuk perbesar)</div>
+            </figcaption>
+          </figure>
+
+          <p>
+            Rute hidrotermal pada suhu 100 °C selama 4 jam memungkinkan partikel MoS₂ bertumbuh di permukaan dan di antara celah antarlapisan Ti₃C₂ MXene. Struktur ini mencegah agregasi lembaran MoS₂ sekaligus memperbesar celah kontak difusi elektrolit.
+          </p>
+        </section>
+
+        <!-- SECTION 3: Karakterisasi Struktural & Morfologi (FIG. 2 & FIG. 3) -->
+        <section id="spektroskopi" class="pt-8">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            3. Verifikasi Kristalinitas, Ikatan Kimia, dan Morfologi
+          </h2>
+
+          <p>
+            Keberhasilan perakitan nanokomposit dikonfirmasi secara komprehensif melalui kombinasi difraksi sinar-X (XRD), spektroskopi Raman, spektroskopi inframerah transformasi Fourier (FTIR), serta mikroskopi elektron beresolusi tinggi (FESEM dan HRTEM).
+          </p>
+
+          <!-- FIGURE 2 EMBEDDED -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig2_xrd_raman_ftir.png" 
+                alt="Pola XRD, Spektra Raman, dan Spektra FTIR dari sampel" 
+                class="w-full max-w-2xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig2_xrd_raman_ftir.png', 'Gambar 2: (a) Pola XRD, (b) Spektra Raman, dan (c) Spektra FTIR dari MoS₂, Ti₃C₂ MXene, dan nanokomposit MoS₂/Ti₃C₂ MXene')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 2 | Analisis spektroskopi dan kristalografi sampel.</span> 
+              <strong>(a) Pola XRD:</strong> Difraksi fasa heksagonal 2H-MoS₂ terlihat pada 2θ = 16.1° bidang (002). Puncak (002) Ti₃C₂ MXene bergeser ke sudut rendah 6.8°, menandakan ekspansi jarak antarlapis (<em>d-spacing</em>) akibat pergantian Al oleh gugus –F dan –OH. Pola komposit merefleksikan keberadaan kedua fasa. 
+              <strong>(b) Spektra Raman:</strong> Modus vibrasi MoS₂ muncul pada 378 cm⁻¹ (E¹₂g) dan 404 cm⁻¹ (A₁g), sementara vibrasi Ti–C teramati pada 154 cm⁻¹ dan 202 cm⁻¹.
+              <strong>(c) Spektra FTIR:</strong> Menunjukkan pita khas ikatan S–S (493 cm⁻¹), Mo–S (672–1183 cm⁻¹), vibrasi Ti–C/Ti–O (622, 725 cm⁻¹), serta pita serapan lebar O–H molekul air (3600–2900 cm⁻¹).
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Hasanah et al., Mater. Res. Bull. 190 (2025) 113514.</div>
+            </figcaption>
+          </figure>
+
+          <p>
+            Pada analisis FESEM dan TEM (Gambar 3), morfologi MoS₂ murni memperlihatkan bentuk kelopak bunga mekar (<em>flower-like</em>) yang tersusun atas lapisan-lapisan tipis dengan dispersi tinggi. Pola difraksi elektron area terpilih (SAED) menunjukkan titik terang difus yang membuktikan struktur kristal tunggal heksagonal.
+          </p>
+
+          <!-- FIGURE 3 EMBEDDED -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig3_fesem_tem.png" 
+                alt="Gambar FESEM dan TEM MoS2, Ti3C2 MXene, dan nanokomposit" 
+                class="w-full max-w-2xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig3_fesem_tem.png', 'Gambar 3: Citra FESEM dan TEM (inset: pola SAED) dari (a-b) MoS₂, (c-d) Ti₃C₂ MXene, dan (e-f) nanokomposit MoS₂/Ti₃C₂ MXene')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 3 | Morfologi mikroskopi elektron (FESEM dan TEM).</span> 
+              <strong>(a, b)</strong> MoS₂ murni dengan morfologi menyerupai kelopak bunga nano bertingkat;
+              <strong>(c, d)</strong> Lembaran tipis bertumpuk khas Ti₃C₂ MXene dengan cincin difraksi polikristalin pada SAED;
+              <strong>(e, f)</strong> Nanokomposit MoS₂/Ti₃C₂ MXene memperlihatkan kelopak bunga MoS₂ terdistribusi merata di atas dan di antara lapisan lembaran MXene. Citra HRTEM mengonfirmasi jarak kisi (<em>lattice fringe</em>) 0.32 nm milik Ti₃C₂ dan 0.64 nm milik MoS₂.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Hasanah et al., Mater. Res. Bull. 190 (2025) 113514.</div>
+            </figcaption>
+          </figure>
+
+          <p>
+            Pengamatan mikroskopis mengonfirmasi bahwa penataan 2D di atas 2D ini menghasilkan antarmuka kontak luas yang menopang transfer elektron tanpa hambatan batas butir (<em>grain boundaries</em>).
+          </p>
+        </section>
+
+        <!-- SECTION 4: Kinerja Elektrokimia HER (FIG. 4 & Table 1-2) -->
+        <section id="kinerja" class="pt-8">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            4. Kinerja Elektrokimia: Penurunan Overpotensial dan Hambatan Muatan
+          </h2>
+
+          <p>
+            Pengujian elektrokimia dijalankan menggunakan potensiostat tiga elektroda dalam larutan <strong>1 M NaOH</strong> pada suhu ruang. Kinerja elektrokatalitik dibandingkan secara langsung antara elektroda kerja Glassy Carbon Electrode (GCE) telanjang, Ti₃C₂ MXene murni, MoS₂ murni, nanokomposit MoS₂/Ti₃C₂, serta kawat platina (Pt wire).
+          </p>
+
+          <!-- FIGURE 4 EMBEDDED -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig4_electrochemical_curves.png" 
+                alt="Kurva polarisasi LSV, plot Tafel, spektrum EIS, dan perbedaan kerapatan arus" 
+                class="w-full max-w-2xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig4_electrochemical_curves.png', 'Gambar 4: (a) Kurva polarisasi LSV, (b) Plot Tafel, (c) Spektra impedansi EIS (Nyquist plot), dan (d) Plot perbedaan densitas arus (Δj) vs laju pindai untuk estimasi C_dl')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 4 | Evaluasi kinerja elektrokimia HER dalam 1 M NaOH.</span> 
+              <strong>(a) Kurva Polarisasi LSV:</strong> Komposit MoS₂/Ti₃C₂ (garis hijau) memperlihatkan onset potensial terendah (146 mV vs RHE) dan overpotensial 421 mV pada 10 mA cm⁻².
+              <strong>(b) Plot Tafel:</strong> Kemiringan Tafel komposit mencapai 217 mV dec⁻¹, jauh melampaui MoS₂ murni (292 mV dec⁻¹) dan MXene (356 mV dec⁻¹).
+              <strong>(c) Spektra EIS (Nyquist plot):</strong> Diameter setengah lingkaran komposit yang mengecil tajam menunjukkan resistansi transfer muatan (R_ct) anjlok menjadi 1.66 kΩ.
+              <strong>(d) Plot Kapasitansi Lapis Ganda (C_dl):</strong> Estimasi luas area elektrokimia aktif (ECSA) komposit terhitung 3.192 cm².
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Hasanah et al., Mater. Res. Bull. 190 (2025) 113514.</div>
+            </figcaption>
+          </figure>
+
+          <!-- PUBLICATION TABLE 1 -->
+          <div class="my-6">
+            <div class="text-xs font-semibold text-editorial-muted uppercase tracking-wider mb-2 font-sans">
+              Tabel 1 | Perbandingan Kinerja Elektrokimia Sampel dalam Elektrolit 1 M NaOH (Data dari Paper)
+            </div>
+            <div class="overflow-x-auto">
+              <table class="pub-table">
+                <thead>
+                  <tr class="text-editorial-ink">
+                    <th class="text-left">Elektrokatalis</th>
+                    <th class="text-right">Onset Potensial (mV vs RHE)</th>
+                    <th class="text-right">Overpotensial @10 mA cm⁻² (mV)</th>
+                    <th class="text-right">Tafel Slope (mV dec⁻¹)</th>
+                    <th class="text-right">R_ct (kΩ)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="font-medium text-editorial-muted">Bare GCE</td>
+                    <td class="text-right font-mono">479</td>
+                    <td class="text-right font-mono">850</td>
+                    <td class="text-right font-mono">412</td>
+                    <td class="text-right font-mono">6.09</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-muted">Ti₃C₂ MXene murni</td>
+                    <td class="text-right font-mono">290</td>
+                    <td class="text-right font-mono">569</td>
+                    <td class="text-right font-mono">356</td>
+                    <td class="text-right font-mono">5.45</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-muted">MoS₂ murni</td>
+                    <td class="text-right font-mono">162</td>
+                    <td class="text-right font-mono">481</td>
+                    <td class="text-right font-mono">292</td>
+                    <td class="text-right font-mono">2.28</td>
+                  </tr>
+                  <tr class="font-semibold text-editorial-accent bg-editorial-accentLight/40">
+                    <td>MoS₂/Ti₃C₂ MXene (Nanokomposit)</td>
+                    <td class="text-right font-mono">146</td>
+                    <td class="text-right font-mono font-bold">421</td>
+                    <td class="text-right font-mono">217</td>
+                    <td class="text-right font-mono">1.66</td>
+                  </tr>
+                  <tr class="text-editorial-muted italic">
+                    <td>Kawat Platina (Pt wire benchmark)</td>
+                    <td class="text-right font-mono">2</td>
+                    <td class="text-right font-mono">16</td>
+                    <td class="text-right font-mono">76</td>
+                    <td class="text-right font-mono">-</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <p>
+            Berdasarkan Tabel 1, perbaikan nilai kinetika terlihat sangat mencolok. Kemiringan Tafel (<em>Tafel slope</em>) yang turun menjadi 217 mV dec⁻¹ mengindikasikan bahwa laju pembentukan hidrogen meningkat jauh lebih pesat terhadap penambahan overpotensial. Penurunan hambatan transfer muatan (R_ct) menjadi 1.66 kΩ menunjukkan bahwa elektron dari sirkuit luar mengalir bebas melalui lembaran MXene langsung menuju pusat-pusat aktif MoS₂.
+          </p>
+
+          <!-- PUBLICATION TABLE 2 -->
+          <div class="my-6">
+            <div class="text-xs font-semibold text-editorial-muted uppercase tracking-wider mb-2 font-sans">
+              Tabel 2 | Komparasi dengan Elektrokatalis Sejenis Berbasis MoS₂ dan MXene dalam Media Basa (Data Literatur)
+            </div>
+            <div class="overflow-x-auto">
+              <table class="pub-table">
+                <thead>
+                  <tr class="text-editorial-ink">
+                    <th class="text-left">Elektrokatalis</th>
+                    <th class="text-left">Elektrolit</th>
+                    <th class="text-right">Overpotensial @10 mA cm⁻² (mV)</th>
+                    <th class="text-right">Tafel Slope (mV dec⁻¹)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Fe₂O₃/MoS₂/Ti₃C₂T_x MXene</td>
+                    <td>1 M KOH</td>
+                    <td class="text-right font-mono">1376</td>
+                    <td class="text-right font-mono">-</td>
+                  </tr>
+                  <tr>
+                    <td>NiFe₂O₄/MXene</td>
+                    <td>1 M NaOH</td>
+                    <td class="text-right font-mono">584</td>
+                    <td class="text-right font-mono">187.5</td>
+                  </tr>
+                  <tr>
+                    <td>Ti₃C₂T_x</td>
+                    <td>1 M KOH</td>
+                    <td class="text-right font-mono">541</td>
+                    <td class="text-right font-mono">468</td>
+                  </tr>
+                  <tr>
+                    <td>MoS₂/NiO</td>
+                    <td>1 M NaOH</td>
+                    <td class="text-right font-mono">530</td>
+                    <td class="text-right font-mono">232.6</td>
+                  </tr>
+                  <tr>
+                    <td>MoS₂/NiO/MWCNT</td>
+                    <td>1 M NaOH</td>
+                    <td class="text-right font-mono">510</td>
+                    <td class="text-right font-mono">220</td>
+                  </tr>
+                  <tr>
+                    <td>HF-MXene</td>
+                    <td>1 M KOH</td>
+                    <td class="text-right font-mono">444</td>
+                    <td class="text-right font-mono">311</td>
+                  </tr>
+                  <tr class="font-semibold text-editorial-accent bg-editorial-accentLight/40">
+                    <td>MoS₂/Ti₃C₂ MXene (Studi Ini)</td>
+                    <td>1 M NaOH</td>
+                    <td class="text-right font-mono font-bold">421</td>
+                    <td class="text-right font-mono">217</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 5: Mekanisme Reaksi (FIG. 5) -->
+        <section id="mekanisme" class="pt-8">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            5. Jalur Reaksi Volmer-Heyrovsky pada Antarmuka Komposit
+          </h2>
+
+          <p>
+            Dalam elektrolit basa, reaksi evolusi hidrogen pada permukaan elektrokatalis (dilambangkan dengan <em>M</em>) secara umum mengikuti kombinasi dua tahap berurutan:
+          </p>
+
+          <!-- Equation Cards (Publication Style) -->
+          <div class="my-6 p-4 bg-editorial-softbg border border-editorial-line rounded font-mono text-sm space-y-3">
+            <div class="flex items-center justify-between border-b border-editorial-line pb-2">
+              <span class="text-xs uppercase font-sans font-bold text-editorial-muted">Langkah 1 • Tahap Volmer (Disosiasi Air)</span>
+              <span class="text-xs text-editorial-lightmuted">(Persamaan 2)</span>
+            </div>
+            <div class="text-center py-1 text-editorial-ink font-semibold">
+              H₂O + M + e⁻ ⇌ M–H_ads + OH⁻
+            </div>
+            
+            <div class="flex items-center justify-between border-b border-editorial-line pt-2 pb-2">
+              <span class="text-xs uppercase font-sans font-bold text-editorial-muted">Langkah 2 • Tahap Heyrovsky (Evolusi Gas Hidrogen)</span>
+              <span class="text-xs text-editorial-lightmuted">(Persamaan 3)</span>
+            </div>
+            <div class="text-center py-1 text-editorial-ink font-semibold">
+              H₂O + e⁻ + M–H_ads ⇌ H₂ + OH⁻ + M
+            </div>
+          </div>
+
+          <!-- FIGURE 5 EMBEDDED -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig5_her_mechanism.png" 
+                alt="Kemungkinan mekanisme reaksi HER pada nanokomposit MoS2/Ti3C2 MXene" 
+                class="w-full max-w-xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig5_her_mechanism.png', 'Gambar 5: Skema kemungkinan mekanisme katalisis HER pada nanokomposit MoS₂/Ti₃C₂ MXene dalam elektrolit alkali')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 5 | Skema mekanisme reaksi HER pada nanokomposit MoS₂/Ti₃C₂ MXene.</span> 
+              Pengujian sel tiga elektroda (CE: kawat platina, RE: Ag/AgCl, WE: modified GCE) dalam larutan 1 M NaOH. Molekul air berdifusi ke sisi aktif MoS₂ dan mengalami disosiasi menjadi H_ads dan OH⁻ (tahap Volmer). Konduktivitas tinggi lembaran Ti₃C₂ MXene memasok aliran elektron kilat (e⁻), mempercepat tahap Heyrovsky untuk membentuk gas hidrogen (H₂) yang kemudian lepas dari permukaan elektroda.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Hasanah et al., Mater. Res. Bull. 190 (2025) 113514.</div>
+            </figcaption>
+          </figure>
+
+          <p>
+            Nilai Tafel slope 217 mV dec⁻¹ mengindikasikan bahwa <strong>tahap Volmer bertindak sebagai tahap penentu laju reaksi (<em>rate-determining step</em>)</strong>. Kehadiran Ti₃C₂ MXene berfungsi ganda: menyediakan jalan bebas hambatan bagi transport elektron sekaligus mencegah partikel MoS₂ saling bertumpukan. Pada saat yang sama, kelopak bunga MoS₂ menyediakan situs tepi aktif melimpah dengan energi pengikatan H_ads yang optimal, menurunkan barier aktivasi disosiasi air secara terukur.
+          </p>
+        </section>
+
+        <!-- SECTION 6: Ketahanan & Kesimpulan -->
+        <section id="kesimpulan" class="pt-8 border-t border-editorial-line mt-10">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            6. Ketahanan Jangka Panjang dan Prospek Aplikasi
+          </h2>
+
+          <p>
+            Selain efisiensi voltase, kestabilan operasional elektroda katoda merupakan penentu utama kelayakan aplikasi industri. Uji kronoamperometri pada densitas arus 10 mA cm⁻² selama <strong>9000 detik (2,5 jam)</strong> menunjukkan arus yang stabil tanpa penurunan signifikan. Pengujian siklik voltammetri sebanyak 100 siklus pada daerah non-faradaik juga memperlihatkan bentuk profil yang hampir identik sebelum dan sesudah pengujian.
+          </p>
+
+          <p>
+            Keberhasilan perakitan nanokomposit 2D/2D MoS₂/Ti₃C₂ MXene melalui rute hidrotermal sederhana ini memberikan bukti kuat bahwa keterbatasan intrinsik masing-masing material dapat saling melengkapi. Pendekatan sinergis ini membuka arah baru bagi perancangan elektrokatalis bebas logam mulia yang tangguh, hemat biaya, dan berpotensi diterapkan dalam sistem elektrolisis air industri untuk memacu ekonomi hidrogen rendah karbon.
+          </p>
+
+          <!-- CITATION BLOCK -->
+          <div class="mt-10 p-5 bg-white border border-editorial-line rounded">
+            <div class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-2 font-sans">
+              Sitasi Paper Resmi (APA Format)
+            </div>
+            <p class="font-mono text-xs text-editorial-body leading-relaxed select-all">
+              Hasanah, R., Romdoni, Y., Fauzia, V., Arifutzzaman, A., Hussin, F., Aroua, M. K., & Khalil, M. (2025). Two-dimension MoS₂/Ti₃C₂ MXene nanocomposite for an efficient hydrogen evolution reaction in alkaline media. <em>Materials Research Bulletin</em>, 190, 113514. https://doi.org/10.1016/j.materresbull.2025.113514
+            </p>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- SIDEBAR NAVIGATION & GLOSSARY (Cols 9-12) -->
+      <aside class="lg:col-span-4 space-y-8 font-sans">
+        
+        <!-- STICKY TABLE OF CONTENTS -->
+        <div class="sticky top-20 space-y-6">
+          
+          <div class="bg-white border border-editorial-line rounded p-5">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-3 pb-2 border-b border-editorial-line">
+              Daftar Isi Artikel
+            </h4>
+            <nav class="space-y-1.5 text-xs text-editorial-muted" id="toc-list">
+              <a href="#latar-belakang" class="block py-1 hover:text-editorial-accent transition-colors">• 1. Tantangan Media Basa</a>
+              <a href="#arsitektur" class="block py-1 hover:text-editorial-accent transition-colors">• 2. Desain 2D/2D & Sintesis (Fig. 1)</a>
+              <a href="#spektroskopi" class="block py-1 hover:text-editorial-accent transition-colors">• 3. Struktur & Mikroskopi (Fig. 2-3)</a>
+              <a href="#kinerja" class="block py-1 hover:text-editorial-accent transition-colors">• 4. Data Elektrokimia (Fig. 4 & Tabel)</a>
+              <a href="#mekanisme" class="block py-1 hover:text-editorial-accent transition-colors">• 5. Mekanisme Reaksi (Fig. 5)</a>
+              <a href="#kesimpulan" class="block py-1 hover:text-editorial-accent transition-colors">• 6. Ketahanan 9000 Detik</a>
+            </nav>
+          </div>
+
+          <!-- MINI GLOSSARY FOR STUDENTS -->
+          <div class="bg-white border border-editorial-line rounded p-5 space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-editorial-ink pb-2 border-b border-editorial-line">
+              Glosarium Istilah Kunci
+            </h4>
+            <div class="space-y-3 text-xs">
+              <div>
+                <span class="font-semibold text-editorial-ink">Overpotensial (η):</span>
+                <p class="text-editorial-muted mt-0.5">Tegangan tambahan di luar tegangan termodinamika teoritis yang dibutuhkan untuk memicu laju reaksi tertentu. Angka makin kecil menandakan penghematan energi.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">Tafel Slope (b):</span>
+                <p class="text-editorial-muted mt-0.5">Besaran kinetika reaksi; menunjukkan sensitivitas peningkatan arus terhadap penambahan overpotensial. Nilai rendah mencerminkan kinetika yang lincah.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">R_ct (Charge Transfer Resistance):</span>
+                <p class="text-editorial-muted mt-0.5">Hambatan perpindahan elektron melintasi antarmuka elektroda ke molekul elektrolit. Ditentukan dari diameter setengah lingkaran kurva Nyquist EIS.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">Tahap Volmer:</span>
+                <p class="text-editorial-muted mt-0.5">Langkah disosiasi molekul air teradsorpsi menghasilkan H_ads dan OH⁻, menjadi tahap penentu laju lambat pada media basa.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FIGURE INDEX QUICK JUMP -->
+          <div class="bg-white border border-editorial-line rounded p-5">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-3 pb-2 border-b border-editorial-line">
+              Indeks Gambar Paper
+            </h4>
+            <ul class="text-xs space-y-2 text-editorial-muted">
+              <li>
+                <a href="#arsitektur" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 1: Skema Sintesis Komposit</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 2</span>
+                </a>
+              </li>
+              <li>
+                <a href="#spektroskopi" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 2: XRD, Raman, FTIR</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 3</span>
+                </a>
+              </li>
+              <li>
+                <a href="#spektroskopi" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 3: FESEM & TEM SAED</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 4</span>
+                </a>
+              </li>
+              <li>
+                <a href="#kinerja" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 4: Kurva LSV, Tafel, EIS, C_dl</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 5</span>
+                </a>
+              </li>
+              <li>
+                <a href="#mekanisme" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 5: Skema Mekanisme Reaksi</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 7</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- LIGHTBOX MODAL (For full-res image viewing) -->
+  <div id="lightbox" class="fixed inset-0 bg-black/80 z-50 hidden flex flex-col items-center justify-center p-4 backdrop-blur-sm" onclick="closeLightbox()">
+    <div class="relative max-w-5xl max-h-[90vh] bg-white rounded p-3 shadow-2xl flex flex-col" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between pb-2 mb-2 border-b border-editorial-line text-xs font-sans text-editorial-ink">
+        <span id="lightbox-caption" class="font-bold"></span>
+        <button onclick="closeLightbox()" class="p-1 hover:bg-editorial-softbg rounded text-editorial-muted hover:text-editorial-ink">
+          ✕ Tutup
+        </button>
+      </div>
+      <div class="overflow-auto max-h-[80vh] flex items-center justify-center p-2">
+        <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[75vh] object-contain">
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-editorial-line bg-white py-10 text-xs text-editorial-muted font-sans">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <span class="font-bold text-editorial-ink">KimiaFokus</span> — Diseminasi Riset Sains Material Indonesia bergaya editorial terpercaya.
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://doi.org/10.1016/j.materresbull.2025.113514" target="_blank" class="hover:underline text-editorial-accent">Paper Asli di Elsevier</a>
+        <span>•</span>
+        <a href="#" class="hover:text-editorial-ink">Kembali ke Atas ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    // 1. Reading Progress Bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('reading-progress').style.width = scrolled + '%';
+    });
+
+    // 2. Minimalist Summary Toggle
+    function toggleSummary() {
+      const content = document.getElementById('summary-content');
+      const chevron = document.getElementById('summary-chevron');
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        chevron.textContent = '[- tutup]';
+      } else {
+        content.classList.add('hidden');
+        chevron.textContent = '[+ buka]';
+      }
+    }
+
+    // 3. Lightbox Functionality
+    function openLightbox(src, caption) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox-caption').textContent = caption;
+      document.getElementById('lightbox').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+
+</body>
+</html>
