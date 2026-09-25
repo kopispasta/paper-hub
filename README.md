@@ -24,9 +24,12 @@ paper-hub/
     ├── 04-sip2-thermoelectric/          # Paper 4: Monolayer SiP2 2D Termoelektrik
     │   ├── index.html                   # Showcase lengkap Paper 4
     │   └── assets/                      # 7 Gambar resolusi tinggi (Fig. 1 s/d Fig. 7)
-    └── 05-mox2-thermoelectric/          # Paper 5: TMDC MoX2 Termoelektrik & Rekor ZT
-        ├── index.html                   # Showcase lengkap Paper 5
-        └── assets/                      # 7 Gambar resolusi tinggi (Fig. 1 s/d Fig. 7)
+    ├── 05-mox2-thermoelectric/          # Paper 5: TMDC MoX2 Termoelektrik & Rekor ZT
+    │   ├── index.html                   # Showcase lengkap Paper 5
+    │   └── assets/                      # 7 Gambar resolusi tinggi (Fig. 1 s/d Fig. 7)
+    └── 06-mch-dehydrogenation-pt13/     # Paper 6: Katalisis Dehidrogenasi LOHC Pt13
+        ├── index.html                   # Showcase lengkap Paper 6
+        └── assets/                      # 13 Gambar resolusi tinggi (Fig. 1 s/d Fig. 13)
 ```
 
 ---
@@ -40,6 +43,7 @@ paper-hub/
 | 03 | **Investigation of electron and phonon transport in Bi-doped CaMnO₃ for thermoelectric applications** | *Materials Research Bulletin* 141 (Elsevier, 2021) | Termoelektrik, Pelanggaran Hukum WF, Bilangan Lorenz 4× L₀, Doping Bismut | [Buka Paper 03](papers/03-camno3-thermoelectric/index.html) |
 | 04 | **Potential thermoelectric candidate monolayer silicon diphosphide (SiP₂) from a first-principles calculation** | *Computational Materials Science* 188 (Elsevier, 2021) | Monolayer SiP₂, Anisotropi Termal 7.3×, Seebeck >3 mV/K, ZT 0.90 | [Buka Paper 04](papers/04-sip2-thermoelectric/index.html) |
 | 05 | **Thermal transport and thermoelectric properties of transition metal dichalcogenides MoX₂ from first-principles calculation** | *Physica Scripta* 99 (IOP Publishing, 2024) | TMDC MoX₂, Model Kinetik-Kolektif KCM, MoTe₂ ZT Rekor 2.77 @550K & 3.55 @900K | [Buka Paper 05](papers/05-mox2-thermoelectric/index.html) |
+| 06 | **Substituent effect on the reactivity of liquid organic hydrogen carriers: A DFT study on methylcyclohexane dehydrogenation over Pt13 cluster** | *International Journal of Hydrogen Energy* 193 (Elsevier, 2025) | LOHC, MCH, MCA, MNC, Klaster Pt₁₃, DFT DMol3, Efek Substituen, RDS, ΔG, E_a | [Buka Paper 06](papers/06-mch-dehydrogenation-pt13/index.html) |
 
 ---
 

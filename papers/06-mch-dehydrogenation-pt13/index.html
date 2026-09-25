@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Efek Substituen pada Katalisis LOHC: Dehidrogenasi Metilsikloheksana di Atas Klaster Pt₁₃ | Telaah Ilmiah</title>
+  
+  <!-- Fonts: Newsreader (Editorial Serif) & Plus Jakarta Sans (Clean Modern Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            editorial: {
+              ink: '#18181b',        /* Deep charcoal */
+              body: '#27272a',       /* Warm reading text */
+              muted: '#71717a',      /* Neutral secondary */
+              lightmuted: '#a1a1aa', /* Captions */
+              line: '#e4e4e7',       /* Hairline border */
+              softbg: '#fafafa',     /* Off-white background */
+              paper: '#ffffff',      /* Card white */
+              accent: '#0a74c0',     /* Royal scientific blue */
+              accentDark: '#075997', /* Dark hover blue */
+              accentLight: '#f0f7fc' /* Subtle highlight */
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            serif: ['"Newsreader"', 'Georgia', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #fafafa;
+      color: #27272a;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .article-body p {
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 1.125rem; /* 18px */
+      line-height: 1.82;
+      color: #27272a;
+      margin-bottom: 1.6rem;
+    }
+
+    .article-body p strong {
+      font-weight: 600;
+      color: #18181b;
+    }
+
+    .article-body h2 {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: #18181b;
+      letter-spacing: -0.02em;
+      line-height: 1.28;
+      margin-top: 3.5rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #e4e4e7;
+    }
+
+    .article-body h3 {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #18181b;
+      letter-spacing: -0.01em;
+      line-height: 1.35;
+      margin-top: 2.25rem;
+      margin-bottom: 0.85rem;
+    }
+
+    /* Publication Table Styling */
+    .pub-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-size: 0.875rem;
+    }
+    .pub-table th {
+      border-top: 2px solid #18181b;
+      border-bottom: 1px solid #18181b;
+      padding: 0.75rem 0.6rem;
+      text-align: left;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 600;
+      color: #18181b;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+    .pub-table td {
+      border-bottom: 1px solid #f4f4f5;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 0.875rem;
+      padding: 0.75rem 0.6rem;
+      color: #27272a;
+    }
+    .pub-table tr:last-child td {
+      border-bottom: 2px solid #18181b;
+    }
+
+    /* Figure Box */
+    .figure-container {
+      background: #ffffff;
+      border: 1px solid #e4e4e7;
+      border-radius: 4px;
+      padding: 1.25rem;
+      margin: 2.5rem 0;
+    }
+
+    #reading-progress {
+      transition: width 0.1s ease-out;
+    }
+  </style>
+</head>
+
+<body class="selection:bg-editorial-accentLight selection:text-editorial-accent">
+
+  <!-- TOP PROGRESS BAR -->
+  <div class="fixed top-0 left-0 w-full h-[3px] bg-transparent z-50">
+    <div id="reading-progress" class="h-full bg-editorial-accent w-0"></div>
+  </div>
+
+  <!-- MASTHEAD & TOP NAVIGATION -->
+  <header class="bg-white border-b border-editorial-line sticky top-0 z-40">
+    <!-- Top Journal Meta -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-editorial-line/60 py-1.5 flex items-center justify-between text-[11px] text-editorial-muted font-sans">
+      <div class="flex items-center gap-2">
+        <span class="font-bold tracking-wider uppercase text-editorial-ink">KOMPUTASI KIMIA & PENYIMPANAN ENERGI HIJAU</span>
+        <span class="text-editorial-line">•</span>
+        <span class="hidden sm:inline">Int. J. Hydrogen Energy 193 (2025) 152387</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://doi.org/10.1016/j.ijhydene.2025.152387" target="_blank" rel="noopener" class="text-editorial-accent hover:underline flex items-center gap-1 font-medium">
+          <span>DOI: 10.1016/j.ijhydene.2025.152387</span>
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+      <div class="flex items-center gap-6">
+        <a href="../../index.html" class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium text-zinc-600 hover:text-blue-600 rounded border border-zinc-200 hover:bg-zinc-50 transition-colors shadow-2xs" title="Kembali ke Katalog Utama">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          <span class="hidden sm:inline">Katalog Utama</span>
+        </a>
+        <a href="#" class="text-2xl font-serif font-bold tracking-tight text-editorial-ink">
+          Hidrogen<span class="text-editorial-accent italic font-normal">Katalisis</span>
+        </a>
+        <span class="hidden md:inline-block h-5 w-px bg-editorial-line"></span>
+        <nav class="hidden md:flex items-center gap-5 text-xs font-semibold uppercase tracking-wider text-editorial-muted font-sans">
+          <a href="#latar-belakang" class="hover:text-editorial-accent transition-colors">Konteks LOHC</a>
+          <a href="#adsorpsi-pt13" class="hover:text-editorial-accent transition-colors">Adsorpsi Pt₁₃ (Fig. 1–3)</a>
+          <a href="#tahap-1-2" class="hover:text-editorial-accent transition-colors">Tahap 1–2 (Fig. 4–6)</a>
+          <a href="#tahap-3-4" class="hover:text-editorial-accent transition-colors">Tahap 3–4 (Fig. 7–9)</a>
+          <a href="#tahap-5-6" class="hover:text-editorial-accent transition-colors">Tahap 5–6 (Fig. 10–12)</a>
+          <a href="#termodinamika-tradeoff" class="hover:text-editorial-accent transition-colors">Termodinamika & Trade-off</a>
+        </nav>
+      </div>
+
+      <div class="flex items-center gap-3 text-xs font-medium text-editorial-muted font-sans">
+        <span>Waktu baca ~7 menit</span>
+        <button onclick="window.print()" class="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 border border-editorial-line rounded hover:bg-editorial-softbg text-editorial-ink transition-colors" title="Cetak atau Simpan PDF">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+          Cetak
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ARTICLE HEADER (Editorial Style Hero) -->
+  <header class="bg-white border-b border-editorial-line pt-12 pb-10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Category Tag & Meta -->
+      <div class="flex items-center gap-3 text-xs font-semibold tracking-wider uppercase text-editorial-accent mb-4 font-sans">
+        <span>Katalisis Heterogen Komputasi</span>
+        <span class="text-editorial-line">•</span>
+        <span class="text-editorial-muted">Density Functional Theory (DFT-D / DMol3)</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-3xl sm:text-4xl lg:text-[42px] font-bold text-editorial-ink tracking-tight font-sans leading-[1.18] mb-6">
+        Efek Substituen pada Katalisis LOHC: Studi DFT Dehidrogenasi Metilsikloheksana di Atas Klaster Pt₁₃
+      </h1>
+
+      <!-- Standfirst (Lead Paragraph) -->
+      <p class="text-lg sm:text-xl font-serif italic text-editorial-body leading-relaxed mb-8 border-l-2 border-editorial-accent pl-5">
+        Sebagai pembawa hidrogen organik cair (LOHC) terdepan, metilsikloheksana terhambat oleh kebutuhan energi endotermik yang tinggi (300–400 °C). Melalui kalkulasi Density Functional Theory pada klaster sub-nanometer Pt₁₃, peneliti menyelidiki efek substitusi gugus pendorong elektron (-NH₂) dan penarik elektron (-NO₂) pada posisi C4: keduanya terbukti memangkas energi bebas Gibbs dehidrogenasi hingga lebih dari 10 kcal/mol, namun memicu pergeseran tahap penentu laju reaksi (RDS) serta menghadirkan dilema desorpsi produk dan kapasitas simpan gravimetrik.
+      </p>
+
+      <!-- Authors & Affiliations -->
+      <div class="pt-6 border-t border-editorial-line flex flex-wrap items-center justify-between gap-4 text-xs text-editorial-muted font-sans">
+        <div>
+          <div class="text-editorial-ink font-semibold text-sm">
+            Marzie Esmaeili Chermahini, Alireza Najafi Chermahini*, Mehran Ghiaci
+          </div>
+          <div class="mt-1 text-editorial-muted">
+            Department of Chemistry, Isfahan University of Technology, Isfahan 8415683111, Iran
+          </div>
+        </div>
+        <div class="font-mono text-[11px] bg-editorial-softbg px-3 py-1.5 border border-editorial-line rounded">
+          Publikasi: Elsevier • Int. J. Hydrogen Energy 193 (2025) 152387
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- KEY METRICS STRIP -->
+  <section class="border-b border-editorial-line bg-editorial-softbg py-6">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <div class="text-xs uppercase tracking-wider text-editorial-muted font-sans font-medium">Beban ΔG Reaksi</div>
+          <div class="text-2xl font-bold font-sans text-editorial-ink mt-1">26.48 <span class="text-xs font-normal text-editorial-muted">kcal/mol</span></div>
+          <div class="text-[11px] text-editorial-accent font-sans mt-0.5">MCA turun 11.38 kcal/mol vs MCH</div>
+        </div>
+        <div>
+          <div class="text-xs uppercase tracking-wider text-editorial-muted font-sans font-medium">Beban Entalpi (ΔH)</div>
+          <div class="text-2xl font-bold font-sans text-editorial-ink mt-1">52.42 <span class="text-xs font-normal text-editorial-muted">kcal/mol</span></div>
+          <div class="text-[11px] text-emerald-600 font-sans mt-0.5">MNC 53.93 | MCH 63.04 kcal/mol</div>
+        </div>
+        <div>
+          <div class="text-xs uppercase tracking-wider text-editorial-muted font-sans font-medium">Barrier Aktivasi Global</div>
+          <div class="text-2xl font-bold font-sans text-editorial-ink mt-1">56.37 <span class="text-xs font-normal text-editorial-muted">kcal/mol</span></div>
+          <div class="text-[11px] text-teal-600 font-sans mt-0.5">MNC kinetika tercepat di Pt₁₃</div>
+        </div>
+        <div>
+          <div class="text-xs uppercase tracking-wider text-editorial-muted font-sans font-medium">Kapasitas Simpan H₂</div>
+          <div class="text-2xl font-bold font-sans text-editorial-ink mt-1">6.12 <span class="text-xs font-normal text-editorial-muted">wt%</span></div>
+          <div class="text-[11px] text-amber-700 font-sans mt-0.5">MCH (6.12) > MCA (5.31) > MNC (4.20)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN ARTICLE CONTENT -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 article-body">
+
+    <!-- INTRO & BACKGROUND -->
+    <section id="latar-belakang">
+      <p class="text-xl font-serif leading-relaxed text-editorial-ink first-letter:text-5xl first-letter:font-bold first-letter:float-left first-letter:mr-3 first-letter:text-editorial-accent first-letter:font-serif">
+        Peralihan global menuju sistem energi bebas emisi karbon menempatkan hidrogen sebagai salah satu vektor energi paling krusial di abad ke-21. Namun, sifat fisis gas hidrogen yang sangat ringan dan mudah meledak menghadirkan rintangan logistik masif: kompresi mekanik bertekanan tinggi (350–700 bar) dan pencairan kriogenik ekstrem (-253 °C) tidak hanya menyerap sebagian besar input energi terbarukan, melainkan juga menuntut infrastruktur tangki khusus yang berisiko tinggi terhadap kerapuhan material logam.
+      </p>
+
+      <p>
+        Sebagai solusi kompromi yang sangat menjanjikan, teknologi <strong>Liquid Organic Hydrogen Carrier (LOHC)</strong> memungkinkan hidrogen disimpan dan ditranspor dalam bentuk cairan organik stabil pada suhu dan tekanan lingkungan normal, memanfaatkan jaringan pipa, truk tangki, dan kapal bahan bakar minyak bumi yang sudah tersedia secara luas. Di antara kandidat LOHC, pasangan siklus <strong>metilsikloheksana / toluena (MCH/TOL)</strong> menjadi sistem yang paling matang secara industri (contohnya pada demonstrasi skala besar <em>SPERA Hydrogen</em>).
+      </p>
+
+      <p>
+        Kendati demikian, siklus MCH menghadapi satu kelemahan termal yang berat: reaksi pelepasan hidrogen (dehidrogenasi) bersifat sangat endotermik, membutuhkan pasokan panas bersuhu tinggi (300–400 °C) di atas katalis platinum. Kebutuhan energi termal yang masif ini menurunkan efisiensi energi siklus secara keseluruhan. Untuk mengatasi kendala ini, tim kimia komputasi dari <strong>Isfahan University of Technology (Iran)</strong> yang dipimpin oleh <strong>Marzie Esmaeili Chermahini, Alireza Najafi Chermahini, dan Mehran Ghiaci</strong> melakukan telaah komprehensif menggunakan <em>Density Functional Theory</em> (DFT-D) guna menguji hipotesis fundamental: <em>apakah modifikasi kimiawi pada cincin sikloheksana melalui gugus fungsi pendorong elektron (-NH₂) atau penarik elektron (-NO₂) dapat mempermudah pelepasan hidrogen pada tingkat atomik?</em>
+      </p>
+
+      <!-- FIGURE 1: Reaction Schemes -->
+      <figure class="figure-container">
+        <img 
+          src="assets/fig1_dehydrogenation_steps.png" 
+          alt="Skema tahapan dehidrogenasi MCH, MCA, dan MNC menjadi produk aromatik di klaster Pt13" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 1.</strong> Skema tiga jalur reaksi dehidrogenasi enam tahap: (a) metilsikloheksana (MCH) menjadi toluena (TOL), (b) 4-metilsikloheksilamina (MCA) menjadi 4-metilanilin (MAN), dan (c) 1-metil-4-nitrosikloheksana (MNC) menjadi 1-metil-4-nitrobenzena (MNB), bersama seluruh struktur intermediat kuncinya.
+        </figcaption>
+      </figure>
+
+      <p>
+        Dalam studi ini, dua senyawa turunan diposisikan berhadapan dengan MCH murni pada posisi karbon C4: <strong>4-metilsikloheksilamina (MCA)</strong> yang membawa gugus amino pendorong elektron (-NH₂), serta <strong>1-metil-4-nitrosikloheksana (MNC)</strong> yang membawa gugus nitro penarik elektron kuat (-NO₂). Katalis yang dimodelkan adalah klaster sub-nanometer <strong>Pt₁₃</strong> simetri D₅ₕ, yang mencerminkan pusat-pusat situs aktif dengan koordinasi rendah (corner and edge sites) pada nanopartikel platinum komersial.
+      </p>
+    </section>
+
+    <!-- SECTION 2: ADSORPTION & PT13 CLUSTER -->
+    <section id="adsorpsi-pt13">
+      <h2>Klaster Sub-Nanometer Pt₁₃ & Perilaku Adsorpsi Awal</h2>
+
+      <p>
+        Kalkulasi struktur elektronik dijalankan menggunakan modul <strong>DMol3</strong> (Materials Studio) dengan fungsional pertukaran-korelasi GGA-PBE yang dipadukan koreksi dispersi van der Waals (metode Tkatchenko-Scheffler / TS DFT-D). Sebelum reaksi dehidrogenasi dapat berlangsung, molekul LOHC harus terlebih dahulu menempel secara stabil pada permukaan klaster Pt₁₃.
+      </p>
+
+      <p>
+        Berdasarkan analisis konformasi termodinamika di fase gas, isomer <em>trans</em> untuk kedua turunan terbukti lebih stabil daripada isomer <em>cis</em>: <em>trans</em>-MCA lebih stabil 0.95 kcal/mol dibanding <em>cis</em>-MCA, sementara <em>trans</em>-MNC lebih stabil 0.52 kcal/mol dibanding <em>cis</em>-MNC, disebabkan oleh minimnya repulsi sterik antara gugus metil dan substituen pada posisi ekuatorial cincin kursi (chair conformation).
+      </p>
+
+      <!-- FIGURE 2: Adsorption Configurations -->
+      <figure class="figure-container">
+        <img 
+          src="assets/fig2_adsorption_configurations.png" 
+          alt="Konfigurasi adsorpsi paling stabil MCH, MCA, dan MNC di klaster Pt13" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 2.</strong> Konfigurasi geometri adsorpsi paling stabil pada permukaan klaster Pt₁₃: (a) MCH melalui orientasi Ads1, (b) MCA melalui koordinasi sisi gugus amino (-NH₂), dan (c) MNC melalui interaksi sisi gugus metil (-CH₃).
+        </figcaption>
+      </figure>
+
+      <p>
+        Perhitungan energi adsorpsi (E_ads) menunjukkan hierarki kekuatan interaksi yang sangat tegas:
+      </p>
+
+      <div class="my-4 p-3 bg-editorial-softbg border-l-2 border-editorial-accent rounded text-xs font-mono text-editorial-ink">
+        |E_ads(MCA)| > |E_ads(MCH)| > |E_ads(MNC)|<br>
+        MCA: -26.67 kcal/mol &nbsp;|&nbsp; MCH: -22.35 kcal/mol &nbsp;|&nbsp; MNC: -21.59 kcal/mol (-20.38 kcal/mol sisi nitro)
+      </div>
+
+      <p>
+        Mengapa MCA teradsorpsi paling kuat sedangkan MNC paling lemah? Jawabannya berakar pada efek elektronik murni. Gugus amino (-NH₂) merupakan pendorong elektron kuat melalui pasangan elektron bebas atom nitrogen, yang meningkatkan kerapatan awan elektron pada cincin sikloheksana dan berinteraksi langsung dengan atom permukaan platinum. Sebaliknya, gugus nitro (-NO₂) yang bersifat sangat elektronegatif menyedot kerapatan elektron dari cincin, sehingga interaksi van der Waals dan transfer muatan antara cincin karbon dengan klaster Pt₁₃ menjadi teredam.
+      </p>
+
+      <!-- FIGURE 3: Numbering & Clusters -->
+      <figure class="figure-container">
+        <img 
+          src="assets/fig3_atomic_numbering_structures.png" 
+          alt="Skema penomoran atom MCH, MCA, MNC dan zonasi empat kuadran klaster Pt13" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 3.</strong> Skema representasi penomoran atom untuk MCH, MCA, dan MNC serta pembagian topologi empat wilayah klaster Pt₁₃ untuk melacak distribusi perpindahan muatan atomik.
+        </figcaption>
+      </figure>
+
+      <p>
+        Analisis muatan atomik Mulliken mengonfirmasi mekanisme ini secara kuantitatif: setelah adsorpsi MCA, atom-atom platinum pada klaster menerima muatan negatif tambahan (terjadi transfer elektron dari molekul ke klaster Pt₁₃). Sebaliknya, pada adsorpsi MNC, atom platinum justru kehilangan muatan negatif (menjadi lebih positif), membuktikan terjadinya tarikan balik elektron dari klaster logam menuju gugus nitro. Analisis Densitas Keadaan Terproyeksi (PDOS) mengungkap bahwa puncak orbital-p dari ketiga molekul bergeser ke tingkat energi Fermi yang lebih rendah setelah adsorpsi, disertai pembentukan puncak ikatan lemah antara orbital p molekul dan orbital d klaster pada -3.6 dan -1.8 Hartree.
+      </p>
+    </section>
+
+    <!-- SECTION 3: DEHYDROGENATION STEPS 1 & 2 -->
+    <section id="tahap-1-2">
+      <h2>Tahap 1 & 2: Pemutusan Sepasang Hidrogen Pertama (Pelepasan H₂ ke-1)</h2>
+
+      <p>
+        Dehidrogenasi sempurna dari metilsikloheksana menuju toluena melibatkan pelepasan total 6 atom hidrogen (3 molekul gas H₂). Reaksi ini dimodelkan sebagai rangkaian 6 tahap elementer berurutan yang terbagi dalam tiga babak pelepasan molekul H₂.
+      </p>
+
+      <p>
+        Pemilihan atom hidrogen awal ditentukan berdasarkan perpanjangan ikatan C–H setelah adsorpsi pada klaster serta kedekatan jarak spasial dengan atom Pt permukaan:
+      </p>
+
+      <ul>
+        <li class="mb-2"><strong>MCH:</strong> Pemutusan dimulai dari ikatan C4–H6 (ikatan memanjang menjadi 1.109 Å dengan jarak 2.852 Å ke Pt4). Barrier aktivasi TS1 sebesar <strong>17.94 kcal/mol</strong>, melepaskan intermediat D1 dengan sifat eksotermik (melepas 4.44 kcal/mol).</li>
+        <li class="mb-2"><strong>MCA:</strong> Pemutusan dimulai dari C3–H5 (memanjang menjadi 1.111 Å, berjarak 2.831 Å ke Pt4) dengan barrier TS1' sebesar <strong>18.40 kcal/mol</strong>, menghasilkan intermediat D1' yang sangat stabil (melepas 7.75 kcal/mol).</li>
+        <li class="mb-2"><strong>MNC:</strong> Pemutusan terjadi pada C4–H6 dengan barrier TS1" sebesar <strong>20.89 kcal/mol</strong>, menghasilkan intermediat D1" yang melepas 4.62 kcal/mol.</li>
+      </ul>
+
+      <!-- FIGURE 4: Intermediates 1 & 2 -->
+      <figure class="figure-container">
+        <img 
+          src="assets/fig4_intermediates_steps_1_2.png" 
+          alt="Struktur intermediat optimal pada tahap pertama dan kedua dehidrogenasi MCH, MCA, MNC di klaster Pt13" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 4.</strong> Geometri teroptimasi intermediat tahap 1 (D1, D1', D1") dan tahap 2 (D2, D2', D2") pada dehidrogenasi MCH, MCA, dan MNC di klaster Pt₁₃, lengkap dengan panjang ikatan (Å) dan jarak adsorpsi ke situs aktif platinum.
+        </figcaption>
+      </figure>
+
+      <p>
+        Setelah pembentukan intermediat radikal teradsorpsi (D1), tahap kedua berlanjut dengan melepaskan hidrogen kedua dari karbon tetangga untuk membentuk ikatan rangkap dua karbon-karbon pertama (alkena siklis).
+      </p>
+
+      <p>
+        Pada tahap 2 inilah rintangan kinetik utama muncul: untuk MCH, pemutusan ikatan C3–H4 memerlukan energi aktivasi sebesar <strong>28.91 kcal/mol</strong> (keadaan transisi TS2). Ini merupakan barrier tertinggi di antara seluruh tahap dehidrogenasi MCH, menjadikan <strong>Tahap 2 sebagai Rate-Determining Step (RDS) untuk MCH</strong>! Hal serupa terjadi pada MCA, di mana pemutusan C2–H2 melewati TS2' dengan barrier <strong>27.82 kcal/mol</strong> (juga berfungsi sebagai <strong>RDS untuk MCA</strong>).
+      </p>
+
+      <!-- FIGURE 5: TS 1 & 2 -->
+      <figure class="figure-container">
+        <img 
+          src="assets/fig5_transition_states_steps_1_2.png" 
+          alt="Struktur keadaan transisi optimal untuk tahap 1 dan tahap 2 dehidrogenasi MCH, MCA, MNC" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 5.</strong> Struktur keadaan transisi (transition state) teroptimasi untuk tahap pertama (TS1, TS1', TS1") dan tahap kedua (TS2, TS2', TS2") pada permukaan klaster Pt₁₃.
+        </figcaption>
+      </figure>
+
+      <p>
+        Sebaliknya, pada molekul MNC, pemutusan ikatan C3–H4 pada tahap 2 hanya memerlukan barrier sebesar <strong>26.80 kcal/mol</strong>. Kedua atom hidrogen yang kini menempel pada atom Pt berdekatan kemudian berasosiasi dan berdesorpsi ke fase gas sebagai molekul H₂ pertama.
+      </p>
+
+      <!-- FIGURE 6: Reaction Coordinates 1 & 2 -->
+      <figure class="figure-container">
+        <img 
+          src="assets/fig6_reaction_coordinates_steps_1_2.png" 
+          alt="Diagram profil koordinat reaksi tahap pertama dan kedua dehidrogenasi di klaster Pt13" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 6.</strong> Diagram profil koordinat energi potensial (reaction coordinates) untuk tahap ke-1 dan ke-2 dehidrogenasi MCH, MCA, dan MNC di atas klaster Pt₁₃.
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- SECTION 4: DEHYDROGENATION STEPS 3 & 4 -->
+    <section id="tahap-3-4">
+      <h2>Tahap 3 & 4: Pelepasan H₂ Kedua & Pergeseran RDS pada MNC</h2>
+
+      <p>
+        Setelah satu ikatan rangkap dua terbentuk, molekul mengalami dehidrogenasi babak kedua menuju pembentukan diena terkonjugasi. Pada fase inilah sebuah anomali kinetika yang sangat menarik terungkap oleh tim peneliti:
+      </p>
+
+      <p>
+        Bagi MCH dan MCA, tahap ketiga berlangsung dengan energi aktivasi yang relatif terkendali: masing-masing <strong>24.92 kcal/mol</strong> (TS3) dan <strong>21.93 kcal/mol</strong> (TS3'). Keduanya mengadopsi konfigurasi adsorpsi terkoordinasi ganda yang stabil pada permukaan klaster platinum.
+      </p>
+
+      <!-- FIGURE 7: Intermediates 3 & 4 -->
+      <figure class="figure-container">
+        <img 
+          src="assets/fig7_intermediates_steps_3_4.png" 
+          alt="Struktur intermediat optimal pada tahap ketiga dan keempat dehidrogenasi MCH, MCA, MNC" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 7.</strong> Geometri teroptimasi intermediat tahap 3 (D4, D4', D4") dan tahap 4 (D5, D5', D5") di klaster Pt₁₃, memperlihatkan evolusi cincin karbon menuju sistem diena tak jenuh.
+        </figcaption>
+      </figure>
+
+      <p>
+        Namun, untuk <strong>MNC</strong>, tahap 3 justru melonjak menjadi rintangan paling terjal dalam seluruh siklus reaksinya, dengan barrier aktivasi mencapai <strong>28.66 kcal/mol</strong>! Mengapa gugus nitro yang semula memperlancar tahap 2 mendadak memicu lonjakan barrier pada tahap 3?
+      </p>
+
+      <p>
+        Penjelasan strukturalnya sangat gamblang saat mengamati geometri keadaan transisi <strong>TS3"</strong> (Gambar 8): akibat pembatasan geometri dari gugus nitro, intermediat terpaksa mengadopsi struktur adsorpsi koordinasi-tunggal eta-1 pada C5 (η1(C5)), yang jauh lebih tidak stabil dibandingkan struktur dua-koordinasi pada MCH dan MCA. Ditambah lagi, posisi atom hidrogen yang harus diputus berada sangat dekat dengan gugus penarik elektron nitro, sehingga ikatan C–H menjadi lebih terikat secara elektronik. Konsekuensinya, <strong>Tahap 3 menjadi Rate-Determining Step (RDS) khusus untuk MNC</strong>!
+      </p>
+
+      <!-- FIGURE 8: TS 3 & 4 -->
+      <figure class="figure-container">
+        <img 
+          src="assets/fig8_transition_states_steps_3_4.png" 
+          alt="Struktur keadaan transisi optimal untuk tahap 3 dan 4 dehidrogenasi di klaster Pt13" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 8.</strong> Struktur keadaan transisi tahap 3 (TS3, TS3', TS3") dan tahap 4 (TS4, TS4', TS4") di klaster Pt₁₃. Perhatikan geometri monokoordinasi yang kurang stabil pada TS3".
+        </figcaption>
+      </figure>
+
+      <p>
+        Pada tahap 4, pemutusan hidrogen pasangan diena berlangsung mulus untuk ketiga senyawa, dengan barrier yang seragam rendah: 18.91 kcal/mol (MCH), 19.69 kcal/mol (MCA), dan 17.98 kcal/mol (MNC). Pelepasan molekul H₂ kedua kemudian mengosongkan kembali situs adsorpsi platinum untuk babak akhir reaksi.
+      </p>
+
+      <!-- FIGURE 9: Reaction Coordinates 3 & 4 -->
+      <figure class="figure-container">
+        <img 
+          src="assets/fig9_reaction_coordinates_steps_3_4.png" 
+          alt="Diagram profil koordinat reaksi tahap ke-3 dan ke-4 dehidrogenasi di klaster Pt13" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 9.</strong> Diagram profil koordinat reaksi untuk tahap 3 dan tahap 4, mengilustrasikan lonjakan energi aktivasi TS3" pada turunan nitro (MNC).
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- SECTION 5: DEHYDROGENATION STEPS 5 & 6 -->
+    <section id="tahap-5-6">
+      <h2>Tahap 5 & 6: Aromatisasi Final Menuju Cincin Benzena</h2>
+
+      <p>
+        Dua tahap pemutusan terakhir merupakan langkah krusial untuk memulihkan kestabilan resonansi aromatik cincin benzena. Pemutusan H ke-5 pada tahap 5 memerlukan energi aktivasi 19.31 kcal/mol untuk MCH dan 18.52 kcal/mol untuk MCA.
+      </p>
+
+      <p>
+        Menariknya, pada MNC, tahap 5 berlangsung jauh lebih mudah dengan barrier hanya <strong>14.55 kcal/mol</strong>. Intermediat D8" terbentuk secara eksotermik, didukung oleh interaksi sekunder antara atom oksigen nitro dengan atom permukaan platinum.
+      </p>
+
+      <!-- FIGURE 10: Intermediates 5 & 6 -->
+      <figure class="figure-container">
+        <img 
+          src="assets/fig10_intermediates_steps_5_6.png" 
+          alt="Struktur intermediat tahap 5 dan 6 dehidrogenasi MCH, MCA, MNC di klaster Pt13" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 10.</strong> Geometri teroptimasi intermediat tahap 5 (D7, D7', D7") dan tahap 6 (D8 s/d D9) pada permukaan klaster Pt₁₃ saat cincin karbon mencapai keadaan aromatik planar.
+        </figcaption>
+      </figure>
+
+      <p>
+        Pada tahap ke-6 (pemutusan hidrogen terakhir), seluruh molekul menuntaskan aromatisasinya:
+      </p>
+
+      <ul>
+        <li class="mb-2"><strong>MCH:</strong> Melalui TS6 dengan barrier <strong>11.25 kcal/mol</strong>, melepaskan energi masif sebesar <strong>13.97 kcal/mol</strong> (sangat eksotermik) untuk membentuk molekul toluena teradsorpsi (D9).</li>
+        <li class="mb-2"><strong>MCA:</strong> Memerlukan rotasi molekul 180° terhadap klaster Pt₁₃ agar ikatan C4–H6 dapat berhadapan dengan atom Pt4. Melewati TS6' dengan barrier <strong>13.42 kcal/mol</strong>, reaksi ini melepaskan energi eksotermik sebesar <strong>23.99 kcal/mol</strong> saat membentuk 4-metilanilin (D9').</li>
+        <li class="mb-2"><strong>MNC:</strong> Pemutusan C1–H1 berlangsung dengan barrier teramat rendah, hanya <strong>8.70 kcal/mol</strong> (TS6") dan melepaskan energi 10.40 kcal/mol untuk menghasilkan 1-metil-4-nitrobenzena (D9").</li>
+      </ul>
+
+      <!-- FIGURE 11: TS 5 & 6 -->
+      <figure class="figure-container">
+        <img 
+          src="assets/fig11_transition_states_steps_5_6.png" 
+          alt="Struktur keadaan transisi tahap 5 dan 6 pada klaster Pt13" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 11.</strong> Struktur keadaan transisi tahap 5 (TS5, TS5', TS5") dan tahap 6 (TS6, TS6', TS6") di klaster Pt₁₃. Pada TS6", atom oksigen O2 dari gugus nitro membentuk koordinasi penstabilan O2–Pt5 (2.214 Å).
+        </figcaption>
+      </figure>
+
+      <p>
+        Rendahnya barrier pada TS6" disebabkan oleh stabilisasi koordinasi ganda: selain koordinasi cincin karbon η1(C2)–η1(C3) dengan Pt10, atom oksigen O2 dari gugus nitro membentuk ikatan koordinasi langsung dengan Pt5 sepanjang 2.214 Å. Interaksi pengikat tambahan ini mengunci keadaan transisi pada tingkat energi potensial yang sangat rendah.
+      </p>
+
+      <!-- FIGURE 12: Reaction Coordinates 5 & 6 -->
+      <figure class="figure-container">
+        <img 
+          src="assets/fig12_reaction_coordinates_steps_5_6.png" 
+          alt="Diagram profil koordinat reaksi tahap ke-5 dan ke-6 dehidrogenasi di klaster Pt13" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 12.</strong> Profil koordinat energi reaksi untuk tahap 5 dan 6 dehidrogenasi di atas klaster Pt₁₃, memperlihatkan pemulihan energi resonansi aromatik yang sangat eksotermik di akhir siklus.
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- SECTION 6: KINETICS & THERMODYNAMICS COMPARISON -->
+    <section id="termodinamika-tradeoff">
+      <h2>Kinetika, Termodinamika & Dilema Rekayasa LOHC</h2>
+
+      <p>
+        Untuk memahami gambaran utuh dari efek substituen terhadap kereaktifan LOHC, data kinetika enam tahap dan parameter termodinamika global dirangkum dalam tabel publikasi berikut:
+      </p>
+
+      <div class="overflow-x-auto">
+        <table class="pub-table">
+          <thead>
+            <tr>
+              <th>Molekul</th>
+              <th>E_a Tahap 1</th>
+              <th>E_a Tahap 2</th>
+              <th>E_a Tahap 3</th>
+              <th>E_a Tahap 4</th>
+              <th>E_a Tahap 5</th>
+              <th>E_a Tahap 6</th>
+              <th>Tahap Kunci (RDS)</th>
+              <th>E_a Global</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-bold">MCH (Tanpa Substituen)</td>
+              <td>17.94</td>
+              <td class="font-bold text-editorial-accent">28.91</td>
+              <td>24.92</td>
+              <td>18.91</td>
+              <td>19.31</td>
+              <td>11.25</td>
+              <td class="font-semibold text-editorial-ink">Tahap 2</td>
+              <td class="font-bold">61.28 kcal/mol</td>
+            </tr>
+            <tr>
+              <td class="font-bold">MCA (-NH₂ Pendorong)</td>
+              <td>18.40</td>
+              <td class="font-bold text-editorial-accent">27.82</td>
+              <td>21.93</td>
+              <td>19.69</td>
+              <td>18.52</td>
+              <td>13.42</td>
+              <td class="font-semibold text-editorial-ink">Tahap 2</td>
+              <td class="font-bold">62.31 kcal/mol</td>
+            </tr>
+            <tr>
+              <td class="font-bold">MNC (-NO₂ Penarik)</td>
+              <td>20.89</td>
+              <td>26.80</td>
+              <td class="font-bold text-editorial-accent">28.66</td>
+              <td>17.98</td>
+              <td>14.55</td>
+              <td>8.70</td>
+              <td class="font-semibold text-editorial-ink">Tahap 3</td>
+              <td class="font-bold text-emerald-700">56.37 kcal/mol</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-xs text-editorial-muted font-sans mt-1 mb-6">
+        *Seluruh nilai energi aktivasi dalam satuan kcal/mol. E_a Global dihitung sebagai selisih antara keadaan transisi paling tidak stabil terhadap energi reaktan mula-mula.
+      </p>
+
+      <p>
+        Secara kinetika, gugus penarik elektron nitro (-NO₂) pada <strong>MNC memberikan keuntungan laju reaksi paling tinggi</strong> dengan energi aktivasi global terendah (<strong>56.37 kcal/mol</strong>), lebih cepat dibandingkan MCH (61.28 kcal/mol) dan MCA (62.31 kcal/mol). Gugus amino pada MCA sedikit menaikkan barrier global akibat rintangan sterik dan kebutuhan rotasi 180° pada tahap akhir.
+      </p>
+
+      <h3>Analisis Termodinamika: Penghematan Energi Masif</h3>
+
+      <p>
+        Dampak paling dramatis dari rekayasa substituen terlihat pada parameter termodinamika reaksi dehidrogenasi sempurna pada 298 K (25 °C):
+      </p>
+
+      <div class="overflow-x-auto">
+        <table class="pub-table">
+          <thead>
+            <tr>
+              <th>Senyawa</th>
+              <th>Bentuk Kaya H₂</th>
+              <th>Bentuk Bebas H₂</th>
+              <th>Kapasitas H₂</th>
+              <th>ΔH (kcal/mol)</th>
+              <th>ΔG (kcal/mol)</th>
+              <th>ΔS (cal/mol·K)</th>
+              <th>E_ads Produk</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-bold">MCH</td>
+              <td>Metilsikloheksana</td>
+              <td>Toluena (TOL)</td>
+              <td class="font-bold text-editorial-accent">6.12 wt%</td>
+              <td>63.04</td>
+              <td>37.86</td>
+              <td>84.5</td>
+              <td>-35.12 kcal/mol</td>
+            </tr>
+            <tr>
+              <td class="font-bold">MCA</td>
+              <td>4-Metilsikloheksilamina</td>
+              <td>4-Metilanilin (MAN)</td>
+              <td>5.31 wt%</td>
+              <td class="font-bold text-emerald-700">52.42</td>
+              <td class="font-bold text-emerald-700">26.48</td>
+              <td>87.0</td>
+              <td>-43.12 kcal/mol</td>
+            </tr>
+            <tr>
+              <td class="font-bold">MNC</td>
+              <td>1-Metil-4-nitrosikloheksana</td>
+              <td>1-Metil-4-nitrobenzena (MNB)</td>
+              <td>4.20 wt%</td>
+              <td>53.93</td>
+              <td>27.66</td>
+              <td>88.1</td>
+              <td>-43.61 kcal/mol</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Perhatikan penurunan nilai energi bebas Gibbs (ΔG): dari <strong>37.86 kcal/mol</strong> pada MCH murni anjlok menjadi hanya <strong>26.48 kcal/mol</strong> pada MCA dan <strong>27.66 kcal/mol</strong> pada MNC! Penurunan beban energi bebas sebesar ~10–11 kcal/mol ini merupakan penghematan termodinamika yang luar biasa signifikan. Nilai entalpi reaksi endotermik (ΔH) juga terpangkas lebih dari 10 kcal/mol (dari 63.04 menjadi 52.42 kcal/mol). Hal ini mengindikasikan bahwa secara teori, turunan tersubstitusi membutuhkan suhu operasi reaktor yang jauh lebih rendah daripada 350 °C untuk memulai dehidrogenasi.
+      </p>
+
+      <!-- FIGURE 13: Product Adsorption -->
+      <figure class="figure-container">
+        <img 
+          src="assets/fig13_adsorption_products_tol_man_mnb.png" 
+          alt="Struktur adsorpsi produk aromatik TOL, MAN, dan MNB di permukaan klaster Pt13" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 13.</strong> Konfigurasi adsorpsi produk aromatik akhir: Toluena (TOL), 4-metilanilin (MAN), dan 1-metil-4-nitrobenzena (MNB) di permukaan klaster Pt₁₃.
+        </figcaption>
+      </figure>
+
+      <h3>Dilema Rekayasa Katalisis: Desorpsi Produk vs Kapasitas Gravimetrik</h3>
+
+      <p>
+        Kendati modifikasi gugus fungsi memberikan dorongan termodinamika dan kinetika yang menggiurkan, para peneliti menyoroti dua trade-off rekayasa yang sangat krusial:
+      </p>
+
+      <ol class="list-decimal pl-5 space-y-3 font-serif text-lg text-editorial-body">
+        <li>
+          <strong>Risiko Keracunan Permukaan Katalis (Product Inhibition):</strong>
+          Sebagaimana ditunjukkan pada Gambar 13, energi adsorpsi produk aromatik terdehidrogenasi adalah -35.12 kcal/mol untuk Toluena (TOL), namun melonjak sangat kuat menjadi <strong>-43.12 kcal/mol untuk MAN</strong> dan <strong>-43.61 kcal/mol untuk MNB</strong>. Ikatan yang terlalu kokoh antara produk aromatik tersubstitusi dengan klaster Pt₁₃ menyebabkan produk sulit lepas (desorpsi terhambat), sehingga berpotensi meracuni situs aktif platinum, memblokir siklus katalitik berikutnya, atau memicu pembentukan kokas (coking) pada operasi kontinu.
+        </li>
+        <li>
+          <strong>Penalti Kapasitas Gravimetrik Hidrogen:</strong>
+          Penambahan gugus fungsi meningkatkan bobot molekul (MW) dari cairan pembawa: MCH memiliki kapasitas gravimetrik simpan <strong>6.12 wt%</strong> (memenuhi ambang batas target praktis US DOE). Namun, kehadiran gugus -NH₂ menurunkan kapasitas menjadi <strong>5.31 wt%</strong>, dan gugus -NO₂ yang berat memangkas kapasitas hingga tersisa hanya <strong>4.20 wt%</strong>.
+        </li>
+      </ol>
+
+      <div class="my-6 p-4 bg-editorial-softbg border border-editorial-line rounded">
+        <div class="text-xs font-bold uppercase tracking-wider text-editorial-accent font-sans mb-1">
+          Kesimpulan Manajerial & Rekomendasi Katalisis
+        </div>
+        <p class="text-sm font-serif italic text-editorial-body m-0 leading-relaxed">
+          Substitusi gugus fungsi terbukti secara mekanistik mampu menurunkan hambatan termal dehidrogenasi LOHC pada klaster Pt₁₃. Namun, penerapan praktisnya menuntut perancangan katalis bimetalik atau paduan nano (misalnya Pt-Sn atau Pt-Ni pada pendukung oksida basa) yang secara spesifik dirancang untuk melemahkan adsorpsi produk aromatik polar, sehingga manfaat penghematan energi termal 11 kcal/mol dapat dipetik tanpa mengorbankan masa pakai katalis.
+        </p>
+      </div>
+    </section>
+
+    <!-- METADATA & CITATION SECTION -->
+    <section class="mt-16 pt-8 border-t border-editorial-line text-xs font-sans text-editorial-muted">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <div class="font-bold text-editorial-ink uppercase tracking-wider mb-2">Informasi Publikasi</div>
+          <ul class="space-y-1">
+            <li><strong>Judul:</strong> Substituent effect on the reactivity of liquid organic hydrogen carriers: A DFT study on methylcyclohexane dehydrogenation over Pt13 cluster</li>
+            <li><strong>Penulis:</strong> Marzie Esmaeili Chermahini, Alireza Najafi Chermahini*, Mehran Ghiaci</li>
+            <li><strong>Afiliasi:</strong> Department of Chemistry, Isfahan University of Technology, Iran</li>
+            <li><strong>Jurnal:</strong> International Journal of Hydrogen Energy, Vol. 193 (2025) 152387</li>
+            <li><strong>Penerbit:</strong> Elsevier Ltd.</li>
+            <li><strong>DOI:</strong> <a href="https://doi.org/10.1016/j.ijhydene.2025.152387" target="_blank" class="text-editorial-accent hover:underline">10.1016/j.ijhydene.2025.152387</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-bold text-editorial-ink uppercase tracking-wider mb-2">Metodologi Komputasi</div>
+          <ul class="space-y-1">
+            <li><strong>Perangkat Lunak:</strong> DMol3 Module (Materials Studio)</li>
+            <li><strong>Fungsional DFT:</strong> GGA-PBE dengan Koreksi Dispersi TS (DFT-D)</li>
+            <li><strong>Model Katalis:</strong> Klaster Sub-Nanometer Pt₁₃ (Simetri D₅ₕ)</li>
+            <li><strong>Pencarian Keadaan Transisi:</strong> Complete LST/QST & Analisis Frekuensi Hessian (1 Frekuensi Imajiner)</li>
+            <li><strong>Termodinamika:</strong> Evaluasi ΔH, ΔG, ΔS pada 298.15 K (25 °C)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-editorial-line flex items-center justify-between">
+        <a href="../../index.html" class="inline-flex items-center gap-1.5 text-xs font-semibold text-editorial-ink hover:text-editorial-accent">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          Kembali ke Katalog Utama Paper-Hub
+        </a>
+        <span class="text-editorial-lightmuted">TelaahSains Hub • Format Editorial Sains Bebas AI Workslop</span>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- LIGHTBOX MODAL FOR FULL RESOLUTION IMAGE INSPECTION -->
+  <div id="lightbox" class="fixed inset-0 bg-black/80 z-50 hidden flex flex-col items-center justify-center p-4 backdrop-blur-xs" onclick="closeLightbox()">
+    <div class="relative max-w-5xl max-h-[90vh] flex flex-col items-center" onclick="event.stopPropagation()">
+      <button onclick="closeLightbox()" class="absolute -top-10 right-0 text-white hover:text-zinc-300 text-sm font-mono flex items-center gap-1">
+        <span>Tutup [ESC]</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[80vh] object-contain rounded bg-white p-2 shadow-2xl">
+      <p id="lightbox-caption" class="text-zinc-200 text-xs text-center mt-3 max-w-2xl font-sans"></p>
+    </div>
+  </div>
+
+  <script>
+    // Reading Progress Indicator
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('reading-progress').style.width = scrolled + '%';
+    });
+
+    // Lightbox Controls
+    function openLightbox(src, caption) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox-caption').textContent = caption;
+      document.getElementById('lightbox').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+
+</body>
+</html>
