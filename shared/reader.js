@@ -21,20 +21,27 @@
 
   // --- 0. EXTRACT PAPER METADATA ---
   function getPaperMetadata() {
-    const path = window.location.pathname;
-    const matchId = path.match(/(?:papers\/)?(\d{2})-[^/]+/);
-    let paperId = matchId ? matchId[1] : '';
+    let paperId = document.body.getAttribute('data-paper-id') || '';
+
+    if (!paperId) {
+      const path = window.location.pathname;
+      const matchId = path.match(/(?:papers\/)?(\d{1,2})-[^/]+/);
+      if (matchId) paperId = matchId[1];
+    }
 
     if (!paperId) {
       const headerMono = document.querySelector('header span.font-mono')?.textContent || '';
-      const m = headerMono.match(/#(\d{2})/);
+      const m = headerMono.match(/#(\d{1,2})/);
       if (m) paperId = m[1];
     }
+
+    paperId = paperId ? String(paperId).padStart(2, '0') : '';
 
     const titleEl = document.querySelector('h1');
     const title = titleEl ? titleEl.textContent.trim().replace(/\s+/g, ' ') : document.title;
 
     let relativeUrl = '';
+    const path = window.location.pathname;
     const pIdx = path.indexOf('papers/');
     if (pIdx >= 0) {
       relativeUrl = path.slice(pIdx);
@@ -349,7 +356,8 @@
   // --- 6. READ CHECKLIST CONTROLLER ---
   function getReadPapers() {
     try {
-      return JSON.parse(localStorage.getItem(READ_PAPERS_KEY)) || [];
+      const raw = JSON.parse(localStorage.getItem(READ_PAPERS_KEY)) || [];
+      return Array.from(new Set(raw.map(id => String(id).padStart(2, '0'))));
     } catch (e) {
       return [];
     }
@@ -360,23 +368,27 @@
     if (!meta.paperId) return;
 
     let readList = getReadPapers();
-    const idx = readList.indexOf(meta.paperId);
+    const pid = String(meta.paperId).padStart(2, '0');
+    const idx = readList.indexOf(pid);
     let isRead = false;
     if (idx >= 0) {
       readList.splice(idx, 1);
     } else {
-      readList.push(meta.paperId);
+      readList.push(pid);
       isRead = true;
     }
 
     localStorage.setItem(READ_PAPERS_KEY, JSON.stringify(readList));
-    updateReadChecklistUI(meta.paperId);
-    showToast(isRead ? `Paper #${meta.paperId} ditandai: Selesai Dibaca ✓` : `Tanda selesai dibaca Paper #${meta.paperId} dihapus.`);
+    updateReadChecklistUI(pid);
+    showToast(isRead ? `Paper #${pid} ditandai: Selesai Dibaca ✓` : `Tanda selesai dibaca Paper #${pid} dihapus.`);
   };
 
   function updateReadChecklistUI(paperId) {
+    const meta = getPaperMetadata();
+    const pid = String(paperId || meta.paperId).padStart(2, '0');
+    if (!pid) return;
     const readList = getReadPapers();
-    const isRead = readList.includes(paperId);
+    const isRead = readList.includes(pid);
 
     // Header read button
     const headerBtn = document.getElementById('header-read-btn');
@@ -435,11 +447,20 @@
       </button>
     `;
 
-    const citationSec = main.querySelector('section.mt-16, section#sitasi, section.citation-section, section.border-t');
-    if (citationSec) {
-      main.insertBefore(card, citationSec);
+    // Try finding the citation block or citation section to insert BEFORE it
+    const sitasiSec = main.querySelector('section#sitasi, section.citation-section');
+    if (sitasiSec) {
+      main.insertBefore(card, sitasiSec);
     } else {
-      main.appendChild(card);
+      // Look for citation div/section containing copyCitation button
+      const citationEl = Array.from(main.querySelectorAll('section, div')).find(el => 
+        el.querySelector && el.querySelector('button[onclick*="copyCitation"]')
+      );
+      if (citationEl) {
+        citationEl.parentNode.insertBefore(card, citationEl);
+      } else {
+        main.appendChild(card);
+      }
     }
     updateReadChecklistUI(meta.paperId);
   }
@@ -559,7 +580,7 @@
   }
 
   // --- 9. GLOBAL INITIALIZATION ---
-  document.addEventListener('DOMContentLoaded', () => {
+  function initReader() {
     initPreferences();
     injectHeaderControls();
     injectCompletionCard();
@@ -581,6 +602,38 @@
         if (e.key === '0') zoomLightbox(0);
       }
     });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initReader);
+  } else {
+    initReader();
+  }
+
+  // Cross-tab and window storage synchronization
+  window.addEventListener('storage', (e) => {
+    if (e.key === READ_PAPERS_KEY) {
+      const meta = getPaperMetadata();
+      if (meta.paperId) updateReadChecklistUI(meta.paperId);
+    } else if (e.key === THEME_KEY && e.newValue) {
+      setTheme(e.newValue, false);
+    } else if (e.key === FONT_SIZE_KEY && e.newValue) {
+      setFontSize(e.newValue, false);
+    }
+  });
+
+  // Browser bfcache navigation (Back / Forward button)
+  window.addEventListener('pageshow', () => {
+    const meta = getPaperMetadata();
+    if (meta.paperId) updateReadChecklistUI(meta.paperId);
+  });
+
+  // Tab switching visibility
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      const meta = getPaperMetadata();
+      if (meta.paperId) updateReadChecklistUI(meta.paperId);
+    }
   });
 
 })();

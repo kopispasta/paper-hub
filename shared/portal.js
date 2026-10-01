@@ -44,30 +44,34 @@
   // --- 2. BOOKMARKS / READING LIST ---
   function getBookmarks() {
     try {
-      return JSON.parse(localStorage.getItem(BOOKMARK_KEY)) || [];
+      const raw = JSON.parse(localStorage.getItem(BOOKMARK_KEY)) || [];
+      return Array.from(new Set(raw.map(id => String(id).padStart(2, '0'))));
     } catch (e) {
       return [];
     }
   }
 
   function saveBookmarks(bms) {
-    localStorage.setItem(BOOKMARK_KEY, JSON.stringify(bms));
+    const normalized = Array.from(new Set(bms.map(id => String(id).padStart(2, '0'))));
+    localStorage.setItem(BOOKMARK_KEY, JSON.stringify(normalized));
     updateBookmarkUI();
   }
 
   window.toggleBookmark = function (paperId, event) {
     if (event) event.stopPropagation();
+    const pid = String(paperId).padStart(2, '0');
     let bms = getBookmarks();
-    const idx = bms.indexOf(paperId);
+    const idx = bms.indexOf(pid);
     let isAdded = false;
     if (idx >= 0) {
       bms.splice(idx, 1);
     } else {
-      bms.push(paperId);
+      bms.push(pid);
       isAdded = true;
     }
     saveBookmarks(bms);
-    showPortalToast(isAdded ? `Paper #${paperId} ditambahkan ke daftar baca ⭐` : `Paper #${paperId} dihapus dari daftar baca.`);
+    showPortalToast(isAdded ? `Paper #${pid} ditambahkan ke daftar baca ⭐` : `Paper #${pid} dihapus dari daftar baca.`);
+    applyAllFilters();
   };
 
   function updateBookmarkUI() {
@@ -76,7 +80,7 @@
     if (countEl) countEl.textContent = bms.length;
 
     document.querySelectorAll('[data-bookmark-btn]').forEach(btn => {
-      const pid = btn.getAttribute('data-bookmark-btn');
+      const pid = String(btn.getAttribute('data-bookmark-btn')).padStart(2, '0');
       const isBookmarked = bms.includes(pid);
       btn.classList.toggle('text-amber-500', isBookmarked);
       btn.classList.toggle('text-zinc-300', !isBookmarked);
@@ -90,30 +94,33 @@
   // --- 3. READ CHECKLIST CONTROLLER ---
   function getReadPapers() {
     try {
-      return JSON.parse(localStorage.getItem(READ_KEY)) || [];
+      const raw = JSON.parse(localStorage.getItem(READ_KEY)) || [];
+      return Array.from(new Set(raw.map(id => String(id).padStart(2, '0'))));
     } catch (e) {
       return [];
     }
   }
 
   function saveReadPapers(arr) {
-    localStorage.setItem(READ_KEY, JSON.stringify(arr));
+    const normalized = Array.from(new Set(arr.map(id => String(id).padStart(2, '0'))));
+    localStorage.setItem(READ_KEY, JSON.stringify(normalized));
     updateReadUI();
   }
 
   window.toggleReadStatus = function (paperId, event) {
     if (event) event.stopPropagation();
+    const pid = String(paperId).padStart(2, '0');
     let readList = getReadPapers();
-    const idx = readList.indexOf(paperId);
+    const idx = readList.indexOf(pid);
     let isRead = false;
     if (idx >= 0) {
       readList.splice(idx, 1);
     } else {
-      readList.push(paperId);
+      readList.push(pid);
       isRead = true;
     }
     saveReadPapers(readList);
-    showPortalToast(isRead ? `Paper #${paperId} ditandai: Selesai Dibaca ✓` : `Tanda selesai Paper #${paperId} dihapus.`);
+    showPortalToast(isRead ? `Paper #${pid} ditandai: Selesai Dibaca ✓` : `Tanda selesai Paper #${pid} dihapus.`);
     applyAllFilters();
   };
 
@@ -123,7 +130,7 @@
     if (countEl) countEl.textContent = `${readList.length}/10`;
 
     document.querySelectorAll('[data-read-btn]').forEach(btn => {
-      const pid = btn.getAttribute('data-read-btn');
+      const pid = String(btn.getAttribute('data-read-btn')).padStart(2, '0');
       const isRead = readList.includes(pid);
       btn.classList.toggle('text-emerald-600', isRead);
       btn.classList.toggle('text-zinc-300', !isRead);
@@ -134,7 +141,7 @@
     });
 
     document.querySelectorAll('[data-read-badge]').forEach(badge => {
-      const pid = badge.getAttribute('data-read-badge');
+      const pid = String(badge.getAttribute('data-read-badge')).padStart(2, '0');
       badge.classList.toggle('hidden', !readList.includes(pid));
     });
   }
@@ -269,7 +276,8 @@
     let visibleCount = 0;
 
     items.forEach(el => {
-      const pid = el.getAttribute('data-paper-id');
+      const rawPid = el.getAttribute('data-paper-id');
+      const pid = rawPid ? String(rawPid).padStart(2, '0') : '';
       const cat = el.getAttribute('data-category') || '';
       const tags = el.getAttribute('data-tags') || '';
       const keywords = (el.innerText + ' ' + (el.getAttribute('data-keywords') || '')).toLowerCase();
@@ -325,13 +333,54 @@
   }
 
   // Initialize
-  document.addEventListener('DOMContentLoaded', () => {
+  function initPortal() {
     syncTheme();
     updateBookmarkUI();
     updateReadUI();
     renderLastReadingWidget();
     const savedView = localStorage.getItem(VIEW_KEY) || 'grid';
     setPortalView(savedView);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPortal);
+  } else {
+    initPortal();
+  }
+
+  // Cross-tab and window storage synchronization
+  window.addEventListener('storage', (e) => {
+    if (e.key === READ_KEY) {
+      updateReadUI();
+      applyAllFilters();
+    } else if (e.key === BOOKMARK_KEY) {
+      updateBookmarkUI();
+      applyAllFilters();
+    } else if (e.key === LAST_READING_KEY) {
+      renderLastReadingWidget();
+    } else if (e.key === THEME_KEY) {
+      syncTheme();
+    }
+  });
+
+  // Browser bfcache navigation (Back / Forward button)
+  window.addEventListener('pageshow', () => {
+    syncTheme();
+    updateBookmarkUI();
+    updateReadUI();
+    renderLastReadingWidget();
+    applyAllFilters();
+  });
+
+  // Tab switching visibility
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      syncTheme();
+      updateBookmarkUI();
+      updateReadUI();
+      renderLastReadingWidget();
+      applyAllFilters();
+    }
   });
 
 })();
