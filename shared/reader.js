@@ -140,6 +140,7 @@
 
   // --- 4. FLOATING SCROLLSPY TOC GENERATOR ---
   function initFloatingTOC() {
+    if (document.querySelector('aside.lg\\:col-span-4')) return;
     const sections = Array.from(document.querySelectorAll('main section[id]'));
     if (sections.length < 3) return;
 
@@ -434,13 +435,18 @@
       </button>
     `;
 
-    main.appendChild(card);
+    const citationSec = main.querySelector('section.mt-16, section#sitasi, section.citation-section, section.border-t');
+    if (citationSec) {
+      main.insertBefore(card, citationSec);
+    } else {
+      main.appendChild(card);
+    }
     updateReadChecklistUI(meta.paperId);
   }
 
   // --- 7. INJECT HEADER CONTROLS TOOLBAR ---
   function injectHeaderControls() {
-    const headerRight = document.querySelector('header .max-w-4xl > div:last-child');
+    const headerRight = document.querySelector('header .max-w-4xl > div:last-child, header .max-w-6xl > div:last-child, header > div > div:last-child');
     if (!headerRight || headerRight.querySelector('.reader-controls-cluster')) return;
 
     const meta = getPaperMetadata();

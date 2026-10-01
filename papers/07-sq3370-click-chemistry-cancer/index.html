@@ -133,61 +133,30 @@
 
 <body class="selection:bg-editorial-accentLight selection:text-editorial-accent">
 
-  <!-- TOP PROGRESS BAR -->
-  <div class="fixed top-0 left-0 w-full h-[3px] bg-transparent z-50">
-    <div id="reading-progress" class="h-full bg-editorial-accent w-0"></div>
-  </div>
-
-  <!-- MASTHEAD & TOP NAVIGATION -->
-  <header class="bg-white border-b border-editorial-line sticky top-0 z-40">
-    <!-- Top Journal Meta -->
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-editorial-line/60 py-1.5 flex items-center justify-between text-[11px] text-editorial-muted font-sans">
-      <div class="flex items-center gap-2">
-        <span class="font-bold tracking-wider uppercase text-editorial-ink">KIMIA BIOORTOGONAL & IMMUNO-ONCOLOGY</span>
-        <span class="text-editorial-line">•</span>
-        <span class="hidden sm:inline">Advanced Therapeutics 4 (2021) 2000243</span>
-      </div>
-      <div class="flex items-center gap-4">
-        <a href="https://doi.org/10.1002/adtp.202000243" target="_blank" rel="noopener" class="text-editorial-accent hover:underline flex items-center gap-1 font-medium">
-          <span>DOI: 10.1002/adtp.202000243</span>
-          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+  <!-- EDITORIAL HEADER / TOP NAVIGATION -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-editorial-line transition-all">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="../../index.html" class="flex items-center gap-2 text-xs font-sans font-semibold text-editorial-ink hover:text-editorial-accent transition-colors">
+          <svg class="w-4 h-4 text-editorial-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          <span>Katalog Utama</span>
         </a>
+        <span class="text-editorial-line">/</span>
+        <span class="text-xs font-mono text-editorial-muted">Paper #07</span>
+      </div>
+
+      <div class="flex items-center gap-4 text-xs font-sans text-editorial-muted">
+        <span class="hidden sm:inline">Estimasi Baca: 18 Menit</span>
+        <div class="h-3 w-px bg-editorial-line hidden sm:inline"></div>
+        <span class="font-mono text-editorial-ink font-semibold">Adv. Ther. (Wiley)</span>
       </div>
     </div>
-
-    <!-- Main Navigation Header -->
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
-      <div class="flex items-center gap-6">
-        <a href="../../index.html" class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium text-zinc-600 hover:text-blue-600 rounded border border-zinc-200 hover:bg-zinc-50 transition-colors shadow-2xs" title="Kembali ke Katalog Utama">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-          <span class="hidden sm:inline">Katalog Utama</span>
-        </a>
-        <a href="#" class="text-2xl font-serif font-bold tracking-tight text-editorial-ink">
-          KimiaKlik<span class="text-editorial-accent italic font-normal">Onko</span>
-        </a>
-        <span class="hidden md:inline-block h-5 w-px bg-editorial-line"></span>
-        <nav class="hidden md:flex items-center gap-5 text-xs font-semibold uppercase tracking-wider text-editorial-muted font-sans">
-          <a href="#latar-belakang" class="hover:text-editorial-accent transition-colors">Konteks & CAPAC</a>
-          <a href="#arsitektur-sq3370" class="hover:text-editorial-accent transition-colors">Arsitektur Kimia</a>
-          <a href="#efikasi-dua-tumor" class="hover:text-editorial-accent transition-colors">Model Dua Tumor</a>
-          <a href="#profil-imun-tils" class="hover:text-editorial-accent transition-colors">Pemetaan Imun TILs</a>
-          <a href="#kombinasi-tlr9a" class="hover:text-editorial-accent transition-colors">Sinergi TLR9a</a>
-          <a href="#translasi-klinis" class="hover:text-editorial-accent transition-colors">Translasi Klinis</a>
-        </nav>
-      </div>
-
-      <div class="flex items-center gap-3 text-xs font-medium text-editorial-muted font-sans">
-        <span>Waktu baca ~8 menit</span>
-        <button onclick="window.print()" class="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 border border-editorial-line rounded hover:bg-editorial-softbg text-editorial-ink transition-colors" title="Cetak atau Simpan PDF">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
-          Cetak
-        </button>
-      </div>
-    </div>
+    <!-- Reading Progress Bar -->
+    <div id="reading-progress" class="h-0.5 bg-editorial-accent w-0 transition-all duration-150"></div>
   </header>
 
-  <!-- ARTICLE HEADER (Editorial Style Hero) -->
-  <header class="bg-white border-b border-editorial-line pt-12 pb-10">
+  <!-- ARTICLE HERO -->
+  <section class="bg-white border-b border-editorial-line pt-12 pb-10">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Category Tag & Meta -->
@@ -223,7 +192,7 @@
       </div>
 
     </div>
-  </header>
+  </section>
 
   <!-- KEY METRICS STRIP -->
   <section class="border-b border-editorial-line bg-editorial-softbg py-6">
@@ -256,8 +225,34 @@
   <!-- MAIN ARTICLE CONTENT -->
   <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 article-body">
 
+    <!-- TABLE OF CONTENTS (MINI JUMP NAV) -->
+    <nav class="p-4 bg-zinc-50 border border-editorial-line rounded text-xs font-sans mb-8">
+      <div class="font-bold text-editorial-ink uppercase tracking-wider mb-2">Navigasi Bab Telaah</div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-editorial-body">
+        <a href="#latar-belakang" class="hover:text-editorial-accent flex items-center gap-1.5">
+          <span class="text-editorial-lightmuted font-mono">01.</span> Batasan Doxorubicin & Paradigma Kimia Bioortogonal
+        </a>
+        <a href="#arsitektur-sq3370" class="hover:text-editorial-accent flex items-center gap-1.5">
+          <span class="text-editorial-lightmuted font-mono">02.</span> Arsitektur Kimia SQ3370: Mengunci Reaktivitas Tetrazin–TCO
+        </a>
+        <a href="#efikasi-dua-tumor" class="hover:text-editorial-accent flex items-center gap-1.5">
+          <span class="text-editorial-lightmuted font-mono">03.</span> Model Dua Tumor: Ledakan Efek Sistemik Abscopal
+        </a>
+        <a href="#profil-imun-tils" class="hover:text-editorial-accent flex items-center gap-1.5">
+          <span class="text-editorial-lightmuted font-mono">04.</span> Pemetaan Imun Tumor: Mengapa Lesi Distal Ikut Menyusut?
+        </a>
+        <a href="#kombinasi-tlr9a" class="hover:text-editorial-accent flex items-center gap-1.5">
+          <span class="text-editorial-lightmuted font-mono">05.</span> Sinergi TLR9 Agonist: Kesintasan 101 Hari & Remisi 80%
+        </a>
+        <a href="#translasi-klinis" class="hover:text-editorial-accent flex items-center gap-1.5">
+          <span class="text-editorial-lightmuted font-mono">06.</span> Mekanisme Biologis & Peluang Translasi Klinis
+        </a>
+      </div>
+    </nav>
+
     <!-- SECTION 1: CONTEXT & CAPAC PLATFORM -->
     <section id="latar-belakang">
+      <h2>01. Batasan Doxorubicin & Paradigma Baru Click Chemistry In Vivo</h2>
       <p class="text-xl font-serif leading-relaxed text-editorial-ink first-letter:text-5xl first-letter:font-bold first-letter:float-left first-letter:mr-3 first-letter:text-editorial-accent first-letter:font-serif">
         Revolusi imunoterapi kanker—khususnya penghambat pos pemeriksaan imun (immune checkpoint inhibitors seperti anti-PD-1 dan anti-CTLA-4)—telah memberikan harapan kesembuhan spektakuler bagi sebagian pasien onkologi. Namun, kenyataan klinis yang pahit menunjukkan bahwa hanya sebagian kecil pasien (sering kali di bawah 20–30%) yang benar-benar memetik manfaat jangka panjang. Sebagian besar tumor bersifat "dingin" (cold tumors): miskin infiltrasi sel T sitotoksik, tidak mengekspresikan biomarker imun yang memadai, atau dilindungi oleh mikro-lingkungan imunosupresif yang padat.
       </p>
@@ -290,7 +285,7 @@
 
     <!-- SECTION 2: CHEMICAL ARCHITECTURE -->
     <section id="arsitektur-sq3370">
-      <h2>Arsitektur Molekuler SQ3370: Mengunci Reaktivitas Tetrazin–TCO</h2>
+      <h2>02. Arsitektur Molekuler SQ3370: Mengunci Reaktivitas Tetrazin–TCO</h2>
 
       <p>
         Jantung dari platform CAPAC adalah pasangan reaksi klik <em>Inverse Electron-Demand Diels-Alder</em> (IEDDA) antara <strong>1,2,4,5-tetrazin</strong> dan <strong>trans-cyclooctene (TCO)</strong>. Reaksi ini merupakan salah satu reaksi kimia buatan paling cepat yang pernah tercatat dalam sistem biologi (konstanta laju orde 10⁴–10⁵ M⁻¹s⁻¹), berlangsung spontan tanpa katalis logam, dan menghasilkan gas nitrogen (N₂) sebagai satu-satunya produk sampingan tak berbahaya.
@@ -362,7 +357,7 @@
 
     <!-- SECTION 3: DUAL-TUMOR EFFICACY -->
     <section id="efikasi-dua-tumor">
-      <h2>Efikasi pada Model Dua Tumor: Ledakan Efek Sistemik Abscopal</h2>
+      <h2>03. Efikasi pada Model Dua Tumor: Ledakan Efek Sistemik Abscopal</h2>
 
       <p>
         Keberhasilan menginjeksi obat sitotoksik secara lokal sering kali memunculkan skeptisisme di kalangan onkolog: <em>bagaimana mungkin injeksi lokal dapat menolong pasien kanker metastasis yang memiliki puluhan anak sebar mikroskopis di organ lain?</em>
@@ -407,7 +402,7 @@
 
     <!-- SECTION 4: IMMUNE PROFILING TILS -->
     <section id="profil-imun-tils">
-      <h2>Pemetaan Imun Tumor: Mengapa Lesi Distal Ikut Menyusut?</h2>
+      <h2>04. Pemetaan Imun Tumor: Mengapa Lesi Distal Ikut Menyusut?</h2>
 
       <p>
         Guna mengungkap rahasia biologis di balik lenyapnya tumor non-terinjeksi, para peneliti memanen jaringan tumor pada 2 minggu pasca perlakuan dan melakukan analisis sitometri alir multi-warna (<em>multi-color flow cytometry</em>) untuk memetakan populasi <em>Tumor-Infiltrating Lymphocytes</em> (TILs).
@@ -492,7 +487,7 @@
 
     <!-- SECTION 5: SYNERGY WITH TLR9 AGONIST -->
     <section id="kombinasi-tlr9a">
-      <h2>Sinergi Sempurna dengan TLR9 Agonist: Kesintasan 101 Hari & Remisi 80%</h2>
+      <h2>05. Sinergi Sempurna dengan TLR9 Agonist: Kesintasan 101 Hari & Remisi 80%</h2>
 
       <p>
         Menyadari bahwa aktivasi lokal doksorubisin bertindak sebagai "vaksin in situ" yang memicu respon imun adaptif, para peneliti menguji hipotesis lanjutan: <em>dapatkah respon anti-tumor ini dilipatgandakan dengan menambahkan adjuvan imun spesifik?</em>
@@ -528,7 +523,7 @@
 
     <!-- SECTION 6: MECHANISTIC INSIGHT & CLINICAL TRANSLATION -->
     <section id="translasi-klinis">
-      <h2>Mekanisme Biologis & Peluang Translasi Klinis</h2>
+      <h2>06. Mekanisme Biologis & Peluang Translasi Klinis Masa Depan</h2>
 
       <p>
         Sintesis mekanisme kerja lengkap dari teknologi SQ3370 dirangkum secara elegan pada Gambar 6. Ketika protodrug SQP33 ditangkap oleh biopolimer SQL70, doksorubisin terlepas dalam konsentrasi lokal yang sangat masif tanpa meracuni sirkulasi sistemik. Sel kanker yang mati memancarkan sinyal bahaya (<em>Damage-Associated Molecular Patterns / DAMPs</em>) yang mengaktifkan sel dendritik imatur (iDCs).
@@ -644,33 +639,6 @@
       <p id="lightbox-caption" class="text-zinc-200 text-xs text-center mt-3 max-w-2xl font-sans"></p>
     </div>
   </div>
-
-  <script>
-    // Reading Progress Indicator
-    window.addEventListener('scroll', () => {
-      const winScroll = document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (winScroll / height) * 100;
-      document.getElementById('reading-progress').style.width = scrolled + '%';
-    });
-
-    // Lightbox Controls
-    function openLightbox(src, caption) {
-      document.getElementById('lightbox-img').src = src;
-      document.getElementById('lightbox-caption').textContent = caption;
-      document.getElementById('lightbox').classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeLightbox() {
-      document.getElementById('lightbox').classList.add('hidden');
-      document.body.style.overflow = 'auto';
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
-    });
-  </script>
 
   <!-- Shared Reader Experience Script -->
   <script src="../../shared/reader.js"></script>

@@ -118,63 +118,30 @@
 
 <body class="selection:bg-cell-tealLight selection:text-cell-teal">
 
-  <!-- TOP PROGRESS BAR -->
-  <div class="fixed top-0 left-0 w-full h-[3px] bg-transparent z-50">
-    <div id="reading-progress" class="h-full bg-cell-teal w-0"></div>
-  </div>
-
-  <!-- MASTHEAD & TOP NAVIGATION -->
-  <header class="bg-white border-b border-cell-line sticky top-0 z-40">
-    <!-- Top Journal Meta -->
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-cell-line/60 py-1.5 flex items-center justify-between text-[11px] text-cell-muted font-sans">
-      <div class="flex items-center gap-2">
-        <span class="font-bold tracking-wider uppercase text-cell-ink">TELAAH SAINS DATA BIOMEDIS</span>
-        <span class="text-cell-line">•</span>
-        <span class="hidden sm:inline">Patterns 5, 100897 (Cell Press, 2024)</span>
-      </div>
-      <div class="flex items-center gap-4">
-        <a href="https://doi.org/10.1016/j.patter.2023.100897" target="_blank" rel="noopener" class="text-cell-teal hover:underline flex items-center gap-1 font-medium">
-          <span>DOI: 10.1016/j.patter.2023.100897</span>
-          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+  <!-- EDITORIAL HEADER / TOP NAVIGATION -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-editorial-line transition-all">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="../../index.html" class="flex items-center gap-2 text-xs font-sans font-semibold text-editorial-ink hover:text-editorial-accent transition-colors">
+          <svg class="w-4 h-4 text-editorial-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          <span>Katalog Utama</span>
         </a>
+        <span class="text-editorial-line">/</span>
+        <span class="text-xs font-mono text-editorial-muted">Paper #02</span>
+      </div>
+
+      <div class="flex items-center gap-4 text-xs font-sans text-editorial-muted">
+        <span class="hidden sm:inline">Estimasi Baca: 24 Menit</span>
+        <div class="h-3 w-px bg-editorial-line hidden sm:inline"></div>
+        <span class="font-mono text-editorial-ink font-semibold">Patterns (Cell Press)</span>
       </div>
     </div>
-
-    <!-- Main Navigation Header -->
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
-      <div class="flex items-center gap-6">
-        <a href="../../index.html" class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium text-zinc-600 hover:text-blue-600 rounded border border-zinc-200 hover:bg-zinc-50 transition-colors shadow-2xs" title="Kembali ke Katalog Utama">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-          <span class="hidden sm:inline">Katalog Utama</span>
-        </a>
-        <a href="#" class="text-2xl font-serif font-bold tracking-tight text-cell-ink">
-          Data<span class="text-cell-teal italic font-normal">Pola</span>
-        </a>
-        <span class="hidden md:inline-block h-5 w-px bg-cell-line"></span>
-        <nav class="hidden md:flex items-center gap-5 text-xs font-semibold uppercase tracking-wider text-cell-muted">
-          <a href="#latar-belakang" class="hover:text-cell-teal transition-colors">Konteks</a>
-          <a href="#arsitektur" class="hover:text-cell-teal transition-colors">Arsitektur CLETE (Fig. 1)</a>
-          <a href="#fitur" class="hover:text-cell-teal transition-colors">Seleksi Fitur (Fig. 2)</a>
-          <a href="#sampling" class="hover:text-cell-teal transition-colors">Sampling (Fig. 3)</a>
-          <a href="#custom-score" class="hover:text-cell-teal transition-colors">Anti-Overfitting (Fig. 4)</a>
-          <a href="#algoritma" class="hover:text-cell-teal transition-colors">Benchmark (Fig. 5)</a>
-          <a href="#xai" class="hover:text-cell-teal transition-colors">Interpretasi XAI (Fig. 6-7)</a>
-          <a href="#adaptabilitas" class="hover:text-cell-teal transition-colors">Validasi Domain (Fig. 8)</a>
-        </nav>
-      </div>
-
-      <div class="flex items-center gap-3 text-xs font-medium text-cell-muted">
-        <span>Waktu baca ~7 menit</span>
-        <button onclick="window.print()" class="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 border border-cell-line rounded hover:bg-cell-softbg text-cell-ink transition-colors" title="Cetak atau Simpan PDF">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
-          Cetak
-        </button>
-      </div>
-    </div>
+    <!-- Reading Progress Bar -->
+    <div id="reading-progress" class="h-0.5 bg-editorial-accent w-0 transition-all duration-150"></div>
   </header>
 
-  <!-- ARTICLE HEADER (Cell Press Patterns Editorial Style) -->
-  <header class="bg-white border-b border-cell-line pt-12 pb-10">
+  <!-- ARTICLE HERO -->
+  <section class="bg-white border-b border-cell-line pt-12 pb-10">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Category Tag & Meta -->
@@ -211,7 +178,7 @@
       </div>
 
     </div>
-  </header>
+  </section>
 
   <!-- KEY SPECIFICATIONS (Monochrome Publication Card) -->
   <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -271,6 +238,40 @@
             <p><strong>4. Pembuktian Klinis & Lintas Domain:</strong> Divalidasi menggunakan data farmakogenomik 23 inhibitor pada 4 tipe kanker (AML, B-ALL, T-ALL, Ovarium), mengonfirmasi peran biomarker BEX1, SIGLEC1, dan CHIT1, serta sukses diuji pada 6 dataset publik non-biologis (finansial, deteksi fraud, dan akademik).</p>
           </div>
         </div>
+
+        <!-- TABLE OF CONTENTS (MINI JUMP NAV) -->
+        <nav class="p-4 bg-zinc-50 border border-cell-line rounded text-xs font-sans mb-8">
+          <div class="font-bold text-cell-ink uppercase tracking-wider mb-2">Navigasi Bab Telaah</div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-cell-body">
+            <a href="#latar-belakang" class="hover:text-cell-teal flex items-center gap-1.5">
+              <span class="text-cell-muted font-mono">01.</span> Dilema 'Kotak Hitam' Prediksi Terapi Kanker
+            </a>
+            <a href="#arsitektur" class="hover:text-cell-teal flex items-center gap-1.5">
+              <span class="text-cell-muted font-mono">02.</span> Arsitektur Modular AlphaML & Alur CLETE
+            </a>
+            <a href="#fitur" class="hover:text-cell-teal flex items-center gap-1.5">
+              <span class="text-cell-muted font-mono">03.</span> Seleksi Fitur Bertahap Dimensi Tinggi
+            </a>
+            <a href="#sampling" class="hover:text-cell-teal flex items-center gap-1.5">
+              <span class="text-cell-muted font-mono">04.</span> Mitos Sampling & Keunggulan 'No Sampling'
+            </a>
+            <a href="#custom-score" class="hover:text-cell-teal flex items-center gap-1.5">
+              <span class="text-cell-muted font-mono">05.</span> Inovasi Metrik: custom_score & NegLog2RMSL
+            </a>
+            <a href="#algoritma" class="hover:text-cell-teal flex items-center gap-1.5">
+              <span class="text-cell-muted font-mono">06.</span> Komparasi 15 Algoritma Pembelajaran Mesin
+            </a>
+            <a href="#xai" class="hover:text-cell-teal flex items-center gap-1.5">
+              <span class="text-cell-muted font-mono">07.</span> Interpretasi SHAP & LIME Per Pasien
+            </a>
+            <a href="#adaptabilitas" class="hover:text-cell-teal flex items-center gap-1.5">
+              <span class="text-cell-muted font-mono">08.</span> Validasi pada 6 Domain Non-Biologis
+            </a>
+            <a href="#kesimpulan" class="hover:text-cell-teal flex items-center gap-1.5">
+              <span class="text-cell-muted font-mono">09.</span> Keterbatasan Operasional & Open-Source
+            </a>
+          </div>
+        </nav>
 
         <!-- SECTION 1: Latar Belakang -->
         <section id="latar-belakang" class="pt-2">
@@ -856,15 +857,7 @@
 
   <!-- SCRIPT -->
   <script>
-    // 1. Reading Progress Bar
-    window.addEventListener('scroll', () => {
-      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (winScroll / height) * 100;
-      document.getElementById('reading-progress').style.width = scrolled + '%';
-    });
-
-    // 2. Minimalist Summary Toggle
+    // Minimalist Summary Toggle
     function toggleSummary() {
       const content = document.getElementById('summary-content');
       const chevron = document.getElementById('summary-chevron');
@@ -876,23 +869,6 @@
         chevron.textContent = '[+ buka]';
       }
     }
-
-    // 3. Lightbox Functionality
-    function openLightbox(src, caption) {
-      document.getElementById('lightbox-img').src = src;
-      document.getElementById('lightbox-caption').textContent = caption;
-      document.getElementById('lightbox').classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeLightbox() {
-      document.getElementById('lightbox').classList.add('hidden');
-      document.body.style.overflow = '';
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
-    });
   </script>
 
   <!-- Shared Reader Experience Script -->

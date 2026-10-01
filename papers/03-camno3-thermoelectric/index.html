@@ -117,60 +117,30 @@
 
 <body class="selection:bg-editorial-accentLight selection:text-editorial-accent">
 
-  <!-- TOP PROGRESS BAR -->
-  <div class="fixed top-0 left-0 w-full h-[3px] bg-transparent z-50">
-    <div id="reading-progress" class="h-full bg-editorial-accent w-0"></div>
-  </div>
-
-  <!-- MASTHEAD & TOP NAVIGATION -->
-  <header class="bg-white border-b border-editorial-line sticky top-0 z-40">
-    <!-- Top Journal Meta -->
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-editorial-line/60 py-1.5 flex items-center justify-between text-[11px] text-editorial-muted font-sans">
-      <div class="flex items-center gap-2">
-        <span class="font-bold tracking-wider uppercase text-editorial-ink">FISIKA MATERIAL & TERMOELEKTRIK</span>
-        <span class="text-editorial-line">•</span>
-        <span class="hidden sm:inline">Materials Research Bulletin 141 (2021) 111359</span>
-      </div>
-      <div class="flex items-center gap-4">
-        <a href="https://doi.org/10.1016/j.materresbull.2021.111359" target="_blank" rel="noopener" class="text-editorial-accent hover:underline flex items-center gap-1 font-medium">
-          <span>DOI: 10.1016/j.materresbull.2021.111359</span>
-          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+  <!-- EDITORIAL HEADER / TOP NAVIGATION -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-editorial-line transition-all">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="../../index.html" class="flex items-center gap-2 text-xs font-sans font-semibold text-editorial-ink hover:text-editorial-accent transition-colors">
+          <svg class="w-4 h-4 text-editorial-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          <span>Katalog Utama</span>
         </a>
+        <span class="text-editorial-line">/</span>
+        <span class="text-xs font-mono text-editorial-muted">Paper #03</span>
+      </div>
+
+      <div class="flex items-center gap-4 text-xs font-sans text-editorial-muted">
+        <span class="hidden sm:inline">Estimasi Baca: 18 Menit</span>
+        <div class="h-3 w-px bg-editorial-line hidden sm:inline"></div>
+        <span class="font-mono text-editorial-ink font-semibold">Mater. Res. Bull. (Elsevier)</span>
       </div>
     </div>
-
-    <!-- Main Navigation Header -->
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
-      <div class="flex items-center gap-6">
-        <a href="../../index.html" class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium text-zinc-600 hover:text-blue-600 rounded border border-zinc-200 hover:bg-zinc-50 transition-colors shadow-2xs" title="Kembali ke Katalog Utama">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-          <span class="hidden sm:inline">Katalog Utama</span>
-        </a>
-        <a href="#" class="text-2xl font-serif font-bold tracking-tight text-editorial-ink">
-          Termo<span class="text-editorial-accent italic font-normal">Fisika</span>
-        </a>
-        <span class="hidden md:inline-block h-5 w-px bg-editorial-line"></span>
-        <nav class="hidden md:flex items-center gap-5 text-xs font-semibold uppercase tracking-wider text-editorial-muted font-sans">
-          <a href="#latar-belakang" class="hover:text-editorial-accent transition-colors">Dilema WF</a>
-          <a href="#struktur-cmo" class="hover:text-editorial-accent transition-colors">Struktur CMO (Fig. 1-2)</a>
-          <a href="#transport-cmo" class="hover:text-editorial-accent transition-colors">Anomali Lorenz (Fig. 3-4)</a>
-          <a href="#rekayasa-bcmo" class="hover:text-editorial-accent transition-colors">Doping Bi (Fig. 5-7)</a>
-          <a href="#kinerja-zt" class="hover:text-editorial-accent transition-colors">Evaluasi ZT (Fig. 8-9)</a>
-        </nav>
-      </div>
-
-      <div class="flex items-center gap-3 text-xs font-medium text-editorial-muted font-sans">
-        <span>Waktu baca ~6 menit</span>
-        <button onclick="window.print()" class="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 border border-editorial-line rounded hover:bg-editorial-softbg text-editorial-ink transition-colors" title="Cetak atau Simpan PDF">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
-          Cetak
-        </button>
-      </div>
-    </div>
+    <!-- Reading Progress Bar -->
+    <div id="reading-progress" class="h-0.5 bg-editorial-accent w-0 transition-all duration-150"></div>
   </header>
 
-  <!-- ARTICLE HEADER (Chemistry World / Nature Style) -->
-  <header class="bg-white border-b border-editorial-line pt-12 pb-10">
+  <!-- ARTICLE HERO -->
+  <section class="bg-white border-b border-editorial-line pt-12 pb-10">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Category Tag & Meta -->
@@ -207,7 +177,7 @@
       </div>
 
     </div>
-  </header>
+  </section>
 
   <!-- KEY FINDINGS AT A GLANCE (Monochrome Editorial Banner) -->
   <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -268,10 +238,44 @@
           </div>
         </div>
 
+        <!-- MINI TOP NAVIGATION (Editorial 2-Column Grid) -->
+        <nav class="mb-10 p-5 bg-white border border-editorial-line rounded font-sans text-xs">
+          <div class="font-bold uppercase tracking-wider text-editorial-muted mb-3 flex items-center justify-between">
+            <span>Navigasi Bab Telaah</span>
+            <span class="font-normal font-mono text-[11px] text-editorial-lightmuted">6 Bab Analisis</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-editorial-ink">
+            <a href="#latar-belakang" class="p-2 rounded hover:bg-editorial-softbg flex items-center gap-2 group transition-colors">
+              <span class="font-mono text-editorial-accent group-hover:underline">01.</span>
+              <span class="truncate">Dilema Termoelektrik & WF</span>
+            </a>
+            <a href="#struktur-cmo" class="p-2 rounded hover:bg-editorial-softbg flex items-center gap-2 group transition-colors">
+              <span class="font-mono text-editorial-accent group-hover:underline">02.</span>
+              <span class="truncate">Struktur Kristal Ortorombik (Fig. 1-2)</span>
+            </a>
+            <a href="#transport-cmo" class="p-2 rounded hover:bg-editorial-softbg flex items-center gap-2 group transition-colors">
+              <span class="font-mono text-editorial-accent group-hover:underline">03.</span>
+              <span class="truncate">Pelanggaran Hukum WF (Fig. 3-4)</span>
+            </a>
+            <a href="#rekayasa-bcmo" class="p-2 rounded hover:bg-editorial-softbg flex items-center gap-2 group transition-colors">
+              <span class="font-mono text-editorial-accent group-hover:underline">04.</span>
+              <span class="truncate">Doping Bi & Double Exchange (Fig. 5-7)</span>
+            </a>
+            <a href="#kinerja-zt" class="p-2 rounded hover:bg-editorial-softbg flex items-center gap-2 group transition-colors">
+              <span class="font-mono text-editorial-accent group-hover:underline">05.</span>
+              <span class="truncate">Fonon Kisi & Figur ZT (Fig. 8-9)</span>
+            </a>
+            <a href="#kesimpulan" class="p-2 rounded hover:bg-editorial-softbg flex items-center gap-2 group transition-colors">
+              <span class="font-mono text-editorial-accent group-hover:underline">06.</span>
+              <span class="truncate">Kesimpulan & Peta Jalan</span>
+            </a>
+          </div>
+        </nav>
+
         <!-- SECTION 1: Latar Belakang & Dilema Termoelektrik -->
         <section id="latar-belakang" class="pt-2">
           <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
-            1. Dilema Termoelektrik: Menyelaraskan Aliran Muatan dan Panas
+            01. Dilema Termoelektrik: Menyelaraskan Aliran Muatan dan Panas
           </h2>
           
           <p class="editorial-dropcap">
@@ -298,7 +302,7 @@
         <!-- SECTION 2: Karakterisasi Struktur & Sifat Dasar CMO (FIG. 1 & FIG. 2) -->
         <section id="struktur-cmo" class="pt-8">
           <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
-            2. Struktur Kristal Ortorombik dan Fasa Dasar CaMnO₃
+            02. Struktur Kristal Ortorombik dan Fasa Dasar CaMnO₃
           </h2>
 
           <p>
@@ -350,7 +354,7 @@
         <!-- SECTION 3: Anomali Hukum Wiedemann-Franz pada CMO (FIG. 3 & FIG. 4) -->
         <section id="transport-cmo" class="pt-8">
           <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
-            3. Anomali Bilangan Lorenz: Pelanggaran Hukum Wiedemann–Franz
+            03. Anomali Bilangan Lorenz: Pelanggaran Hukum Wiedemann–Franz
           </h2>
 
           <p>
@@ -407,7 +411,7 @@
         <!-- SECTION 4: Solusi Doping Bi & Mekanisme Double Exchange (FIG. 5 - FIG. 7) -->
         <section id="rekayasa-bcmo" class="pt-8">
           <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
-            4. Doping Bismut: Delokalisasi Elektron & Pemulihan Sifat Logam
+            04. Doping Bismut: Delokalisasi Elektron & Pemulihan Sifat Logam
           </h2>
 
           <p>
@@ -490,7 +494,7 @@
         <!-- SECTION 5: Hamburan Fonon, Raman, dan Figur Kebaikan ZT (FIG. 8 & FIG. A.9) -->
         <section id="kinerja-zt" class="pt-8">
           <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
-            5. Peredaman Fonon Kisi dan Lonjakan Figur Kebaikan ZT
+            05. Peredaman Fonon Kisi dan Lonjakan Figur Kebaikan ZT
           </h2>
 
           <p>
@@ -608,7 +612,7 @@
         <!-- SECTION 6: Kesimpulan & Prospek -->
         <section id="kesimpulan" class="pt-8 border-t border-editorial-line mt-10">
           <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
-            6. Kesimpulan dan Peta Jalan Optimasi Lanjutan
+            06. Kesimpulan dan Peta Jalan Optimasi Lanjutan
           </h2>
 
           <p>
@@ -794,15 +798,7 @@
 
   <!-- SCRIPT -->
   <script>
-    // 1. Reading Progress Bar
-    window.addEventListener('scroll', () => {
-      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (winScroll / height) * 100;
-      document.getElementById('reading-progress').style.width = scrolled + '%';
-    });
-
-    // 2. Minimalist Summary Toggle
+    // Minimalist Summary Toggle
     function toggleSummary() {
       const content = document.getElementById('summary-content');
       const chevron = document.getElementById('summary-chevron');
@@ -814,23 +810,6 @@
         chevron.textContent = '[+ buka]';
       }
     }
-
-    // 3. Lightbox Functionality
-    function openLightbox(src, caption) {
-      document.getElementById('lightbox-img').src = src;
-      document.getElementById('lightbox-caption').textContent = caption;
-      document.getElementById('lightbox').classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeLightbox() {
-      document.getElementById('lightbox').classList.add('hidden');
-      document.body.style.overflow = '';
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
-    });
   </script>
 
   <!-- Shared Reader Experience Script -->

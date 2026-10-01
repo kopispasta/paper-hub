@@ -117,60 +117,30 @@
 
 <body class="selection:bg-editorial-accentLight selection:text-editorial-accent">
 
-  <!-- TOP PROGRESS BAR -->
-  <div class="fixed top-0 left-0 w-full h-[3px] bg-transparent z-50">
-    <div id="reading-progress" class="h-full bg-editorial-accent w-0"></div>
-  </div>
-
-  <!-- MASTHEAD & NAVIGATION -->
-  <header class="bg-white border-b border-editorial-line sticky top-0 z-40">
-    <!-- Top Micro Bar -->
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-editorial-line/60 py-1.5 flex items-center justify-between text-[11px] text-editorial-muted">
-      <div class="flex items-center gap-2">
-        <span class="font-bold tracking-wider uppercase text-editorial-ink">TELAAH PAPER ILMIAH</span>
-        <span class="text-editorial-line">•</span>
-        <span class="hidden sm:inline">Materials Research Bulletin 190 (2025) 113514</span>
-      </div>
-      <div class="flex items-center gap-4">
-        <a href="https://doi.org/10.1016/j.materresbull.2025.113514" target="_blank" rel="noopener" class="text-editorial-accent hover:underline flex items-center gap-1">
-          <span>DOI: 10.1016/j.materresbull.2025.113514</span>
-          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+  <!-- EDITORIAL HEADER / TOP NAVIGATION -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-editorial-line transition-all">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="../../index.html" class="flex items-center gap-2 text-xs font-sans font-semibold text-editorial-ink hover:text-editorial-accent transition-colors">
+          <svg class="w-4 h-4 text-editorial-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          <span>Katalog Utama</span>
         </a>
+        <span class="text-editorial-line">/</span>
+        <span class="text-xs font-mono text-editorial-muted">Paper #01</span>
+      </div>
+
+      <div class="flex items-center gap-4 text-xs font-sans text-editorial-muted">
+        <span class="hidden sm:inline">Estimasi Baca: 16 Menit</span>
+        <div class="h-3 w-px bg-editorial-line hidden sm:inline"></div>
+        <span class="font-mono text-editorial-ink font-semibold">Mater. Res. Bull. (Elsevier)</span>
       </div>
     </div>
-
-    <!-- Main Navigation Header -->
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-      <div class="flex items-center gap-6">
-        <a href="../../index.html" class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium text-zinc-600 hover:text-blue-600 rounded border border-zinc-200 hover:bg-zinc-50 transition-colors shadow-2xs" title="Kembali ke Katalog Utama">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-          <span class="hidden sm:inline">Katalog Utama</span>
-        </a>
-        <a href="#" class="text-2xl font-serif font-bold tracking-tight text-editorial-ink">
-          Kimia<span class="text-editorial-accent italic font-normal">Fokus</span>
-        </a>
-        <span class="hidden md:inline-block h-5 w-px bg-editorial-line"></span>
-        <nav class="hidden md:flex items-center gap-6 text-xs font-semibold uppercase tracking-wider text-editorial-muted">
-          <a href="#latar-belakang" class="hover:text-editorial-accent transition-colors">Konteks</a>
-          <a href="#arsitektur" class="hover:text-editorial-accent transition-colors">Sintesis (Fig. 1)</a>
-          <a href="#spektroskopi" class="hover:text-editorial-accent transition-colors">Struktur (Fig. 2-3)</a>
-          <a href="#kinerja" class="hover:text-editorial-accent transition-colors">Elektrokimia (Fig. 4)</a>
-          <a href="#mekanisme" class="hover:text-editorial-accent transition-colors">Mekanisme (Fig. 5)</a>
-        </nav>
-      </div>
-
-      <div class="flex items-center gap-3 text-xs font-medium text-editorial-muted">
-        <span>Waktu baca ~6 menit</span>
-        <button onclick="window.print()" class="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 border border-editorial-line rounded hover:bg-editorial-softbg text-editorial-ink transition-colors" title="Cetak atau Simpan PDF">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
-          Cetak
-        </button>
-      </div>
-    </div>
+    <!-- Reading Progress Bar -->
+    <div id="reading-progress" class="h-0.5 bg-editorial-accent w-0 transition-all duration-150"></div>
   </header>
 
-  <!-- ARTICLE HEADER (Chemistry World Style Hero) -->
-  <header class="bg-white border-b border-editorial-line pt-12 pb-10">
+  <!-- ARTICLE HERO -->
+  <section class="bg-white border-b border-editorial-line pt-12 pb-10">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Category Tag & Meta -->
@@ -207,7 +177,7 @@
       </div>
 
     </div>
-  </header>
+  </section>
 
   <!-- KEY FINDINGS AT A GLANCE (Restrained, Monochrome Table) -->
   <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -267,6 +237,31 @@
             <p><strong>4. Hasil Uji Nyata:</strong> Menghasilkan overpotensial 421 mV pada 10 mA cm⁻², nilai Tafel slope 217 mV dec⁻¹, hambatan transfer muatan anjlok ke 1.66 kΩ, serta stabil selama 9000 detik pengujian kronoamperometri.</p>
           </div>
         </div>
+
+        <!-- TABLE OF CONTENTS (MINI JUMP NAV) -->
+        <nav class="p-4 bg-zinc-50 border border-editorial-line rounded text-xs font-sans mb-8">
+          <div class="font-bold text-editorial-ink uppercase tracking-wider mb-2">Navigasi Bab Telaah</div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-editorial-body">
+            <a href="#latar-belakang" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">01.</span> Kinetika Basa & Pengganti Platina
+            </a>
+            <a href="#arsitektur" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">02.</span> Desain Heterostruktur 2D/2D MoS₂/MXene
+            </a>
+            <a href="#spektroskopi" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">03.</span> Kristalinitas, Ikatan Kimia & Morfologi
+            </a>
+            <a href="#kinerja" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">04.</span> Kinerja Elektrokimia & Penurunan Overpotensial
+            </a>
+            <a href="#mekanisme" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">05.</span> Jalur Reaksi Volmer-Heyrovsky
+            </a>
+            <a href="#kesimpulan" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">06.</span> Ketahanan 9000 Detik & Prospek
+            </a>
+          </div>
+        </nav>
 
         <!-- SECTION 1: Latar Belakang -->
         <section id="latar-belakang" class="pt-2">
@@ -746,15 +741,7 @@
 
   <!-- SCRIPT -->
   <script>
-    // 1. Reading Progress Bar
-    window.addEventListener('scroll', () => {
-      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (winScroll / height) * 100;
-      document.getElementById('reading-progress').style.width = scrolled + '%';
-    });
-
-    // 2. Minimalist Summary Toggle
+    // Minimalist Summary Toggle
     function toggleSummary() {
       const content = document.getElementById('summary-content');
       const chevron = document.getElementById('summary-chevron');
@@ -766,23 +753,6 @@
         chevron.textContent = '[+ buka]';
       }
     }
-
-    // 3. Lightbox Functionality
-    function openLightbox(src, caption) {
-      document.getElementById('lightbox-img').src = src;
-      document.getElementById('lightbox-caption').textContent = caption;
-      document.getElementById('lightbox').classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeLightbox() {
-      document.getElementById('lightbox').classList.add('hidden');
-      document.body.style.overflow = '';
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
-    });
   </script>
 
   <!-- Shared Reader Experience Script -->
