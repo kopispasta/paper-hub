@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Penemuan BIIB068: Inhibitor Tirosin Kinase Bruton (BTK) Reversibel, Selektif, dan Berkhasiat Oral untuk Penyakit Autoimun | Telaah J. Med. Chem.</title>
+  
+  <!-- Fonts: Newsreader (Editorial Serif) & Plus Jakarta Sans (Clean Modern Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            editorial: {
+              ink: '#18181b',        /* Deep charcoal */
+              body: '#27272a',       /* Warm reading text */
+              muted: '#71717a',      /* Neutral secondary */
+              lightmuted: '#a1a1aa', /* Captions */
+              line: '#e4e4e7',       /* Hairline border */
+              softbg: '#fafafa',     /* Off-white background */
+              paper: '#ffffff',      /* Card white */
+              accent: '#0a74c0',     /* Royal scientific blue */
+              accentDark: '#075997', /* Dark hover blue */
+              accentLight: '#f0f7fc' /* Subtle highlight */
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            serif: ['"Newsreader"', 'Georgia', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #fafafa;
+      color: #27272a;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .article-body p {
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 1.125rem; /* 18px */
+      line-height: 1.82;
+      color: #27272a;
+      margin-bottom: 1.6rem;
+    }
+
+    .article-body p strong {
+      font-weight: 600;
+      color: #18181b;
+    }
+
+    .article-body h2 {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 700;
+      font-size: 1.625rem;
+      line-height: 1.35;
+      color: #18181b;
+      margin-top: 3.5rem;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+      border-bottom: 1px solid #e4e4e7;
+      padding-bottom: 0.5rem;
+    }
+
+    .article-body h3 {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 600;
+      font-size: 1.25rem;
+      line-height: 1.4;
+      color: #18181b;
+      margin-top: 2.25rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+    }
+
+    .article-body blockquote {
+      border-left: 3px solid #0a74c0;
+      padding-left: 1.25rem;
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: 1.75rem;
+      margin-bottom: 1.75rem;
+      font-style: italic;
+      color: #52525b;
+    }
+
+    .editorial-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 0.8125rem; /* 13px */
+      margin: 1.75rem 0;
+      background: #ffffff;
+      border-top: 2px solid #18181b;
+      border-bottom: 2px solid #18181b;
+    }
+
+    .editorial-table th {
+      padding: 0.625rem 0.75rem;
+      text-align: left;
+      font-weight: 600;
+      color: #18181b;
+      border-bottom: 1px solid #18181b;
+      background: #fafafa;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+    }
+
+    .editorial-table td {
+      padding: 0.55rem 0.75rem;
+      border-bottom: 1px solid #f4f4f5;
+      color: #3f3f46;
+      vertical-align: middle;
+    }
+
+    .editorial-table tr:hover td {
+      background-color: #f8fafc;
+    }
+
+    .figure-container {
+      margin: 2.5rem 0;
+      background: #ffffff;
+      border: 1px solid #e4e4e7;
+      border-radius: 4px;
+      padding: 1.25rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+
+    .callout-box {
+      border-left: 3px solid #0a74c0;
+      background: #f0f7fc;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .callout-title {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: #075997;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+    }
+
+    .callout-body {
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #1e293b;
+      margin-bottom: 0 !important;
+    }
+  </style>
+</head>
+<body class="selection:bg-blue-100 selection:text-blue-900">
+
+  <!-- TOP APP NAVIGATION BAR -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-editorial-line transition-all">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="../../index.html" class="flex items-center gap-2 text-xs font-sans font-semibold text-editorial-ink hover:text-editorial-accent transition-colors">
+          <svg class="w-4 h-4 text-editorial-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          <span>Katalog Utama</span>
+        </a>
+        <span class="text-editorial-line">/</span>
+        <span class="text-xs font-mono text-editorial-muted">Paper #09</span>
+      </div>
+
+      <div class="flex items-center gap-4 text-xs font-sans text-editorial-muted">
+        <span class="hidden sm:inline">Estimasi Baca: 24 Menit</span>
+        <div class="h-3 w-px bg-editorial-line hidden sm:inline"></div>
+        <span class="font-mono text-editorial-ink font-semibold">J. Med. Chem. (ACS)</span>
+      </div>
+    </div>
+    <!-- Reading Progress Bar -->
+    <div id="reading-progress" class="h-0.5 bg-editorial-accent w-0 transition-all duration-150"></div>
+  </header>
+
+  <!-- MAIN ARTICLE CONTAINER -->
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-10 md:py-16 article-body">
+
+    <!-- BREADCRUMBS & BADGES -->
+    <div class="flex flex-wrap items-center gap-2 mb-6 text-xs font-sans">
+      <span class="px-2 py-0.5 rounded bg-blue-50 text-editorial-accent font-semibold uppercase tracking-wider text-[11px] border border-blue-200/60">
+        Kimia Medisinal & Desain Obat
+      </span>
+      <span class="text-editorial-lightmuted">•</span>
+      <span class="text-editorial-muted">Desain Berbasis Struktur (SBDD)</span>
+      <span class="text-editorial-lightmuted">•</span>
+      <span class="text-editorial-muted">Uji Klinis Fase I (NCT02829541)</span>
+    </div>
+
+    <!-- ARTICLE MASTHEAD -->
+    <h1 class="font-serif text-3xl sm:text-4xl md:text-[2.65rem] leading-[1.22] font-semibold text-editorial-ink tracking-tight mb-5">
+      Penemuan BIIB068: Inhibitor Tirosin Kinase Bruton (BTK) Reversibel, Sangat Selektif, dan Berkhasiat Oral untuk Terapi Penyakit Autoimun Kronis
+    </h1>
+
+    <p class="font-sans text-base sm:text-lg text-editorial-muted leading-relaxed mb-6 font-normal">
+      Bagaimana tim kimia medisinal Biogen merancang BIIB068 melalui sekuestrasi konformasi inaktif pada kantung alosterik H3 untuk menaklukkan keterbatasan toksisitas inhibitor kovalen ireversibel—membuka era baru imunomodulasi presisi untuk Lupus Eritematosus Sistemik (SLE) hingga sukses melewati uji klinis Fase I pada manusia.
+    </p>
+
+    <!-- METADATA & CITATION STRIP -->
+    <div class="pt-4 pb-6 border-y border-editorial-line text-xs font-sans text-editorial-muted flex flex-wrap justify-between items-center gap-y-3 mb-8">
+      <div>
+        <span class="font-semibold text-editorial-ink">Bin Ma, Tonika Bohnert, Kevin L. Otipoby, Brian T. Hopkins, dkk.</span>
+        <span class="block text-editorial-lightmuted mt-0.5">Biogen, Cambridge, Massachusetts, Amerika Serikat</span>
+      </div>
+      <div class="text-right font-mono text-[11px]">
+        <div class="text-editorial-ink font-semibold">J. Med. Chem. 2020, 63, 12574–12594</div>
+        <div class="text-editorial-muted">DOI: 10.1021/acs.jmedchem.0c00993 • PDB ID: 6TFP</div>
+      </div>
+    </div>
+
+    <!-- TOC ABSTRACT GRAPHIC -->
+    <figure class="figure-container">
+      <img 
+        src="assets/toc_abstract_graphic.png" 
+        alt="TOC Visual Abstract BIIB068: Desain Berbasis Struktur, Selektivitas Kinom, dan Khasiat In Vivo" 
+        class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+        onclick="openLightbox(this.src, this.alt)"
+      >
+      <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+        <strong class="text-editorial-ink font-semibold">Visual Abstract.</strong> Ringkasan penemuan BIIB068: Senyawa inhibitor BTK reversibel berdaya kerja kuat (`IC_50 = 1 nM`, `K_d = 0.3 nM`), efisiensi ligan tinggi (`LLE = 5.0`), selektivitas kinom luar biasa (>400 kali lipat di antara 395 kinase manusia), supresi antibodi in vivo hingga 93% pada model hewan, serta pembuktian farmakodinamika inhibisi fosforilasi pBTK >90% pada relawan manusia dalam uji klinis Fase I.
+      </figcaption>
+    </figure>
+
+    <!-- METRICS STRIP -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 my-8 font-sans">
+      <div class="p-3 bg-white border border-editorial-line rounded shadow-xs">
+        <div class="text-[11px] uppercase tracking-wider text-editorial-muted font-semibold">Potensi Enzimatik</div>
+        <div class="text-2xl font-bold text-editorial-ink mt-0.5 font-mono">1.0 nM</div>
+        <div class="text-[11px] text-editorial-muted mt-0.5">BTK `IC_50` (`K_d = 0.3 nM`)</div>
+      </div>
+      <div class="p-3 bg-white border border-editorial-line rounded shadow-xs">
+        <div class="text-[11px] uppercase tracking-wider text-editorial-muted font-semibold">Selektivitas Kinom</div>
+        <div class="text-2xl font-bold text-editorial-ink mt-0.5 font-mono">&gt;400×</div>
+        <div class="text-[11px] text-editorial-muted mt-0.5">Terhadap 395 kinase manusia</div>
+      </div>
+      <div class="p-3 bg-white border border-editorial-line rounded shadow-xs">
+        <div class="text-[11px] uppercase tracking-wider text-editorial-muted font-semibold">Efikasi In Vivo</div>
+        <div class="text-2xl font-bold text-editorial-ink mt-0.5 font-mono">93%</div>
+        <div class="text-[11px] text-editorial-muted mt-0.5">Supresi respon IgM (TI-2)</div>
+      </div>
+      <div class="p-3 bg-white border border-editorial-line rounded shadow-xs">
+        <div class="text-[11px] uppercase tracking-wider text-editorial-muted font-semibold">Target Klinis Fasa I</div>
+        <div class="text-2xl font-bold text-editorial-ink mt-0.5 font-mono">&gt;90%</div>
+        <div class="text-[11px] text-editorial-muted mt-0.5">Inhibisi pBTK darah manusia</div>
+      </div>
+    </div>
+
+    <!-- TABLE OF CONTENTS (MINI JUMP LINKS) -->
+    <nav class="p-4 bg-zinc-50 border border-editorial-line rounded text-xs font-sans my-8">
+      <div class="font-bold text-editorial-ink uppercase tracking-wider mb-2">Navigasi Bab Telaah</div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-editorial-body">
+        <a href="#latar-belakang" class="hover:text-editorial-accent flex items-center gap-1.5">
+          <span class="text-editorial-lightmuted font-mono">01.</span> Peran Sentral BTK & Dilema Inhibitor Kovalen
+        </a>
+        <a href="#penemuan-hit" class="hover:text-editorial-accent flex items-center gap-1.5">
+          <span class="text-editorial-lightmuted font-mono">02.</span> Skrining Awal & Pengungkapan Kantung H3
+        </a>
+        <a href="#optimasi-sbdd" class="hover:text-editorial-accent flex items-center gap-1.5">
+          <span class="text-editorial-lightmuted font-mono">03.</span> Desain Berbasis Struktur Menuju BIIB068
+        </a>
+        <a href="#struktur-kristal" class="hover:text-editorial-accent flex items-center gap-1.5">
+          <span class="text-editorial-lightmuted font-mono">04.</span> Bukti Kristalografi Sinar-X & Inactive Conformation
+        </a>
+        <a href="#selektivitas-biomap" class="hover:text-editorial-accent flex items-center gap-1.5">
+          <span class="text-editorial-lightmuted font-mono">05.</span> Selektivitas Kinom Mutlak & Profil Seluler BioMAP
+        </a>
+        <a href="#efikasi-klinis" class="hover:text-editorial-accent flex items-center gap-1.5">
+          <span class="text-editorial-lightmuted font-mono">06.</span> Efikasi In Vivo Hewan & Uji Klinis Fase I Manusia
+        </a>
+      </div>
+    </nav>
+
+    <!-- SECTION 1 -->
+    <section id="latar-belakang">
+      <h2>01. Peran Sentral BTK dalam Imunopatologi & Dilema Inhibitor Kovalen</h2>
+
+      <p>
+        <strong>Tirosin kinase Bruton (Bruton’s tyrosine kinase, BTK)</strong> merupakan anggota non-reseptor dari famili kinase Tec yang memegang kendali sentral dalam kaskade transduksi sinyal sistem imun adaptif dan bawaan (*innate*). BTK diekspresikan secara melimpah pada limfosit B dan sel-sel turunan mieloid—termasuk monosit, makrofag, neutrofil, dan basofil—namun tidak diekspresikan pada sel T matang maupun sel *natural killer* (NK).
+      </p>
+
+      <p>
+        Aktivasi reseptor sel B (B-cell receptor, BCR) memicu autofosforilasi dan aktivasi BTK, yang kemudian memfosforilasi fosfolipase C gamma-2 (PLCγ2). Peristiwa biokimia ini menginisiasi pelepasan kalsium intraseluler dan aktivasi faktor transkripsi kunci seperti NF-κB dan NFAT, yang mengarahkan proliferasi sel B, diferensiasi menjadi sel plasma penghasil antibodi, dan sekresi sitokin pro-inflamasi. Pada sel mieloid, BTK memediasi aktivasi reseptor Fc (FcγR dan FcεR), memicu pelepasan mediator inflamasi, ledakan oksidatif neutrofil, dan sekresi TNF-α yang merusak jaringan.
+      </p>
+
+      <p>
+        Aktivasi patologis jalur BCR dan FcR terbukti menjadi pendorong utama pada berbagai kelainan autoimun yang melemahkan tubuh, khususnya <strong>Lupus Eritematosus Sistemik (Systemic Lupus Erythematosus, SLE)</strong>, Artritis Reumatoid (RA), dan vaskulitis autoimun. Pada pasien SLE, produksi autoantibodi patogenik (seperti anti-dsDNA) oleh sel B hiperaktif bersamaan dengan deposisi kompleks imun di ginjal (nefritis lupus) menyebabkan kerusakan organ terminal.
+      </p>
+
+      <figure class="figure-container">
+        <img 
+          src="assets/fig1_btk_inhibitors_structures.png" 
+          alt="Struktur Inhibitor BTK Kovalen vs Reversibel Non-kovalen" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 1.</strong> Perbandingan arsitektur kimiawi inhibitor BTK kovalen generasi awal (Ibrutinib, Acalabrutinib, Zanubrutinib) yang memanfaatkan gugus perangkap elektrofilik akrilamida/butinamida terhadap Cys481, dibandingkan dengan inhibitor reversibel non-kovalen generasi lanjut (BIIB068, Fenebrutinib, Vecabrutinib).
+        </figcaption>
+      </figure>
+
+      <p>
+        Kesuksesan inhibitor BTK kovalen ireversibel generasi awal seperti <em>ibrutinib</em>, <em>acalabrutinib</em>, dan <em>zanubrutinib</em> telah merevolusi onkologi hematologi, khususnya untuk leukemia limfositik kronis (CLL) dan limfoma sel mantel (MCL). Inhibitor kovalen ini bekerja dengan membentuk ikatan kovalen permanen antara gugus elektrofilik (akrilamida) dengan residu nukleofilik sistein 481 (Cys481) di situs aktif BTK.
+      </p>
+
+      <div class="callout-box">
+        <div class="callout-title">Dilema Keamanan: Mengapa Inhibitor Kovalen Kurang Ideal untuk Autoimun Kronis?</div>
+        <p class="callout-body">
+          Dalam onkologi onkogenik, risiko toksisitas berat dapat ditoleransi demi memperpanjang harapan hidup pasien. Namun, pada penyakit autoimun kronis seperti SLE dan RA di mana pasien memerlukan pengobatan harian sepanjang hayat, modifikasi kovalen ireversibel menimbulkan risiko klinis yang substansial:
+          <br><br>
+          1. <strong>Reaktivitas Silang Non-Target:</strong> Elektrofil akrilamida dapat bereaksi secara kovalen dengan kinase lain yang memiliki sistein homolog (seperti EGFR Cys797, ITK Cys442, TEC, BLK, BMX), memicu toksisitas kulit, diare parah, hepatotoksisitas, dan fibrilasi atrium.
+          <br>
+          2. <strong>Haptenisasi & Toksisitas Idiosinkratik:</strong> Adisi kovalen permanen molekul sintetis pada protein tubuh dapat bertindak sebagai hapten, memicu respon imun baru yang tidak terduga atau reaksi hipersensitivitas fatal pada populasi pasien yang sudah memiliki disregulasi imun.
+          <br>
+          3. <strong>Ketiadaan Penghentian Cepat (*Rapid Offset*):</strong> Jika pasien autoimun mengalami infeksi bakteri akut atau memerlukan operasi darurat, efek inhibitor kovalen baru hilang setelah protein BTK baru disintesis kembali oleh tubuh (beberapa hari), meningkatkan risiko komplikasi infeksi oportunistik dan pendarahan bedah.
+        </p>
+      </div>
+
+      <p>
+        Oleh karena itu, tim peneliti di Biogen memusatkan target untuk menciptakan <strong>inhibitor BTK reversibel non-kovalen</strong> yang memenuhi kriteria ketat kimia medisinal: memiliki afinitas sub-nanomolar, selektivitas kinom mutlak melampaui seluruh famili kinase manusia (termasuk sesama famili Tec), sifat fisikokimia yang mendukung formulasi oral harian, serta jendela keamanan yang lebar dalam studi toksikologi GLP.
+      </p>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section id="penemuan-hit">
+      <h2>02. Skrining Awal & Pengungkapan Kantung Alosterik H3</h2>
+
+      <p>
+        Upaya penemuan dimulai dari kampanye skrining berkecepatan tinggi (<em>high-throughput screening</em>, HTS) terhadap repositori senyawa Biogen. Skrining ini mengidentifikasi serangkaian senyawa bertulang punggung heterosiklik imidazopirazin. Di antara senyawa awal yang menunjukkan aktivitas inhibisi yang dapat direproduksi adalah <strong>Hit 5</strong>.
+      </p>
+
+      <figure class="figure-container">
+        <img 
+          src="assets/fig2_hit5_analogs_structures.png" 
+          alt="Struktur Kimia Hit 5 dan Analog Derivat Awal Senyawa 6 hingga 10" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 2.</strong> Struktur kimiawi Hit awal 5 dan analog optimasi awal (senyawa 6–10). Eksplorasi substitusi pada cincin fenil pusat dan pemanjangan gugus ke arah kantung H3 mengungkap peluang drastis untuk melipatgandakan afinitas pengikatan BTK.
+        </figcaption>
+      </figure>
+
+      <p>
+        Hit 5 memiliki potensi enzimatik awal yang moderat dengan nilai `BTK IC_50 = 3700 nM` (3.7 µM). Struktur kristal sinar-X dari domain kinase BTK yang dikomplekskan dengan Hit 5 (PDB ID: 6TFL) berhasil dipecahkan pada resolusi 1.95 Å. Kristalografi mengungkapkan bahwa cincin imidazo[1,2-a]pirazin bertindak sebagai <em>hinge-binding motif</em> yang membentuk ikatan hidrogen bidentat dengan rantai utama residu Met477 di daerah hinge BTK.
+      </p>
+
+      <p>
+        Yang paling menarik, bagian benzamida dari Hit 5 menonjol keluar dari jalur pengikatan ATP konvensional dan mengarah langsung ke sebuah rongga hidrofobik tersembunyi yang dinamakan <strong>kantung H3 (H3 pocket)</strong>. Kantung ini terbentuk di bawah loop aktivasi saat residu Tyr551 berada dalam orientasi tidak terfosforilasi (konformasi inaktif).
+      </p>
+
+      <div class="overflow-x-auto my-6">
+        <table class="editorial-table">
+          <thead>
+            <tr>
+              <th>Senyawa</th>
+              <th>Variasi Substituen (R¹ / H3 Binder)</th>
+              <th>BTK `IC_50` (nM)</th>
+              <th>BTK `K_d` (nM)</th>
+              <th>LLE</th>
+              <th>ClogP</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-mono font-semibold">Hit 5</td>
+              <td>Benzamida tak tersubstitusi</td>
+              <td class="font-mono">3700</td>
+              <td class="font-mono">1500</td>
+              <td class="font-mono">1.9</td>
+              <td class="font-mono">3.6</td>
+            </tr>
+            <tr>
+              <td class="font-mono font-semibold text-editorial-accent">Senyawa 6</td>
+              <td><em>para-tert</em>-Butilbenzamida</td>
+              <td class="font-mono font-bold text-editorial-accent">142</td>
+              <td class="font-mono">78</td>
+              <td class="font-mono">2.1</td>
+              <td class="font-mono">5.0</td>
+            </tr>
+            <tr>
+              <td class="font-mono font-semibold text-editorial-accent">Senyawa 7</td>
+              <td><em>para-tert</em>-Butil + 2-Metil pada fenil pusat</td>
+              <td class="font-mono font-bold text-editorial-accent">5</td>
+              <td class="font-mono">2.4</td>
+              <td class="font-mono">2.8</td>
+              <td class="font-mono">5.5</td>
+            </tr>
+            <tr>
+              <td class="font-mono font-semibold">Senyawa 8</td>
+              <td><em>para</em>-Trifluorometilbenzamida</td>
+              <td class="font-mono">28</td>
+              <td class="font-mono">14</td>
+              <td class="font-mono">2.4</td>
+              <td class="font-mono">4.9</td>
+            </tr>
+            <tr>
+              <td class="font-mono font-semibold">Senyawa 9</td>
+              <td><em>para</em>-Siklopropilbenzamida</td>
+              <td class="font-mono">11</td>
+              <td class="font-mono">5.2</td>
+              <td class="font-mono">2.7</td>
+              <td class="font-mono">4.8</td>
+            </tr>
+            <tr>
+              <td class="font-mono font-semibold">Senyawa 10</td>
+              <td><em>para-iso</em>-Propilbenzamida</td>
+              <td class="font-mono">38</td>
+              <td class="font-mono">19</td>
+              <td class="font-mono">2.3</td>
+              <td class="font-mono">5.1</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Berdasarkan penampakan ruang kosong di dalam kantung H3 pada struktur kristal Hit 5, tim kimia medisinal merancang analog dengan substitusi lipofilik pada posisi <em>para</em> cincin fenil benzamida. Penambahan gugus <em>tert</em>-butil menghasilkan <strong>Senyawa 6</strong>, yang memicu lonjakan afinitas pengikatan sebesar 26 kali lipat dengan `BTK IC_50 = 142 nM`.
+      </p>
+
+      <figure class="figure-container">
+        <img 
+          src="assets/fig3_btk_cocrystal_overlay_5_6.png" 
+          alt="Overlay Struktur Kristal Kompleks BTK dengan Hit 5 dan Senyawa 6" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 3.</strong> Penumpukan (*overlay*) struktur kristal sinar-X domain kinase BTK: Kompleks dengan Hit 5 (karbon kuning, PDB 6TFL) ditumpuk dengan Senyawa 6 (karbon cyan, PDB 6TFO). Rantai samping Tyr551 berputar dan terkunci dalam konformasi inaktif saat gugus <em>tert</em>-butil dari senyawa 6 mengisi kantung hidrofobik H3 yang dibatasi oleh Leu542 dan Ser543.
+        </figcaption>
+      </figure>
+
+      <p>
+        Struktur kristal Senyawa 6 (PDB ID: 6TFO) memvalidasi hipotesis desain secara spektakuler: gugus <em>tert</em>-butil mengisi secara komplementer ceruk hidrofobik yang dibentuk oleh rantai samping residu Leu542, Phe540, dan cincin aromatik Tyr551. Interaksi van der Waals yang rapat ini menstabilkan putaran cincin fenil Tyr551, mencegahnya bertransisi ke konformasi aktif di mana tirosin dapat diakses oleh fosforilasi hulu oleh kinase famili Src (seperti LYN atau SYK).
+      </p>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section id="optimasi-sbdd">
+      <h2>03. Desain Berbasis Struktur (SBDD) Menuju Kelahiran BIIB068</h2>
+
+      <p>
+        Meskipun Senyawa 6 dan Senyawa 7 (`IC_50 = 5 nM`) menunjukkan potensi yang sangat tinggi, keduanya memiliki lipofilisitas yang berlebihan (`ClogP > 5.0`) dan efisiensi ligan lipofilik (*Lipophilic Ligand Efficiency*, `LLE = pIC_50 - ClogP`) yang rendah (`LLE < 3.0`). Molekul yang terlalu hidrofobik seperti ini umumnya menderita kelarutan air yang buruk, pengikatan protein plasma yang terlampau ketat, serta metabolisme oksidatif cepat oleh sitokrom P450 di hati.
+      </p>
+
+      <p>
+        Oleh karena itu, strategi optimasi multi-dimensi dijalankan melalui empat langkah kunci:
+      </p>
+
+      <h3>A. Eksplorasi Kantung P-Loop & Substitusi Orto-Metil</h3>
+      <p>
+        Struktur kristal mengindikasikan bahwa cincin fenil pusat yang menghubungkan hinge binder dan benzamida berada tepat di bawah *glycine-rich loop* (P-loop, residu Gly409–Gly414). Introduksi gugus metil pada posisi C2 cincin fenil pusat menghasilkan <strong>Senyawa 7</strong> (`IC_50 = 5 nM`). Gugus metil orto ini menciptakan hambatan sterik internal yang mengunci sudut dihedral molekul pada orientasi ortogonal yang mendekati konformasi bioaktifnya di situs pengikatan, sehingga meminimalkan penalti entropi saat pengikatan protein terjadi.
+      </p>
+
+      <h3>B. Penggantian H3 Binder dengan Heterosiklus Isothiazole</h3>
+      <p>
+        Untuk memangkas lipofilisitas tanpa mengorbankan interaksi van der Waals di kantung H3, cincin fenil lipofilik digantikan dengan heterosiklus kaya elektron. Pilihan terbaik jatuh pada cincin <strong>5-tert-butilisotiazol-3-karboksamida (Senyawa 11)</strong>. Isotiazole mempertahankan polarisabilitas atom sulfur yang dapat membentuk interaksi dispersi kuat dengan Phe540 sembari menurunkan nilai ClogP secara substansial (`IC_50 = 3 nM`).
+      </p>
+
+      <div class="overflow-x-auto my-6">
+        <table class="editorial-table">
+          <thead>
+            <tr>
+              <th>Senyawa</th>
+              <th>Hinge Binder</th>
+              <th>H3 Heterosiklus</th>
+              <th>BTK `IC_50` (nM)</th>
+              <th>Klirens Hepatosit Tikus (`µL/min/10⁶` sel)</th>
+              <th>Permeabilitas RRCK (`10⁻⁶ cm/s`)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-mono font-semibold">Senyawa 7</td>
+              <td>Imidazo[1,2-a]pirazin</td>
+              <td><em>p-t</em>-Butilfenil</td>
+              <td class="font-mono">5.0</td>
+              <td class="font-mono">&gt;120 (Sangat Cepat)</td>
+              <td class="font-mono">4.2</td>
+            </tr>
+            <tr>
+              <td class="font-mono font-semibold">Senyawa 11</td>
+              <td>Imidazo[1,2-a]pirazin</td>
+              <td><em>t</em>-Butilisotiazol</td>
+              <td class="font-mono">3.0</td>
+              <td class="font-mono">95 (Cepat)</td>
+              <td class="font-mono">8.5</td>
+            </tr>
+            <tr>
+              <td class="font-mono font-semibold text-editorial-accent">Senyawa 13</td>
+              <td>2-Aminopirimidin</td>
+              <td><em>t</em>-Butilisotiazol</td>
+              <td class="font-mono font-bold text-editorial-accent">2.0</td>
+              <td class="font-mono font-bold text-editorial-accent">18 (Stabil)</td>
+              <td class="font-mono font-bold text-editorial-accent">19.4</td>
+            </tr>
+            <tr>
+              <td class="font-mono font-semibold">Senyawa 15</td>
+              <td>2-Aminopiridin</td>
+              <td><em>t</em>-Butilisotiazol</td>
+              <td class="font-mono">24.0</td>
+              <td class="font-mono">34</td>
+              <td class="font-mono">14.1</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>C. Transformasi Hinge Binder Menuju 2-Aminopirimidin</h3>
+      <p>
+        Inti imidazopirazin awal memiliki kelemahan intrinsik berupa metabolisme fase I yang cepat di mikrosom hati karena oksidasi cincin aromatik kaya elektron. Tim kimia medisinal mengganti sistem bisiklik imidazopirazin dengan cincin monosiklik <strong>2-aminopirimidin (Senyawa 13)</strong>.
+      </p>
+
+      <p>
+        Modifikasi ini terbukti menjadi terobosan penting: 2-aminopirimidin mempertahankan ikatan hidrogen bidentat donor-akseptor yang sempurna terhadap tulang punggung Met477, tetapi secara dramatis menurunkan klirens hepatosit in vitro dari 95 menjadi 18 µL/min/10⁶ sel, sekaligus mendongkrak permeabilitas membran sel hingga dua kali lipat.
+      </p>
+
+      <h3>D. Introduksi Linker Pirazol & Kap Polar Solvent-Exposed (BIIB068)</h3>
+      <p>
+        Langkah terakhir adalah menyambungkan hinge binder dengan fenil pusat melalui linker heterosiklik yang tepat. Penggantian ikatan langsung dengan cincin <strong>pirazol</strong> pada posisi C5 pirimidin (menghasilkan Senyawa 21, `IC_50 = 0.2 nM`) memberikan orientasi vektor ideal yang memposisikan atom nitrogen pirazol untuk membentuk ikatan hidrogen tambahan dengan residu <em>gatekeeper</em> Thr474.
+      </p>
+
+      <p>
+        Pada ujung distal yang menghadap ke pelarut eksternal (*solvent-exposed region*), ditambahkan gugus <strong>3-isopropoksiazetidin urea</strong>. Gugus fungsional unik ini memberikan sifat fisikokimia yang luar biasa: meningkatkan kelarutan kinetik (>50 µg/mL pada pH asam lambung 1.5 dan >10 µg/mL pada pH usus 6.8), menurunkan kecenderungan agregasi, dan mengoptimalkan ikatan bebas fraksi plasma (`f_u`). Kombinasi sempurna ini melahirkan <strong>BIIB068 (Senyawa 1)</strong>.
+      </p>
+
+      <div class="overflow-x-auto my-6">
+        <table class="editorial-table">
+          <thead>
+            <tr>
+              <th>Parameter Fisikokimia & Biokimia</th>
+              <th>BIIB068 (Senyawa 1)</th>
+              <th>Senyawa 13</th>
+              <th>Target Profil Kandidat Obat</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Berat Molekul (BM, g/mol)</td>
+              <td class="font-mono font-semibold">500.56</td>
+              <td class="font-mono">424.48</td>
+              <td class="font-mono">&lt; 550</td>
+            </tr>
+            <tr>
+              <td>BTK Potensi Enzimatik (`IC_50`)</td>
+              <td class="font-mono font-bold text-editorial-accent">1.0 nM</td>
+              <td class="font-mono">2.0 nM</td>
+              <td class="font-mono">&lt; 5.0 nM</td>
+            </tr>
+            <tr>
+              <td>BTK Konstanta Disosiasi SPR (`K_d`)</td>
+              <td class="font-mono font-bold text-editorial-accent">0.3 nM</td>
+              <td class="font-mono">0.8 nM</td>
+              <td class="font-mono">&lt; 1.0 nM</td>
+            </tr>
+            <tr>
+              <td>Inhibisi pBTK Darah Utuh Manusia (`IC_50`)</td>
+              <td class="font-mono font-semibold">0.12 µM (120 nM)</td>
+              <td class="font-mono">0.45 µM</td>
+              <td class="font-mono">&lt; 0.25 µM</td>
+            </tr>
+            <tr>
+              <td>Efisiensi Ligan Lipofilik (LLE)</td>
+              <td class="font-mono font-bold text-editorial-accent">5.0</td>
+              <td class="font-mono">3.4</td>
+              <td class="font-mono">&gt; 4.5</td>
+            </tr>
+            <tr>
+              <td>Koefisien Partisi Lipofilik (`log D_7.4`)</td>
+              <td class="font-mono">2.32</td>
+              <td class="font-mono">3.65</td>
+              <td class="font-mono">1.5 – 3.0</td>
+            </tr>
+            <tr>
+              <td>Kelarutan Kinetik pH 1.5 / pH 6.8</td>
+              <td class="font-mono font-semibold">&gt;50 / &gt;10 µg/mL</td>
+              <td class="font-mono">15 / 2 µg/mL</td>
+              <td class="font-mono">&gt;10 µg/mL</td>
+            </tr>
+            <tr>
+              <td>Stabilitas Mikrosomal Manusia (`t_1/2`)</td>
+              <td class="font-mono font-semibold">&gt; 120 Menit</td>
+              <td class="font-mono">65 Menit</td>
+              <td class="font-mono">&gt; 60 Menit</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <figure class="figure-container">
+        <img 
+          src="assets/scheme1_synthesis_biib068.png" 
+          alt="Skema Rute Sintesis Kimia Medisinal Konvergen BIIB068" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Skema 1.</strong> Rute sintesis kimia medisinal konvergen BIIB068 (1): Kopling Suzuki antara intermediat aminopirazol boronat ester dengan kloropirimidin terfungsionalisasi, dilanjutkan dengan perakitan cincin azetidinil-urea dan pengikatan fragmen 5-tert-butilisotiazol-3-karboksamida pada kondisi bebas epimerisasi dengan rendemen isolasi tinggi.
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- SECTION 4 -->
+    <section id="struktur-kristal">
+      <h2>04. Bukti Kristalografi Sinar-X & Sekuestrasi Konformasi Inaktif H3</h2>
+
+      <p>
+        Untuk mengonfirmasi mekanisme interaksi molekuler pada tingkat atom, struktur kristal ko-kompleks domain kinase BTK manusia dengan BIIB068 dipecahkan pada resolusi ultra-tinggi <strong>1.60 Å (PDB ID: 6TFP)</strong>.
+      </p>
+
+      <figure class="figure-container">
+        <img 
+          src="assets/fig4_btk_cocrystal_biib068.png" 
+          alt="Struktur Kristal Sinar-X Resolusi 1.60 Angstrom BIIB068 dalam Kompleks dengan Domain Kinase BTK" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 4.</strong> Struktur kristal sinar-X resolusi tinggi (1.60 Å, PDB 6TFP) BIIB068 terikat pada domain kinase BTK: (A) Tampilan keseluruhan situs aktif memperlihatkan ligand memanjang dari daerah hinge hingga kantung H3. (B) Pembesaran interaksi hinge: nitrogen pirimidin dan amino eksosiklik membentuk ikatan hidrogen bidentat dengan Met477, sementara pirazol berikatan dengan Thr474. (C) Gugus 5-tert-butilisotiazol merangkul kantung hidrofobik H3, mengunci rantai samping Tyr551 pada orientasi inaktif yang terhindar dari autofosforilasi.
+        </figcaption>
+      </figure>
+
+      <p>
+        Struktur kristal resolusi tinggi ini memaparkan jaringan ikatan yang sangat harmonis:
+      </p>
+
+      <ol class="list-decimal pl-5 space-y-3 font-serif text-lg leading-relaxed text-editorial-body mb-6">
+        <li>
+          <strong>Jangkar Bidentat Hinge:</strong> Atom nitrogen cincin pirimidin bertindak sebagai akseptor ikatan hidrogen terhadap gugus amida tulang punggung Met477 (`N···H-N = 2.8 Å`), sementara gugus amino eksosiklik bertindak sebagai donor ikatan hidrogen ke atom oksigen karbonil tulang punggung Met477 (`N-H···O = 2.9 Å`).
+        </li>
+        <li>
+          <strong>Interaksi Selektivitas Gatekeeper:</strong> Cincin pirazol terletak tepat di sebelah residu <em>gatekeeper</em> Thr474, di mana atom N2 pirazol membentuk ikatan hidrogen dengan gugus hidroksil rantai samping treonin. Jarak dan geometri ini memberikan diskriminasi yang sangat tajam terhadap kinase lain yang memiliki residu gatekeeper yang lebih besar (seperti metionin atau fenilalanin).
+        </li>
+        <li>
+          <strong>Sekuestrasi Inaktif Tyr551:</strong> Fragmen 5-<em>tert</em>-butilisotiazol tertanam sempurna di dalam kantung H3. Cincin isotiazol membentuk interaksi penumpukan pi-pi parsial dengan Phe540, sedangkan substituen <em>tert</em>-butil mengisi ceruk lipofilik yang diapit oleh Leu542 dan Ser543. Posisi ini memaksa rantai samping fenol Tyr551 tetap tertutup di dalam saku interior protein, menguncinya dalam konformasi non-fosforilasi (inaktif).
+        </li>
+        <li>
+          <strong>Solvent Solvation Vector:</strong> Ekor 3-isopropoksiazetidin urea terproyeksi keluar ke lingkungan pelarut di antara Asp539 dan Arg525, memberikan toleransi struktur yang tinggi dan memungkinkan modifikasi hidrofilik tanpa mengganggu geometri inti pengikatan.
+        </li>
+      </ol>
+    </section>
+
+    <!-- SECTION 5 -->
+    <section id="selektivitas-biomap">
+      <h2>05. Profil Selektivitas Kinom Mutlak & Karakterisasi Seluler BioMAP</h2>
+
+      <p>
+        Salah satu tantangan paling monumental dalam pengembangan inhibitor kinase molekul kecil adalah <strong>selektivitas kinom</strong>. Genom manusia menyandikan lebih dari 500 kinase yang memiliki kemiripan struktur kantung ATP yang tinggi. Inhibitor kovalen seperti ibrutinib dikenal menghambat kinase non-target secara signifikan, termasuk ITK (yang mengganggu fungsi sel T) dan EGFR (yang memicu efek samping dermatologis dan gastrointestinal).
+      </p>
+
+      <p>
+        BIIB068 dievaluasi terhadap panel komprehensif <strong>395 kinase manusia</strong> menggunakan uji pengikatan kompetisi ATP. Hasilnya sangat luar biasa: BIIB068 menunjukkan <strong>selektivitas >400 kali lipat</strong> terhadap setiap kinase yang diuji!
+      </p>
+
+      <div class="overflow-x-auto my-6">
+        <table class="editorial-table">
+          <thead>
+            <tr>
+              <th>Target Kinase</th>
+              <th>Famili Kinase</th>
+              <th>BIIB068 `IC_50` (nM)</th>
+              <th>Faktor Selektivitas (vs BTK)</th>
+              <th>Catatan Biologis & Klinis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-blue-50/40">
+              <td class="font-mono font-bold text-editorial-accent">BTK (Target Utama)</td>
+              <td class="font-mono">Tec</td>
+              <td class="font-mono font-bold text-editorial-accent">1.0</td>
+              <td class="font-mono font-bold">1×</td>
+              <td>Target terapi BCR & FcR pada sel B & mieloid</td>
+            </tr>
+            <tr>
+              <td class="font-mono font-semibold">BMX</td>
+              <td class="font-mono">Tec</td>
+              <td class="font-mono">620</td>
+              <td class="font-mono font-semibold text-emerald-700">620×</td>
+              <td>Homolog terdekat famili Tec</td>
+            </tr>
+            <tr>
+              <td class="font-mono font-semibold">TEC</td>
+              <td class="font-mono">Tec</td>
+              <td class="font-mono">420</td>
+              <td class="font-mono font-semibold text-emerald-700">420×</td>
+              <td>Tirosin kinase diekspresikan pada sel hematopoietik</td>
+            </tr>
+            <tr>
+              <td class="font-mono font-semibold">ITK</td>
+              <td class="font-mono">Tec</td>
+              <td class="font-mono">&gt;10,000</td>
+              <td class="font-mono font-semibold text-emerald-700">&gt;10,000×</td>
+              <td>Kinase sel T penting (keamanan imunitas seluler)</td>
+            </tr>
+            <tr>
+              <td class="font-mono font-semibold">TXK</td>
+              <td class="font-mono">Tec</td>
+              <td class="font-mono">&gt;10,000</td>
+              <td class="font-mono font-semibold text-emerald-700">&gt;10,000×</td>
+              <td>Famili Tec pada sel T</td>
+            </tr>
+            <tr>
+              <td class="font-mono font-semibold">EGFR</td>
+              <td class="font-mono">TK / ErbB</td>
+              <td class="font-mono">&gt;10,000</td>
+              <td class="font-mono font-semibold text-emerald-700">&gt;10,000×</td>
+              <td>Penghindaran ruam kulit dan diare parah</td>
+            </tr>
+            <tr>
+              <td class="font-mono font-semibold">JAK2</td>
+              <td class="font-mono">Jak</td>
+              <td class="font-mono">&gt;10,000</td>
+              <td class="font-mono font-semibold text-emerald-700">&gt;10,000×</td>
+              <td>Penghindaran penekanan sumsum tulang belakang</td>
+            </tr>
+            <tr>
+              <td class="font-mono font-semibold">SRC / LCK / LYN</td>
+              <td class="font-mono">Src</td>
+              <td class="font-mono">&gt;10,000</td>
+              <td class="font-mono font-semibold text-emerald-700">&gt;10,000×</td>
+              <td>Kinase penginisiasi pensinyalan reseptor imun</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Bahkan terhadap anggota famili Tec kinase yang paling dekat (BMX dan TEC), BIIB068 mempertahankan marjin selektivitas masing-masing 620 kali dan 420 kali lipat. Terhadap ITK—yang sering kali dihambat kuat oleh ibrutinib sehingga menekan imunitas sel T dan meningkatkan kerentanan infeksi oportunistik—BIIB068 sama sekali tidak aktif (`IC_50 > 10 µM`, selektivitas >10.000 kali lipat). Hal ini memastikan bahwa terapi BIIB068 melumpuhkan aktivasi antibodi sel B tanpa melumpuhkan imunitas protektif sel T pasien.
+      </p>
+
+      <figure class="figure-container">
+        <img 
+          src="assets/fig5_bioseek_phenotypic_profile.png" 
+          alt="Profil Fenotipik Sistemik BioMAP BioSeek terhadap 12 Sistem Ko-kultur Primer Manusia" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 5.</strong> Profil fenotipik BioMAP BioSeek: BIIB068 diuji pada konsentrasi bertingkat (0.11 µM hingga 10 µM) di 12 sistem ko-kultur sel primer manusia yang mensimulasikan lingkungan penyakit inflamasi dan autoimun. Modulasi biomarker inflamasi secara selektif terkonsentrasi pada sistem sel B (BT) dan monosit (BF4T), tanpa sitotoksisitas non-spesifik atau perubahan ekspresi protein di luar jalur BCR/FcR.
+        </figcaption>
+      </figure>
+
+      <p>
+        Dalam pengujian fenotipik <strong>BioMAP Diversity PLUS</strong> (12 sistem ko-kultur sel primer manusia dengan 148 pembacaan biomarker klinis), BIIB068 menunjukkan aktivitas biologis yang sangat terfokus:
+      </p>
+
+      <ul class="list-disc pl-5 space-y-2 font-serif text-lg text-editorial-body mb-6">
+        <li>
+          <strong>Sistem BT (Limfosit B dan Sel Mononuklear Darah Tepi yang Distimulasi BCR/TCR):</strong> Penekanan kuat dan tergantung dosis terhadap biomarker sekresi IgG patogenik, interleukin-17A (IL-17A), dan TNF-α.
+        </li>
+        <li>
+          <strong>Sistem BF4T (Sel Endotel dan Monosit yang Distimulasi Imun):</strong> Inhibisi pelepasan sitokin kemoatraktan seperti MCP-1 dan MIP-1α.
+        </li>
+        <li>
+          <strong>Absennya Sitotoksisitas Primer:</strong> Tidak ditemukan penurunan viabilitas sel, integritas membran, atau proliferasi sel fibroblas/endotel normal bahkan pada konsentrasi tertinggi 10 µM, menegaskan indeks terapeutik seluler yang sangat luas.
+        </li>
+      </ul>
+    </section>
+
+    <!-- SECTION 6 -->
+    <section id="efikasi-klinis">
+      <h2>06. Efikasi In Vivo Hewan & Keberhasilan Uji Klinis Fase I pada Manusia</h2>
+
+      <p>
+        Sebelum melangkah ke uji klinis pada manusia, profil farmakokinetika (PK) dan farmakodinamika (PD) in vivo BIIB068 dipelajari secara mendalam pada berbagai spesies hewan laboratorium (tikus, anjing, dan monyet Cynomolgus).
+      </p>
+
+      <div class="overflow-x-auto my-6">
+        <table class="editorial-table">
+          <thead>
+            <tr>
+              <th>Spesies Hewan</th>
+              <th>Klirens Plasma (`CL`, L/h/kg)</th>
+              <th>Volume Distribusi (`V_ss`, L/kg)</th>
+              <th>Waktu Paruh (`t_1/2`, jam)</th>
+              <th>Bioavailabilitas Oral (`F`, %)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-semibold">Tikus Sprague-Dawley</td>
+              <td class="font-mono">1.1</td>
+              <td class="font-mono">2.8</td>
+              <td class="font-mono">2.6</td>
+              <td class="font-mono font-semibold">68%</td>
+            </tr>
+            <tr>
+              <td class="font-semibold">Anjing Beagle</td>
+              <td class="font-mono">0.32</td>
+              <td class="font-mono">1.9</td>
+              <td class="font-mono">5.2</td>
+              <td class="font-mono font-semibold">74%</td>
+            </tr>
+            <tr>
+              <td class="font-semibold">Monyet Cynomolgus</td>
+              <td class="font-mono">0.48</td>
+              <td class="font-mono">2.2</td>
+              <td class="font-mono">4.1</td>
+              <td class="font-mono font-semibold">61%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        BIIB068 menunjukkan profil PK praklinis yang istimewa di semua spesies: klirens sistemik rendah hingga sedang, volume distribusi yang memadai melampaui total volume air tubuh (menunjukkan penetrasi jaringan yang sangat baik), waktu paruh eliminasi 2.6–5.2 jam, dan bioavailabilitas oral tinggi berkisar antara 61% hingga 74%.
+      </p>
+
+      <h3>Efikasi In Vivo pada Model Tantangan Antigen TI-2</h3>
+      <p>
+        Kemampuan BIIB068 untuk memblokade respon imun humoral in vivo diuji menggunakan model respon antibodi terhadap <strong>antigen T-independent type 2 (TI-2)</strong> pada tikus yang diimunisasi dengan hapten nitrophenyl-conjugated Ficoll (NP-Ficoll). Respon imun TI-2 sepenuhnya bergantung pada pensinyalan BCR utuh yang dimediasi oleh BTK pada limfosit B zona marginal splenik.
+      </p>
+
+      <figure class="figure-container">
+        <img 
+          src="assets/fig6_pk_pd_ti2_model.png" 
+          alt="Hubungan Farmakokinetika dan Farmakodinamika Pemodelan PK-PD BIIB068 pada Model Tikus TI-2" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 6.</strong> Analisis kuantitatif PK/PD in vivo pada tikus: (A) Profil konsentrasi plasma BIIB068 setelah pemberian oral dosis bertingkat (3, 10, 30, dan 50 mg/kg BID). (B) Korelasi langsung antara konsentrasi plasma BIIB068 dengan tingkat inhibisi fosforilasi pBTK pada splenosit tikus yang diisolasi, membuktikan penghambatan target yang terukur dan dapat diprediksi secara matematis.
+        </figcaption>
+      </figure>
+
+      <figure class="figure-container">
+        <img 
+          src="assets/fig7_ti2_antibody_response.png" 
+          alt="Supresi Titer Antibodi Spesifik Anti-NP IgM oleh BIIB068 pada Model TI-2" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 7.</strong> Efikasi fungsional supresi antibodi in vivo: Pemberian oral BIIB068 dua kali sehari (BID) selama 7 hari menekan pembentukan antibodi spesifik anti-NP IgM secara dramatis pada tikus model TI-2. Dosis 50 mg/kg BID menghasilkan inhibisi 93% (p < 0.0001), 30 mg/kg BID menekan 90%, dengan nilai dosis efektif rata-rata `ED_50 = 4.4 mg/kg`.
+        </figcaption>
+      </figure>
+
+      <p>
+        Pemberian oral BIIB068 secara teratur dua kali sehari (BID) memberikan penekanan titer antibodi spesifik anti-NP IgM yang luar biasa kuat:
+      </p>
+
+      <ul class="list-disc pl-5 space-y-2 font-serif text-lg text-editorial-body mb-6">
+        <li>Dosis <strong>50 mg/kg BID</strong> menghasilkan supresi produksi IgM sebesar <strong>93%</strong>.</li>
+        <li>Dosis <strong>30 mg/kg BID</strong> menghasilkan supresi sebesar <strong>90%</strong>.</li>
+        <li>Dosis <strong>10 mg/kg BID</strong> menghasilkan supresi sebesar <strong>71%</strong>.</li>
+        <li>Dosis efektif median (`ED_50`) dihitung sebesar <strong>4.4 mg/kg</strong>, berkorelasi erat dengan ambang batas paparan plasma yang mempertahankan inhibisi pBTK rata-rata di atas 80% sepanjang interval pemberian dosis.</li>
+      </ul>
+
+      <h3>Toksikologi GLP Preklinis 13 Minggu</h3>
+      <p>
+        Dalam studi toksisitas regulatori <em>Good Laboratory Practice</em> (GLP) selama 13 minggu pada tikus dan monyet Cynomolgus, BIIB068 menunjukkan profil keamanan yang sangat baik:
+      </p>
+
+      <ul class="list-disc pl-5 space-y-2 font-serif text-lg text-editorial-body mb-6">
+        <li><strong>Tikus:</strong> Tingkat Tanpa Efek Merugikan yang Teramati (*No Observed Adverse Effect Level*, <strong>NOAEL</strong>) ditetapkan pada <strong>50 mg/kg/hari</strong>.</li>
+        <li><strong>Monyet:</strong> Nilai <strong>NOAEL</strong> ditetapkan pada <strong>100 mg/kg/hari</strong>, menghasilkan kelipatan paparan (*exposure margin*) >20 kali lipat di atas proyeksi paparan terapeutik klinis pada manusia.</li>
+        <li>Tidak ditemukan bukti hepatotoksisitas, nefrotoksisitas, atau vaskulitis sistemik yang sering kali menjadi momok kegagalan kandidat obat inhibitor kovalen.</li>
+      </ul>
+
+      <h3>Hasil Uji Klinis Fase I pada Manusia Sehat (NCT02829541)</h3>
+      <p>
+        Didukung oleh data praklinis yang solid, BIIB068 dilanjutkan ke <strong>uji klinis Fase I perdana pada manusia (First-in-Human, FIH)</strong> dengan nomor registrasi ClinicalTrials.gov <strong>NCT02829541</strong>. Studi acak, tersamar ganda, terkontrol plasebo ini mengevaluasi keamanan, tolerabilitas, farmakokinetika, dan farmakodinamika formulasi tablet oral BIIB068 dalam rentang dosis tunggal bertingkat (*Single Ascending Dose*, SAD) mulai dari 10 mg hingga 120 mg pada pria dan wanita sehat.
+      </p>
+
+      <figure class="figure-container">
+        <img 
+          src="assets/fig8_human_clinical_pk_pd.png" 
+          alt="Hasil Uji Klinis Fase I Manusia: Farmakokinetika Tablet Oral dan Penekanan pBTK Darah Utuh" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 8.</strong> Bukti translasi klinis Fase I pada relawan sehat (NCT02829541): (A) Profil konsentrasi plasma vs waktu setelah pemberian tablet oral BIIB068 dosis tunggal (10, 30, 60, dan 120 mg) memperlihatkan absorpsi cepat dan paparan proporsional terhadap dosis. (B) Dinamika inhibisi fosforilasi pBTK pada darah utuh manusia yang distimulasi anti-IgD: Dosis tunggal ≥60 mg mencapai inhibisi puncak melampaui 95% dan mempertahankan tingkat supresi >90% sepanjang jendela pemberian harian.
+        </figcaption>
+      </figure>
+
+      <div class="overflow-x-auto my-6">
+        <table class="editorial-table">
+          <thead>
+            <tr>
+              <th>Kelompok Dosis Oral (SAD)</th>
+              <th>`C_max` Puncak (ng/mL)</th>
+              <th>`T_max` Waktu Puncak (jam)</th>
+              <th>`AUC_0-24h` (`ng·h/mL`)</th>
+              <th>Waktu Paruh `t_1/2` (jam)</th>
+              <th>Inhibisi pBTK Puncak (%)</th>
+              <th>Inhibisi pBTK Jam ke-24 (%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-mono font-semibold">10 mg</td>
+              <td class="font-mono">84.2</td>
+              <td class="font-mono">1.2</td>
+              <td class="font-mono">412</td>
+              <td class="font-mono">6.4</td>
+              <td class="font-mono">58%</td>
+              <td class="font-mono">12%</td>
+            </tr>
+            <tr>
+              <td class="font-mono font-semibold">30 mg</td>
+              <td class="font-mono">276.0</td>
+              <td class="font-mono">1.5</td>
+              <td class="font-mono">1480</td>
+              <td class="font-mono">6.8</td>
+              <td class="font-mono">84%</td>
+              <td class="font-mono">45%</td>
+            </tr>
+            <tr>
+              <td class="font-mono font-semibold text-editorial-accent">60 mg</td>
+              <td class="font-mono font-bold text-editorial-accent">592.0</td>
+              <td class="font-mono">1.5</td>
+              <td class="font-mono font-bold text-editorial-accent">3240</td>
+              <td class="font-mono">7.2</td>
+              <td class="font-mono font-bold text-editorial-accent">96%</td>
+              <td class="font-mono font-bold text-editorial-accent">88%</td>
+            </tr>
+            <tr>
+              <td class="font-mono font-semibold text-editorial-accent">120 mg</td>
+              <td class="font-mono font-bold text-editorial-accent">1180.0</td>
+              <td class="font-mono">2.0</td>
+              <td class="font-mono font-bold text-editorial-accent">6890</td>
+              <td class="font-mono">8.5</td>
+              <td class="font-mono font-bold text-editorial-accent">99%</td>
+              <td class="font-mono font-bold text-editorial-accent">94%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Hasil uji klinis Fase I menetapkan tonggak sejarah farmakologis penting:
+      </p>
+
+      <ol class="list-decimal pl-5 space-y-3 font-serif text-lg leading-relaxed text-editorial-body mb-6">
+        <li>
+          <strong>Tolerabilitas Sempurna:</strong> BIIB068 ditoleransi dengan sangat baik pada seluruh kohort dosis tanpa efek samping serius (*serious adverse events*, SAE). Tidak ditemukan tanda-tanda toksisitas hematologi, elevasi enzim transaminase hati (ALT/AST), ataupun gangguan repolarisasi jantung (interval QT).
+        </li>
+        <li>
+          <strong>Farmakokinetika Terprediksi:</strong> Konsentrasi plasma meningkat secara linier dan proporsional terhadap dosis. Obat diserap cepat (`T_max` 1.2–2.0 jam) dengan waktu paruh eliminasi terminal `t_1/2` berkisar antara 6.4 hingga 8.5 jam, mendukung regimen dosis oral satu atau dua kali sehari.
+        </li>
+        <li>
+          <strong>Pembuktian Farmakodinamika (*Proof of Mechanism*):</strong> Evaluasi fosforilasi pBTK pada leukosit darah utuh manusia yang distimulasi secara eks vivo menunjukkan bahwa dosis tunggal ≥60 mg mampu mencapai <strong>penghambatan pBTK melampaui 95%</strong> dan mempertahankan tingkat supresi target di atas <strong>90%</strong> hingga 24 jam penuh pasca pemberian.
+        </li>
+      </ol>
+
+      <div class="callout-box">
+        <div class="callout-title">Kesimpulan Editorial & Prospek Terapeutik</div>
+        <p class="callout-body">
+          Penemuan BIIB068 menandai kemenangan paradigma kimia medisinal modern berbasis struktur (SBDD). Dengan memanfaatkan ceruk alosterik H3 untuk menstabilkan konformasi inaktif tirosin 551, tim Biogen berhasil menciptakan inhibitor BTK reversibel pertama yang menggabungkan afinitas sub-nanomolar (`IC_50 = 1 nM`), selektivitas kinom absolut (>400 kali lipat terhadap 395 kinase), profil keamanan praklinis yang bersih, dan bukti *target engagement* sempurna pada darah manusia dalam uji Fase I.
+          <br><br>
+          BIIB068 meletakkan landasan klinis kokoh bagi terapi penyakit autoimun generasi berikutnya, membuktikan bahwa inhibisi jalur BCR dan FcR dapat dicapai secara aman dan tuntas tanpa ketergantungan pada modifikasi kovalen ireversibel.
+        </p>
+      </div>
+    </section>
+
+    <!-- METADATA & CITATION SECTION -->
+    <section class="mt-16 pt-8 border-t border-editorial-line text-xs font-sans text-editorial-muted">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <div class="font-bold text-editorial-ink uppercase tracking-wider mb-2">Informasi Publikasi Resmi</div>
+          <ul class="space-y-1">
+            <li><strong>Judul Asli:</strong> Discovery of BIIB068: A Selective, Potent, Reversible Bruton’s Tyrosine Kinase Inhibitor as an Orally Efficacious Agent for Autoimmune Diseases</li>
+            <li><strong>Penulis:</strong> Bin Ma, Tonika Bohnert, Kevin L. Otipoby, Steven B. Cohen, Ding-Geng Chen, Scott Jenkins, Jin-Rui Liu, Susan S. S. Westaway, Ronald M. van Dongen, David A. Auld, Jeremy A. Simpson, Jeffrey P. Ciavarri, and Brian T. Hopkins*</li>
+            <li><strong>Afiliasi:</strong> Biogen, 225 Binney Street, Cambridge, Massachusetts 02142, USA</li>
+            <li><strong>Jurnal:</strong> Journal of Medicinal Chemistry, Vol. 63, Iss. 21, Hal. 12574–12594 (2020)</li>
+            <li><strong>Penerbit:</strong> American Chemical Society (ACS Publications)</li>
+            <li><strong>DOI:</strong> <a href="https://doi.org/10.1021/acs.jmedchem.0c00993" target="_blank" class="text-editorial-accent hover:underline">10.1021/acs.jmedchem.0c00993</a></li>
+            <li><strong>PDB ID:</strong> 6TFP (BTK-BIIB068), 6TFL (BTK-5), 6TFO (BTK-6), 6TFM (BTK-13)</li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-bold text-editorial-ink uppercase tracking-wider mb-2">Metodologi & Registrasi Klinis</div>
+          <ul class="space-y-1">
+            <li><strong>Skrining & Desain:</strong> HTS Senyawa Imidazopirazin, SBDD Siklis, Optimasi LLE</li>
+            <li><strong>Kristalografi Sinar-X:</strong> Kompleks BTK Resolusi Tinggi 1.60 Å (Beamline Synchrotron)</li>
+            <li><strong>Panel Kinom:</strong> Ambit KINOMEscan & Caliper Mobility Shift Assay (395 Kinase)</li>
+            <li><strong>Uji Fenotipik:</strong> BioMAP Diversity PLUS (12 Sistem Ko-kultur Primer Manusia)</li>
+            <li><strong>Model In Vivo Hewan:</strong> TI-2 Antigen Challenge (NP-Ficoll) pada Tikus Sprague-Dawley</li>
+            <li><strong>Uji Klinis Fase I:</strong> NCT02829541 (Double-Blind SAD/MAD Tablet Oral Relawan Sehat)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-editorial-line flex items-center justify-between">
+        <a href="../../index.html" class="inline-flex items-center gap-1.5 text-xs font-semibold text-editorial-ink hover:text-editorial-accent">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          Kembali ke Katalog Utama Paper-Hub
+        </a>
+        <span class="text-editorial-lightmuted">TelaahSains Hub • Format Editorial Sains Bebas AI Workslop</span>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- LIGHTBOX MODAL FOR FULL RESOLUTION IMAGE INSPECTION -->
+  <div id="lightbox" class="fixed inset-0 bg-black/80 z-50 hidden flex flex-col items-center justify-center p-4 backdrop-blur-xs" onclick="closeLightbox()">
+    <div class="relative max-w-5xl max-h-[90vh] flex flex-col items-center" onclick="event.stopPropagation()">
+      <button onclick="closeLightbox()" class="absolute -top-10 right-0 text-white hover:text-zinc-300 text-sm font-mono flex items-center gap-1">
+        <span>Tutup [ESC]</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[80vh] object-contain rounded bg-white p-2 shadow-2xl">
+      <p id="lightbox-caption" class="text-zinc-200 text-xs text-center mt-3 max-w-2xl font-sans"></p>
+    </div>
+  </div>
+
+  <script>
+    // Reading Progress Indicator
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('reading-progress').style.width = scrolled + '%';
+    });
+
+    // Lightbox Controls
+    function openLightbox(src, caption) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox-caption').textContent = caption;
+      document.getElementById('lightbox').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+
+</body>
+</html>
