@@ -1,6 +1,7 @@
 /**
  * TelaahSains Hub: Portal Dashboard Experience Controller
  * Features:
+ * - Cross-Origin file:// & HTTP Dual-Channel Session Synchronization (window.name + URL state)
  * - Grid View vs Matrix Table View Switcher with localStorage persistence
  * - Tech Tag Filtering (#DFT, #Material2D, #KimiaMedisinal, etc.)
  * - Local Bookmarks / Reading List (⭐ save for later)
@@ -18,6 +19,182 @@
   const LAST_READING_KEY = 'telaahsains_last_reading';
   const VIEW_KEY = 'telaahsains_portal_view';
   const THEME_KEY = 'telaahsains_reader_theme';
+  const FONT_SIZE_KEY = 'telaahsains_font_size';
+  const SYNC_TIME_KEY = 'telaahsains_sync_time';
+  const SYNC_PREFIX = 'TS_SYNC::';
+
+  // --- 0. CROSS-ORIGIN file:// & HTTP SYNC ENGINE ---
+  function getSessionSync() {
+    try {
+      if (window.name && window.name.startsWith(SYNC_PREFIX)) {
+        return JSON.parse(window.name.slice(SYNC_PREFIX.length));
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  function setSessionSync(data) {
+    try {
+      const current = getSessionSync() || {};
+      const merged = { ...current, ...data };
+      window.name = SYNC_PREFIX + JSON.stringify(merged);
+    } catch (e) {}
+  }
+
+  function getUrlSync() {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const data = {};
+      if (params.has('ts_read')) {
+        data.readPapers = params.get('ts_read').split(',').filter(Boolean).map(id => String(id).padStart(2, '0'));
+      }
+      if (params.has('ts_bms')) {
+        data.bookmarks = params.get('ts_bms').split(',').filter(Boolean).map(id => String(id).padStart(2, '0'));
+      }
+      if (params.has('ts_theme')) {
+        data.theme = params.get('ts_theme');
+      }
+      if (params.has('ts_size')) {
+        data.fontSize = params.get('ts_size');
+      }
+      if (params.has('ts_time')) {
+        data.updatedAt = parseInt(params.get('ts_time'), 10) || 0;
+      }
+      return Object.keys(data).length > 0 ? data : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function cleanSyncUrlParams() {
+    try {
+      if (!window.location.search) return;
+      const params = new URLSearchParams(window.location.search);
+      let changed = false;
+      ['ts_read', 'ts_bms', 'ts_theme', 'ts_size', 'ts_time', 'ts_last'].forEach(k => {
+        if (params.has(k)) {
+          params.delete(k);
+          changed = true;
+        }
+      });
+      if (changed) {
+        const newSearch = params.toString() ? '?' + params.toString() : '';
+        const newUrl = window.location.pathname + newSearch + window.location.hash;
+        window.history.replaceState(null, '', newUrl);
+      }
+    } catch (e) {}
+  }
+
+  function pushLocalToSession(customTime) {
+    try {
+      let localRead = [];
+      try { localRead = JSON.parse(localStorage.getItem(READ_KEY)) || []; } catch (e) {}
+      let localBms = [];
+      try { localBms = JSON.parse(localStorage.getItem(BOOKMARK_KEY)) || []; } catch (e) {}
+      let localLast = null;
+      try { localLast = JSON.parse(localStorage.getItem(LAST_READING_KEY)); } catch (e) {}
+      const localTheme = localStorage.getItem(THEME_KEY) || 'paper';
+      const localSize = localStorage.getItem(FONT_SIZE_KEY) || 'md';
+      const time = customTime || parseInt(localStorage.getItem(SYNC_TIME_KEY) || '0', 10) || Date.now();
+
+      setSessionSync({
+        ts_sync: true,
+        readPapers: localRead.map(id => String(id).padStart(2, '0')),
+        bookmarks: localBms.map(id => String(id).padStart(2, '0')),
+        lastReading: localLast,
+        theme: localTheme,
+        fontSize: localSize,
+        updatedAt: time
+      });
+    } catch (e) {}
+  }
+
+  function reconcileSyncState() {
+    const session = getSessionSync();
+    const urlSync = getUrlSync();
+    const localTime = parseInt(localStorage.getItem(SYNC_TIME_KEY) || '0', 10);
+
+    let incoming = null;
+    let incomingTime = 0;
+
+    if (session && session.updatedAt && session.updatedAt > incomingTime) {
+      incoming = session;
+      incomingTime = session.updatedAt;
+    }
+    if (urlSync && urlSync.updatedAt && urlSync.updatedAt >= incomingTime) {
+      incoming = { ...(incoming || {}), ...urlSync };
+      incomingTime = urlSync.updatedAt;
+    }
+
+    if (incoming) {
+      if (incomingTime > localTime) {
+        if (Array.isArray(incoming.readPapers)) {
+          const normalized = Array.from(new Set(incoming.readPapers.map(id => String(id).padStart(2, '0'))));
+          localStorage.setItem(READ_KEY, JSON.stringify(normalized));
+        }
+        if (Array.isArray(incoming.bookmarks)) {
+          const normalized = Array.from(new Set(incoming.bookmarks.map(id => String(id).padStart(2, '0'))));
+          localStorage.setItem(BOOKMARK_KEY, JSON.stringify(normalized));
+        }
+        if (incoming.theme) localStorage.setItem(THEME_KEY, incoming.theme);
+        if (incoming.fontSize) localStorage.setItem(FONT_SIZE_KEY, incoming.fontSize);
+        if (incoming.lastReading && typeof incoming.lastReading === 'object') {
+          localStorage.setItem(LAST_READING_KEY, JSON.stringify(incoming.lastReading));
+        }
+        localStorage.setItem(SYNC_TIME_KEY, String(incomingTime));
+      } else if (localTime === 0 && incomingTime === 0) {
+        let localRead = [];
+        try { localRead = JSON.parse(localStorage.getItem(READ_KEY)) || []; } catch (e) {}
+        const incRead = Array.isArray(incoming.readPapers) ? incoming.readPapers : [];
+        const mergedRead = Array.from(new Set([...localRead, ...incRead].map(id => String(id).padStart(2, '0'))));
+
+        let localBms = [];
+        try { localBms = JSON.parse(localStorage.getItem(BOOKMARK_KEY)) || []; } catch (e) {}
+        const incBms = Array.isArray(incoming.bookmarks) ? incoming.bookmarks : [];
+        const mergedBms = Array.from(new Set([...localBms, ...incBms].map(id => String(id).padStart(2, '0'))));
+
+        const now = Date.now();
+        localStorage.setItem(READ_KEY, JSON.stringify(mergedRead));
+        localStorage.setItem(BOOKMARK_KEY, JSON.stringify(mergedBms));
+        if (incoming.theme) localStorage.setItem(THEME_KEY, incoming.theme);
+        if (incoming.fontSize) localStorage.setItem(FONT_SIZE_KEY, incoming.fontSize);
+        localStorage.setItem(SYNC_TIME_KEY, String(now));
+        pushLocalToSession(now);
+      } else {
+        pushLocalToSession(localTime);
+      }
+    } else {
+      pushLocalToSession(localTime || Date.now());
+    }
+
+    if (urlSync) {
+      cleanSyncUrlParams();
+    }
+  }
+
+  function updateOutgoingLinks() {
+    try {
+      const readList = getReadPapers();
+      const bms = getBookmarks();
+      const theme = localStorage.getItem(THEME_KEY) || 'paper';
+      const syncTime = localStorage.getItem(SYNC_TIME_KEY) || String(Date.now());
+
+      const queryParts = [];
+      if (readList.length > 0) queryParts.push('ts_read=' + encodeURIComponent(readList.join(',')));
+      if (bms.length > 0) queryParts.push('ts_bms=' + encodeURIComponent(bms.join(',')));
+      if (theme) queryParts.push('ts_theme=' + encodeURIComponent(theme));
+      queryParts.push('ts_time=' + encodeURIComponent(syncTime));
+      const queryString = '?' + queryParts.join('&');
+
+      document.querySelectorAll('a[href*="papers/"]').forEach(a => {
+        const rawHref = a.getAttribute('href');
+        if (!rawHref) return;
+        const baseHref = rawHref.split('?')[0].split('#')[0];
+        const hash = rawHref.includes('#') ? '#' + rawHref.split('#')[1] : '';
+        a.href = baseHref + queryString + hash;
+      });
+    } catch (e) {}
+  }
 
   // --- 1. THEME SYNC ---
   function syncTheme() {
@@ -31,15 +208,20 @@
     });
   }
 
-  window.setPortalTheme = function (theme) {
+  function setPortalTheme(theme) {
     document.body.classList.remove('theme-sepia', 'theme-dark');
     if (theme === 'sepia') document.body.classList.add('theme-sepia');
     if (theme === 'dark') document.body.classList.add('theme-dark');
+    const now = Date.now();
     localStorage.setItem(THEME_KEY, theme);
+    localStorage.setItem(SYNC_TIME_KEY, String(now));
+    pushLocalToSession(now);
     document.querySelectorAll('[data-theme-btn]').forEach(b => {
       b.classList.toggle('active', b.getAttribute('data-theme-btn') === theme);
     });
-  };
+    updateOutgoingLinks();
+  }
+  window.setPortalTheme = setPortalTheme;
 
   // --- 2. BOOKMARKS / READING LIST ---
   function getBookmarks() {
@@ -51,14 +233,19 @@
     }
   }
 
-  function saveBookmarks(bms) {
+  function saveBookmarks(bms, customTime) {
     const normalized = Array.from(new Set(bms.map(id => String(id).padStart(2, '0'))));
+    const now = customTime || Date.now();
     localStorage.setItem(BOOKMARK_KEY, JSON.stringify(normalized));
+    localStorage.setItem(SYNC_TIME_KEY, String(now));
+    pushLocalToSession(now);
     updateBookmarkUI();
+    updateOutgoingLinks();
   }
 
-  window.toggleBookmark = function (paperId, event) {
+  function toggleBookmark(paperId, event) {
     if (event) event.stopPropagation();
+    reconcileSyncState();
     const pid = String(paperId).padStart(2, '0');
     let bms = getBookmarks();
     const idx = bms.indexOf(pid);
@@ -69,10 +256,12 @@
       bms.push(pid);
       isAdded = true;
     }
-    saveBookmarks(bms);
+    const now = Date.now();
+    saveBookmarks(bms, now);
     showPortalToast(isAdded ? `Paper #${pid} ditambahkan ke daftar baca ⭐` : `Paper #${pid} dihapus dari daftar baca.`);
     applyAllFilters();
-  };
+  }
+  window.toggleBookmark = toggleBookmark;
 
   function updateBookmarkUI() {
     const bms = getBookmarks();
@@ -101,14 +290,19 @@
     }
   }
 
-  function saveReadPapers(arr) {
+  function saveReadPapers(arr, customTime) {
     const normalized = Array.from(new Set(arr.map(id => String(id).padStart(2, '0'))));
+    const now = customTime || Date.now();
     localStorage.setItem(READ_KEY, JSON.stringify(normalized));
+    localStorage.setItem(SYNC_TIME_KEY, String(now));
+    pushLocalToSession(now);
     updateReadUI();
+    updateOutgoingLinks();
   }
 
-  window.toggleReadStatus = function (paperId, event) {
+  function toggleReadStatus(paperId, event) {
     if (event) event.stopPropagation();
+    reconcileSyncState();
     const pid = String(paperId).padStart(2, '0');
     let readList = getReadPapers();
     const idx = readList.indexOf(pid);
@@ -119,10 +313,12 @@
       readList.push(pid);
       isRead = true;
     }
-    saveReadPapers(readList);
+    const now = Date.now();
+    saveReadPapers(readList, now);
     showPortalToast(isRead ? `Paper #${pid} ditandai: Selesai Dibaca ✓` : `Tanda selesai Paper #${pid} dihapus.`);
     applyAllFilters();
-  };
+  }
+  window.toggleReadStatus = toggleReadStatus;
 
   function updateReadUI() {
     const readList = getReadPapers();
@@ -199,7 +395,7 @@
   }
 
   // --- 5. VIEW MODE (GRID vs TABLE) ---
-  window.setPortalView = function (view) {
+  function setPortalView(view) {
     const gridView = document.getElementById('paper-grid-container');
     const tableView = document.getElementById('paper-table-container');
     const btnGrid = document.getElementById('btn-view-grid');
@@ -229,13 +425,14 @@
       }
     }
     localStorage.setItem(VIEW_KEY, view);
-  };
+  }
+  window.setPortalView = setPortalView;
 
   // --- 6. FILTERING & SEARCH ---
   let currentCategory = 'all';
   let currentTag = 'all';
 
-  window.filterCategory = function (cat) {
+  function filterCategory(cat) {
     currentCategory = cat;
     document.querySelectorAll('.filter-cat-btn').forEach(btn => {
       btn.classList.remove('bg-editorial-ink', 'text-white');
@@ -247,9 +444,10 @@
       activeBtn.classList.add('bg-editorial-ink', 'text-white');
     }
     applyAllFilters();
-  };
+  }
+  window.filterCategory = filterCategory;
 
-  window.filterTag = function (tag) {
+  function filterTag(tag) {
     currentTag = tag;
     document.querySelectorAll('.filter-tag-chip').forEach(btn => {
       btn.classList.remove('bg-editorial-accent', 'text-white', 'border-editorial-accent');
@@ -261,11 +459,13 @@
       activeBtn.classList.add('bg-editorial-accent', 'text-white', 'border-editorial-accent');
     }
     applyAllFilters();
-  };
+  }
+  window.filterTag = filterTag;
 
-  window.liveSearch = function () {
+  function liveSearch() {
     applyAllFilters();
-  };
+  }
+  window.liveSearch = liveSearch;
 
   function applyAllFilters() {
     const searchVal = (document.getElementById('search-input')?.value || '').toLowerCase().trim();
@@ -334,10 +534,12 @@
 
   // Initialize
   function initPortal() {
+    reconcileSyncState();
     syncTheme();
     updateBookmarkUI();
     updateReadUI();
     renderLastReadingWidget();
+    updateOutgoingLinks();
     const savedView = localStorage.getItem(VIEW_KEY) || 'grid';
     setPortalView(savedView);
   }
@@ -350,36 +552,47 @@
 
   // Cross-tab and window storage synchronization
   window.addEventListener('storage', (e) => {
-    if (e.key === READ_KEY) {
+    if (e.key === READ_KEY || e.key === BOOKMARK_KEY || e.key === THEME_KEY || e.key === LAST_READING_KEY || e.key === SYNC_TIME_KEY) {
+      reconcileSyncState();
       updateReadUI();
-      applyAllFilters();
-    } else if (e.key === BOOKMARK_KEY) {
       updateBookmarkUI();
-      applyAllFilters();
-    } else if (e.key === LAST_READING_KEY) {
       renderLastReadingWidget();
-    } else if (e.key === THEME_KEY) {
       syncTheme();
+      applyAllFilters();
+      updateOutgoingLinks();
     }
   });
 
   // Browser bfcache navigation (Back / Forward button)
   window.addEventListener('pageshow', () => {
+    reconcileSyncState();
     syncTheme();
     updateBookmarkUI();
     updateReadUI();
     renderLastReadingWidget();
     applyAllFilters();
+    updateOutgoingLinks();
   });
 
   // Tab switching visibility
   document.addEventListener('visibilitychange', () => {
     if (!document.hidden) {
+      reconcileSyncState();
       syncTheme();
       updateBookmarkUI();
       updateReadUI();
       renderLastReadingWidget();
       applyAllFilters();
+      updateOutgoingLinks();
+    }
+  });
+
+  // Outgoing navigation click
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href*="papers/"]');
+    if (link) {
+      pushLocalToSession();
+      updateOutgoingLinks();
     }
   });
 

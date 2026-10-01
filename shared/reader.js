@@ -18,6 +18,182 @@
   const LAST_READING_KEY = 'telaahsains_last_reading';
   const SCROLL_POS_KEY = 'telaahsains_scroll_';
   const READ_PAPERS_KEY = 'telaahsains_read_papers';
+  const BOOKMARK_KEY = 'telaahsains_bookmarks';
+  const SYNC_TIME_KEY = 'telaahsains_sync_time';
+  const SYNC_PREFIX = 'TS_SYNC::';
+
+  // --- 0. CROSS-ORIGIN file:// & HTTP SYNC ENGINE ---
+  function getSessionSync() {
+    try {
+      if (window.name && window.name.startsWith(SYNC_PREFIX)) {
+        return JSON.parse(window.name.slice(SYNC_PREFIX.length));
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  function setSessionSync(data) {
+    try {
+      const current = getSessionSync() || {};
+      const merged = { ...current, ...data };
+      window.name = SYNC_PREFIX + JSON.stringify(merged);
+    } catch (e) {}
+  }
+
+  function getUrlSync() {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const data = {};
+      if (params.has('ts_read')) {
+        data.readPapers = params.get('ts_read').split(',').filter(Boolean).map(id => String(id).padStart(2, '0'));
+      }
+      if (params.has('ts_bms')) {
+        data.bookmarks = params.get('ts_bms').split(',').filter(Boolean).map(id => String(id).padStart(2, '0'));
+      }
+      if (params.has('ts_theme')) {
+        data.theme = params.get('ts_theme');
+      }
+      if (params.has('ts_size')) {
+        data.fontSize = params.get('ts_size');
+      }
+      if (params.has('ts_time')) {
+        data.updatedAt = parseInt(params.get('ts_time'), 10) || 0;
+      }
+      return Object.keys(data).length > 0 ? data : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function cleanSyncUrlParams() {
+    try {
+      if (!window.location.search) return;
+      const params = new URLSearchParams(window.location.search);
+      let changed = false;
+      ['ts_read', 'ts_bms', 'ts_theme', 'ts_size', 'ts_time', 'ts_last'].forEach(k => {
+        if (params.has(k)) {
+          params.delete(k);
+          changed = true;
+        }
+      });
+      if (changed) {
+        const newSearch = params.toString() ? '?' + params.toString() : '';
+        const newUrl = window.location.pathname + newSearch + window.location.hash;
+        window.history.replaceState(null, '', newUrl);
+      }
+    } catch (e) {}
+  }
+
+  function pushLocalToSession(customTime) {
+    try {
+      let localRead = [];
+      try { localRead = JSON.parse(localStorage.getItem(READ_PAPERS_KEY)) || []; } catch (e) {}
+      let localBms = [];
+      try { localBms = JSON.parse(localStorage.getItem(BOOKMARK_KEY)) || []; } catch (e) {}
+      let localLast = null;
+      try { localLast = JSON.parse(localStorage.getItem(LAST_READING_KEY)); } catch (e) {}
+      const localTheme = localStorage.getItem(THEME_KEY) || 'paper';
+      const localSize = localStorage.getItem(FONT_SIZE_KEY) || 'md';
+      const time = customTime || parseInt(localStorage.getItem(SYNC_TIME_KEY) || '0', 10) || Date.now();
+
+      setSessionSync({
+        ts_sync: true,
+        readPapers: localRead.map(id => String(id).padStart(2, '0')),
+        bookmarks: localBms.map(id => String(id).padStart(2, '0')),
+        lastReading: localLast,
+        theme: localTheme,
+        fontSize: localSize,
+        updatedAt: time
+      });
+    } catch (e) {}
+  }
+
+  function reconcileSyncState() {
+    const session = getSessionSync();
+    const urlSync = getUrlSync();
+    const localTime = parseInt(localStorage.getItem(SYNC_TIME_KEY) || '0', 10);
+
+    let incoming = null;
+    let incomingTime = 0;
+
+    if (session && session.updatedAt && session.updatedAt > incomingTime) {
+      incoming = session;
+      incomingTime = session.updatedAt;
+    }
+    if (urlSync && urlSync.updatedAt && urlSync.updatedAt >= incomingTime) {
+      incoming = { ...(incoming || {}), ...urlSync };
+      incomingTime = urlSync.updatedAt;
+    }
+
+    if (incoming) {
+      if (incomingTime > localTime) {
+        if (Array.isArray(incoming.readPapers)) {
+          const normalized = Array.from(new Set(incoming.readPapers.map(id => String(id).padStart(2, '0'))));
+          localStorage.setItem(READ_PAPERS_KEY, JSON.stringify(normalized));
+        }
+        if (Array.isArray(incoming.bookmarks)) {
+          const normalized = Array.from(new Set(incoming.bookmarks.map(id => String(id).padStart(2, '0'))));
+          localStorage.setItem(BOOKMARK_KEY, JSON.stringify(normalized));
+        }
+        if (incoming.theme) localStorage.setItem(THEME_KEY, incoming.theme);
+        if (incoming.fontSize) localStorage.setItem(FONT_SIZE_KEY, incoming.fontSize);
+        if (incoming.lastReading && typeof incoming.lastReading === 'object') {
+          localStorage.setItem(LAST_READING_KEY, JSON.stringify(incoming.lastReading));
+        }
+        localStorage.setItem(SYNC_TIME_KEY, String(incomingTime));
+      } else if (localTime === 0 && incomingTime === 0) {
+        let localRead = [];
+        try { localRead = JSON.parse(localStorage.getItem(READ_PAPERS_KEY)) || []; } catch (e) {}
+        const incRead = Array.isArray(incoming.readPapers) ? incoming.readPapers : [];
+        const mergedRead = Array.from(new Set([...localRead, ...incRead].map(id => String(id).padStart(2, '0'))));
+
+        let localBms = [];
+        try { localBms = JSON.parse(localStorage.getItem(BOOKMARK_KEY)) || []; } catch (e) {}
+        const incBms = Array.isArray(incoming.bookmarks) ? incoming.bookmarks : [];
+        const mergedBms = Array.from(new Set([...localBms, ...incBms].map(id => String(id).padStart(2, '0'))));
+
+        const now = Date.now();
+        localStorage.setItem(READ_PAPERS_KEY, JSON.stringify(mergedRead));
+        localStorage.setItem(BOOKMARK_KEY, JSON.stringify(mergedBms));
+        if (incoming.theme) localStorage.setItem(THEME_KEY, incoming.theme);
+        if (incoming.fontSize) localStorage.setItem(FONT_SIZE_KEY, incoming.fontSize);
+        localStorage.setItem(SYNC_TIME_KEY, String(now));
+        pushLocalToSession(now);
+      } else {
+        pushLocalToSession(localTime);
+      }
+    } else {
+      pushLocalToSession(localTime || Date.now());
+    }
+
+    if (urlSync) {
+      cleanSyncUrlParams();
+    }
+  }
+
+  function updatePortalLinks() {
+    try {
+      const readList = getReadPapers();
+      const theme = localStorage.getItem(THEME_KEY) || 'paper';
+      const size = localStorage.getItem(FONT_SIZE_KEY) || 'md';
+      const syncTime = localStorage.getItem(SYNC_TIME_KEY) || String(Date.now());
+
+      const queryParts = [];
+      if (readList.length > 0) queryParts.push('ts_read=' + encodeURIComponent(readList.join(',')));
+      if (theme) queryParts.push('ts_theme=' + encodeURIComponent(theme));
+      if (size) queryParts.push('ts_size=' + encodeURIComponent(size));
+      queryParts.push('ts_time=' + encodeURIComponent(syncTime));
+      const queryString = '?' + queryParts.join('&');
+
+      document.querySelectorAll('a[href*="index.html"]').forEach(a => {
+        const rawHref = a.getAttribute('href');
+        if (!rawHref) return;
+        const baseHref = rawHref.split('?')[0].split('#')[0];
+        const hash = rawHref.includes('#') ? '#' + rawHref.split('#')[1] : '';
+        a.href = baseHref + queryString + hash;
+      });
+    } catch (e) {}
+  }
 
   // --- 0. EXTRACT PAPER METADATA ---
   function getPaperMetadata() {
@@ -61,7 +237,7 @@
     setFontSize(savedFontSize, false);
   }
 
-  window.setTheme = function (theme, save = true) {
+  function setTheme(theme, save = true) {
     document.body.classList.remove('theme-sepia', 'theme-dark');
     if (theme === 'sepia') document.body.classList.add('theme-sepia');
     if (theme === 'dark') document.body.classList.add('theme-dark');
@@ -71,12 +247,17 @@
     });
 
     if (save) {
+      const now = Date.now();
       localStorage.setItem(THEME_KEY, theme);
+      localStorage.setItem(SYNC_TIME_KEY, String(now));
+      pushLocalToSession(now);
+      updatePortalLinks();
       showToast(`Tema diubah: ${theme === 'dark' ? 'Dark Slate' : theme === 'sepia' ? 'Sepia Hangat' : 'Kertas (Siang)'}`);
     }
-  };
+  }
+  window.setTheme = setTheme;
 
-  window.setFontSize = function (size, save = true) {
+  function setFontSize(size, save = true) {
     document.body.classList.remove('font-size-sm', 'font-size-md', 'font-size-lg');
     document.body.classList.add(`font-size-${size}`);
 
@@ -85,14 +266,19 @@
     });
 
     if (save) {
+      const now = Date.now();
       localStorage.setItem(FONT_SIZE_KEY, size);
+      localStorage.setItem(SYNC_TIME_KEY, String(now));
+      pushLocalToSession(now);
+      updatePortalLinks();
       showToast(`Ukuran teks: ${size === 'sm' ? 'Kompak (16px)' : size === 'lg' ? 'Besar (20px)' : 'Standar (18px)'}`);
     }
-  };
+  }
+  window.setFontSize = setFontSize;
 
   // --- 2. TOAST NOTIFICATIONS ---
   let toastTimer = null;
-  window.showToast = function (message) {
+  function showToast(message) {
     let toast = document.getElementById('reader-toast');
     if (!toast) {
       toast = document.createElement('div');
@@ -107,7 +293,8 @@
     toastTimer = setTimeout(() => {
       toast.classList.remove('show');
     }, 2400);
-  };
+  }
+  window.showToast = showToast;
 
   function showResumeToast(saved) {
     let resumeToast = document.getElementById('reader-resume-toast');
@@ -363,10 +550,11 @@
     }
   }
 
-  window.toggleCurrentPaperRead = function () {
+  function toggleCurrentPaperRead() {
     const meta = getPaperMetadata();
     if (!meta.paperId) return;
 
+    reconcileSyncState();
     let readList = getReadPapers();
     const pid = String(meta.paperId).padStart(2, '0');
     const idx = readList.indexOf(pid);
@@ -378,10 +566,15 @@
       isRead = true;
     }
 
+    const now = Date.now();
     localStorage.setItem(READ_PAPERS_KEY, JSON.stringify(readList));
+    localStorage.setItem(SYNC_TIME_KEY, String(now));
+    pushLocalToSession(now);
+    updatePortalLinks();
     updateReadChecklistUI(pid);
     showToast(isRead ? `Paper #${pid} ditandai: Selesai Dibaca ✓` : `Tanda selesai dibaca Paper #${pid} dihapus.`);
-  };
+  }
+  window.toggleCurrentPaperRead = toggleCurrentPaperRead;
 
   function updateReadChecklistUI(paperId) {
     const meta = getPaperMetadata();
@@ -548,6 +741,7 @@
 
         localStorage.setItem(LAST_READING_KEY, JSON.stringify(currentPos));
         localStorage.setItem(SCROLL_POS_KEY + meta.paperId, JSON.stringify(currentPos));
+        pushLocalToSession(currentPos.updatedAt);
       }, 250);
     });
   }
@@ -581,6 +775,7 @@
 
   // --- 9. GLOBAL INITIALIZATION ---
   function initReader() {
+    reconcileSyncState();
     initPreferences();
     injectHeaderControls();
     injectCompletionCard();
@@ -588,6 +783,7 @@
     initFloatingTOC();
     setupScrollTracking();
     restoreScrollPosition();
+    updatePortalLinks();
 
     // Keyboard Shortcuts
     document.addEventListener('keydown', (e) => {
@@ -612,9 +808,11 @@
 
   // Cross-tab and window storage synchronization
   window.addEventListener('storage', (e) => {
-    if (e.key === READ_PAPERS_KEY) {
+    if (e.key === READ_PAPERS_KEY || e.key === SYNC_TIME_KEY) {
+      reconcileSyncState();
       const meta = getPaperMetadata();
       if (meta.paperId) updateReadChecklistUI(meta.paperId);
+      updatePortalLinks();
     } else if (e.key === THEME_KEY && e.newValue) {
       setTheme(e.newValue, false);
     } else if (e.key === FONT_SIZE_KEY && e.newValue) {
@@ -624,15 +822,28 @@
 
   // Browser bfcache navigation (Back / Forward button)
   window.addEventListener('pageshow', () => {
+    reconcileSyncState();
     const meta = getPaperMetadata();
     if (meta.paperId) updateReadChecklistUI(meta.paperId);
+    updatePortalLinks();
   });
 
   // Tab switching visibility
   document.addEventListener('visibilitychange', () => {
     if (!document.hidden) {
+      reconcileSyncState();
       const meta = getPaperMetadata();
       if (meta.paperId) updateReadChecklistUI(meta.paperId);
+      updatePortalLinks();
+    }
+  });
+
+  // Outgoing link click handler
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href*="index.html"]');
+    if (link) {
+      pushLocalToSession();
+      updatePortalLinks();
     }
   });
 
