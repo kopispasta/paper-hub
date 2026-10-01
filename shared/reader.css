@@ -263,3 +263,82 @@ body.font-size-lg .article-body p {
   user-select: none;
   -webkit-user-drag: none;
 }
+
+/* Read Checklist Button & Badges */
+.read-checklist-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.6rem;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.read-checklist-btn:hover {
+  border-color: #059669;
+  color: #059669;
+}
+
+.read-checklist-btn.is-read {
+  background: #ecfdf5;
+  color: #047857 !important;
+  border-color: #a7f3d0;
+  font-weight: 600;
+}
+
+body.theme-dark .read-checklist-btn.is-read {
+  background: #064e3b;
+  color: #a7f3d0 !important;
+  border-color: #059669;
+}
+
+/* Resume Pill Toast */
+.reader-resume-toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #18181b;
+  color: #ffffff;
+  padding: 0.55rem 1.15rem;
+  border-radius: 9999px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reader-resume-toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.reader-resume-toast button {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border: none;
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.reader-resume-toast button:hover {
+  background: rgba(255, 255, 255, 0.35);
+}

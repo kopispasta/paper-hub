@@ -4,6 +4,8 @@
  * - Grid View vs Matrix Table View Switcher with localStorage persistence
  * - Tech Tag Filtering (#DFT, #Material2D, #KimiaMedisinal, etc.)
  * - Local Bookmarks / Reading List (⭐ save for later)
+ * - Read Checklist Tracker (✔️ mark as completed with counter & filter)
+ * - Last Reading History Widget (paper title, active section, scroll percentage)
  * - Live Search synchronization across Grid & Table
  * - Automatic Theme Sync (Paper, Sepia, Dark Slate)
  */
@@ -12,6 +14,8 @@
   'use strict';
 
   const BOOKMARK_KEY = 'telaahsains_bookmarks';
+  const READ_KEY = 'telaahsains_read_papers';
+  const LAST_READING_KEY = 'telaahsains_last_reading';
   const VIEW_KEY = 'telaahsains_portal_view';
   const THEME_KEY = 'telaahsains_reader_theme';
 
@@ -22,7 +26,6 @@
     if (savedTheme === 'sepia') document.body.classList.add('theme-sepia');
     if (savedTheme === 'dark') document.body.classList.add('theme-dark');
 
-    // Update portal theme toggle if present
     document.querySelectorAll('[data-theme-btn]').forEach(b => {
       b.classList.toggle('active', b.getAttribute('data-theme-btn') === savedTheme);
     });
@@ -64,7 +67,7 @@
       isAdded = true;
     }
     saveBookmarks(bms);
-    showPortalToast(isAdded ? `Paper #${paperId} ditambahkan ke daftar baca!` : `Paper #${paperId} dihapus dari daftar baca.`);
+    showPortalToast(isAdded ? `Paper #${paperId} ditambahkan ke daftar baca ⭐` : `Paper #${paperId} dihapus dari daftar baca.`);
   };
 
   function updateBookmarkUI() {
@@ -72,7 +75,6 @@
     const countEl = document.getElementById('bookmark-count');
     if (countEl) countEl.textContent = bms.length;
 
-    // Update star icons across cards and table rows
     document.querySelectorAll('[data-bookmark-btn]').forEach(btn => {
       const pid = btn.getAttribute('data-bookmark-btn');
       const isBookmarked = bms.includes(pid);
@@ -85,7 +87,111 @@
     });
   }
 
-  // --- 3. VIEW MODE (GRID vs TABLE) ---
+  // --- 3. READ CHECKLIST CONTROLLER ---
+  function getReadPapers() {
+    try {
+      return JSON.parse(localStorage.getItem(READ_KEY)) || [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function saveReadPapers(arr) {
+    localStorage.setItem(READ_KEY, JSON.stringify(arr));
+    updateReadUI();
+  }
+
+  window.toggleReadStatus = function (paperId, event) {
+    if (event) event.stopPropagation();
+    let readList = getReadPapers();
+    const idx = readList.indexOf(paperId);
+    let isRead = false;
+    if (idx >= 0) {
+      readList.splice(idx, 1);
+    } else {
+      readList.push(paperId);
+      isRead = true;
+    }
+    saveReadPapers(readList);
+    showPortalToast(isRead ? `Paper #${paperId} ditandai: Selesai Dibaca ✓` : `Tanda selesai Paper #${paperId} dihapus.`);
+    applyAllFilters();
+  };
+
+  function updateReadUI() {
+    const readList = getReadPapers();
+    const countEl = document.getElementById('completed-count');
+    if (countEl) countEl.textContent = `${readList.length}/10`;
+
+    document.querySelectorAll('[data-read-btn]').forEach(btn => {
+      const pid = btn.getAttribute('data-read-btn');
+      const isRead = readList.includes(pid);
+      btn.classList.toggle('text-emerald-600', isRead);
+      btn.classList.toggle('text-zinc-300', !isRead);
+      btn.setAttribute('title', isRead ? 'Batalkan tanda selesai' : 'Tandai sudah selesai dibaca');
+      btn.innerHTML = isRead
+        ? '<svg class="w-4 h-4 text-emerald-600 fill-current" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>'
+        : '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>';
+    });
+
+    document.querySelectorAll('[data-read-badge]').forEach(badge => {
+      const pid = badge.getAttribute('data-read-badge');
+      badge.classList.toggle('hidden', !readList.includes(pid));
+    });
+  }
+
+  // --- 4. LAST READING HISTORY WIDGET ---
+  function renderLastReadingWidget() {
+    const container = document.getElementById('resume-reading-container');
+    if (!container) return;
+
+    const raw = localStorage.getItem(LAST_READING_KEY);
+    if (!raw) {
+      container.classList.add('hidden');
+      return;
+    }
+
+    try {
+      const last = JSON.parse(raw);
+      if (!last || !last.paperId || !last.title) {
+        container.classList.add('hidden');
+        return;
+      }
+
+      const titleEl = document.getElementById('resume-title');
+      const timeEl = document.getElementById('resume-time');
+      const secEl = document.getElementById('resume-section');
+      const pctEl = document.getElementById('resume-percent');
+      const barEl = document.getElementById('resume-progress-bar');
+      const btnEl = document.getElementById('resume-btn');
+
+      if (titleEl) titleEl.textContent = `Paper #${last.paperId}: ${last.title}`;
+      if (secEl) secEl.textContent = last.sectionTitle ? `Bagian: ${last.sectionTitle}` : 'Melanjutkan telaah';
+      if (pctEl) pctEl.textContent = `${last.scrollPercent || 0}%`;
+      if (barEl) barEl.style.width = `${last.scrollPercent || 0}%`;
+      if (btnEl) btnEl.href = last.url || '#';
+
+      if (timeEl && last.updatedAt) {
+        timeEl.textContent = formatFriendlyTime(last.updatedAt);
+      }
+
+      container.classList.remove('hidden');
+    } catch (e) {
+      container.classList.add('hidden');
+    }
+  }
+
+  function formatFriendlyTime(timestamp) {
+    const diff = Date.now() - timestamp;
+    const mins = Math.floor(diff / (1000 * 60));
+    if (mins < 1) return 'Baru saja';
+    if (mins < 60) return `${mins} menit yang lalu`;
+    const hours = Math.floor(mins / 60);
+    if (hours < 24) return `${hours} jam yang lalu`;
+    const days = Math.floor(hours / 24);
+    return `${days} hari yang lalu`;
+  }
+
+  // --- 5. VIEW MODE (GRID vs TABLE) ---
   window.setPortalView = function (view) {
     const gridView = document.getElementById('paper-grid-container');
     const tableView = document.getElementById('paper-table-container');
@@ -118,13 +224,12 @@
     localStorage.setItem(VIEW_KEY, view);
   };
 
-  // --- 4. FILTERING & SEARCH ---
+  // --- 6. FILTERING & SEARCH ---
   let currentCategory = 'all';
   let currentTag = 'all';
 
   window.filterCategory = function (cat) {
     currentCategory = cat;
-    // Update category buttons
     document.querySelectorAll('.filter-cat-btn').forEach(btn => {
       btn.classList.remove('bg-editorial-ink', 'text-white');
       btn.classList.add('bg-white', 'text-editorial-muted');
@@ -158,6 +263,7 @@
   function applyAllFilters() {
     const searchVal = (document.getElementById('search-input')?.value || '').toLowerCase().trim();
     const bms = getBookmarks();
+    const readList = getReadPapers();
 
     const items = document.querySelectorAll('[data-paper-item]');
     let visibleCount = 0;
@@ -174,6 +280,10 @@
         matchesCat = true;
       } else if (currentCategory === 'bookmarks') {
         matchesCat = bms.includes(pid);
+      } else if (currentCategory === 'completed') {
+        matchesCat = readList.includes(pid);
+      } else if (currentCategory === 'unread') {
+        matchesCat = !readList.includes(pid);
       } else {
         matchesCat = cat.includes(currentCategory);
       }
@@ -218,6 +328,8 @@
   document.addEventListener('DOMContentLoaded', () => {
     syncTheme();
     updateBookmarkUI();
+    updateReadUI();
+    renderLastReadingWidget();
     const savedView = localStorage.getItem(VIEW_KEY) || 'grid';
     setPortalView(savedView);
   });

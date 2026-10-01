@@ -111,23 +111,37 @@
         Portal kurasi publikasi ilmiah bereputasi (Elsevier, Cell Press, IOP Publishing, Wiley-VCH, Springer Nature, ACS Publications, Royal Society of Chemistry) yang ditransformasikan dari laporan teknis kaku menjadi pengalaman membaca naratif, bersih, dan memikat. Dirancang khusus bagi mahasiswa, dosen, dan peneliti yang membutuhkan pemahaman mendalam tanpa terhalang bahasa yang dingin.
       </p>
 
-      <!-- STATS STRIP -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-editorial-line text-left">
-        <div>
-          <div class="text-2xl font-bold text-editorial-ink font-sans">10</div>
-          <div class="text-xs text-editorial-muted">Paper Tertelaah</div>
-        </div>
-        <div>
-          <div class="text-2xl font-bold text-editorial-accent font-sans">85</div>
-          <div class="text-xs text-editorial-muted">Gambar Asli Beresolusi Tinggi</div>
-        </div>
-        <div>
-          <div class="text-2xl font-bold text-editorial-ink font-sans">100%</div>
-          <div class="text-xs text-editorial-muted">Bebas Format AI Berlebihan</div>
-        </div>
-        <div>
-          <div class="text-2xl font-bold text-editorial-ink font-sans">Q1</div>
-          <div class="text-xs text-editorial-muted">Jurnal Bereputasi Global</div>
+      <!-- HISTORI BACAAN TERAKHIR (Resume Reading Card) -->
+      <div id="resume-reading-container" class="hidden pt-6 border-t border-editorial-line">
+        <div class="bg-editorial-softbg border border-editorial-line rounded-lg p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 transition-all hover:border-editorial-accent/50 shadow-xs">
+          <div class="flex items-start gap-3.5">
+            <div class="w-10 h-10 rounded-full bg-editorial-accentLight border border-editorial-accent/30 flex items-center justify-center text-editorial-accent shrink-0 mt-0.5">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-editorial-accent bg-white px-2 py-0.5 rounded border border-editorial-accent/20 font-sans">Histori Terakhir</span>
+                <span id="resume-time" class="text-[11px] text-editorial-muted font-sans"></span>
+              </div>
+              <h3 id="resume-title" class="font-bold text-editorial-ink font-sans text-sm sm:text-base mt-1 leading-snug"></h3>
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-editorial-muted mt-1.5 font-sans">
+                <span id="resume-section" class="text-editorial-body font-medium"></span>
+                <span class="text-editorial-line hidden sm:inline">•</span>
+                <div class="flex items-center gap-2">
+                  <div class="w-24 h-1.5 bg-zinc-200 rounded-full overflow-hidden">
+                    <div id="resume-progress-bar" class="h-full bg-editorial-accent transition-all duration-300" style="width: 0%"></div>
+                  </div>
+                  <span id="resume-percent" class="font-mono text-[11px] font-semibold text-editorial-ink">0%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 w-full md:w-auto justify-end shrink-0">
+            <a id="resume-btn" href="#" class="w-full md:w-auto px-4 py-2 bg-editorial-accent hover:bg-editorial-accentDark text-white text-xs font-semibold rounded shadow-xs transition-colors flex items-center justify-center gap-1.5 whitespace-nowrap">
+              <span>Lanjutkan Membaca</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </div>
         </div>
       </div>
 
@@ -154,9 +168,13 @@
           <button onclick="filterCategory('biomed')" id="btn-cat-biomed" class="filter-cat-btn px-3 py-1.5 rounded bg-white border border-editorial-line text-editorial-muted hover:text-editorial-ink whitespace-nowrap transition-colors">
             Biomedis & Kimia Medisinal (4)
           </button>
-          <button onclick="filterCategory('bookmarks')" id="btn-cat-bookmarks" class="filter-cat-btn px-3 py-1.5 rounded bg-white border border-editorial-line text-amber-600 hover:text-amber-700 whitespace-nowrap transition-colors flex items-center gap-1">
+                    <button onclick="filterCategory('bookmarks')" id="btn-cat-bookmarks" class="filter-cat-btn px-3 py-1.5 rounded bg-white border border-editorial-line text-amber-600 hover:text-amber-700 whitespace-nowrap transition-colors flex items-center gap-1">
             <span>⭐ Tersimpan</span>
             <span id="bookmark-count" class="px-1.5 py-0.2 rounded-full bg-amber-50 text-[10px] font-bold border border-amber-200/60">0</span>
+          </button>
+          <button onclick="filterCategory('completed')" id="btn-cat-completed" class="filter-cat-btn px-3 py-1.5 rounded bg-white border border-editorial-line text-emerald-700 hover:text-emerald-800 whitespace-nowrap transition-colors flex items-center gap-1">
+            <span>✔️ Selesai</span>
+            <span id="completed-count" class="px-1.5 py-0.2 rounded-full bg-emerald-50 text-[10px] font-bold border border-emerald-200/60">0/10</span>
           </button>
         </div>
 
@@ -229,11 +247,17 @@
         <div>
           <!-- Header Meta -->
           <div class="flex items-center justify-between text-xs text-editorial-muted mb-3">
-            <span class="font-semibold uppercase tracking-wider text-editorial-accent">Material Elektrokimia</span>
+            <div class="flex items-center gap-1.5">
+              <span class="font-semibold uppercase tracking-wider text-editorial-accent">Material Elektrokimia</span>
+              <span data-read-badge="01" class="hidden text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-1.5 py-0.2 rounded">✓ Selesai</span>
+            </div>
             <div class="flex items-center gap-1.5">
               <span class="font-mono text-[11px]">Mater. Res. Bull. (2025)</span>
               <button onclick="toggleBookmark('01', event)" data-bookmark-btn="01" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+              </button>
+              <button onclick="toggleReadStatus('01', event)" data-read-btn="01" class="text-zinc-300 hover:text-emerald-600 transition-colors p-0.5" title="Tandai sudah selesai dibaca">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               </button>
             </div>
           </div>
@@ -289,11 +313,17 @@
         <div>
           <!-- Header Meta -->
           <div class="flex items-center justify-between text-xs text-editorial-muted mb-3">
-            <span class="font-semibold uppercase tracking-wider text-teal-700">Kecerdasan Buatan Biomedis</span>
+            <div class="flex items-center gap-1.5">
+              <span class="font-semibold uppercase tracking-wider text-teal-700">Kecerdasan Buatan Biomedis</span>
+              <span data-read-badge="02" class="hidden text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-1.5 py-0.2 rounded">✓ Selesai</span>
+            </div>
             <div class="flex items-center gap-1.5">
               <span class="font-mono text-[11px]">Patterns (Cell Press, 2024)</span>
               <button onclick="toggleBookmark('02', event)" data-bookmark-btn="02" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+              </button>
+              <button onclick="toggleReadStatus('02', event)" data-read-btn="02" class="text-zinc-300 hover:text-emerald-600 transition-colors p-0.5" title="Tandai sudah selesai dibaca">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               </button>
             </div>
           </div>
@@ -349,11 +379,17 @@
         <div>
           <!-- Header Meta -->
           <div class="flex items-center justify-between text-xs text-editorial-muted mb-3">
-            <span class="font-semibold uppercase tracking-wider text-editorial-accent">Fisika Termoelektrik Oksida</span>
+            <div class="flex items-center gap-1.5">
+              <span class="font-semibold uppercase tracking-wider text-editorial-accent">Fisika Termoelektrik Oksida</span>
+              <span data-read-badge="03" class="hidden text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-1.5 py-0.2 rounded">✓ Selesai</span>
+            </div>
             <div class="flex items-center gap-1.5">
               <span class="font-mono text-[11px]">Mater. Res. Bull. (2021)</span>
               <button onclick="toggleBookmark('03', event)" data-bookmark-btn="03" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+              </button>
+              <button onclick="toggleReadStatus('03', event)" data-read-btn="03" class="text-zinc-300 hover:text-emerald-600 transition-colors p-0.5" title="Tandai sudah selesai dibaca">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               </button>
             </div>
           </div>
@@ -409,11 +445,17 @@
         <div>
           <!-- Header Meta -->
           <div class="flex items-center justify-between text-xs text-editorial-muted mb-3">
-            <span class="font-semibold uppercase tracking-wider text-editorial-accent">Material 2D Semikonduktor</span>
+            <div class="flex items-center gap-1.5">
+              <span class="font-semibold uppercase tracking-wider text-editorial-accent">Material 2D Semikonduktor</span>
+              <span data-read-badge="04" class="hidden text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-1.5 py-0.2 rounded">✓ Selesai</span>
+            </div>
             <div class="flex items-center gap-1.5">
               <span class="font-mono text-[11px]">Comput. Mater. Sci. (2021)</span>
               <button onclick="toggleBookmark('04', event)" data-bookmark-btn="04" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+              </button>
+              <button onclick="toggleReadStatus('04', event)" data-read-btn="04" class="text-zinc-300 hover:text-emerald-600 transition-colors p-0.5" title="Tandai sudah selesai dibaca">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               </button>
             </div>
           </div>
@@ -469,11 +511,17 @@
         <div>
           <!-- Header Meta -->
           <div class="flex items-center justify-between text-xs text-editorial-muted mb-3">
-            <span class="font-semibold uppercase tracking-wider text-editorial-accent">Material 2D & Termoelektrik</span>
+            <div class="flex items-center gap-1.5">
+              <span class="font-semibold uppercase tracking-wider text-editorial-accent">Material 2D & Termoelektrik</span>
+              <span data-read-badge="05" class="hidden text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-1.5 py-0.2 rounded">✓ Selesai</span>
+            </div>
             <div class="flex items-center gap-1.5">
               <span class="font-mono text-[11px]">Phys. Scr. (2024)</span>
               <button onclick="toggleBookmark('05', event)" data-bookmark-btn="05" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+              </button>
+              <button onclick="toggleReadStatus('05', event)" data-read-btn="05" class="text-zinc-300 hover:text-emerald-600 transition-colors p-0.5" title="Tandai sudah selesai dibaca">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               </button>
             </div>
           </div>
@@ -529,11 +577,17 @@
         <div>
           <!-- Header Meta -->
           <div class="flex items-center justify-between text-xs text-editorial-muted mb-3">
-            <span class="font-semibold uppercase tracking-wider text-editorial-accent">Katalisis LOHC & Energi Hidrogen</span>
+            <div class="flex items-center gap-1.5">
+              <span class="font-semibold uppercase tracking-wider text-editorial-accent">Katalisis LOHC & Energi Hidrogen</span>
+              <span data-read-badge="06" class="hidden text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-1.5 py-0.2 rounded">✓ Selesai</span>
+            </div>
             <div class="flex items-center gap-1.5">
               <span class="font-mono text-[11px]">Int. J. Hydrogen Energy (2025)</span>
               <button onclick="toggleBookmark('06', event)" data-bookmark-btn="06" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+              </button>
+              <button onclick="toggleReadStatus('06', event)" data-read-btn="06" class="text-zinc-300 hover:text-emerald-600 transition-colors p-0.5" title="Tandai sudah selesai dibaca">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               </button>
             </div>
           </div>
@@ -589,11 +643,17 @@
         <div>
           <!-- Header Meta -->
           <div class="flex items-center justify-between text-xs text-editorial-muted mb-3">
-            <span class="font-semibold uppercase tracking-wider text-editorial-accent">Kimia Bioortogonal & Onkologi</span>
+            <div class="flex items-center gap-1.5">
+              <span class="font-semibold uppercase tracking-wider text-editorial-accent">Kimia Bioortogonal & Onkologi</span>
+              <span data-read-badge="07" class="hidden text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-1.5 py-0.2 rounded">✓ Selesai</span>
+            </div>
             <div class="flex items-center gap-1.5">
               <span class="font-mono text-[11px]">Adv. Therap. (2021)</span>
               <button onclick="toggleBookmark('07', event)" data-bookmark-btn="07" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+              </button>
+              <button onclick="toggleReadStatus('07', event)" data-read-btn="07" class="text-zinc-300 hover:text-emerald-600 transition-colors p-0.5" title="Tandai sudah selesai dibaca">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               </button>
             </div>
           </div>
@@ -649,11 +709,17 @@
         <div>
           <!-- Header Meta -->
           <div class="flex items-center justify-between text-xs text-editorial-muted mb-3">
-            <span class="font-semibold uppercase tracking-wider text-teal-700">Kimia Medisinal & Desain Obat In Silico</span>
+            <div class="flex items-center gap-1.5">
+              <span class="font-semibold uppercase tracking-wider text-teal-700">Kimia Medisinal & Desain Obat In Silico</span>
+              <span data-read-badge="08" class="hidden text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-1.5 py-0.2 rounded">✓ Selesai</span>
+            </div>
             <div class="flex items-center gap-1.5">
               <span class="font-mono text-[11px]">Sci. Rep. (Nature, 2023)</span>
               <button onclick="toggleBookmark('08', event)" data-bookmark-btn="08" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+              </button>
+              <button onclick="toggleReadStatus('08', event)" data-read-btn="08" class="text-zinc-300 hover:text-emerald-600 transition-colors p-0.5" title="Tandai sudah selesai dibaca">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               </button>
             </div>
           </div>
@@ -709,11 +775,17 @@
         <div>
           <!-- Header Meta -->
           <div class="flex items-center justify-between text-xs text-editorial-muted mb-3">
-            <span class="font-semibold uppercase tracking-wider text-blue-700">Kimia Medisinal & Desain Obat (SBDD)</span>
+            <div class="flex items-center gap-1.5">
+              <span class="font-semibold uppercase tracking-wider text-blue-700">Kimia Medisinal & Desain Obat (SBDD)</span>
+              <span data-read-badge="09" class="hidden text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-1.5 py-0.2 rounded">✓ Selesai</span>
+            </div>
             <div class="flex items-center gap-1.5">
               <span class="font-mono text-[11px]">J. Med. Chem. (ACS, 2020)</span>
               <button onclick="toggleBookmark('09', event)" data-bookmark-btn="09" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+              </button>
+              <button onclick="toggleReadStatus('09', event)" data-read-btn="09" class="text-zinc-300 hover:text-emerald-600 transition-colors p-0.5" title="Tandai sudah selesai dibaca">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               </button>
             </div>
           </div>
@@ -769,11 +841,17 @@
         <div>
           <!-- Header Meta -->
           <div class="flex items-center justify-between text-xs text-editorial-muted mb-3">
-            <span class="font-semibold uppercase tracking-wider text-indigo-700">Material 2D & Rekayasa Pita Energi</span>
+            <div class="flex items-center gap-1.5">
+              <span class="font-semibold uppercase tracking-wider text-indigo-700">Material 2D & Rekayasa Pita Energi</span>
+              <span data-read-badge="10" class="hidden text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-1.5 py-0.2 rounded">✓ Selesai</span>
+            </div>
             <div class="flex items-center gap-1.5">
               <span class="font-mono text-[11px]">PCCP (RSC, 2018)</span>
               <button onclick="toggleBookmark('10', event)" data-bookmark-btn="10" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+              </button>
+              <button onclick="toggleReadStatus('10', event)" data-read-btn="10" class="text-zinc-300 hover:text-emerald-600 transition-colors p-0.5" title="Tandai sudah selesai dibaca">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               </button>
             </div>
           </div>
@@ -833,7 +911,7 @@
       <table class="w-full text-left border-collapse text-xs font-sans">
         <thead>
           <tr class="bg-zinc-50 border-b border-editorial-line text-[11px] font-semibold text-editorial-muted uppercase tracking-wider">
-            <th class="py-3 px-3 w-16 text-center">No & ⭐</th>
+            <th class="py-3 px-3 w-20 text-center">No, ⭐, ✔️</th>
             <th class="py-3 px-4 min-w-[280px]">Judul & Jurnal</th>
             <th class="py-3 px-4 min-w-[160px]">Kategori & Topik</th>
             <th class="py-3 px-4 min-w-[220px]">Temuan Kunci / Metrik</th>
@@ -848,6 +926,9 @@
             <span class="font-mono text-zinc-400 font-semibold text-[11px]">#01</span>
             <button onclick="toggleBookmark('01', event)" data-bookmark-btn="01" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+            </button>
+            <button onclick="toggleReadStatus('01', event)" data-read-btn="01" class="text-zinc-300 hover:text-emerald-600 transition-colors p-0.5" title="Tandai sudah selesai dibaca">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             </button>
           </div>
         </td>
@@ -888,6 +969,9 @@
             <button onclick="toggleBookmark('02', event)" data-bookmark-btn="02" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
             </button>
+            <button onclick="toggleReadStatus('02', event)" data-read-btn="02" class="text-zinc-300 hover:text-emerald-600 transition-colors p-0.5" title="Tandai sudah selesai dibaca">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </button>
           </div>
         </td>
         <td class="py-3.5 px-4 align-top">
@@ -926,6 +1010,9 @@
             <span class="font-mono text-zinc-400 font-semibold text-[11px]">#03</span>
             <button onclick="toggleBookmark('03', event)" data-bookmark-btn="03" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+            </button>
+            <button onclick="toggleReadStatus('03', event)" data-read-btn="03" class="text-zinc-300 hover:text-emerald-600 transition-colors p-0.5" title="Tandai sudah selesai dibaca">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             </button>
           </div>
         </td>
@@ -966,6 +1053,9 @@
             <button onclick="toggleBookmark('04', event)" data-bookmark-btn="04" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
             </button>
+            <button onclick="toggleReadStatus('04', event)" data-read-btn="04" class="text-zinc-300 hover:text-emerald-600 transition-colors p-0.5" title="Tandai sudah selesai dibaca">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </button>
           </div>
         </td>
         <td class="py-3.5 px-4 align-top">
@@ -1004,6 +1094,9 @@
             <span class="font-mono text-zinc-400 font-semibold text-[11px]">#05</span>
             <button onclick="toggleBookmark('05', event)" data-bookmark-btn="05" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+            </button>
+            <button onclick="toggleReadStatus('05', event)" data-read-btn="05" class="text-zinc-300 hover:text-emerald-600 transition-colors p-0.5" title="Tandai sudah selesai dibaca">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             </button>
           </div>
         </td>
@@ -1044,6 +1137,9 @@
             <button onclick="toggleBookmark('06', event)" data-bookmark-btn="06" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
             </button>
+            <button onclick="toggleReadStatus('06', event)" data-read-btn="06" class="text-zinc-300 hover:text-emerald-600 transition-colors p-0.5" title="Tandai sudah selesai dibaca">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </button>
           </div>
         </td>
         <td class="py-3.5 px-4 align-top">
@@ -1082,6 +1178,9 @@
             <span class="font-mono text-zinc-400 font-semibold text-[11px]">#07</span>
             <button onclick="toggleBookmark('07', event)" data-bookmark-btn="07" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+            </button>
+            <button onclick="toggleReadStatus('07', event)" data-read-btn="07" class="text-zinc-300 hover:text-emerald-600 transition-colors p-0.5" title="Tandai sudah selesai dibaca">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             </button>
           </div>
         </td>
@@ -1122,6 +1221,9 @@
             <button onclick="toggleBookmark('08', event)" data-bookmark-btn="08" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
             </button>
+            <button onclick="toggleReadStatus('08', event)" data-read-btn="08" class="text-zinc-300 hover:text-emerald-600 transition-colors p-0.5" title="Tandai sudah selesai dibaca">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </button>
           </div>
         </td>
         <td class="py-3.5 px-4 align-top">
@@ -1161,6 +1263,9 @@
             <button onclick="toggleBookmark('09', event)" data-bookmark-btn="09" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
             </button>
+            <button onclick="toggleReadStatus('09', event)" data-read-btn="09" class="text-zinc-300 hover:text-emerald-600 transition-colors p-0.5" title="Tandai sudah selesai dibaca">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </button>
           </div>
         </td>
         <td class="py-3.5 px-4 align-top">
@@ -1199,6 +1304,9 @@
             <span class="font-mono text-zinc-400 font-semibold text-[11px]">#10</span>
             <button onclick="toggleBookmark('10', event)" data-bookmark-btn="10" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+            </button>
+            <button onclick="toggleReadStatus('10', event)" data-read-btn="10" class="text-zinc-300 hover:text-emerald-600 transition-colors p-0.5" title="Tandai sudah selesai dibaca">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             </button>
           </div>
         </td>
