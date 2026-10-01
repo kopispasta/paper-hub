@@ -281,7 +281,7 @@
           </p>
 
           <p>
-            Di sisi lain, platform otomatisasi pembelajaran mesin (AutoML) yang ada saat ini—seperti Auto-WEKA atau versi awal Auto-Sklearn—sering kali beroperasi bagaikan "kotak hitam" yang kaku. Algoritma optimasi hiperparameter konvensional cenderung memusatkan pencarian hanya pada skor validasi tertinggi, tanpa memperhitungkan disparitas antara performa data latih (<em>training</em>) dan data validasi. Akibatnya, model yang tampak perkasa di tahap validasi kerap tumbang akibat *overfitting* saat diuji pada data independen.
+            Di sisi lain, platform otomatisasi pembelajaran mesin (AutoML) yang ada saat ini—seperti Auto-WEKA atau versi awal Auto-Sklearn—sering kali beroperasi bagaikan "kotak hitam" yang kaku. Algoritma optimasi hiperparameter konvensional cenderung memusatkan pencarian hanya pada skor validasi tertinggi, tanpa memperhitungkan disparitas antara performa data latih (<em>training</em>) dan data validasi. Akibatnya, model yang tampak perkasa di tahap validasi kerap tumbang akibat <em>overfitting</em> saat diuji pada data independen.
           </p>
 
           <p>
@@ -311,7 +311,7 @@
             </div>
             <figcaption class="mt-4 pt-3 border-t border-cell-line text-xs font-sans text-cell-muted leading-relaxed">
               <span class="font-bold text-cell-ink">Abstrak Grafis | Visi Arsitektur CLETE AlphaML.</span> 
-              Integrasi berkesinambungan antara seleksi fitur, normalisasi, penanganan ketidakseimbangan kelas (*sampling*), optimasi hiperparameter, pelatihan model klasifikasi biner, hingga penjelasan prediksi individual (*explain a prediction*) menggunakan antarmuka grafis terpadu.
+              Integrasi berkesinambungan antara seleksi fitur, normalisasi, penanganan ketidakseimbangan kelas (<em>sampling</em>), optimasi hiperparameter, pelatihan model klasifikasi biner, hingga penjelasan prediksi individual (<em>explain a prediction</em>) menggunakan antarmuka grafis terpadu.
               <div class="mt-1 text-[11px] text-cell-lightmuted">Sumber: Nasimian et al., Patterns 5, 100897 (2024) / Cell Press. (Klik gambar untuk perbesar)</div>
             </figcaption>
           </figure>
@@ -332,7 +332,7 @@
             </div>
             <figcaption class="mt-4 pt-3 border-t border-cell-line text-xs font-sans text-cell-muted leading-relaxed">
               <span class="font-bold text-cell-ink">Gambar 1 | Representasi skematis arsitektur platform AlphaML.</span> 
-              <strong>(A) Manajemen Data & Seleksi Fitur:</strong> Verifikasi data lokal, seleksi fitur tanpa pengawasan (*unsupervised*) maupun terawasi (*supervised*), normalisasi (Min-Max/Standardisasi), dan pembagian data uji sebelum proses sampling;
+              <strong>(A) Manajemen Data & Seleksi Fitur:</strong> Verifikasi data lokal, seleksi fitur tanpa pengawasan (<em>unsupervised</em>) maupun terawasi (<em>supervised</em>), normalisasi (Min-Max/Standardisasi), dan pembagian data uji sebelum proses sampling;
               <strong>(B) Pengembangan Model & Evaluasi:</strong> Penyetelan hiperparameter (GridSearch, BayesSearch, Optuna), pelatihan 15 jenis classifier, validasi silang berulang, evaluasi matriks komprehensif, dan interpretasi fitur (SHAP, LIME);
               <strong>(C) Modul Inferensi Independen:</strong> Menjalankan prediksi probabilitas kelas positif/negatif pada data baru menggunakan model yang telah dilatih sebelumnya tanpa perlu melatih ulang.
               <div class="mt-1 text-[11px] text-cell-lightmuted">Sumber: Nasimian et al., Patterns (2024).</div>
@@ -351,11 +351,11 @@
           </h2>
 
           <p>
-            Data biologis seperti transkriptomik kerap memiliki puluhan ribu gen (fitur) namun hanya memuat puluhan atau ratusan sampel pasien—sebuah kondisi klasik yang rentan terhadap fenomena *curse of dimensionality*. AlphaML menyediakan fleksibilitas seleksi fitur yang belum pernah ada pada perangkat lunak sejenis: pengguna dapat menjalankan hingga empat metode seleksi fitur secara berurutan (*sequential feature selection*).
+            Data biologis seperti transkriptomik kerap memiliki puluhan ribu gen (fitur) namun hanya memuat puluhan atau ratusan sampel pasien—sebuah kondisi klasik yang rentan terhadap fenomena <em>curse of dimensionality</em>. AlphaML menyediakan fleksibilitas seleksi fitur yang belum pernah ada pada perangkat lunak sejenis: pengguna dapat menjalankan hingga empat metode seleksi fitur secara berurutan (<em>sequential feature selection</em>).
           </p>
 
           <p>
-            Pendekatan ini memungkinkan peneliti melakukan penyaringan kasar terlebih dahulu menggunakan metode tanpa pengawasan (*unsupervised*) seperti identifikasi fitur bervariabilitas tinggi (HVF) atau Median dari Median Absolute Deviation (MedianMAD). Setelah ribuan fitur yang tidak informatif disingkirkan, metode reduksi seperti Random Projection, PCA, atau NMF dapat diaplikasikan sebelum menyerahkan subset fitur terpilih ke algoritma terawasi yang menuntut beban komputasi intensif, seperti Recursive Feature Elimination (RFE) atau Model-X Knockoffs.
+            Pendekatan ini memungkinkan peneliti melakukan penyaringan kasar terlebih dahulu menggunakan metode tanpa pengawasan (<em>unsupervised</em>) seperti identifikasi fitur bervariabilitas tinggi (HVF) atau Median dari Median Absolute Deviation (MedianMAD). Setelah ribuan fitur yang tidak informatif disingkirkan, metode reduksi seperti Random Projection, PCA, atau NMF dapat diaplikasikan sebelum menyerahkan subset fitur terpilih ke algoritma terawasi yang menuntut beban komputasi intensif, seperti Recursive Feature Elimination (RFE) atau Model-X Knockoffs.
           </p>
 
           <!-- FIGURE 2 EMBEDDED -->
@@ -389,7 +389,7 @@
           </h2>
 
           <p>
-            Ketidakseimbangan kelas (*class imbalance*) merupakan kendala klasik dalam klasifikasi biner, di mana jumlah sampel pasien resisten sering kali jauh melampaui pasien sensitif. Praktik umum dalam komunitas data sains sering kali langsung menerapkan teknik *oversampling* sintetis (seperti SMOTE) atau pemotongan kelas mayoritas (*undersampling*).
+            Ketidakseimbangan kelas (<em>class imbalance</em>) merupakan kendala klasik dalam klasifikasi biner, di mana jumlah sampel pasien resisten sering kali jauh melampaui pasien sensitif. Praktik umum dalam komunitas data sains sering kali langsung menerapkan teknik <em>oversampling</em> sintetis (seperti SMOTE) atau pemotongan kelas mayoritas (<em>undersampling</em>).
           </p>
 
           <p>
@@ -414,7 +414,7 @@
           </figure>
 
           <p>
-            Penjelasan di balik fenomena ini adalah bahwa oversampling dapat memicu overfitting karena melipatgandakan varians buatan pada kelas minoritas, sedangkan undersampling membuang informasi biologis bernilai tinggi. Sebagai gantinya, AlphaML mempertahankan proporsi alami data namun menyematkan bobot penalti ketidakseimbangan kelas (*class imbalance weights*) langsung ke dalam fungsi kerugian (*loss function*) algoritma. Terlebih lagi, AlphaML mempartisi data uji sebelum proses sampling apa pun dijalankan, menjamin tidak adanya kebocoran data (*data leakage*).
+            Penjelasan di balik fenomena ini adalah bahwa oversampling dapat memicu overfitting karena melipatgandakan varians buatan pada kelas minoritas, sedangkan undersampling membuang informasi biologis bernilai tinggi. Sebagai gantinya, AlphaML mempertahankan proporsi alami data namun menyematkan bobot penalti ketidakseimbangan kelas (<em>class imbalance weights</em>) langsung ke dalam fungsi kerugian (<em>loss function</em>) algoritma. Terlebih lagi, AlphaML mempartisi data uji sebelum proses sampling apa pun dijalankan, menjamin tidak adanya kebocoran data (<em>data leakage</em>).
           </p>
         </section>
 
@@ -567,7 +567,7 @@
           </h2>
 
           <p>
-            Bagi dokter dan peneliti onkologi, mengetahui prediksi model saja tidaklah cukup; mereka harus memahami *mengapa* sebuah keputusan diambil. AlphaML mengintegrasikan perkakas Explainable AI (XAI) pada level global (seluruh populasi) dan level lokal (pasien perorangan).
+            Bagi dokter dan peneliti onkologi, mengetahui prediksi model saja tidaklah cukup; mereka harus memahami <em>mengapa</em> sebuah keputusan diambil. AlphaML mengintegrasikan perkakas Explainable AI (XAI) pada level global (seluruh populasi) dan level lokal (pasien perorangan).
           </p>
 
           <!-- FIGURE 6 EMBEDDED -->
@@ -627,7 +627,7 @@
             <li><strong>Bank Marketing:</strong> Prediksi keberhasilan kampanye telemarketing perbankan.</li>
             <li><strong>Credit Card Fraud Detection:</strong> Klasifikasi transaksi penipuan kartu kredit (kondisi ekstrim imbalanced).</li>
             <li><strong>Pima Indians Diabetes:</strong> Diagnosis timbulnya diabetes berdasarkan parameter klinis.</li>
-            <li><strong>NATICUSdroid:</strong> Deteksi malware Android berdasarkan izin akses (*permissions*).</li>
+            <li><strong>NATICUSdroid:</strong> Deteksi malware Android berdasarkan izin akses (<em>permissions</em>).</li>
             <li><strong>Student Dropout & Academic Success:</strong> Prediksi risiko putus kuliah mahasiswa.</li>
             <li><strong>Breast Cancer Wisconsin (Diagnostic):</strong> Klasifikasi biopsi tumor payudara (jinak vs ganas).</li>
           </ol>
@@ -663,8 +663,8 @@
 
           <ul class="list-disc pl-5 space-y-2 font-sans text-xs sm:text-sm text-cell-body mb-6">
             <li><strong>Format Input Data:</strong> Saat ini platform hanya menerima berkas bertipe <code>.csv</code> dan mensyaratkan peletakan berkas di folder khusus <code>alphaML_data</code> di dalam direktori Documents komputer.</li>
-            <li><strong>Penanganan Data Hilang (*Missing Values*):</strong> Secara default, AlphaML mengganti nilai <code>NaN</code> dengan angka nol tanpa melakukan imputasi statistik otomatis (pengguna disarankan melakukan pra-imputasi dengan alat seperti <em>IterativeImputer</em> dari scikit-learn jika diperlukan).</li>
-            <li><strong>Encoding Kategori:</strong> AlphaML dirancang berbasis *label encoding*. Untuk data kategorik berskala luas, pengguna disarankan melakukan *One-Hot Encoding* terlebih dahulu.</li>
+            <li><strong>Penanganan Data Hilang (<em>Missing Values</em>):</strong> Secara default, AlphaML mengganti nilai <code>NaN</code> dengan angka nol tanpa melakukan imputasi statistik otomatis (pengguna disarankan melakukan pra-imputasi dengan alat seperti <em>IterativeImputer</em> dari scikit-learn jika diperlukan).</li>
+            <li><strong>Encoding Kategori:</strong> AlphaML dirancang berbasis <em>label encoding</em>. Untuk data kategorik berskala luas, pengguna disarankan melakukan <em>One-Hot Encoding</em> terlebih dahulu.</li>
             <li><strong>Ambang Batas Korelasi Default:</strong> Fitur dengan korelasi di atas 90% secara otomatis disaring untuk mencegah multikolinearitas.</li>
           </ul>
 

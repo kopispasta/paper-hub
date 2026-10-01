@@ -59,7 +59,7 @@ paper-hub/
 | 07 | **SQ3370 Activates Cytotoxic Drug via Click Chemistry at Tumor and Elicits Sustained Responses in Injected and Non-Injected Lesions** | *Advanced Therapeutics* 4 (Wiley-VCH, 2021) | Kimia Klik Bioortogonal, CAPAC, SQ3370, Tetrazin, TCO, Doksorubisin, Abscopal, MC38 | [Buka Paper 07](papers/07-sq3370-click-chemistry-cancer/index.html) |
 | 08 | **Synthesis of pyrido-annelated [1,2,4,5]tetrazines, [1,2,4]triazepine, and [1,2,4,5]tetrazepines for anticancer, DFT, and molecular docking studies** | *Scientific Reports* 13 (Springer Nature, 2023) | Sintesis PASE Hijau, NCI-60, Kanker Kolon HCT-116 77.9%, Docking JAK2 -7.25 kcal/mol, DFT B3LYP | [Buka Paper 08](papers/08-pyridotetrazine-anticancer-jak2/index.html) |
 | 09 | **Discovery of BIIB068: A Selective, Potent, Reversible Bruton’s Tyrosine Kinase Inhibitor as an Orally Efficacious Agent for Autoimmune Diseases** | *Journal of Medicinal Chemistry* 63 (ACS, 2020) | BTK Reversibel, SBDD, Kantung H3, PDB 6TFP, Selektivitas >400x (395 Kinase), In Vivo TI-2 93%, Fase I Manusia | [Buka Paper 09](papers/09-biib068-btk-inhibitor-lupus/index.html) |
-| 10 | **Tailoring electronic properties of multilayer phosphorene by siliconization** | *Physical Chemistry Chemical Physics* 20 (RSC, 2018) | Silikonisasi Fosforen, 2d-SiP, 2d-SiP₂, Celah Pita Tebal 0.22 eV, Stacking Cmc2₁/Pnma, BOMD 600K | [Buka Paper 10](papers/10-phosphorene-siliconization-sip-sip2/index.html) |
+| 10 | **Tailoring electronic properties of multilayer phosphorene by siliconization** | *Physical Chemistry Chemical Physics* 20 (RSC, 2018) | Silikonisasi Fosforen, 2d-SiP, 2d-SiP₂, Celah Pita Tebal 0.22 eV, Tumpukan Cmc2₁/Pnma, BOMD 600K | [Buka Paper 10](papers/10-phosphorene-siliconization-sip-sip2/index.html) |
 
 ---
 
