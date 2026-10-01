@@ -44,6 +44,32 @@
     try {
       const params = new URLSearchParams(window.location.search);
       const data = {};
+
+      if (params.has('sync') || params.has('sync_data')) {
+        const raw = params.get('sync') || params.get('sync_data');
+        let parsed = null;
+        try {
+          parsed = JSON.parse(decodeURIComponent(escape(atob(raw))));
+        } catch (e1) {
+          try {
+            parsed = JSON.parse(decodeURIComponent(raw));
+          } catch (e2) {}
+        }
+        if (parsed && typeof parsed === 'object') {
+          if (Array.isArray(parsed.read || parsed.readPapers)) {
+            data.readPapers = (parsed.read || parsed.readPapers).map(id => String(id).padStart(2, '0'));
+          }
+          if (Array.isArray(parsed.bms || parsed.bookmarks)) {
+            data.bookmarks = (parsed.bms || parsed.bookmarks).map(id => String(id).padStart(2, '0'));
+          }
+          if (parsed.theme) data.theme = parsed.theme;
+          if (parsed.size || parsed.fontSize) data.fontSize = parsed.size || parsed.fontSize;
+          if (parsed.last || parsed.lastReading) data.lastReading = parsed.last || parsed.lastReading;
+          data.updatedAt = parsed.ts || parsed.updatedAt || Date.now();
+          data._fromSyncUrl = true;
+        }
+      }
+
       if (params.has('ts_read')) {
         data.readPapers = params.get('ts_read').split(',').filter(Boolean).map(id => String(id).padStart(2, '0'));
       }
@@ -70,7 +96,7 @@
       if (!window.location.search) return;
       const params = new URLSearchParams(window.location.search);
       let changed = false;
-      ['ts_read', 'ts_bms', 'ts_theme', 'ts_size', 'ts_time', 'ts_last'].forEach(k => {
+      ['ts_read', 'ts_bms', 'ts_theme', 'ts_size', 'ts_time', 'ts_last', 'sync', 'sync_data'].forEach(k => {
         if (params.has(k)) {
           params.delete(k);
           changed = true;
@@ -126,7 +152,7 @@
     }
 
     if (incoming) {
-      if (incomingTime > localTime) {
+      if (incomingTime > localTime || incoming._fromSyncUrl) {
         if (Array.isArray(incoming.readPapers)) {
           const normalized = Array.from(new Set(incoming.readPapers.map(id => String(id).padStart(2, '0'))));
           localStorage.setItem(READ_PAPERS_KEY, JSON.stringify(normalized));
@@ -140,7 +166,14 @@
         if (incoming.lastReading && typeof incoming.lastReading === 'object') {
           localStorage.setItem(LAST_READING_KEY, JSON.stringify(incoming.lastReading));
         }
-        localStorage.setItem(SYNC_TIME_KEY, String(incomingTime));
+        const effectiveTime = Math.max(incomingTime, Date.now());
+        localStorage.setItem(SYNC_TIME_KEY, String(effectiveTime));
+        pushLocalToSession(effectiveTime);
+        if (incoming._fromSyncUrl) {
+          setTimeout(() => {
+            showToast('Progres berhasil disinkronkan!');
+          }, 350);
+        }
       } else if (localTime === 0 && incomingTime === 0) {
         let localRead = [];
         try { localRead = JSON.parse(localStorage.getItem(READ_PAPERS_KEY)) || []; } catch (e) {}

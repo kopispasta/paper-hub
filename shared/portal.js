@@ -45,6 +45,32 @@
     try {
       const params = new URLSearchParams(window.location.search);
       const data = {};
+
+      if (params.has('sync') || params.has('sync_data')) {
+        const raw = params.get('sync') || params.get('sync_data');
+        let parsed = null;
+        try {
+          parsed = JSON.parse(decodeURIComponent(escape(atob(raw))));
+        } catch (e1) {
+          try {
+            parsed = JSON.parse(decodeURIComponent(raw));
+          } catch (e2) {}
+        }
+        if (parsed && typeof parsed === 'object') {
+          if (Array.isArray(parsed.read || parsed.readPapers)) {
+            data.readPapers = (parsed.read || parsed.readPapers).map(id => String(id).padStart(2, '0'));
+          }
+          if (Array.isArray(parsed.bms || parsed.bookmarks)) {
+            data.bookmarks = (parsed.bms || parsed.bookmarks).map(id => String(id).padStart(2, '0'));
+          }
+          if (parsed.theme) data.theme = parsed.theme;
+          if (parsed.size || parsed.fontSize) data.fontSize = parsed.size || parsed.fontSize;
+          if (parsed.last || parsed.lastReading) data.lastReading = parsed.last || parsed.lastReading;
+          data.updatedAt = parsed.ts || parsed.updatedAt || Date.now();
+          data._fromSyncUrl = true;
+        }
+      }
+
       if (params.has('ts_read')) {
         data.readPapers = params.get('ts_read').split(',').filter(Boolean).map(id => String(id).padStart(2, '0'));
       }
@@ -71,7 +97,7 @@
       if (!window.location.search) return;
       const params = new URLSearchParams(window.location.search);
       let changed = false;
-      ['ts_read', 'ts_bms', 'ts_theme', 'ts_size', 'ts_time', 'ts_last'].forEach(k => {
+      ['ts_read', 'ts_bms', 'ts_theme', 'ts_size', 'ts_time', 'ts_last', 'sync', 'sync_data'].forEach(k => {
         if (params.has(k)) {
           params.delete(k);
           changed = true;
@@ -127,7 +153,7 @@
     }
 
     if (incoming) {
-      if (incomingTime > localTime) {
+      if (incomingTime > localTime || incoming._fromSyncUrl) {
         if (Array.isArray(incoming.readPapers)) {
           const normalized = Array.from(new Set(incoming.readPapers.map(id => String(id).padStart(2, '0'))));
           localStorage.setItem(READ_KEY, JSON.stringify(normalized));
@@ -141,7 +167,14 @@
         if (incoming.lastReading && typeof incoming.lastReading === 'object') {
           localStorage.setItem(LAST_READING_KEY, JSON.stringify(incoming.lastReading));
         }
-        localStorage.setItem(SYNC_TIME_KEY, String(incomingTime));
+        const effectiveTime = Math.max(incomingTime, Date.now());
+        localStorage.setItem(SYNC_TIME_KEY, String(effectiveTime));
+        pushLocalToSession(effectiveTime);
+        if (incoming._fromSyncUrl) {
+          setTimeout(() => {
+            showPortalToast('Progres bacaan berhasil disinkronkan dari perangkat lain!');
+          }, 350);
+        }
       } else if (localTime === 0 && incomingTime === 0) {
         let localRead = [];
         try { localRead = JSON.parse(localStorage.getItem(READ_KEY)) || []; } catch (e) {}
@@ -515,6 +548,210 @@
       emptyNotice.classList.toggle('hidden', visibleCount > 0);
     }
   }
+
+  // --- 8. CROSS-DEVICE PROGRESS SYNC MODAL & UTILITIES ---
+  function getSyncPayload() {
+    let readPapers = [];
+    try { readPapers = JSON.parse(localStorage.getItem(READ_KEY)) || []; } catch (e) {}
+    let bookmarks = [];
+    try { bookmarks = JSON.parse(localStorage.getItem(BOOKMARK_KEY)) || []; } catch (e) {}
+    let lastReading = null;
+    try { lastReading = JSON.parse(localStorage.getItem(LAST_READING_KEY)); } catch (e) {}
+    const theme = localStorage.getItem(THEME_KEY) || 'paper';
+    const fontSize = localStorage.getItem(FONT_SIZE_KEY) || 'md';
+    const updatedAt = parseInt(localStorage.getItem(SYNC_TIME_KEY) || '0', 10) || Date.now();
+
+    return {
+      read: readPapers.map(id => String(id).padStart(2, '0')),
+      bms: bookmarks.map(id => String(id).padStart(2, '0')),
+      last: lastReading,
+      theme: theme,
+      size: fontSize,
+      ts: updatedAt
+    };
+  }
+
+  function getSyncUrl() {
+    const payload = getSyncPayload();
+    payload.ts = Date.now();
+    const jsonStr = JSON.stringify(payload);
+    const b64 = btoa(unescape(encodeURIComponent(jsonStr)));
+    const baseUrl = window.location.origin + window.location.pathname;
+    return baseUrl + '?sync=' + encodeURIComponent(b64);
+  }
+
+  function openSyncModal() {
+    const modal = document.getElementById('sync-modal');
+    if (!modal) return;
+
+    // Update stats in modal
+    const readList = getReadPapers();
+    const bms = getBookmarks();
+    const readEl = document.getElementById('sync-status-read');
+    if (readEl) readEl.textContent = readList.length + ' paper';
+    const bmsEl = document.getElementById('sync-status-bms');
+    if (bmsEl) bmsEl.textContent = bms.length + ' paper';
+
+    // Populate URL input
+    const syncUrl = getSyncUrl();
+    const urlInput = document.getElementById('sync-url-input');
+    if (urlInput) urlInput.value = syncUrl;
+
+    // Reset copy button
+    const copyText = document.getElementById('copy-sync-text');
+    if (copyText) copyText.textContent = 'Salin Tautan';
+
+    // Update QR Code
+    const qrImg = document.getElementById('sync-qr-img');
+    if (qrImg) {
+      qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=' + encodeURIComponent(syncUrl);
+    }
+
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+  window.openSyncModal = openSyncModal;
+
+  function closeSyncModal() {
+    const modal = document.getElementById('sync-modal');
+    if (!modal) return;
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+  window.closeSyncModal = closeSyncModal;
+
+  function toggleSyncQr() {
+    const container = document.getElementById('sync-qr-container');
+    const label = document.getElementById('qr-toggle-label');
+    if (!container) return;
+    const isHidden = container.classList.contains('hidden');
+    container.classList.toggle('hidden');
+    if (label) {
+      label.textContent = isHidden ? '✕ Sembunyikan QR Code' : '📷 Tampilkan QR Code untuk Kamera HP';
+    }
+  }
+  window.toggleSyncQr = toggleSyncQr;
+
+  function copySyncUrl() {
+    const urlInput = document.getElementById('sync-url-input');
+    const copyText = document.getElementById('copy-sync-text');
+    if (!urlInput) return;
+    const url = urlInput.value;
+
+    function onCopied() {
+      if (copyText) copyText.textContent = 'Tersalin!';
+      showPortalToast('Tautan sinkronisasi disalin ke clipboard!');
+      setTimeout(() => { if (copyText) copyText.textContent = 'Salin Tautan'; }, 2500);
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(onCopied).catch(() => {
+        urlInput.select();
+        document.execCommand('copy');
+        onCopied();
+      });
+    } else {
+      urlInput.select();
+      document.execCommand('copy');
+      onCopied();
+    }
+  }
+  window.copySyncUrl = copySyncUrl;
+
+  function exportSyncFile() {
+    try {
+      const payload = getSyncPayload();
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'telaahsains-progres-' + new Date().toISOString().slice(0, 10) + '.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showPortalToast('Berkas cadangan berhasil diunduh!');
+    } catch (e) {
+      showPortalToast('Gagal mengekspor berkas: ' + e.message);
+    }
+  }
+  window.exportSyncFile = exportSyncFile;
+
+  function importSyncFile(input) {
+    if (!input || !input.files || !input.files[0]) return;
+    const file = input.files[0];
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      try {
+        const parsed = JSON.parse(e.target.result);
+        applyImportedData(parsed);
+        showPortalToast('Progres berhasil diimpor!');
+        closeSyncModal();
+      } catch (err) {
+        showPortalToast('Format berkas tidak valid!');
+      }
+      input.value = '';
+    };
+    reader.readAsText(file);
+  }
+  window.importSyncFile = importSyncFile;
+
+  function applyImportedData(data) {
+    if (!data || typeof data !== 'object') return;
+    const now = Date.now();
+    if (Array.isArray(data.read || data.readPapers)) {
+      const readList = Array.from(new Set((data.read || data.readPapers).map(id => String(id).padStart(2, '0'))));
+      localStorage.setItem(READ_KEY, JSON.stringify(readList));
+    }
+    if (Array.isArray(data.bms || data.bookmarks)) {
+      const bmsList = Array.from(new Set((data.bms || data.bookmarks).map(id => String(id).padStart(2, '0'))));
+      localStorage.setItem(BOOKMARK_KEY, JSON.stringify(bmsList));
+    }
+    if (data.theme) localStorage.setItem(THEME_KEY, data.theme);
+    if (data.size || data.fontSize) localStorage.setItem(FONT_SIZE_KEY, data.size || data.fontSize);
+    if (data.last || data.lastReading) {
+      localStorage.setItem(LAST_READING_KEY, JSON.stringify(data.last || data.lastReading));
+    }
+    localStorage.setItem(SYNC_TIME_KEY, String(now));
+    pushLocalToSession(now);
+
+    updateReadUI();
+    updateBookmarkUI();
+    renderLastReadingWidget();
+    syncTheme();
+    applyAllFilters();
+    updateOutgoingLinks();
+  }
+
+  function resetSyncData() {
+    if (!confirm('Apakah Anda yakin ingin menghapus semua histori bacaan dan bookmark di perangkat ini?')) return;
+    localStorage.removeItem(READ_KEY);
+    localStorage.removeItem(BOOKMARK_KEY);
+    localStorage.removeItem(LAST_READING_KEY);
+    const now = Date.now();
+    localStorage.setItem(SYNC_TIME_KEY, String(now));
+    pushLocalToSession(now);
+
+    updateReadUI();
+    updateBookmarkUI();
+    renderLastReadingWidget();
+    applyAllFilters();
+    updateOutgoingLinks();
+    closeSyncModal();
+    showPortalToast('Data lokal berhasil direset.');
+  }
+  window.resetSyncData = resetSyncData;
+
+  // Modal event listeners (Escape & outside click)
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeSyncModal();
+  });
+  document.addEventListener('click', (e) => {
+    const modal = document.getElementById('sync-modal');
+    if (modal && !modal.classList.contains('hidden') && e.target === modal) {
+      closeSyncModal();
+    }
+  });
 
   // Toast
   let toastTimer = null;

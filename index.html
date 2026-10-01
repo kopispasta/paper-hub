@@ -86,8 +86,12 @@
           <button onclick="setPortalTheme('sepia')" data-theme-btn="sepia" title="Tema Sepia (Nyaman)" class="px-2 py-0.5 hover:bg-zinc-100 transition-colors border-l border-editorial-line">Sepia</button>
           <button onclick="setPortalTheme('dark')" data-theme-btn="dark" title="Tema Dark Slate (Malam)" class="px-2 py-0.5 hover:bg-zinc-100 transition-colors border-l border-editorial-line">Gelap</button>
         </div>
-        <a href="#panduan" class="px-2.5 py-1 border border-editorial-line rounded hover:bg-editorial-softbg text-editorial-ink transition-colors">
-          Panduan Format
+        <button onclick="openSyncModal()" class="inline-flex items-center gap-1.5 px-2.5 py-1 border border-editorial-line rounded hover:bg-editorial-softbg text-editorial-ink transition-colors font-sans" title="Sinkronisasi Progres Antar Perangkat (HP, Tablet, Laptop)">
+          <svg class="w-3.5 h-3.5 text-editorial-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+          <span>Sinkronkan</span>
+        </button>
+        <a href="#panduan" class="hidden md:inline px-2.5 py-1 border border-editorial-line rounded hover:bg-editorial-softbg text-editorial-ink transition-colors">
+          Panduan
         </a>
       </div>
     </div>
@@ -1425,14 +1429,123 @@ paper-hub/<br>
     </div>
   </section>
 
+  <!-- CROSS-DEVICE SYNC MODAL -->
+  <div id="sync-modal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-xl shadow-2xl border border-editorial-line max-w-lg w-full max-h-[90vh] overflow-y-auto p-6 font-sans">
+      
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between pb-4 border-b border-editorial-line">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-full bg-editorial-accentLight border border-editorial-accent/30 flex items-center justify-center text-editorial-accent">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-editorial-ink text-base">Sinkronisasi Antar Perangkat</h3>
+            <p class="text-xs text-editorial-muted">Bawa checklist, bookmark, & riwayat baca ke HP / tablet / PC lain</p>
+          </div>
+        </div>
+        <button onclick="closeSyncModal()" class="w-7 h-7 rounded-full hover:bg-zinc-100 flex items-center justify-center text-editorial-muted hover:text-editorial-ink text-sm font-semibold transition-colors">✕</button>
+      </div>
+
+      <!-- Current Status Summary Box -->
+      <div class="my-4 p-3 bg-editorial-softbg border border-editorial-line rounded-lg text-xs">
+        <div class="font-bold text-editorial-ink mb-1.5 flex items-center gap-1.5">
+          <span>📊 Status Progres Lokal Saat Ini:</span>
+        </div>
+        <div class="grid grid-cols-2 gap-2 text-editorial-body">
+          <div class="bg-white p-2 rounded border border-editorial-line">
+            <span class="text-editorial-muted text-[11px] block">Selesai Dibaca</span>
+            <span id="sync-status-read" class="font-bold text-editorial-ink text-sm">0 paper</span>
+          </div>
+          <div class="bg-white p-2 rounded border border-editorial-line">
+            <span class="text-editorial-muted text-[11px] block">Bookmark Tersimpan</span>
+            <span id="sync-status-bms" class="font-bold text-editorial-ink text-sm">0 paper</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Option 1: Instant URL Link -->
+      <div class="space-y-4">
+        <div>
+          <div class="flex items-center justify-between mb-1.5">
+            <label class="text-xs font-bold text-editorial-ink">1. Tautan Sinkronisasi Instan (Paling Mudah)</label>
+            <span class="text-[11px] text-editorial-accent font-semibold">Tinggal Buka di HP/Tablet</span>
+          </div>
+          <p class="text-[11px] text-editorial-muted leading-relaxed mb-2">
+            Salin tautan di bawah ini lalu buka di browser HP atau perangkat lain. Status bacaan Anda akan otomatis tersinkronisasi!
+          </p>
+          <div class="flex gap-2">
+            <input type="text" id="sync-url-input" readonly class="w-full px-2.5 py-1.5 text-xs font-mono bg-zinc-50 border border-editorial-line rounded text-editorial-body focus:outline-none select-all" onclick="this.select()">
+            <button id="copy-sync-btn" onclick="copySyncUrl()" class="px-3 py-1.5 bg-editorial-accent hover:bg-editorial-accentDark text-white text-xs font-semibold rounded shrink-0 transition-colors flex items-center gap-1">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+              <span id="copy-sync-text">Salin Tautan</span>
+            </button>
+          </div>
+
+          <!-- QR Code Preview Collapsible -->
+          <div class="mt-2.5">
+            <button type="button" onclick="toggleSyncQr()" class="text-[11px] text-editorial-accent hover:underline flex items-center gap-1 font-medium">
+              <span id="qr-toggle-label">📷 Tampilkan QR Code untuk Kamera HP</span>
+            </button>
+            <div id="sync-qr-container" class="hidden mt-2 p-3 bg-zinc-50 border border-editorial-line rounded-lg text-center">
+              <p class="text-[11px] text-editorial-muted mb-2">Arahkan kamera HP Anda ke QR code berikut:</p>
+              <div class="inline-block p-2 bg-white border border-editorial-line rounded shadow-xs">
+                <img id="sync-qr-img" src="" alt="QR Code Sinkronisasi" class="w-40 h-40 mx-auto" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="border-editorial-line">
+
+        <!-- Option 2: JSON Backup & Restore -->
+        <div>
+          <label class="text-xs font-bold text-editorial-ink block mb-1.5">2. Cadangan Berkas (Backup / Restore JSON)</label>
+          <p class="text-[11px] text-editorial-muted leading-relaxed mb-2.5">
+            Simpan file cadangan ke perangkat Anda atau pulihkan status dari file cadangan sebelumnya.
+          </p>
+          <div class="flex flex-wrap items-center gap-2">
+            <button onclick="exportSyncFile()" class="px-3 py-1.5 border border-editorial-line rounded text-xs font-semibold text-editorial-ink hover:bg-zinc-100 transition-colors inline-flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 text-editorial-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              <span>Ekspor Berkas (.json)</span>
+            </button>
+            <label class="px-3 py-1.5 border border-editorial-line rounded text-xs font-semibold text-editorial-ink hover:bg-zinc-100 transition-colors inline-flex items-center gap-1.5 cursor-pointer">
+              <svg class="w-3.5 h-3.5 text-editorial-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l4-4m0 0l4 4m-4-4v12"/></svg>
+              <span>Impor Berkas (.json)</span>
+              <input type="file" id="sync-file-input" accept=".json" class="hidden" onchange="importSyncFile(this)">
+            </label>
+          </div>
+        </div>
+
+        <hr class="border-editorial-line">
+
+        <!-- Option 3: Danger Zone / Reset -->
+        <div class="flex items-center justify-between pt-1">
+          <button onclick="resetSyncData()" class="text-[11px] text-red-600 hover:text-red-700 underline font-medium">
+            Reset Data di Perangkat Ini
+          </button>
+          <button onclick="closeSyncModal()" class="px-3 py-1.5 bg-zinc-100 hover:bg-zinc-200 text-editorial-ink text-xs font-semibold rounded transition-colors">
+            Tutup
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer class="border-t border-editorial-line bg-white py-10 text-xs text-editorial-muted font-sans">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div>
-        <span class="font-bold text-editorial-ink">TelaahSains Hub</span> — Repositori Terpadu Telaah Paper Ilmiah.
+        <span class="font-bold text-editorial-ink">TelaahSains Hub</span> — Repositori Terpadu Telaah Paper Ilmiah Bereputasi Global.
       </div>
       <div class="flex items-center gap-4">
-        <span>Lokasi: <code>scratch/paper-hub/</code></span>
+        <button onclick="openSyncModal()" class="hover:text-editorial-ink underline flex items-center gap-1">
+          <svg class="w-3 h-3 text-editorial-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+          Sinkronkan Perangkat
+        </button>
+        <span>•</span>
+        <a href="https://github.com/kopispasta/paper-hub" target="_blank" rel="noopener noreferrer" class="hover:text-editorial-ink underline">GitHub</a>
         <span>•</span>
         <a href="#" class="hover:text-editorial-ink">Kembali ke Atas ↑</a>
       </div>

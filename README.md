@@ -1,5 +1,8 @@
 # TelaahSains Hub: Repositori Showcase Paper Ilmiah Interaktif
 
+> 🌐 **Live Website (GitHub Pages):** [https://kopispasta.github.io/paper-hub/](https://kopispasta.github.io/paper-hub/)  
+> Akses seluruh telaah paper ilmiah bereputasi internasional langsung dari peramban desktop, tablet, maupun ponsel pintar Anda di mana saja.
+
 Repositori khusus untuk mengelola seluruh hasil telaah paper ilmiah internasional yang telah ditransformasikan ke dalam format majalah sains populer (*Chemistry World / Nature Style*), lengkap dengan gambar resolusi tinggi hasil ekstraksi langsung dari PDF paper.
 
 ---
@@ -88,3 +91,5 @@ Lalu buka peramban Anda di: `http://localhost:8080`
 3. **Navigasi Terhubung Dua Arah:** Setiap halaman ulasan paper memiliki tombol `← Katalog Utama` di navigasi atas untuk mempermudah kembali ke daftar katalog kapan saja.
 4. **Fitur Lightbox Terpadu:** Setiap gambar pada seluruh paper dapat diklik untuk memperbesar tampilan (*fullscreen zoom*) demi memeriksa detail kurva, grafik, dan kisi kristal mikro.
 5. **Standar Tipografi Editorial:** Bebas dari elemen warna-warni berlebih (*no AI workslop*), nyaman dibaca dalam waktu lama dengan font Serif elegan (*Newsreader*) dan Sans-Serif tajam (*Plus Jakarta Sans*).
+6. **Histori Bacaan & Checklist Status:** Pelacakan presisi progres scroll, bagian terakhir yang dibaca, tombol bookmark, serta checklist tanda selesai baca yang tersinkronisasi instan antara portal utama dan lembar artikel paper.
+7. **Sinkronisasi Lintas Perangkat (Cross-Device Sync):** Fitur ekspor/impor JSON dan tautan instan (dengan kode QR) untuk memindahkan seluruh riwayat baca, checklist, dan bookmark ke ponsel pintar atau tablet tanpa perlu membuat akun pengguna.
