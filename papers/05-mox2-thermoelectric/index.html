@@ -12,6 +12,8 @@
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Shared Reader Experience -->
+  <link rel="stylesheet" href="../../shared/reader.css">
   <script>
     tailwind.config = {
       theme: {
@@ -555,6 +557,18 @@
             <p class="font-mono text-cell-body leading-relaxed select-all">
               Wisesa, R., Azhar, A., & Suprayoga, E. (2024). Thermal transport and thermoelectric properties of transition metal dichalcogenides MoX₂ from first-principles calculation. <em>Physica Scripta</em>, 99(3), 035929. https://doi.org/10.1088/1402-4896/ad25b8
             </p>
+
+            <!-- Citation Quick Buttons -->
+            <div class="mt-4 flex flex-wrap gap-2">
+              <button onclick="copyCitation('apa', 'Wisesa, R., Azhar, A., &amp; Suprayoga, E. (2024). Thermal transport and thermoelectric properties of transition metal dichalcogenides MoX₂ from first-principles calculation. Physica Scripta, 99(3), 035929. https://doi.org/10.1088/1402-4896/ad25b8')" class="reader-toolbar-btn">
+                <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                Salin Sitasi APA
+              </button>
+              <button onclick="copyCitation('bibtex', '@article{wisesa2024thermal,\n  title={Thermal transport and thermoelectric properties of transition metal dichalcogenides MoX2 from first-principles calculation},\n  author={Wisesa, R and Azhar, A and Suprayoga, E},\n  journal={Physica Scripta},\n  volume={99},\n  number={3},\n  pages={035929},\n  year={2024},\n  publisher={IOP Publishing}\n}')" class="reader-toolbar-btn">
+                <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                Salin BibTeX
+              </button>
+            </div>
           </div>
         </section>
 
@@ -732,6 +746,9 @@
       if (e.key === 'Escape') closeLightbox();
     });
   </script>
+
+  <!-- Shared Reader Experience Script -->
+  <script src="../../shared/reader.js"></script>
 
 </body>
 </html>

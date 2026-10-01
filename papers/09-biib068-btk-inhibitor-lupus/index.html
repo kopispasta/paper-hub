@@ -12,6 +12,8 @@
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Shared Reader Experience -->
+  <link rel="stylesheet" href="../../shared/reader.css">
   <script>
     tailwind.config = {
       theme: {
@@ -983,6 +985,18 @@
             <li><strong>DOI:</strong> <a href="https://doi.org/10.1021/acs.jmedchem.0c00993" target="_blank" class="text-editorial-accent hover:underline">10.1021/acs.jmedchem.0c00993</a></li>
             <li><strong>PDB ID:</strong> 6TFP (BTK-BIIB068), 6TFL (BTK-5), 6TFO (BTK-6), 6TFM (BTK-13)</li>
           </ul>
+
+          <!-- Citation Quick Buttons -->
+          <div class="mt-4 flex flex-wrap gap-2">
+            <button onclick="copyCitation('apa', 'Ma, B., Bohnert, T., Otipoby, K. L., Cohen, S. B., Chen, D. G., Jenkins, S., Liu, J. R., Westaway, S. S. S., van Dongen, R. M., Auld, D. A., Simpson, J. A., Ciavarri, J. P., &amp; Hopkins, B. T. (2020). Discovery of BIIB068: A selective, potent, reversible Bruton’s tyrosine kinase inhibitor as an orally efficacious agent for autoimmune diseases. Journal of Medicinal Chemistry, 63(21), 12574-12594. https://doi.org/10.1021/acs.jmedchem.0c00993')" class="reader-toolbar-btn">
+              <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+              Salin Sitasi APA
+            </button>
+            <button onclick="copyCitation('bibtex', '@article{ma2020discovery,\n  title={Discovery of BIIB068: A selective, potent, reversible Bruton’s tyrosine kinase inhibitor as an orally efficacious agent for autoimmune diseases},\n  author={Ma, Bin and Bohnert, Tonika and Otipoby, Kevin L and Cohen, Steven B and Chen, Ding-Geng and Jenkins, Scott and Liu, Jin-Rui and Westaway, Susan SS and van Dongen, Ronald M and Auld, David A and others},\n  journal={Journal of Medicinal Chemistry},\n  volume={63},\n  number={21},\n  pages={12574--12594},\n  year={2020},\n  publisher={ACS Publications}\n}')" class="reader-toolbar-btn">
+              <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+              Salin BibTeX
+            </button>
+          </div>
         </div>
         <div>
           <div class="font-bold text-editorial-ink uppercase tracking-wider mb-2">Metodologi & Registrasi Klinis</div>
@@ -1046,6 +1060,9 @@
       if (e.key === 'Escape') closeLightbox();
     });
   </script>
+
+  <!-- Shared Reader Experience Script -->
+  <script src="../../shared/reader.js"></script>
 
 </body>
 </html>

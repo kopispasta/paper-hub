@@ -12,6 +12,8 @@
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Shared Reader Experience -->
+  <link rel="stylesheet" href="../../shared/reader.css">
   <script>
     tailwind.config = {
       theme: {
@@ -689,6 +691,18 @@
             <p class="font-mono text-cell-body leading-relaxed select-all">
               Nasimian, A., Younus, S., Tatli, Ö., Hammarlund, E. U., Pienta, K. J., Rönnstrand, L., & Kazi, J. U. (2024). AlphaML: A clear, legible, explainable, transparent, and elucidative binary classification platform for tabular data. <em>Patterns</em>, 5(1), 100897. https://doi.org/10.1016/j.patter.2023.100897
             </p>
+
+            <!-- Citation Quick Buttons -->
+            <div class="mt-4 flex flex-wrap gap-2">
+              <button onclick="copyCitation('apa', 'Nasimian, A., Younus, S., Tatli, Ö., Hammarlund, E. U., Pienta, K. J., Rönnstrand, L., &amp; Kazi, J. U. (2024). AlphaML: A clear, legible, explainable, transparent, and elucidative binary classification platform for tabular data. Patterns, 5(1), 100897. https://doi.org/10.1016/j.patter.2023.100897')" class="reader-toolbar-btn">
+                <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                Salin Sitasi APA
+              </button>
+              <button onclick="copyCitation('bibtex', '@article{nasimian2024alphaml,\n  title={AlphaML: A clear, legible, explainable, transparent, and elucidative binary classification platform for tabular data},\n  author={Nasimian, Ali and Younus, Saima and Tatli, Ozge and Hammarlund, Ebbe U and Pienta, Kenneth J and R{\\\"o}nnstrand, Lars and Kazi, Julhash U},\n  journal={Patterns},\n  volume={5},\n  number={1},\n  pages={100897},\n  year={2024},\n  publisher={Elsevier}\n}')" class="reader-toolbar-btn">
+                <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                Salin BibTeX
+              </button>
+            </div>
           </div>
         </section>
 
@@ -880,6 +894,9 @@
       if (e.key === 'Escape') closeLightbox();
     });
   </script>
+
+  <!-- Shared Reader Experience Script -->
+  <script src="../../shared/reader.js"></script>
 
 </body>
 </html>

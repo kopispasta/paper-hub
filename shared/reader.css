@@ -1,0 +1,265 @@
+/* ============================================================
+   TelaahSains Hub: Shared Reader Experience Stylesheet
+   Themes: Paper (Default), Sepia, Dark Slate
+   Typography Scaling: Normal (18px), Large (20px), Extra (22px)
+   Floating ScrollSpy TOC & Enhanced Lightbox
+   ============================================================ */
+
+:root {
+  --bg-main: #fafafa;
+  --bg-surface: #ffffff;
+  --bg-subtle: #f4f4f5;
+  --bg-callout: #f0f7fc;
+  --text-heading: #18181b;
+  --text-main: #27272a;
+  --text-muted: #71717a;
+  --text-faint: #a1a1aa;
+  --border-color: #e4e4e7;
+  --accent-color: #0a74c0;
+  --accent-hover: #075997;
+}
+
+body.theme-sepia {
+  --bg-main: #fbf7ee;
+  --bg-surface: #f4eedb;
+  --bg-subtle: #ebe3cb;
+  --bg-callout: #efe7d2;
+  --text-heading: #2c251e;
+  --text-main: #3d352c;
+  --text-muted: #7d7062;
+  --text-faint: #a69a8b;
+  --border-color: #e2d7be;
+  --accent-color: #8c4a17;
+  --accent-hover: #6a340b;
+}
+
+body.theme-dark {
+  --bg-main: #141618;
+  --bg-surface: #1e2124;
+  --bg-subtle: #282c30;
+  --bg-callout: #1b2633;
+  --text-heading: #f3f4f6;
+  --text-main: #d1d5db;
+  --text-muted: #9ca3af;
+  --text-faint: #6b7280;
+  --border-color: #374151;
+  --accent-color: #38bdf8;
+  --accent-hover: #7dd3fc;
+}
+
+/* Base application of theme variables */
+body {
+  background-color: var(--bg-main) !important;
+  color: var(--text-main) !important;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+header {
+  background-color: var(--bg-surface) !important;
+  border-color: var(--border-color) !important;
+}
+
+.article-body p {
+  color: var(--text-main) !important;
+}
+
+.article-body h1, 
+.article-body h2, 
+.article-body h3 {
+  color: var(--text-heading) !important;
+  border-color: var(--border-color) !important;
+}
+
+.article-body blockquote {
+  border-left-color: var(--accent-color) !important;
+  color: var(--text-muted) !important;
+}
+
+.figure-container,
+.paper-card,
+.callout-box {
+  background-color: var(--bg-surface) !important;
+  border-color: var(--border-color) !important;
+}
+
+.callout-box {
+  background-color: var(--bg-callout) !important;
+  border-left-color: var(--accent-color) !important;
+}
+
+.callout-title {
+  color: var(--accent-color) !important;
+}
+
+.callout-body {
+  color: var(--text-main) !important;
+}
+
+.editorial-table {
+  background-color: var(--bg-surface) !important;
+  border-top-color: var(--text-heading) !important;
+  border-bottom-color: var(--text-heading) !important;
+}
+
+.editorial-table th {
+  background-color: var(--bg-subtle) !important;
+  color: var(--text-heading) !important;
+  border-bottom-color: var(--border-color) !important;
+}
+
+.editorial-table td {
+  border-bottom-color: var(--border-color) !important;
+  color: var(--text-main) !important;
+}
+
+.editorial-table tr:hover td {
+  background-color: var(--bg-subtle) !important;
+}
+
+/* Typography Scaling */
+body.font-size-sm .article-body p {
+  font-size: 1rem !important; /* 16px */
+  line-height: 1.72 !important;
+}
+
+body.font-size-md .article-body p {
+  font-size: 1.125rem !important; /* 18px */
+  line-height: 1.82 !important;
+}
+
+body.font-size-lg .article-body p {
+  font-size: 1.25rem !important; /* 20px */
+  line-height: 1.88 !important;
+}
+
+/* Floating Sidebar TOC (Desktop XL) */
+@media (min-width: 1320px) {
+  .floating-toc-sidebar {
+    position: fixed;
+    top: 5rem;
+    right: max(1.5rem, calc((100vw - 1280px) / 2));
+    width: 250px;
+    max-height: calc(100vh - 7rem);
+    overflow-y: auto;
+    padding: 1.1rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 0.75rem;
+    z-index: 30;
+  }
+
+  .floating-toc-sidebar .toc-title {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-heading);
+    margin-bottom: 0.65rem;
+    font-size: 0.7rem;
+  }
+
+  .floating-toc-sidebar .toc-link {
+    display: block;
+    padding: 0.35rem 0.5rem;
+    border-radius: 4px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: all 0.15s ease;
+    border-left: 2px solid transparent;
+    line-height: 1.4;
+    margin-bottom: 0.25rem;
+  }
+
+  .floating-toc-sidebar .toc-link:hover {
+    color: var(--accent-color);
+    background: var(--bg-subtle);
+  }
+
+  .floating-toc-sidebar .toc-link.active {
+    color: var(--accent-color);
+    font-weight: 600;
+    border-left-color: var(--accent-color);
+    background: var(--bg-subtle);
+  }
+}
+
+/* Controls Toolbar */
+.reader-toolbar-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.5rem;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.reader-toolbar-btn:hover {
+  color: var(--text-heading);
+  border-color: var(--accent-color);
+}
+
+.reader-toolbar-btn.active {
+  background: var(--accent-color);
+  color: #ffffff !important;
+  border-color: var(--accent-color);
+}
+
+/* Toast Notification */
+.reader-toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #18181b;
+  color: #ffffff;
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reader-toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* Enhanced Lightbox Pan-Zoom */
+#lightbox-img-wrapper {
+  overflow: hidden;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 90vw;
+  max-height: 75vh;
+}
+
+#lightbox-img-wrapper.is-zoomed {
+  cursor: grab;
+}
+
+#lightbox-img-wrapper.is-zoomed:active {
+  cursor: grabbing;
+}
+
+#lightbox-img {
+  transition: transform 0.2s cubic-bezier(0.2, 0, 0.2, 1);
+  transform-origin: center center;
+  user-select: none;
+  -webkit-user-drag: none;
+}

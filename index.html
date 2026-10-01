@@ -12,6 +12,8 @@
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Shared Reader & Portal Experience -->
+  <link rel="stylesheet" href="shared/reader.css">
   <script>
     tailwind.config = {
       theme: {
@@ -78,7 +80,12 @@
       </div>
 
       <div class="flex items-center gap-4 text-xs font-medium text-editorial-muted">
-        <span class="hidden md:inline">Koleksi 10 Publikasi Internasional</span>
+        
+        <div class="hidden sm:flex items-center border border-editorial-line rounded overflow-hidden text-[11px] bg-white">
+          <button onclick="setPortalTheme('paper')" data-theme-btn="paper" title="Tema Kertas (Siang)" class="px-2 py-0.5 hover:bg-zinc-100 transition-colors active">Kertas</button>
+          <button onclick="setPortalTheme('sepia')" data-theme-btn="sepia" title="Tema Sepia (Nyaman)" class="px-2 py-0.5 hover:bg-zinc-100 transition-colors border-l border-editorial-line">Sepia</button>
+          <button onclick="setPortalTheme('dark')" data-theme-btn="dark" title="Tema Dark Slate (Malam)" class="px-2 py-0.5 hover:bg-zinc-100 transition-colors border-l border-editorial-line">Gelap</button>
+        </div>
         <a href="#panduan" class="px-2.5 py-1 border border-editorial-line rounded hover:bg-editorial-softbg text-editorial-ink transition-colors">
           Panduan Format
         </a>
@@ -129,52 +136,106 @@
 
   <!-- SEARCH & FILTER TOOLBAR -->
   <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-editorial-line pb-6">
+    <div class="flex flex-col gap-4 border-b border-editorial-line pb-6">
       
-      <!-- Category Filter Buttons -->
-      <div class="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto text-xs font-medium" id="filter-container">
-        <button onclick="filterCategory('all')" id="btn-all" class="filter-btn px-3 py-1.5 rounded bg-editorial-ink text-white">
-          Semua (10)
-        </button>
-        <button onclick="filterCategory('material')" id="btn-material" class="filter-btn px-3 py-1.5 rounded bg-white border border-editorial-line text-editorial-muted hover:text-editorial-ink">
-          Material & Energi Hijau (5)
-        </button>
-        <button onclick="filterCategory('thermo')" id="btn-thermo" class="filter-btn px-3 py-1.5 rounded bg-white border border-editorial-line text-editorial-muted hover:text-editorial-ink">
-          Fisika Termoelektrik (3)
-        </button>
-        <button onclick="filterCategory('biomed')" id="btn-biomed" class="filter-btn px-3 py-1.5 rounded bg-white border border-editorial-line text-editorial-muted hover:text-editorial-ink">
-          Biomedis & Kimia Medisinal (4)
-        </button>
+      <!-- Top Row: Category Tabs + View Switcher & Search -->
+      <div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
+        <!-- Category Filter Buttons -->
+        <div class="flex items-center gap-1.5 overflow-x-auto text-xs font-medium pb-1 lg:pb-0" id="filter-container">
+          <button onclick="filterCategory('all')" id="btn-cat-all" class="filter-cat-btn px-3 py-1.5 rounded bg-editorial-ink text-white whitespace-nowrap transition-colors">
+            Semua (10)
+          </button>
+          <button onclick="filterCategory('material')" id="btn-cat-material" class="filter-cat-btn px-3 py-1.5 rounded bg-white border border-editorial-line text-editorial-muted hover:text-editorial-ink whitespace-nowrap transition-colors">
+            Material & Energi (5)
+          </button>
+          <button onclick="filterCategory('thermo')" id="btn-cat-thermo" class="filter-cat-btn px-3 py-1.5 rounded bg-white border border-editorial-line text-editorial-muted hover:text-editorial-ink whitespace-nowrap transition-colors">
+            Fisika Termoelektrik (3)
+          </button>
+          <button onclick="filterCategory('biomed')" id="btn-cat-biomed" class="filter-cat-btn px-3 py-1.5 rounded bg-white border border-editorial-line text-editorial-muted hover:text-editorial-ink whitespace-nowrap transition-colors">
+            Biomedis & Kimia Medisinal (4)
+          </button>
+          <button onclick="filterCategory('bookmarks')" id="btn-cat-bookmarks" class="filter-cat-btn px-3 py-1.5 rounded bg-white border border-editorial-line text-amber-600 hover:text-amber-700 whitespace-nowrap transition-colors flex items-center gap-1">
+            <span>⭐ Tersimpan</span>
+            <span id="bookmark-count" class="px-1.5 py-0.2 rounded-full bg-amber-50 text-[10px] font-bold border border-amber-200/60">0</span>
+          </button>
+        </div>
+
+        <!-- View Switcher & Live Search Box -->
+        <div class="flex items-center gap-2.5">
+          <!-- Grid / Table View Switcher -->
+          <div class="flex items-center border border-editorial-line rounded overflow-hidden text-xs bg-white">
+            <button onclick="setPortalView('grid')" id="btn-view-grid" class="px-2.5 py-1.5 bg-editorial-ink text-white flex items-center gap-1 transition-colors" title="Tampilan Kartu Visual">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+              <span class="hidden sm:inline">Grid</span>
+            </button>
+            <button onclick="setPortalView('table')" id="btn-view-table" class="px-2.5 py-1.5 bg-white text-editorial-muted hover:text-editorial-ink flex items-center gap-1 border-l border-editorial-line transition-colors" title="Tampilan Matriks Perbandingan">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              <span class="hidden sm:inline">Tabel</span>
+            </button>
+          </div>
+
+          <!-- Search Input -->
+          <div class="relative flex-1 sm:w-64">
+            <input 
+              type="text" 
+              id="search-input" 
+              onkeyup="liveSearch()" 
+              placeholder="Cari judul, penulis, kata kunci..." 
+              class="w-full pl-8 pr-3 py-1.5 bg-white border border-editorial-line rounded text-xs text-editorial-ink placeholder-editorial-lightmuted focus:outline-none focus:border-editorial-accent transition-colors"
+            >
+            <svg class="w-3.5 h-3.5 text-editorial-muted absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+          </div>
+        </div>
       </div>
 
-      <!-- Live Search Box -->
-      <div class="relative w-full sm:w-72">
-        <input 
-          type="text" 
-          id="search-input" 
-          onkeyup="liveSearch()" 
-          placeholder="Cari judul, penulis, kata kunci..." 
-          class="w-full pl-8 pr-3 py-1.5 bg-white border border-editorial-line rounded text-xs text-editorial-ink placeholder-editorial-lightmuted focus:outline-none focus:border-editorial-accent transition-colors"
-        >
-        <svg class="w-3.5 h-3.5 text-editorial-muted absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-        </svg>
+      <!-- Bottom Row: Tech Tag Chips Filter -->
+      <div class="flex items-center gap-1.5 overflow-x-auto text-[11px] pt-1 text-editorial-muted">
+        <span class="font-semibold uppercase tracking-wider text-[10px] text-editorial-ink mr-1">Topik:</span>
+        <button onclick="filterTag('all')" id="tag-chip-all" class="filter-tag-chip px-2.5 py-0.5 rounded-full bg-editorial-accent text-white font-medium border border-editorial-accent transition-colors">
+          #Semua
+        </button>
+        <button onclick="filterTag('dft')" id="tag-chip-dft" class="filter-tag-chip px-2.5 py-0.5 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-600 font-medium transition-colors">
+          #DFT-Kuantum
+        </button>
+        <button onclick="filterTag('kimiamedisinal')" id="tag-chip-kimiamedisinal" class="filter-tag-chip px-2.5 py-0.5 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-600 font-medium transition-colors">
+          #KimiaMedisinal
+        </button>
+        <button onclick="filterTag('material2d')" id="tag-chip-material2d" class="filter-tag-chip px-2.5 py-0.5 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-600 font-medium transition-colors">
+          #Material2D
+        </button>
+        <button onclick="filterTag('termoelektrik')" id="tag-chip-termoelektrik" class="filter-tag-chip px-2.5 py-0.5 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-600 font-medium transition-colors">
+          #FisikaTermo
+        </button>
+        <button onclick="filterTag('machinelearning')" id="tag-chip-machinelearning" class="filter-tag-chip px-2.5 py-0.5 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-600 font-medium transition-colors">
+          #MachineLearning
+        </button>
+        <button onclick="filterTag('katalisis')" id="tag-chip-katalisis" class="filter-tag-chip px-2.5 py-0.5 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-600 font-medium transition-colors">
+          #KatalisisEnergi
+        </button>
       </div>
 
     </div>
   </section>
 
-  <!-- PAPER CATALOG GRID (2 Columns Desktop) -->
+  <!-- PAPER CATALOG GRID  <!-- PAPER CATALOG GRID (2 Columns Desktop) -->
   <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    <div id="paper-grid-container">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="paper-grid">
 
       <!-- CARD 1: MoS2 / Ti3C2 MXene -->
-      <article class="paper-card bg-white border border-editorial-line rounded p-6 flex flex-col justify-between" data-category="material" data-keywords="mos2 mxene her hidrogen elektrolisis alkali universitas indonesia overpotensial tafrel elsevier">
+      <article class="paper-card bg-white border border-editorial-line rounded p-6 flex flex-col justify-between" data-paper-item data-paper-id="01" data-category="material" data-tags="material2d katalisis"  data-keywords="mos2 mxene her hidrogen elektrolisis alkali universitas indonesia overpotensial tafrel elsevier">
         <div>
           <!-- Header Meta -->
           <div class="flex items-center justify-between text-xs text-editorial-muted mb-3">
             <span class="font-semibold uppercase tracking-wider text-editorial-accent">Material Elektrokimia</span>
-            <span class="font-mono text-[11px]">Mater. Res. Bull. (2025)</span>
+            <div class="flex items-center gap-1.5">
+              <span class="font-mono text-[11px]">Mater. Res. Bull. (2025)</span>
+              <button onclick="toggleBookmark('01', event)" data-bookmark-btn="01" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+              </button>
+            </div>
           </div>
 
           <!-- Title -->
@@ -224,12 +285,17 @@
       </article>
 
       <!-- CARD 2: AlphaML -->
-      <article class="paper-card bg-white border border-editorial-line rounded p-6 flex flex-col justify-between" data-category="biomed ai" data-keywords="alphaml machine learning tabular binary classification cell press patterns clete shap lime optuna aml kanker leukemia">
+      <article class="paper-card bg-white border border-editorial-line rounded p-6 flex flex-col justify-between" data-paper-item data-paper-id="02" data-category="biomed" data-tags="machinelearning kimiamedisinal"  data-keywords="alphaml machine learning tabular binary classification cell press patterns clete shap lime optuna aml kanker leukemia">
         <div>
           <!-- Header Meta -->
           <div class="flex items-center justify-between text-xs text-editorial-muted mb-3">
             <span class="font-semibold uppercase tracking-wider text-teal-700">Kecerdasan Buatan Biomedis</span>
-            <span class="font-mono text-[11px]">Patterns (Cell Press, 2024)</span>
+            <div class="flex items-center gap-1.5">
+              <span class="font-mono text-[11px]">Patterns (Cell Press, 2024)</span>
+              <button onclick="toggleBookmark('02', event)" data-bookmark-btn="02" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+              </button>
+            </div>
           </div>
 
           <!-- Title -->
@@ -279,12 +345,17 @@
       </article>
 
       <!-- CARD 3: CaMnO3 Thermoelectric -->
-      <article class="paper-card bg-white border border-editorial-line rounded p-6 flex flex-col justify-between" data-category="thermo" data-keywords="camno3 bcmo bismut termoelektrik wiedemann-franz lorenz double exchange perovskite lipi brin ugm ui brawijaya elsevier">
+      <article class="paper-card bg-white border border-editorial-line rounded p-6 flex flex-col justify-between" data-paper-item data-paper-id="03" data-category="thermo" data-tags="termoelektrik dft"  data-keywords="camno3 bcmo bismut termoelektrik wiedemann-franz lorenz double exchange perovskite lipi brin ugm ui brawijaya elsevier">
         <div>
           <!-- Header Meta -->
           <div class="flex items-center justify-between text-xs text-editorial-muted mb-3">
             <span class="font-semibold uppercase tracking-wider text-editorial-accent">Fisika Termoelektrik Oksida</span>
-            <span class="font-mono text-[11px]">Mater. Res. Bull. (2021)</span>
+            <div class="flex items-center gap-1.5">
+              <span class="font-mono text-[11px]">Mater. Res. Bull. (2021)</span>
+              <button onclick="toggleBookmark('03', event)" data-bookmark-btn="03" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+              </button>
+            </div>
           </div>
 
           <!-- Title -->
@@ -334,12 +405,17 @@
       </article>
 
       <!-- CARD 4: SiP2 Thermoelectric Monolayer -->
-      <article class="paper-card bg-white border border-editorial-line rounded p-6 flex flex-col justify-between" data-category="material thermo" data-keywords="sip2 silikon difosfida monolayer 2d termoelektrik seebeck zt anisotropi xiangtan elsevier computational materials science">
+      <article class="paper-card bg-white border border-editorial-line rounded p-6 flex flex-col justify-between" data-paper-item data-paper-id="04" data-category="material thermo" data-tags="material2d termoelektrik dft"  data-keywords="sip2 silikon difosfida monolayer 2d termoelektrik seebeck zt anisotropi xiangtan elsevier computational materials science">
         <div>
           <!-- Header Meta -->
           <div class="flex items-center justify-between text-xs text-editorial-muted mb-3">
             <span class="font-semibold uppercase tracking-wider text-editorial-accent">Material 2D Semikonduktor</span>
-            <span class="font-mono text-[11px]">Comput. Mater. Sci. (2021)</span>
+            <div class="flex items-center gap-1.5">
+              <span class="font-mono text-[11px]">Comput. Mater. Sci. (2021)</span>
+              <button onclick="toggleBookmark('04', event)" data-bookmark-btn="04" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+              </button>
+            </div>
           </div>
 
           <!-- Title -->
@@ -389,12 +465,17 @@
       </article>
 
       <!-- CARD 5: MoX2 Monolayer Thermoelectric -->
-      <article class="paper-card bg-white border border-editorial-line rounded p-6 flex flex-col justify-between" data-category="material thermo" data-keywords="mox2 mos2 mose2 mote2 tmdc monolayer 2d termoelektrik zt seebeck kcm fonon brin uin manchester iop physica scripta">
+      <article class="paper-card bg-white border border-editorial-line rounded p-6 flex flex-col justify-between" data-paper-item data-paper-id="05" data-category="material thermo" data-tags="material2d termoelektrik dft"  data-keywords="mox2 mos2 mose2 mote2 tmdc monolayer 2d termoelektrik zt seebeck kcm fonon brin uin manchester iop physica scripta">
         <div>
           <!-- Header Meta -->
           <div class="flex items-center justify-between text-xs text-editorial-muted mb-3">
             <span class="font-semibold uppercase tracking-wider text-editorial-accent">Material 2D & Termoelektrik</span>
-            <span class="font-mono text-[11px]">Phys. Scr. (2024)</span>
+            <div class="flex items-center gap-1.5">
+              <span class="font-mono text-[11px]">Phys. Scr. (2024)</span>
+              <button onclick="toggleBookmark('05', event)" data-bookmark-btn="05" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+              </button>
+            </div>
           </div>
 
           <!-- Title -->
@@ -444,12 +525,17 @@
       </article>
 
       <!-- CARD 6: MCH Dehydrogenation on Pt13 Cluster (LOHC) -->
-      <article class="paper-card bg-white border border-editorial-line rounded p-6 flex flex-col justify-between" data-category="material" data-keywords="mch mca mnc lohc metilsikloheksana dehidrogenasi pt13 klaster dft dmol3 hidrogen energi hijau elsevier ijhydene iran">
+      <article class="paper-card bg-white border border-editorial-line rounded p-6 flex flex-col justify-between" data-paper-item data-paper-id="06" data-category="material" data-tags="katalisis dft"  data-keywords="mch mca mnc lohc metilsikloheksana dehidrogenasi pt13 klaster dft dmol3 hidrogen energi hijau elsevier ijhydene iran">
         <div>
           <!-- Header Meta -->
           <div class="flex items-center justify-between text-xs text-editorial-muted mb-3">
             <span class="font-semibold uppercase tracking-wider text-editorial-accent">Katalisis LOHC & Energi Hidrogen</span>
-            <span class="font-mono text-[11px]">Int. J. Hydrogen Energy (2025)</span>
+            <div class="flex items-center gap-1.5">
+              <span class="font-mono text-[11px]">Int. J. Hydrogen Energy (2025)</span>
+              <button onclick="toggleBookmark('06', event)" data-bookmark-btn="06" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+              </button>
+            </div>
           </div>
 
           <!-- Title -->
@@ -499,12 +585,17 @@
       </article>
 
       <!-- CARD 7: SQ3370 Click Chemistry in Cancer -->
-      <article class="paper-card bg-white border border-editorial-line rounded p-6 flex flex-col justify-between" data-category="biomed" data-keywords="sq3370 capac kimia klik bioortogonal tetrazin tco doksorubisin imunoterapi abscopal mc38 shasqi albany wiley advanced therapeutics">
+      <article class="paper-card bg-white border border-editorial-line rounded p-6 flex flex-col justify-between" data-paper-item data-paper-id="07" data-category="biomed" data-tags="kimiamedisinal"  data-keywords="sq3370 capac kimia klik bioortogonal tetrazin tco doksorubisin imunoterapi abscopal mc38 shasqi albany wiley advanced therapeutics">
         <div>
           <!-- Header Meta -->
           <div class="flex items-center justify-between text-xs text-editorial-muted mb-3">
             <span class="font-semibold uppercase tracking-wider text-editorial-accent">Kimia Bioortogonal & Onkologi</span>
-            <span class="font-mono text-[11px]">Adv. Therap. (2021)</span>
+            <div class="flex items-center gap-1.5">
+              <span class="font-mono text-[11px]">Adv. Therap. (2021)</span>
+              <button onclick="toggleBookmark('07', event)" data-bookmark-btn="07" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+              </button>
+            </div>
           </div>
 
           <!-- Title -->
@@ -554,12 +645,17 @@
       </article>
 
       <!-- CARD 8: Pyrido-tetrazine JAK2 Anticancer & DFT -->
-      <article class="paper-card bg-white border border-editorial-line rounded p-6 flex flex-col justify-between" data-category="biomed" data-keywords="tetrazin azepin piridina jak2 janus kinase nci60 dft b3lyp moedocking pase solvent-free al-azhar scientific reports nature">
+      <article class="paper-card bg-white border border-editorial-line rounded p-6 flex flex-col justify-between" data-paper-item data-paper-id="08" data-category="biomed" data-tags="kimiamedisinal dft"  data-keywords="tetrazin azepin piridina jak2 janus kinase nci60 dft b3lyp moedocking pase solvent-free al-azhar scientific reports nature">
         <div>
           <!-- Header Meta -->
           <div class="flex items-center justify-between text-xs text-editorial-muted mb-3">
             <span class="font-semibold uppercase tracking-wider text-teal-700">Kimia Medisinal & Desain Obat In Silico</span>
-            <span class="font-mono text-[11px]">Sci. Rep. (Nature, 2023)</span>
+            <div class="flex items-center gap-1.5">
+              <span class="font-mono text-[11px]">Sci. Rep. (Nature, 2023)</span>
+              <button onclick="toggleBookmark('08', event)" data-bookmark-btn="08" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+              </button>
+            </div>
           </div>
 
           <!-- Title -->
@@ -609,12 +705,17 @@
       </article>
 
       <!-- CARD 9: BIIB068 Reversible BTK Inhibitor for Autoimmune Diseases -->
-      <article class="paper-card bg-white border border-editorial-line rounded p-6 flex flex-col justify-between" data-category="biomed" data-keywords="btk inhibitor biib068 lupus sle artritis reumatoid kimia medisinal sbdd biogen tec kinase reversibel h3 pocket kristalografi uji klinis fase 1 jmedchem acs">
+      <article class="paper-card bg-white border border-editorial-line rounded p-6 flex flex-col justify-between" data-paper-item data-paper-id="09" data-category="biomed" data-tags="kimiamedisinal"  data-keywords="btk inhibitor biib068 lupus sle artritis reumatoid kimia medisinal sbdd biogen tec kinase reversibel h3 pocket kristalografi uji klinis fase 1 jmedchem acs">
         <div>
           <!-- Header Meta -->
           <div class="flex items-center justify-between text-xs text-editorial-muted mb-3">
             <span class="font-semibold uppercase tracking-wider text-blue-700">Kimia Medisinal & Desain Obat (SBDD)</span>
-            <span class="font-mono text-[11px]">J. Med. Chem. (ACS, 2020)</span>
+            <div class="flex items-center gap-1.5">
+              <span class="font-mono text-[11px]">J. Med. Chem. (ACS, 2020)</span>
+              <button onclick="toggleBookmark('09', event)" data-bookmark-btn="09" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+              </button>
+            </div>
           </div>
 
           <!-- Title -->
@@ -664,12 +765,17 @@
       </article>
 
       <!-- CARD 10: Phosphorene Siliconization to 2D SiP and SiP2 -->
-      <article class="paper-card bg-white border border-editorial-line rounded p-6 flex flex-col justify-between" data-category="material" data-keywords="fosforen phosphorene silikonisasi sip sip2 2d-sip 2d-sip2 dft hse06 celah pita band gap bomd vasp pccp rsc oslo sutd">
+      <article class="paper-card bg-white border border-editorial-line rounded p-6 flex flex-col justify-between" data-paper-item data-paper-id="10" data-category="material" data-tags="material2d dft"  data-keywords="fosforen phosphorene silikonisasi sip sip2 2d-sip 2d-sip2 dft hse06 celah pita band gap bomd vasp pccp rsc oslo sutd">
         <div>
           <!-- Header Meta -->
           <div class="flex items-center justify-between text-xs text-editorial-muted mb-3">
             <span class="font-semibold uppercase tracking-wider text-indigo-700">Material 2D & Rekayasa Pita Energi</span>
-            <span class="font-mono text-[11px]">PCCP (RSC, 2018)</span>
+            <div class="flex items-center gap-1.5">
+              <span class="font-mono text-[11px]">PCCP (RSC, 2018)</span>
+              <button onclick="toggleBookmark('10', event)" data-bookmark-btn="10" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+              </button>
+            </div>
           </div>
 
           <!-- Title -->
@@ -718,6 +824,428 @@
         </a>
       </article>
 
+    </div>
+    </div>
+    <!-- END OF PAPER GRID CONTAINER -->
+
+    <!-- PAPER MATRIX TABLE VIEW (Side-by-Side Comparison) -->
+    <div id="paper-table-container" class="hidden overflow-x-auto border border-editorial-line rounded bg-white shadow-sm mb-8">
+      <table class="w-full text-left border-collapse text-xs font-sans">
+        <thead>
+          <tr class="bg-zinc-50 border-b border-editorial-line text-[11px] font-semibold text-editorial-muted uppercase tracking-wider">
+            <th class="py-3 px-3 w-16 text-center">No & ⭐</th>
+            <th class="py-3 px-4 min-w-[280px]">Judul & Jurnal</th>
+            <th class="py-3 px-4 min-w-[160px]">Kategori & Topik</th>
+            <th class="py-3 px-4 min-w-[220px]">Temuan Kunci / Metrik</th>
+            <th class="py-3 px-4 min-w-[180px]">Penulis & Afiliasi</th>
+            <th class="py-3 px-3 w-24 text-center">Aksi</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-editorial-line text-editorial-body">
+      <tr class="hover:bg-blue-50/30 transition-colors" data-paper-item data-paper-id="01" data-category="material" data-tags="material2d katalisis" data-keywords="mos2 mxene her hidrogen elektrolisis alkali universitas indonesia overpotensial tafrel elsevier">
+        <td class="py-3.5 px-3 text-center align-top whitespace-nowrap">
+          <div class="flex items-center justify-center gap-1.5">
+            <span class="font-mono text-zinc-400 font-semibold text-[11px]">#01</span>
+            <button onclick="toggleBookmark('01', event)" data-bookmark-btn="01" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+            </button>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <a href="papers/01-mos2-mxene-her/index.html" class="font-bold text-editorial-ink hover:text-editorial-accent font-sans leading-snug block mb-1.5 text-xs">
+            Sinergi 2D/2D MoS₂ dan Ti₃C₂ MXene: Akselerasi Kinetika Evolusi Hidrogen dalam Media Alkali
+          </a>
+          <span class="inline-block font-mono text-[10px] text-editorial-muted bg-zinc-100 border border-editorial-line/60 px-1.5 py-0.5 rounded">Mater. Res. Bull. (2025)</span>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <div class="text-[11px] font-semibold text-editorial-accent mb-1.5">Material Elektrokimia</div>
+          <div class="flex flex-wrap gap-1">
+            <span class="text-[10px] bg-zinc-100 text-zinc-600 px-1.5 py-0.5 rounded font-mono font-medium">#Material2D</span><span class="text-[10px] bg-zinc-100 text-zinc-600 px-1.5 py-0.5 rounded font-mono font-medium">#KatalisisEnergi</span>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <div class="space-y-1 text-[11px]">
+            <div><span class="text-editorial-muted">Overpotensial:</span> <strong class="text-editorial-ink font-mono">421 mV</strong></div>
+      <div><span class="text-editorial-muted">Tafel Slope:</span> <strong class="text-editorial-ink font-mono">217 mV dec⁻¹</strong></div>
+      <div><span class="text-editorial-muted">Resistansi R_ct:</span> <strong class="text-editorial-accent font-mono">1.66 kΩ</strong></div>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top text-[11px] text-editorial-muted leading-relaxed">
+          <div class="font-semibold text-editorial-ink">R. Hasanah, M. Khalil* dkk.</div>
+          <div class="text-[10px] mt-0.5">Universitas Indonesia, Sunway, Lancaster</div>
+        </td>
+        <td class="py-3.5 px-3 text-center align-top whitespace-nowrap">
+          <a href="papers/01-mos2-mxene-her/index.html" class="inline-flex items-center gap-1 px-3 py-1.5 bg-editorial-softbg hover:bg-editorial-accent hover:text-white border border-editorial-line hover:border-editorial-accent rounded text-[11px] font-bold text-editorial-ink transition-all shadow-xs">
+            <span>Buka</span>
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </td>
+      </tr>
+      <tr class="hover:bg-blue-50/30 transition-colors" data-paper-item data-paper-id="02" data-category="biomed" data-tags="machinelearning kimiamedisinal" data-keywords="alphaml machine learning tabular binary classification cell press patterns clete shap lime optuna aml kanker leukemia">
+        <td class="py-3.5 px-3 text-center align-top whitespace-nowrap">
+          <div class="flex items-center justify-center gap-1.5">
+            <span class="font-mono text-zinc-400 font-semibold text-[11px]">#02</span>
+            <button onclick="toggleBookmark('02', event)" data-bookmark-btn="02" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+            </button>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <a href="papers/02-alphaml-clete/index.html" class="font-bold text-editorial-ink hover:text-editorial-accent font-sans leading-snug block mb-1.5 text-xs">
+            AlphaML: Platform Klasifikasi Biner Terbuka, Terjelaskan (CLETE), dan Tanpa Kode untuk Data Tabular
+          </a>
+          <span class="inline-block font-mono text-[10px] text-editorial-muted bg-zinc-100 border border-editorial-line/60 px-1.5 py-0.5 rounded">Patterns (Cell Press, 2024)</span>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <div class="text-[11px] font-semibold text-teal-700 mb-1.5">Kecerdasan Buatan Biomedis</div>
+          <div class="flex flex-wrap gap-1">
+            <span class="text-[10px] bg-zinc-100 text-zinc-600 px-1.5 py-0.5 rounded font-mono font-medium">#MachineLearning</span><span class="text-[10px] bg-zinc-100 text-zinc-600 px-1.5 py-0.5 rounded font-mono font-medium">#KimiaMedisinal</span>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <div class="space-y-1 text-[11px]">
+            <div><span class="text-editorial-muted">Algoritma:</span> <strong class="text-editorial-ink font-mono">15 Model ML</strong></div>
+      <div><span class="text-editorial-muted">Metrik Baru:</span> <strong class="text-editorial-ink font-mono">custom_score</strong></div>
+      <div><span class="text-editorial-muted">Interpretabilitas:</span> <strong class="text-teal-700 font-mono">SHAP & LIME</strong></div>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top text-[11px] text-editorial-muted leading-relaxed">
+          <div class="font-semibold text-editorial-ink">A. Nasimian, J.U. Kazi* dkk.</div>
+          <div class="text-[10px] mt-0.5">Lund University (Swedia) & Johns Hopkins Univ</div>
+        </td>
+        <td class="py-3.5 px-3 text-center align-top whitespace-nowrap">
+          <a href="papers/02-alphaml-clete/index.html" class="inline-flex items-center gap-1 px-3 py-1.5 bg-editorial-softbg hover:bg-editorial-accent hover:text-white border border-editorial-line hover:border-editorial-accent rounded text-[11px] font-bold text-editorial-ink transition-all shadow-xs">
+            <span>Buka</span>
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </td>
+      </tr>
+      <tr class="hover:bg-blue-50/30 transition-colors" data-paper-item data-paper-id="03" data-category="thermo" data-tags="termoelektrik dft" data-keywords="camno3 bcmo bismut termoelektrik wiedemann-franz lorenz double exchange perovskite lipi brin ugm ui brawijaya elsevier">
+        <td class="py-3.5 px-3 text-center align-top whitespace-nowrap">
+          <div class="flex items-center justify-center gap-1.5">
+            <span class="font-mono text-zinc-400 font-semibold text-[11px]">#03</span>
+            <button onclick="toggleBookmark('03', event)" data-bookmark-btn="03" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+            </button>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <a href="papers/03-camno3-thermoelectric/index.html" class="font-bold text-editorial-ink hover:text-editorial-accent font-sans leading-snug block mb-1.5 text-xs">
+            Transport Elektron dan Fonon pada CaMnO₃ Terdoping Bismut: Anomali Hukum Wiedemann–Franz
+          </a>
+          <span class="inline-block font-mono text-[10px] text-editorial-muted bg-zinc-100 border border-editorial-line/60 px-1.5 py-0.5 rounded">Mater. Res. Bull. (2021)</span>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <div class="text-[11px] font-semibold text-editorial-accent mb-1.5">Fisika Termoelektrik Oksida</div>
+          <div class="flex flex-wrap gap-1">
+            <span class="text-[10px] bg-zinc-100 text-zinc-600 px-1.5 py-0.5 rounded font-mono font-medium">#FisikaTermo</span><span class="text-[10px] bg-zinc-100 text-zinc-600 px-1.5 py-0.5 rounded font-mono font-medium">#DFT-Kuantum</span>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <div class="space-y-1 text-[11px]">
+            <div><span class="text-editorial-muted">Resistivitas:</span> <strong class="text-editorial-ink font-mono">Turun 10× Lipat</strong></div>
+      <div><span class="text-editorial-muted">Bilangan Lorenz:</span> <strong class="text-editorial-ink font-mono">Pulih ~1× L₀</strong></div>
+      <div><span class="text-editorial-muted">Kecepatan Suara:</span> <strong class="text-editorial-accent font-mono">0.81 km/s</strong></div>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top text-[11px] text-editorial-muted leading-relaxed">
+          <div class="font-semibold text-editorial-ink">E. Suprayoga, E.H. Hasdeo* dkk.</div>
+          <div class="text-[10px] mt-0.5">BRIN (LIPI), Univ. Luxembourg, UI, SNRU</div>
+        </td>
+        <td class="py-3.5 px-3 text-center align-top whitespace-nowrap">
+          <a href="papers/03-camno3-thermoelectric/index.html" class="inline-flex items-center gap-1 px-3 py-1.5 bg-editorial-softbg hover:bg-editorial-accent hover:text-white border border-editorial-line hover:border-editorial-accent rounded text-[11px] font-bold text-editorial-ink transition-all shadow-xs">
+            <span>Buka</span>
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </td>
+      </tr>
+      <tr class="hover:bg-blue-50/30 transition-colors" data-paper-item data-paper-id="04" data-category="material thermo" data-tags="material2d termoelektrik dft" data-keywords="sip2 silikon difosfida monolayer 2d termoelektrik seebeck zt anisotropi xiangtan elsevier computational materials science">
+        <td class="py-3.5 px-3 text-center align-top whitespace-nowrap">
+          <div class="flex items-center justify-center gap-1.5">
+            <span class="font-mono text-zinc-400 font-semibold text-[11px]">#04</span>
+            <button onclick="toggleBookmark('04', event)" data-bookmark-btn="04" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+            </button>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <a href="papers/04-sip2-thermoelectric/index.html" class="font-bold text-editorial-ink hover:text-editorial-accent font-sans leading-snug block mb-1.5 text-xs">
+            Potensi Termoelektrik Monolayer Silikon Difosfida (SiP₂): Konduktivitas Termal Rendah & ZT = 0.90
+          </a>
+          <span class="inline-block font-mono text-[10px] text-editorial-muted bg-zinc-100 border border-editorial-line/60 px-1.5 py-0.5 rounded">Comput. Mater. Sci. (2021)</span>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <div class="text-[11px] font-semibold text-editorial-accent mb-1.5">Material 2D Semikonduktor</div>
+          <div class="flex flex-wrap gap-1">
+            <span class="text-[10px] bg-zinc-100 text-zinc-600 px-1.5 py-0.5 rounded font-mono font-medium">#Material2D</span><span class="text-[10px] bg-zinc-100 text-zinc-600 px-1.5 py-0.5 rounded font-mono font-medium">#FisikaTermo</span><span class="text-[10px] bg-zinc-100 text-zinc-600 px-1.5 py-0.5 rounded font-mono font-medium">#DFT-Kuantum</span>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <div class="space-y-1 text-[11px]">
+            <div><span class="text-editorial-muted">Energi Eksfoliasi:</span> <strong class="text-editorial-ink font-mono">18.6 meV/Å²</strong></div>
+      <div><span class="text-editorial-muted">Seebeck Puncak:</span> <strong class="text-editorial-ink font-mono">3.15 mV/K</strong></div>
+      <div><span class="text-editorial-muted">ZT Suhu Ruang:</span> <strong class="text-editorial-accent font-mono">0.90 (Sumbu-b)</strong></div>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top text-[11px] text-editorial-muted leading-relaxed">
+          <div class="font-semibold text-editorial-ink">P. Zhang, T. Ouyang* dkk.</div>
+          <div class="text-[10px] mt-0.5">Xiangtan University & Hunan Applied Tech Univ</div>
+        </td>
+        <td class="py-3.5 px-3 text-center align-top whitespace-nowrap">
+          <a href="papers/04-sip2-thermoelectric/index.html" class="inline-flex items-center gap-1 px-3 py-1.5 bg-editorial-softbg hover:bg-editorial-accent hover:text-white border border-editorial-line hover:border-editorial-accent rounded text-[11px] font-bold text-editorial-ink transition-all shadow-xs">
+            <span>Buka</span>
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </td>
+      </tr>
+      <tr class="hover:bg-blue-50/30 transition-colors" data-paper-item data-paper-id="05" data-category="material thermo" data-tags="material2d termoelektrik dft" data-keywords="mox2 mos2 mose2 mote2 tmdc monolayer 2d termoelektrik zt seebeck kcm fonon brin uin manchester iop physica scripta">
+        <td class="py-3.5 px-3 text-center align-top whitespace-nowrap">
+          <div class="flex items-center justify-center gap-1.5">
+            <span class="font-mono text-zinc-400 font-semibold text-[11px]">#05</span>
+            <button onclick="toggleBookmark('05', event)" data-bookmark-btn="05" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+            </button>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <a href="papers/05-mox2-thermoelectric/index.html" class="font-bold text-editorial-ink hover:text-editorial-accent font-sans leading-snug block mb-1.5 text-xs">
+            Transport Termal dan Sifat Termoelektrik Monolayer MoX₂: Rekor ZT = 2.77 pada MoTe₂
+          </a>
+          <span class="inline-block font-mono text-[10px] text-editorial-muted bg-zinc-100 border border-editorial-line/60 px-1.5 py-0.5 rounded">Phys. Scr. (2024)</span>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <div class="text-[11px] font-semibold text-editorial-accent mb-1.5">Material 2D & Termoelektrik</div>
+          <div class="flex flex-wrap gap-1">
+            <span class="text-[10px] bg-zinc-100 text-zinc-600 px-1.5 py-0.5 rounded font-mono font-medium">#Material2D</span><span class="text-[10px] bg-zinc-100 text-zinc-600 px-1.5 py-0.5 rounded font-mono font-medium">#FisikaTermo</span><span class="text-[10px] bg-zinc-100 text-zinc-600 px-1.5 py-0.5 rounded font-mono font-medium">#DFT-Kuantum</span>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <div class="space-y-1 text-[11px]">
+            <div><span class="text-editorial-muted">κ_ph MoTe₂:</span> <strong class="text-editorial-ink font-mono">43.3 W/m·K</strong></div>
+      <div><span class="text-editorial-muted">ZT (550 K):</span> <strong class="text-editorial-accent font-mono">2.77 (p-type)</strong></div>
+      <div><span class="text-editorial-muted">ZT Rekor (900 K):</span> <strong class="text-editorial-accent font-mono">3.55 (p-type)</strong></div>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top text-[11px] text-editorial-muted leading-relaxed">
+          <div class="font-semibold text-editorial-ink">R. Wisesa, A. Azhar, E. Suprayoga*</div>
+          <div class="text-[10px] mt-0.5">UIN Syarif Hidayatullah, Univ. of Manchester, BRIN</div>
+        </td>
+        <td class="py-3.5 px-3 text-center align-top whitespace-nowrap">
+          <a href="papers/05-mox2-thermoelectric/index.html" class="inline-flex items-center gap-1 px-3 py-1.5 bg-editorial-softbg hover:bg-editorial-accent hover:text-white border border-editorial-line hover:border-editorial-accent rounded text-[11px] font-bold text-editorial-ink transition-all shadow-xs">
+            <span>Buka</span>
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </td>
+      </tr>
+      <tr class="hover:bg-blue-50/30 transition-colors" data-paper-item data-paper-id="06" data-category="material" data-tags="katalisis dft" data-keywords="mch mca mnc lohc metilsikloheksana dehidrogenasi pt13 klaster dft dmol3 hidrogen energi hijau elsevier ijhydene iran">
+        <td class="py-3.5 px-3 text-center align-top whitespace-nowrap">
+          <div class="flex items-center justify-center gap-1.5">
+            <span class="font-mono text-zinc-400 font-semibold text-[11px]">#06</span>
+            <button onclick="toggleBookmark('06', event)" data-bookmark-btn="06" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+            </button>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <a href="papers/06-mch-dehydrogenation-pt13/index.html" class="font-bold text-editorial-ink hover:text-editorial-accent font-sans leading-snug block mb-1.5 text-xs">
+            Efek Substituen pada Katalisis LOHC: Studi DFT Dehidrogenasi Metilsikloheksana di Atas Klaster Pt₁₃
+          </a>
+          <span class="inline-block font-mono text-[10px] text-editorial-muted bg-zinc-100 border border-editorial-line/60 px-1.5 py-0.5 rounded">Int. J. Hydrogen Energy (2025)</span>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <div class="text-[11px] font-semibold text-editorial-accent mb-1.5">Katalisis LOHC & Energi Hidrogen</div>
+          <div class="flex flex-wrap gap-1">
+            <span class="text-[10px] bg-zinc-100 text-zinc-600 px-1.5 py-0.5 rounded font-mono font-medium">#KatalisisEnergi</span><span class="text-[10px] bg-zinc-100 text-zinc-600 px-1.5 py-0.5 rounded font-mono font-medium">#DFT-Kuantum</span>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <div class="space-y-1 text-[11px]">
+            <div><span class="text-editorial-muted">Beban ΔG:</span> <strong class="text-editorial-ink font-mono">Turun >10 kcal/mol</strong></div>
+      <div><span class="text-editorial-muted">Barrier Global:</span> <strong class="text-emerald-700 font-mono">56.37 kcal/mol (MNC)</strong></div>
+      <div><span class="text-editorial-muted">Kapasitas H₂ MCH:</span> <strong class="text-editorial-accent font-mono">6.12 wt%</strong></div>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top text-[11px] text-editorial-muted leading-relaxed">
+          <div class="font-semibold text-editorial-ink">M.E. Chermahini, A.N. Chermahini*, M. Ghiaci</div>
+          <div class="text-[10px] mt-0.5">Isfahan University of Technology (Iran)</div>
+        </td>
+        <td class="py-3.5 px-3 text-center align-top whitespace-nowrap">
+          <a href="papers/06-mch-dehydrogenation-pt13/index.html" class="inline-flex items-center gap-1 px-3 py-1.5 bg-editorial-softbg hover:bg-editorial-accent hover:text-white border border-editorial-line hover:border-editorial-accent rounded text-[11px] font-bold text-editorial-ink transition-all shadow-xs">
+            <span>Buka</span>
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </td>
+      </tr>
+      <tr class="hover:bg-blue-50/30 transition-colors" data-paper-item data-paper-id="07" data-category="biomed" data-tags="kimiamedisinal" data-keywords="sq3370 capac kimia klik bioortogonal tetrazin tco doksorubisin imunoterapi abscopal mc38 shasqi albany wiley advanced therapeutics">
+        <td class="py-3.5 px-3 text-center align-top whitespace-nowrap">
+          <div class="flex items-center justify-center gap-1.5">
+            <span class="font-mono text-zinc-400 font-semibold text-[11px]">#07</span>
+            <button onclick="toggleBookmark('07', event)" data-bookmark-btn="07" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+            </button>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <a href="papers/07-sq3370-click-chemistry-cancer/index.html" class="font-bold text-editorial-ink hover:text-editorial-accent font-sans leading-snug block mb-1.5 text-xs">
+            Kimia Klik Bioortogonal di Dalam Tubuh: Mengaktivasi Obat Kanker SQ3370 Langsung di Sarang Tumor
+          </a>
+          <span class="inline-block font-mono text-[10px] text-editorial-muted bg-zinc-100 border border-editorial-line/60 px-1.5 py-0.5 rounded">Adv. Therap. (2021)</span>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <div class="text-[11px] font-semibold text-editorial-accent mb-1.5">Kimia Bioortogonal & Onkologi</div>
+          <div class="flex flex-wrap gap-1">
+            <span class="text-[10px] bg-zinc-100 text-zinc-600 px-1.5 py-0.5 rounded font-mono font-medium">#KimiaMedisinal</span>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <div class="space-y-1 text-[11px]">
+            <div><span class="text-editorial-muted">Toleransi Dosis:</span> <strong class="text-editorial-ink font-mono">5.9× MTD Dox</strong></div>
+      <div><span class="text-editorial-muted">Kesintasan (+TLR9a):</span> <strong class="text-emerald-700 font-mono">101 Hari</strong></div>
+      <div><span class="text-editorial-muted">Remisi Distal:</span> <strong class="text-editorial-accent font-mono">80% (8/10)</strong></div>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top text-[11px] text-editorial-muted leading-relaxed">
+          <div class="font-semibold text-editorial-ink">S. Srinivasan, M. Royzen*, J.M. Mejía Oneto*</div>
+          <div class="text-[10px] mt-0.5">Shasqi Inc. (San Francisco) & Univ. of Albany</div>
+        </td>
+        <td class="py-3.5 px-3 text-center align-top whitespace-nowrap">
+          <a href="papers/07-sq3370-click-chemistry-cancer/index.html" class="inline-flex items-center gap-1 px-3 py-1.5 bg-editorial-softbg hover:bg-editorial-accent hover:text-white border border-editorial-line hover:border-editorial-accent rounded text-[11px] font-bold text-editorial-ink transition-all shadow-xs">
+            <span>Buka</span>
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </td>
+      </tr>
+      <tr class="hover:bg-blue-50/30 transition-colors" data-paper-item data-paper-id="08" data-category="biomed" data-tags="kimiamedisinal dft" data-keywords="tetrazin azepin piridina jak2 janus kinase nci60 dft b3lyp moedocking pase solvent-free al-azhar scientific reports nature">
+        <td class="py-3.5 px-3 text-center align-top whitespace-nowrap">
+          <div class="flex items-center justify-center gap-1.5">
+            <span class="font-mono text-zinc-400 font-semibold text-[11px]">#08</span>
+            <button onclick="toggleBookmark('08', event)" data-bookmark-btn="08" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+            </button>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <a href="papers/08-pyridotetrazine-anticancer-jak2/index.html" class="font-bold text-editorial-ink hover:text-editorial-accent font-sans leading-snug block mb-1.5 text-xs">
+            Sintesis Hijau Heterosiklik Piridotetrazin & Azepin: Uji Antikanker NCI-60, DFT, dan Docking JAK2
+          </a>
+          <span class="inline-block font-mono text-[10px] text-editorial-muted bg-zinc-100 border border-editorial-line/60 px-1.5 py-0.5 rounded">Sci. Rep. (Nature, 2023)</span>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <div class="text-[11px] font-semibold text-teal-700 mb-1.5">Kimia Medisinal & Desain Obat In Silico</div>
+          <div class="flex flex-wrap gap-1">
+            <span class="text-[10px] bg-zinc-100 text-zinc-600 px-1.5 py-0.5 rounded font-mono font-medium">#KimiaMedisinal</span><span class="text-[10px] bg-zinc-100 text-zinc-600 px-1.5 py-0.5 rounded font-mono font-medium">#DFT-Kuantum</span>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <div class="space-y-1 text-[11px]">
+            <div><span class="text-editorial-muted">Hambatan Kolon:</span> <strong class="text-editorial-ink font-mono">77.94% GI (Senyawa 9)</strong></div>
+      <div><span class="text-editorial-muted">Docking JAK2:</span> <strong class="text-emerald-700 font-mono">-7.25 kcal/mol</strong></div>
+      <div><span class="text-editorial-muted">Celah HOMO-LUMO:</span> <strong class="text-editorial-accent font-mono">0.0875 eV</strong></div>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top text-[11px] text-editorial-muted leading-relaxed">
+          <div class="font-semibold text-editorial-ink">A.Y. Hassan, S.N. Shabaan, E.S. Abou-Amra*</div>
+          <div class="text-[10px] mt-0.5">Al-Azhar University (Kairo, Mesir)</div>
+        </td>
+        <td class="py-3.5 px-3 text-center align-top whitespace-nowrap">
+          <a href="papers/08-pyridotetrazine-anticancer-jak2/index.html" class="inline-flex items-center gap-1 px-3 py-1.5 bg-editorial-softbg hover:bg-editorial-accent hover:text-white border border-editorial-line hover:border-editorial-accent rounded text-[11px] font-bold text-editorial-ink transition-all shadow-xs">
+            <span>Buka</span>
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </td>
+      </tr>
+      <tr class="hover:bg-blue-50/30 transition-colors" data-paper-item data-paper-id="09" data-category="biomed" data-tags="kimiamedisinal" data-keywords="btk inhibitor biib068 lupus sle artritis reumatoid kimia medisinal sbdd biogen tec kinase reversibel h3 pocket kristalografi uji klinis fase 1 jmedchem acs">
+        <td class="py-3.5 px-3 text-center align-top whitespace-nowrap">
+          <div class="flex items-center justify-center gap-1.5">
+            <span class="font-mono text-zinc-400 font-semibold text-[11px]">#09</span>
+            <button onclick="toggleBookmark('09', event)" data-bookmark-btn="09" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+            </button>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <a href="papers/09-biib068-btk-inhibitor-lupus/index.html" class="font-bold text-editorial-ink hover:text-editorial-accent font-sans leading-snug block mb-1.5 text-xs">
+            Penemuan BIIB068: Inhibitor Tirosin Kinase Bruton (BTK) Reversibel, Selektif, dan Berkhasiat Oral untuk Penyakit Autoimun
+          </a>
+          <span class="inline-block font-mono text-[10px] text-editorial-muted bg-zinc-100 border border-editorial-line/60 px-1.5 py-0.5 rounded">J. Med. Chem. (ACS, 2020)</span>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <div class="text-[11px] font-semibold text-blue-700 mb-1.5">Kimia Medisinal & Desain Obat (SBDD)</div>
+          <div class="flex flex-wrap gap-1">
+            <span class="text-[10px] bg-zinc-100 text-zinc-600 px-1.5 py-0.5 rounded font-mono font-medium">#KimiaMedisinal</span>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <div class="space-y-1 text-[11px]">
+            <div><span class="text-editorial-muted">BTK Potensi:</span> <strong class="text-editorial-accent font-mono">1.0 nM (IC_50)</strong></div>
+      <div><span class="text-editorial-muted">Selektivitas Kinom:</span> <strong class="text-emerald-700 font-mono">>400× (395 Kinase)</strong></div>
+      <div><span class="text-editorial-muted">Inhibisi Fase I:</span> <strong class="text-editorial-ink font-mono">>90% pBTK Manusia</strong></div>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top text-[11px] text-editorial-muted leading-relaxed">
+          <div class="font-semibold text-editorial-ink">B. Ma, T. Bohnert, B.T. Hopkins* dkk.</div>
+          <div class="text-[10px] mt-0.5">Biogen Inc. (Cambridge, MA, USA)</div>
+        </td>
+        <td class="py-3.5 px-3 text-center align-top whitespace-nowrap">
+          <a href="papers/09-biib068-btk-inhibitor-lupus/index.html" class="inline-flex items-center gap-1 px-3 py-1.5 bg-editorial-softbg hover:bg-editorial-accent hover:text-white border border-editorial-line hover:border-editorial-accent rounded text-[11px] font-bold text-editorial-ink transition-all shadow-xs">
+            <span>Buka</span>
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </td>
+      </tr>
+      <tr class="hover:bg-blue-50/30 transition-colors" data-paper-item data-paper-id="10" data-category="material" data-tags="material2d dft" data-keywords="fosforen phosphorene silikonisasi sip sip2 2d-sip 2d-sip2 dft hse06 celah pita band gap bomd vasp pccp rsc oslo sutd">
+        <td class="py-3.5 px-3 text-center align-top whitespace-nowrap">
+          <div class="flex items-center justify-center gap-1.5">
+            <span class="font-mono text-zinc-400 font-semibold text-[11px]">#10</span>
+            <button onclick="toggleBookmark('10', event)" data-bookmark-btn="10" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+            </button>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <a href="papers/10-phosphorene-siliconization-sip-sip2/index.html" class="font-bold text-editorial-ink hover:text-editorial-accent font-sans leading-snug block mb-1.5 text-xs">
+            Rekayasa Sifat Elektronik Phosphorene Multilapis melalui Silikonisasi: Semikonduktor 2D SiP dan SiP₂ dengan Celah Pita Tahan Ketebalan
+          </a>
+          <span class="inline-block font-mono text-[10px] text-editorial-muted bg-zinc-100 border border-editorial-line/60 px-1.5 py-0.5 rounded">PCCP (RSC, 2018)</span>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <div class="text-[11px] font-semibold text-indigo-700 mb-1.5">Material 2D & Rekayasa Pita Energi</div>
+          <div class="flex flex-wrap gap-1">
+            <span class="text-[10px] bg-zinc-100 text-zinc-600 px-1.5 py-0.5 rounded font-mono font-medium">#Material2D</span><span class="text-[10px] bg-zinc-100 text-zinc-600 px-1.5 py-0.5 rounded font-mono font-medium">#DFT-Kuantum</span>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <div class="space-y-1 text-[11px]">
+            <div><span class="text-editorial-muted">Celah Monolayer:</span> <strong class="text-editorial-accent font-mono">2.66 eV (SiP)</strong></div>
+      <div><span class="text-editorial-muted">Reduksi Efek Tebal:</span> <strong class="text-emerald-700 font-mono">76% (ΔE_g 0.22 eV)</strong></div>
+      <div><span class="text-editorial-muted">Stabilitas Termal:</span> <strong class="text-editorial-ink font-mono">600 K (BOMD)</strong></div>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top text-[11px] text-editorial-muted leading-relaxed">
+          <div class="font-semibold text-editorial-ink">O.I. Malyi, K.V. Sopiha, C. Persson*</div>
+          <div class="text-[10px] mt-0.5">Univ. of Oslo (Norwegia) & SUTD (Singapura)</div>
+        </td>
+        <td class="py-3.5 px-3 text-center align-top whitespace-nowrap">
+          <a href="papers/10-phosphorene-siliconization-sip-sip2/index.html" class="inline-flex items-center gap-1 px-3 py-1.5 bg-editorial-softbg hover:bg-editorial-accent hover:text-white border border-editorial-line hover:border-editorial-accent rounded text-[11px] font-bold text-editorial-ink transition-all shadow-xs">
+            <span>Buka</span>
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </td>
+      </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- EMPTY SEARCH STATE NOTICE -->
+    <div id="empty-search-notice" class="hidden py-16 text-center border border-dashed border-editorial-line rounded bg-white my-8">
+      <div class="text-3xl mb-2">🔍</div>
+      <h3 class="text-base font-bold text-editorial-ink font-sans mb-1">Tidak Ada Paper yang Cocok</h3>
+      <p class="text-xs text-editorial-muted max-w-sm mx-auto mb-4 font-serif italic">
+        Coba ganti kata kunci pencarian, pilih tag topik lain, atau reset kategori filter Anda.
+      </p>
+      <button onclick="filterCategory('all'); filterTag('all'); document.getElementById('search-input').value=''; applyAllFilters();" class="px-3.5 py-1.5 bg-editorial-ink text-white rounded text-xs font-semibold hover:bg-editorial-accent transition-colors shadow-xs">
+        Reset Semua Filter
+      </button>
     </div>
   </main>
 
@@ -803,53 +1331,10 @@ paper-hub/<br>
     </div>
   </footer>
 
-  <!-- JAVASCRIPT: FILTER & LIVE SEARCH -->
+  <!-- SHARED PORTAL CONTROLLER -->
+  <script src="shared/portal.js"></script>
   <script>
-    // 1. Live Filter by Category
-    function filterCategory(cat) {
-      // Update buttons
-      document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.remove('bg-editorial-ink', 'text-white');
-        btn.classList.add('bg-white', 'border', 'border-editorial-line', 'text-editorial-muted');
-      });
-      const activeBtn = document.getElementById('btn-' + cat);
-      if (activeBtn) {
-        activeBtn.classList.remove('bg-white', 'border', 'border-editorial-line', 'text-editorial-muted');
-        activeBtn.classList.add('bg-editorial-ink', 'text-white');
-      }
-
-      // Filter cards
-      const cards = document.querySelectorAll('.paper-card');
-      cards.forEach(card => {
-        if (cat === 'all') {
-          card.classList.remove('hidden');
-        } else {
-          const cardCats = card.getAttribute('data-category').split(' ');
-          if (cardCats.includes(cat)) {
-            card.classList.remove('hidden');
-          } else {
-            card.classList.add('hidden');
-          }
-        }
-      });
-    }
-
-    // 2. Real-time Live Search
-    function liveSearch() {
-      const query = document.getElementById('search-input').value.toLowerCase().trim();
-      const cards = document.querySelectorAll('.paper-card');
-
-      cards.forEach(card => {
-        const text = (card.innerText + ' ' + card.getAttribute('data-keywords')).toLowerCase();
-        if (text.includes(query)) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
-    }
-
-    // 3. Toggle Guide Accordion
+    // Toggle Guide Accordion
     function toggleGuide() {
       const content = document.getElementById('guide-content');
       const chevron = document.getElementById('guide-chevron');

@@ -12,6 +12,8 @@
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Shared Reader Experience -->
+  <link rel="stylesheet" href="../../shared/reader.css">
   <script>
     tailwind.config = {
       theme: {
@@ -606,6 +608,18 @@
             <p class="font-mono text-xs text-editorial-body leading-relaxed select-all">
               Hasanah, R., Romdoni, Y., Fauzia, V., Arifutzzaman, A., Hussin, F., Aroua, M. K., & Khalil, M. (2025). Two-dimension MoS₂/Ti₃C₂ MXene nanocomposite for an efficient hydrogen evolution reaction in alkaline media. <em>Materials Research Bulletin</em>, 190, 113514. https://doi.org/10.1016/j.materresbull.2025.113514
             </p>
+
+            <!-- Citation Quick Buttons -->
+            <div class="mt-4 flex flex-wrap gap-2">
+              <button onclick="copyCitation('apa', 'Hasanah, R., Romdoni, Y., Fauzia, V., Arifutzzaman, A., Hussin, F., Aroua, M. K., &amp; Khalil, M. (2025). Two-dimension MoS₂/Ti₃C₂ MXene nanocomposite for an efficient hydrogen evolution reaction in alkaline media. Materials Research Bulletin, 190, 113514. https://doi.org/10.1016/j.materresbull.2025.113514')" class="reader-toolbar-btn">
+                <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                Salin Sitasi APA
+              </button>
+              <button onclick="copyCitation('bibtex', '@article{hasanah2025two,\n  title={Two-dimension MoS2/Ti3C2 MXene nanocomposite for an efficient hydrogen evolution reaction in alkaline media},\n  author={Hasanah, R and Romdoni, Y and Fauzia, V and Arifutzzaman, A and Hussin, F and Aroua, MK and Khalil, M},\n  journal={Materials Research Bulletin},\n  volume={190},\n  pages={113514},\n  year={2025},\n  publisher={Elsevier}\n}')" class="reader-toolbar-btn">
+                <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                Salin BibTeX
+              </button>
+            </div>
           </div>
         </section>
 
@@ -770,6 +784,9 @@
       if (e.key === 'Escape') closeLightbox();
     });
   </script>
+
+  <!-- Shared Reader Experience Script -->
+  <script src="../../shared/reader.js"></script>
 
 </body>
 </html>

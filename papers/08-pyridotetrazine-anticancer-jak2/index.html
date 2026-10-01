@@ -12,6 +12,8 @@
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Shared Reader Experience -->
+  <link rel="stylesheet" href="../../shared/reader.css">
   <script>
     tailwind.config = {
       theme: {
@@ -802,6 +804,18 @@
             <li><strong>Penerbit:</strong> Springer Nature / Nature Portfolio</li>
             <li><strong>DOI:</strong> <a href="https://doi.org/10.1038/s41598-023-32421-x" target="_blank" class="text-editorial-accent hover:underline">10.1038/s41598-023-32421-x</a></li>
           </ul>
+
+          <!-- Citation Quick Buttons -->
+          <div class="mt-4 flex flex-wrap gap-2">
+            <button onclick="copyCitation('apa', 'Hassan, A. Y., Shabaan, S. N., El-Sebaey, S. A., &amp; Abou-Amra, E. S. (2023). Synthesis of pyrido-annelated [1,2,4,5]tetrazines, [1,2,4]triazepine, and [1,2,4,5]tetrazepines for anticancer, DFT, and molecular docking studies. Scientific Reports, 13(1), 5585. https://doi.org/10.1038/s41598-023-32421-x')" class="reader-toolbar-btn">
+              <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+              Salin Sitasi APA
+            </button>
+            <button onclick="copyCitation('bibtex', '@article{hassan2023synthesis,\n  title={Synthesis of pyrido-annelated [1,2,4,5]tetrazines, [1,2,4]triazepine, and [1,2,4,5]tetrazepines for anticancer, DFT, and molecular docking studies},\n  author={Hassan, Aisha Y and Shabaan, Sara N and El-Sebaey, Samiha A and Abou-Amra, Eman S},\n  journal={Scientific Reports},\n  volume={13},\n  number={1},\n  pages={5585},\n  year={2023},\n  publisher={Nature Publishing Group UK London}\n}')" class="reader-toolbar-btn">
+              <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+              Salin BibTeX
+            </button>
+          </div>
         </div>
         <div>
           <div class="font-bold text-editorial-ink uppercase tracking-wider mb-2">Metodologi & Alat Komputasi</div>
@@ -864,6 +878,9 @@
       if (e.key === 'Escape') closeLightbox();
     });
   </script>
+
+  <!-- Shared Reader Experience Script -->
+  <script src="../../shared/reader.js"></script>
 
 </body>
 </html>

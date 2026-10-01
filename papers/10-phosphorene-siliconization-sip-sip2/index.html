@@ -12,6 +12,8 @@
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Shared Reader Experience (Themes, Font Sizing, Floating TOC, Enhanced Lightbox) -->
+  <link rel="stylesheet" href="../../shared/reader.css">
   <script>
     tailwind.config = {
       theme: {
@@ -655,6 +657,18 @@
             <li><strong>Penerbit:</strong> Royal Society of Chemistry (RSC)</li>
             <li><strong>DOI:</strong> <a href="https://doi.org/10.1039/c7cp06196j" target="_blank" class="text-editorial-accent hover:underline">10.1039/c7cp06196j</a></li>
           </ul>
+
+          <!-- Citation Quick Buttons -->
+          <div class="mt-4 flex flex-wrap gap-2">
+            <button onclick="copyCitation('apa', 'Malyi, O. I., Sopiha, K. V., Radchenko, I., Wu, P., &amp; Persson, C. (2018). Tailoring electronic properties of multilayer phosphorene by siliconization. Physical Chemistry Chemical Physics, 20(3), 2075-2083.')" class="reader-toolbar-btn">
+              <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+              Salin Sitasi APA
+            </button>
+            <button onclick="copyCitation('bibtex', '@article{malyi2018tailoring,\n  title={Tailoring electronic properties of multilayer phosphorene by siliconization},\n  author={Malyi, Oleksandr I and Sopiha, Kostiantyn V and Radchenko, Ihor and Wu, Ping and Persson, Clas},\n  journal={Physical Chemistry Chemical Physics},\n  volume={20},\n  number={3},\n  pages={2075--2083},\n  year={2018},\n  publisher={Royal Society of Chemistry}\n}')" class="reader-toolbar-btn">
+              <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+              Salin BibTeX
+            </button>
+          </div>
         </div>
         <div>
           <div class="font-bold text-editorial-ink uppercase tracking-wider mb-2">Metodologi & Parameter Komputasi</div>
@@ -691,32 +705,8 @@
     </div>
   </div>
 
-  <script>
-    // Reading Progress Indicator
-    window.addEventListener('scroll', () => {
-      const winScroll = document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (winScroll / height) * 100;
-      document.getElementById('reading-progress').style.width = scrolled + '%';
-    });
-
-    // Lightbox Controls
-    function openLightbox(src, caption) {
-      document.getElementById('lightbox-img').src = src;
-      document.getElementById('lightbox-caption').textContent = caption;
-      document.getElementById('lightbox').classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeLightbox() {
-      document.getElementById('lightbox').classList.add('hidden');
-      document.body.style.overflow = 'auto';
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
-    });
-  </script>
+  <!-- Shared Reader Experience Script -->
+  <script src="../../shared/reader.js"></script>
 
 </body>
 </html>

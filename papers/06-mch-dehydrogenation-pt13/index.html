@@ -12,6 +12,8 @@
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Shared Reader Experience -->
+  <link rel="stylesheet" href="../../shared/reader.css">
   <script>
     tailwind.config = {
       theme: {
@@ -723,6 +725,18 @@
             <li><strong>Penerbit:</strong> Elsevier Ltd.</li>
             <li><strong>DOI:</strong> <a href="https://doi.org/10.1016/j.ijhydene.2025.152387" target="_blank" class="text-editorial-accent hover:underline">10.1016/j.ijhydene.2025.152387</a></li>
           </ul>
+
+          <!-- Citation Quick Buttons -->
+          <div class="mt-4 flex flex-wrap gap-2">
+            <button onclick="copyCitation('apa', 'Chermahini, M. E., Chermahini, A. N., &amp; Ghiaci, M. (2025). Substituent effect on the reactivity of liquid organic hydrogen carriers: A DFT study on methylcyclohexane dehydrogenation over Pt13 cluster. International Journal of Hydrogen Energy, 193, 152387. https://doi.org/10.1016/j.ijhydene.2025.152387')" class="reader-toolbar-btn">
+              <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+              Salin Sitasi APA
+            </button>
+            <button onclick="copyCitation('bibtex', '@article{chermahini2025substituent,\n  title={Substituent effect on the reactivity of liquid organic hydrogen carriers: A DFT study on methylcyclohexane dehydrogenation over Pt13 cluster},\n  author={Chermahini, Marzie Esmaeili and Chermahini, Alireza Najafi and Ghiaci, Mehran},\n  journal={International Journal of Hydrogen Energy},\n  volume={193},\n  pages={152387},\n  year={2025},\n  publisher={Elsevier}\n}')" class="reader-toolbar-btn">
+              <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+              Salin BibTeX
+            </button>
+          </div>
         </div>
         <div>
           <div class="font-bold text-editorial-ink uppercase tracking-wider mb-2">Metodologi Komputasi</div>
@@ -785,6 +799,9 @@
       if (e.key === 'Escape') closeLightbox();
     });
   </script>
+
+  <!-- Shared Reader Experience Script -->
+  <script src="../../shared/reader.js"></script>
 
 </body>
 </html>
