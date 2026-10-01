@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rekayasa Sifat Elektronik Phosphorene Multilapis melalui Silikonisasi: Desain Material 2D Semikonduktor SiP dan SiP₂ dengan Celah Pita Tahan Ketebalan | Telaah PCCP</title>
+  
+  <!-- Fonts: Newsreader (Editorial Serif) & Plus Jakarta Sans (Clean Modern Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            editorial: {
+              ink: '#18181b',        /* Deep charcoal */
+              body: '#27272a',       /* Warm reading text */
+              muted: '#71717a',      /* Neutral secondary */
+              lightmuted: '#a1a1aa', /* Captions */
+              line: '#e4e4e7',       /* Hairline border */
+              softbg: '#fafafa',     /* Off-white background */
+              paper: '#ffffff',      /* Card white */
+              accent: '#0a74c0',     /* Royal scientific blue */
+              accentDark: '#075997', /* Dark hover blue */
+              accentLight: '#f0f7fc' /* Subtle highlight */
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            serif: ['"Newsreader"', 'Georgia', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #fafafa;
+      color: #27272a;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .article-body p {
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 1.125rem; /* 18px */
+      line-height: 1.82;
+      color: #27272a;
+      margin-bottom: 1.6rem;
+    }
+
+    .article-body p strong {
+      font-weight: 600;
+      color: #18181b;
+    }
+
+    .article-body h2 {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 700;
+      font-size: 1.625rem;
+      line-height: 1.35;
+      color: #18181b;
+      margin-top: 3.5rem;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+      border-bottom: 1px solid #e4e4e7;
+      padding-bottom: 0.5rem;
+    }
+
+    .article-body h3 {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 600;
+      font-size: 1.25rem;
+      line-height: 1.4;
+      color: #18181b;
+      margin-top: 2.25rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+    }
+
+    .article-body blockquote {
+      border-left: 3px solid #0a74c0;
+      padding-left: 1.25rem;
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: 1.75rem;
+      margin-bottom: 1.75rem;
+      font-style: italic;
+      color: #52525b;
+    }
+
+    .editorial-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 0.8125rem; /* 13px */
+      margin: 1.75rem 0;
+      background: #ffffff;
+      border-top: 2px solid #18181b;
+      border-bottom: 2px solid #18181b;
+    }
+
+    .editorial-table th {
+      padding: 0.625rem 0.75rem;
+      text-align: left;
+      font-weight: 600;
+      color: #18181b;
+      border-bottom: 1px solid #18181b;
+      background: #fafafa;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+    }
+
+    .editorial-table td {
+      padding: 0.55rem 0.75rem;
+      border-bottom: 1px solid #f4f4f5;
+      color: #3f3f46;
+      vertical-align: middle;
+    }
+
+    .editorial-table tr:hover td {
+      background-color: #f8fafc;
+    }
+
+    .figure-container {
+      margin: 2.5rem 0;
+      background: #ffffff;
+      border: 1px solid #e4e4e7;
+      border-radius: 4px;
+      padding: 1.25rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+
+    .callout-box {
+      border-left: 3px solid #0a74c0;
+      background: #f0f7fc;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .callout-title {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: #075997;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+    }
+
+    .callout-body {
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #1e293b;
+      margin-bottom: 0 !important;
+    }
+  </style>
+</head>
+<body class="selection:bg-blue-100 selection:text-blue-900">
+
+  <!-- TOP APP NAVIGATION BAR -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-editorial-line transition-all">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="../../index.html" class="flex items-center gap-2 text-xs font-sans font-semibold text-editorial-ink hover:text-editorial-accent transition-colors">
+          <svg class="w-4 h-4 text-editorial-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          <span>Katalog Utama</span>
+        </a>
+        <span class="text-editorial-line">/</span>
+        <span class="text-xs font-mono text-editorial-muted">Paper #10</span>
+      </div>
+
+      <div class="flex items-center gap-4 text-xs font-sans text-editorial-muted">
+        <span class="hidden sm:inline">Estimasi Baca: 22 Menit</span>
+        <div class="h-3 w-px bg-editorial-line hidden sm:inline"></div>
+        <span class="font-mono text-editorial-ink font-semibold">PCCP (RSC)</span>
+      </div>
+    </div>
+    <!-- Reading Progress Bar -->
+    <div id="reading-progress" class="h-0.5 bg-editorial-accent w-0 transition-all duration-150"></div>
+  </header>
+
+  <!-- MAIN ARTICLE CONTAINER -->
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-10 md:py-16 article-body">
+
+    <!-- BREADCRUMBS & BADGES -->
+    <div class="flex flex-wrap items-center gap-2 mb-6 text-xs font-sans">
+      <span class="px-2 py-0.5 rounded bg-blue-50 text-editorial-accent font-semibold uppercase tracking-wider text-[11px] border border-blue-200/60">
+        Material 2D & Rekayasa Pita Energi
+      </span>
+      <span class="text-editorial-lightmuted">•</span>
+      <span class="text-editorial-muted">Teori Fungsional Kerapatan (DFT + HSE06)</span>
+      <span class="text-editorial-lightmuted">•</span>
+      <span class="text-editorial-muted">Silikonisasi Fosforen</span>
+    </div>
+
+    <!-- ARTICLE MASTHEAD -->
+    <h1 class="font-serif text-3xl sm:text-4xl md:text-[2.65rem] leading-[1.22] font-semibold text-editorial-ink tracking-tight mb-5">
+      Rekayasa Sifat Elektronik Phosphorene Multilapis melalui Silikonisasi: Menjinakkan Ketergantungan Ketebalan untuk Semikonduktor 2D Generasi Baru
+    </h1>
+
+    <p class="font-sans text-base sm:text-lg text-editorial-muted leading-relaxed mb-6 font-normal">
+      Bagaimana reaksi silikonisasi terhadap fosforen multilapis mentransformasikan kerapuhan celah pita akibat variasi ketebalan menjadi material dua dimensi SiP dan SiP₂ yang stabil, mempertahankan celah pita semikonduktor lebar, dan mengungkap mekanisme transportasi elektron terisolasi di lapisan inti.
+    </p>
+
+    <!-- METADATA & CITATION STRIP -->
+    <div class="pt-4 pb-6 border-y border-editorial-line text-xs font-sans text-editorial-muted flex flex-wrap justify-between items-center gap-y-3 mb-8">
+      <div>
+        <span class="font-semibold text-editorial-ink">Oleksandr I. Malyi, Kostiantyn V. Sopiha, Ihor Radchenko, Ping Wu, Clas Persson*</span>
+        <span class="block text-editorial-lightmuted mt-0.5">Universitetet i Oslo (Norwegia) & Singapore University of Technology and Design (Singapura)</span>
+      </div>
+      <div class="text-right font-mono text-[11px]">
+        <div class="text-editorial-ink font-semibold">Phys. Chem. Chem. Phys. 2018, 20, 2075–2083</div>
+        <div class="text-editorial-muted">DOI: 10.1039/c7cp06196j • Royal Society of Chemistry</div>
+      </div>
+    </div>
+
+    <!-- METRICS STRIP -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 my-8 font-sans">
+      <div class="p-3 bg-white border border-editorial-line rounded shadow-xs">
+        <div class="text-[11px] uppercase tracking-wider text-editorial-muted font-semibold">Celah Pita Monolayer</div>
+        <div class="text-2xl font-bold text-editorial-ink mt-0.5 font-mono">2.66 eV</div>
+        <div class="text-[11px] text-editorial-muted mt-0.5">2d-SiP (HSE06)</div>
+      </div>
+      <div class="p-3 bg-white border border-editorial-line rounded shadow-xs">
+        <div class="text-[11px] uppercase tracking-wider text-editorial-muted font-semibold">Toleransi Ketebalan</div>
+        <div class="text-2xl font-bold text-emerald-700 mt-0.5 font-mono">0.22 eV</div>
+        <div class="text-[11px] text-editorial-muted mt-0.5">ΔE_g SiP₂ (1 s/d 5 Lapis)</div>
+      </div>
+      <div class="p-3 bg-white border border-editorial-line rounded shadow-xs">
+        <div class="text-[11px] uppercase tracking-wider text-editorial-muted font-semibold">Stabilitas Termal</div>
+        <div class="text-2xl font-bold text-editorial-ink mt-0.5 font-mono">600 K</div>
+        <div class="text-[11px] text-editorial-muted mt-0.5">BOMD 20 ps bebas cacat</div>
+      </div>
+      <div class="p-3 bg-white border border-editorial-line rounded shadow-xs">
+        <div class="text-[11px] uppercase tracking-wider text-editorial-muted font-semibold">Energi Antarlapis</div>
+        <div class="text-2xl font-bold text-editorial-accent mt-0.5 font-mono">-32 meV</div>
+        <div class="text-[11px] text-editorial-muted mt-0.5">Per atom (Eksfoliasi mudah)</div>
+      </div>
+    </div>
+
+    <!-- TABLE OF CONTENTS (MINI JUMP LINKS) -->
+    <nav class="p-4 bg-zinc-50 border border-editorial-line rounded text-xs font-sans my-8">
+      <div class="font-bold text-editorial-ink uppercase tracking-wider mb-2">Navigasi Bab Telaah</div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-editorial-body">
+        <a href="#dilema-ketebalan" class="hover:text-editorial-accent flex items-center gap-1.5">
+          <span class="text-editorial-lightmuted font-mono">01.</span> Dilema Ketebalan Fosforen & Batasan Sintesis
+        </a>
+        <a href="#fisika-vdw" class="hover:text-editorial-accent flex items-center gap-1.5">
+          <span class="text-editorial-lightmuted font-mono">02.</span> Fisika Interaksi Antarlapisan (vdW) & Fungsional DFT
+        </a>
+        <a href="#konsep-silikonisasi" class="hover:text-editorial-accent flex items-center gap-1.5">
+          <span class="text-editorial-lightmuted font-mono">03.</span> Konsep Silikonisasi: Kelahiran 2d-SiP & 2d-SiP₂
+        </a>
+        <a href="#penjinakan-celah" class="hover:text-editorial-accent flex items-center gap-1.5">
+          <span class="text-editorial-lightmuted font-mono">04.</span> Penjinakan Sensitivitas Ketebalan & Polimorfisme Stacking
+        </a>
+        <a href="#profil-spasial-ldos" class="hover:text-editorial-accent flex items-center gap-1.5">
+          <span class="text-editorial-lightmuted font-mono">05.</span> Profil Spasial Elektronik & Dominasi Lapisan Pusat
+        </a>
+        <a href="#stabilitas-sintesis" class="hover:text-editorial-accent flex items-center gap-1.5">
+          <span class="text-editorial-lightmuted font-mono">06.</span> Stabilitas Dinamika Molekuler BOMD & Rute Sintesis
+        </a>
+      </div>
+    </nav>
+
+    <!-- SECTION 1 -->
+    <section id="dilema-ketebalan">
+      <h2>01. Dilema Ketebalan Fosforen & Hambatan Skalabilitas Skala Nano</h2>
+
+      <p>
+        Sejak berhasil dieksfoliasi secara mekanis dari kristal ruah fosfor hitam (*black phosphorus*) pada tahun 2014, <strong>fosforen (2d-P)</strong> telah memikat perhatian komunitas fisika zat padat dan nanoteknologi dunia. Tidak seperti grafena yang tidak memiliki celah pita energi (*zero band gap*), fosforen merupakan semikonduktor dengan celah pita langsung (*direct band gap*) yang lebar, mobilitas pembawa muatan yang tinggi (mencapai `~1000 cm²·V⁻¹·s⁻¹`), serta anisotropi termal dan optik yang sangat mencolok akibat struktur bergelombangnya (*puckered lattice*).
+      </p>
+
+      <p>
+        Karakteristik ini menjadikan fosforen kandidat idaman untuk transistor efek medan (FET), sensor gas ultra-sensitif, elektroda baterai ion logam, hingga fotodetektor inframerah. Namun, ada satu batu sandungan fisik yang sangat berat dalam penerapannya di dunia nyata: <strong>ketergantungan celah pita yang terlampau curam terhadap ketebalan lapisan</strong>.
+      </p>
+
+      <p>
+        Perhitungan fungsional hibrida menunjukkan bahwa celah pita fosforen berkurang secara drastis saat jumlah lapisan bertambah. Pada lembaran tunggal (*monolayer*), celah pitanya bernilai `1.52 eV`. Begitu dua lembaran menumpuk menjadi *bilayer*, celah pita langsung anjlok menjadi `1.02 eV`—kehilangan setengah elektron-volt hanya karena penambahan satu lapis atom! Penurunan ini terus berlanjut hingga menyentuh nilai ruah (*bulk*) sebesar `0.38–0.39 eV`.
+      </p>
+
+      <div class="callout-box">
+        <div class="callout-title">Tantangan Manufaktur Skala Nano: Hambatan Polidispersitas Ketebalan</div>
+        <p class="callout-body">
+          Dalam sintesis material dua dimensi di laboratorium maupun industri, mengontrol ketebalan lembaran atom secara presisi merupakan tantangan eksperimental yang luar biasa berat:
+          <br><br>
+          1. <strong>Metode Eksfoliasi (Mekanis & Cair):</strong> Hanya menghasilkan campuran serpihan acak (*polydisperse flakes*) dengan variasi ketebalan mulai dari 1 hingga puluhan lapis atom. Serpihan lapis tunggal murni sangat langka dan sulit dipisahkan.
+          <br>
+          2. <strong>Deposisi Uap Kimiawi (CVD) & Tekanan Tinggi:</strong> Pertumbuhan langsung fosfor hitam dari fosfor merah umumnya menghasilkan film polikristalin tebal berukuran 40–200 nm, bukan monolayer homogen.
+          <br>
+          3. <strong>Variabilitas Performa Piranti:</strong> Karena celah pita fosforen anjlok dari `1.52 eV` ke `0.38 eV` seiring bertambahnya tebal, fluktuasi ketebalan antar-sampel menyebabkan tegangan ambang (*threshold voltage*), arus gelap (*dark current*), dan respons optik piranti nano menjadi tidak dapat diprediksi secara konsisten.
+          <br>
+          4. <strong>Ketiadaan Semikonduktor Celah Lebar Tebal:</strong> Untuk aplikasi optoelektronika atau transistor daya yang memerlukan lapisan aktif fisik yang cukup tebal (agar absorpsi cahaya optimal atau tahan arus tinggi) namun tetap mempertahankan celah pita lebar, fosforen murni sama sekali tidak dapat digunakan.
+        </p>
+      </div>
+
+      <p>
+        Upaya sebelumnya untuk memodifikasi celah pita material 2D mencakup penerapan medan listrik eksternal tegak lurus, regangan mekanis (*mechanical strain*), interkalasi ion logam, atau variasi sudut tumpukan (*stacking*). Namun, metode-metode ini sering kali sulit diimplementasikan secara stabil dalam skala produksi. 
+      </p>
+
+      <p>
+        Dalam studi ini, tim peneliti gabungan dari University of Oslo dan Singapore University of Technology and Design (SUTD) mengusulkan strategi inovatif: <strong>memanfaatkan reaktivitas kimiawi fosforen untuk membentuk senyawa biner silikon fosfida 2D (2d-SiP dan 2d-SiP₂)</strong>. Melalui silikonisasi terkontrol, interaksi antarlapisan dapat diatur secara elegan, meredam ketergantungan ketebalan secara radikal sekaligus mempertahankan celah pita semikonduktor yang lebar.
+      </p>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section id="fisika-vdw">
+      <h2>02. Fisika Interaksi Antarlapisan (vdW) & Sensitivitas Fungsional DFT</h2>
+
+      <p>
+        Untuk memahami bagaimana silikonisasi dapat menstabilkan celah pita, penting untuk mengupas akar fisika dari ketergantungan ketebalan pada fosforen murni (2d-P). Penurunan celah pita saat lapisan menumpuk terjadi akibat tumpang tindih (*orbital overlap*) dan hibridisasi orbital `p_z` fosfor antarlapisan yang disatukan oleh gaya van der Waals (vdW). Hibridisasi ini menyebabkan pelebaran pita energi (*band broadening*): pita valensi maksimum (VBM) terdorong ke atas sementara pita konduksi minimum (CBM) terdorong ke bawah.
+      </p>
+
+      <figure class="figure-container">
+        <img 
+          src="assets/fig1_phosphorene_thickness_gap.png" 
+          alt="Ketergantungan Ketebalan Celah Pita HSE Fosforen Multilapis dan Pengaruh Fungsional XC DFT" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 1.</strong> Karakteristik ketebalan fosforen multilapis (2d-P): (a) Evolusi celah pita energi HSE06 sebagai fungsi jumlah lapisan yang direlaksasi menggunakan berbagai fungsional XC (PBE, DFT-D2, optPBE-vdW, optB88-vdW, optB86b-vdW). (b) Energi interaksi antarlapisan (`E_inter`) per atom. (c) Skema ilustrasi jarak antarlapisan pada bilayer fosforen. (d) Korelasi celah pita HSE sebagai fungsi jarak pemisahan antarlapisan; inset menunjukkan variasi celah pita dan jarak ekuilibrium untuk masing-masing fungsional vdW.
+        </figcaption>
+      </figure>
+
+      <p>
+        Namun, perhitungan mekanika kuantum *ab initio* (DFT) pada material berlapis sangat sensitif terhadap model pertukaran-korelasi (*exchange-correlation*, XC) yang digunakan, terutama dalam memperlakukan interaksi dispersi van der Waals non-lokal:
+      </p>
+
+      <ul class="list-disc pl-5 space-y-2 font-serif text-lg text-editorial-body mb-6">
+        <li>
+          <strong>Kegagalan Aproksimasi Gradien Tergeneralisasi (PBE):</strong> Fungsional standar PBE tidak memperhitungkan korelasi dispersi jarak jauh. Akibatnya, PBE sangat meremehkan interaksi antarlapis fosforen, menghasilkan energi ikat antarlapisan semu yang sangat lemah (`E_inter = -5 meV/atom`) dan jarak ekuilibrium antarlapis yang terlalu renggang (`3.50 Å`).
+        </li>
+        <li>
+          <strong>Keunggulan Fungsional Koreksi Dispersi (vdW-DF & DFT-D2):</strong> Fungsional seperti `optB86b-vdW`, `optB88-vdW`, dan `DFT-D2` menangkap gaya tarik dispersi non-lokal secara akurat. Untuk bilayer fosforen, `optB86b-vdW` memprediksi jarak antarlapis yang rapat (`3.09 Å`) dengan energi interaksi yang kuat (`E_inter = -59 meV/atom`), yang sangat selaras dengan data difraksi sinar-X kristal ruah eksperimental.
+        </li>
+        <li>
+          <strong>Korelasi Monotonik Jarak-Celah Pita:</strong> Sebagaimana diperlihatkan pada Gambar 1d, saat dua lembaran fosforen ditarik menjauh secara artifisial dari jarak `3.0 Å` ke `8.0 Å`, celah pita HSE meningkat secara monotonik hingga mencapai batas celah pita lembaran tunggal terisolasi (`1.52 eV`).
+        </li>
+        <li>
+          <strong>Pengaruh Relaksasi Dalam-Bidang (In-Plane Relaxation):</strong> Di luar jarak antarlapis, variasi fungsional XC juga memicu perbedaan konstanta kisi dalam-bidang sepanjang arah *armchair* hingga 3% (meskipun panjang ikatan kovalen P-P rata-rata tetap konstan pada `2.24 ± 0.01 Å`). Regangan kisi dalam-bidang ini turut berkontribusi menggeser celah pita monolayer antara `1.46 eV` (optB86b) hingga `1.59 eV` (PBE).
+        </li>
+      </ul>
+
+      <p>
+        Temuan ini membuktikan bahwa interaksi antarlapisan adalah tuas pengendali utama dari celah pita fosforen. Oleh karena itu, jika kita dapat memodifikasi struktur kisi dan kimia antarmuka lembaran melalui penambahan atom asing yang stabil—seperti silikon—maka interaksi antarlapis dan ketergantungan ketebalannya dapat dijinakkan secara terukur.
+      </p>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section id="konsep-silikonisasi">
+      <h2>03. Konsep Silikonisasi: Kelahiran Semikonduktor 2D SiP & SiP₂</h2>
+
+      <p>
+        Melalui penapisan basis data material komputasi *Materials Project*, sistem biner silikon-fosfor (Si-P) muncul sebagai kandidat paling menjanjikan. Kristal ruah SiP dan SiP₂ telah lama diketahui dapat disintesis di laboratorium melalui metode transpor uap kimiawi maupun kristalisasi fluks logam cair (seperti timah cair Sn dengan mineralisator Mg atau Gd).
+      </p>
+
+      <p>
+        Dalam bentuk dua dimensi, senyawa **2d-SiP** dan **2d-SiP₂** mempertahankan motif bergelombang (*waved/puckered motif*) khas fosforen, tetapi kerangka atomnya diperkuat oleh kombinasi ikatan kovalen Si–Si dan ikatan kovalen polar Si–P.
+      </p>
+
+      <div class="overflow-x-auto my-6">
+        <table class="editorial-table">
+          <thead>
+            <tr>
+              <th>Material 2D</th>
+              <th>Stoikiometri Atom</th>
+              <th>Muatan Bader Efektif</th>
+              <th>Kalor Pembentukan PBE (`eV/atom`)</th>
+              <th>Energi Antarlapis `E_inter` (`meV/atom`)</th>
+              <th>Sifat Ikatan Dominan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-semibold">Fosforen (2d-P)</td>
+              <td class="font-mono">P</td>
+              <td class="font-mono">0.00e</td>
+              <td class="font-mono">0.00 (Fase Acuan)</td>
+              <td class="font-mono text-red-600 font-bold">-59 s/d -80</td>
+              <td>Kovalen homonuklir P-P</td>
+            </tr>
+            <tr>
+              <td class="font-semibold text-editorial-accent">2d-SiP (Ortorombik / Monoklinik)</td>
+              <td class="font-mono">Si : P = 1 : 1</td>
+              <td class="font-mono">Si: +1.14e | P: -1.14e</td>
+              <td class="font-mono text-emerald-700 font-semibold">-0.17 (Eksotermik)</td>
+              <td class="font-mono text-editorial-accent font-semibold">-30 s/d -45</td>
+              <td>Kovalen Si-Si & polar Si-P</td>
+            </tr>
+            <tr>
+              <td class="font-semibold text-editorial-accent">2d-SiP₂ (Pnma / Pbam)</td>
+              <td class="font-mono">Si : P = 1 : 2</td>
+              <td class="font-mono">Si: +1.52e | P: -0.76e</td>
+              <td class="font-mono text-emerald-700 font-semibold">-0.14 s/d -0.16</td>
+              <td class="font-mono text-editorial-accent font-semibold">-35 s/d -55</td>
+              <td>Jejaring tetrahedral polar Si-P</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Analisis muatan partisi Bader mengonfirmasi adanya transfer muatan yang signifikan dari silikon ke fosfor. Pada monolayer 2d-SiP, atom Si kehilangan `1.14 elektron` yang ditransfer ke atom P (`+1.14e` pada Si dan `-1.14e` pada P). Pada monolayer 2d-SiP₂, setiap atom silikon mendonasikan `1.52 elektron` yang didistribusikan merata ke dua atom fosfor sekitarnya (`-0.76e` per atom P).
+      </p>
+
+      <p>
+        Polarisasi muatan parsial ini memberikan stabilitas termodinamika yang sangat kokoh. Kalor pembentukan PBE monolayer 2d-SiP bernilai **-0.17 eV per atom** relatif terhadap silikon ruah dan fosfor hitam ruah. Artinya, reaksi silikonisasi fosforen secara termodinamika bersifat eksotermik dan sangat disukai secara spontan.
+      </p>
+
+      <p>
+        Yang paling krusial bagi aplikasi nanoteknologi, energi interaksi antarlapisan (`E_inter`) pada 2d-SiP (`-30` hingga `-45 meV/atom`) dan 2d-SiP₂ (`-35` hingga `-55 meV/atom`) secara konsisten **jauh lebih lemah** dibandingkan energi interaksi antarlapis fosforen murni (`-59` hingga `-80 meV/atom`). Interaksi antarlapis yang lebih renggang dan lemah ini menyiratkan bahwa kristal ruah SiP dan SiP₂ dapat dieksfoliasi secara mekanis maupun kimiawi menjadi lembaran atomik tunggal (*single layer*) dengan kemudahan yang jauh lebih tinggi daripada fosfor hitam konvensional.
+      </p>
+    </section>
+
+    <!-- SECTION 4 -->
+    <section id="penjinakan-celah">
+      <h2>04. Penjinakan Sensitivitas Ketebalan & Polimorfisme Penataan Stacking</h2>
+
+      <p>
+        Pencapaian utama dari silikonisasi fosforen adalah keberhasilan menekan laju penurunan celah pita energi (*band gap drop*) saat material bertambah tebal.
+      </p>
+
+      <figure class="figure-container">
+        <img 
+          src="assets/fig2_sip_structures_gap_thickness.png" 
+          alt="Struktur Penataan Tumpukan Stacking 2d-SiP dan Evolusi Celah Pita HSE terhadap Ketebalan" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 2.</strong> Karakteristik struktural dan elektronik 2d-SiP: Ilustrasi skematik dua penataan tumpukan (*stacking*) berbeda dari lembaran SiP terisolasi: (a) fase ortorombik `Cmc2_1` dan (b) fase monoklinik `C2/m`. Energi interaksi antarlapisan (`E_inter`) sebagai fungsi ketebalan untuk (c) `Cmc2_1` dan (d) `C2/m`. Ketergantungan ketebalan celah pita HSE06 untuk (e) `2d-SiP(Cmc2_1)` dan (f) `2d-SiP(C2/m)` yang direlaksasi menggunakan berbagai fungsional XC.
+        </figcaption>
+      </figure>
+
+      <h3>A. Perilaku Elektronik 2d-SiP</h3>
+      <p>
+        Monolayer 2d-SiP merupakan semikonduktor celah tak-langsung dengan celah pita HSE06 sebesar **2.66 ± 0.01 eV**. Luar biasanya, nilai celah pita monolayer SiP hampir tidak terpengaruh oleh pilihan fungsional relaksasi XC (hanya bervariasi kurang dari 0.01 eV). Hal ini berbeda dengan fosforen murni, karena kerangka kovalen Si–P yang rigid mempertahankan geometri ikatan secara sangat stabil.
+      </p>
+
+      <p>
+        Saat lembaran SiP ditumpuk dari 1 lapis hingga 5 lapis atom:
+      </p>
+
+      <ul class="list-disc pl-5 space-y-2 font-serif text-lg text-editorial-body mb-6">
+        <li>
+          Pada fase ortorombik `2d-SiP(Cmc2_1)`, celah pita HSE berkurang dari `2.66 eV` (1 lapis) menjadi `1.91 eV` (5 lapis), mencerminkan pergeseran celah pita sebesar `ΔE_g = 0.75 eV`. Nilai ini jauh lebih kecil dibandingkan penyusutan fosforen murni (`ΔE_g = 0.91 eV`).
+        </li>
+        <li>
+          <strong>Derajat Kebebasan Stacking:</strong> Kristal SiP dapat eksis dalam dua susunan tumpukan: ortorombik (`Cmc2_1`) dan monoklinik (`C2/m`). Selisih energi pembentukan kedua fase ini kurang dari `1 meV/atom`, menandakan bahwa kedua tumpukan dapat tumbuh berdampingan pada skala nano.
+        </li>
+        <li>
+          Pada bilayer SiP, perbedaan tumpukan memicu selisih celah pita energi hingga lebih dari `0.2 eV` (`2.19 eV` untuk `Cmc2_1` vs `2.01 eV` untuk `C2/m` pada relaksasi optB88-vdW). Analisis kristalografi mengungkap bahwa perbedaan ini dikendalikan oleh jarak kontak terpendek atom P–P antarlapis (`3.58 Å` pada `Cmc2_1` vs `3.53 Å` pada `C2/m`).
+        </li>
+      </ul>
+
+      <figure class="figure-container">
+        <img 
+          src="assets/fig3_sip2_structures_gap_thickness.png" 
+          alt="Struktur Kristal Penataan Stacking 2d-SiP2 dan Ketahanan Celah Pita terhadap Ketebalan" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 3.</strong> Karakteristik struktural dan elektronik 2d-SiP₂: Skema dua polimorfi tumpukan (a) `SiP_2(Pnma)` dan (b) `SiP_2(Pbam)`. Energi interaksi antarlapisan (`E_inter`) untuk (c) `Pnma` dan (d) `Pbam`. Evolusi celah pita HSE06 terhadap jumlah lapisan untuk (e) fase `Pnma` dan (f) fase `Pbam`. Perhatikan bahwa kurva penurunan celah pita pada 2d-SiP₂ jauh lebih landai dibandingkan fosforen maupun SiP.
+        </figcaption>
+      </figure>
+
+      <h3>B. Perilaku Elektronik 2d-SiP₂: Ketahanan Celah Pita Ekstrem</h3>
+      <p>
+        Kinerja penjinakan ketebalan paling spektakuler ditemukan pada senyawa kaya fosfor **2d-SiP₂**. Monolayer 2d-SiP₂ memiliki celah pita semikonduktor berkisar antara `2.20 eV` hingga `2.33 eV`.
+      </p>
+
+      <p>
+        Ketika ketebalan ditingkatkan dari 1 lapis hingga 5 lapis atom pada struktur `optB88-vdW`:
+      </p>
+
+      <ul class="list-disc pl-5 space-y-2 font-serif text-lg text-editorial-body mb-6">
+        <li>
+          Celah pita `2d-SiP_2(Pnma)` hanya menyusut sebesar **0.22 eV** (dari `2.26 eV` pada monolayer menjadi `2.04 eV` pada 5-lapis).
+        </li>
+        <li>
+          Bahkan pada fungsional `optB86b-vdW` yang memperkirakan interaksi paling kuat, penyusutan celah pita maksimal hanya `0.43 eV`.
+        </li>
+        <li>
+          Ini berarti silikonisasi berhasil **mereduksi sensitivitas ketebalan celah pita hingga 76%** dibandingkan fosforen murni (`0.22 eV` vs `0.91 eV`)!
+        </li>
+      </ul>
+
+      <p>
+        Implikasi teknologi dari ketahanan ini sangat masif: jika suatu piranti semikonduktor difabrikasi menggunakan serpihan 2d-SiP₂ yang memiliki ketebalan bervariasi antara 2 lapis, 3 lapis, atau 5 lapis, celah pita material aktif akan tetap stabil di kisaran `~2.05–2.20 eV`. Tidak ada lagi fluktuasi kinerja elektronik yang merusak fungsi rangkaian terpadu!
+      </p>
+    </section>
+
+    <!-- SECTION 5 -->
+    <section id="profil-spasial-ldos">
+      <h2>05. Profil Spasial Elektronik & Dominasi Lapisan Pusat (Layer-Resolved LDOS)</h2>
+
+      <p>
+        Bagaimana muatan listrik sebenarnya mengalir di dalam lembaran multilapis? Apakah seluruh lapisan atom berkontribusi secara seragam, ataukah terjadi spesialisasi fungsi antar-lapisan? Untuk menjawab teka-teki ini, para peneliti menghitung **kerapatan keadaan lokal terurai lapisan (*layer-resolved LDOS*)** dan mengintegrasikannya terhadap energi pita valensi dan konduksi.
+      </p>
+
+      <figure class="figure-container">
+        <img 
+          src="assets/fig4_ldos_spatial_effective_gaps.png" 
+          alt="Layer-Resolved LDOS dan Celah Pita Efektif Spasial Lapisan Terluar vs Lapisan Pusat" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 4.</strong> Karakterisasi spasial elektronik per lapisan: (a) Kerapatan keadaan lokal terurai lapisan (*layer-resolved LDOS*) untuk 2d-P 5-lapis. LDOS terintegrasi untuk (b) 2d-P, (c) 2d-SiP(`Cmc2_1`), dan (d) 2d-SiP₂(`Pnma`). Indeks lapisan meningkat dari bawah (lapisan 1) ke atas (lapisan 5). (e–g) Ketergantungan ketebalan celah pita efektif spasial yang dihitung dari LDOS terintegrasi dengan ambang batas kerapatan 0.5 dan 3 me/atom untuk (e) 2d-P, (f) 2d-SiP, dan (g) 2d-SiP₂. Perhatikan bahwa lapisan terluar (*outermost*) mempertahankan celah pita efektif yang konstan, sementara lapisan pusat (*central*) mengalami penyusutan monotonik.
+        </figcaption>
+      </figure>
+
+      <p>
+        Hasil analisis simetri kelompok lapisan (*layer group symmetry*) dan LDOS mengungkap fakta fisik yang fundamental:
+      </p>
+
+      <div class="overflow-x-auto my-6">
+        <table class="editorial-table">
+          <thead>
+            <tr>
+              <th>Sistem Multilapis (5-Lapis)</th>
+              <th>Simetri Kelompok Lapisan</th>
+              <th>Jumlah Lapisan Non-Ekuivalen</th>
+              <th>Rasio Muatan Terluar / Pusat (`0.1 eV` bawah VBM)</th>
+              <th>Perilaku Celah Pita Spasial</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-semibold">Fosforen (2d-P)</td>
+              <td class="font-mono">Pman (Ganjil) / Pbma (Genap)</td>
+              <td class="font-mono">3 (Lapisan 1=5, 2=4, 3)</td>
+              <td class="font-mono">0.40</td>
+              <td>Lapisan pusat menentukan VBM/CBM; lapisan luar celah lebih lebar</td>
+            </tr>
+            <tr>
+              <td class="font-semibold text-editorial-accent">2d-SiP (Cmc2_1)</td>
+              <td class="font-mono">Cm11 (Asimetris)</td>
+              <td class="font-mono">5 (Seluruh lapisan unik)</td>
+              <td class="font-mono text-emerald-700 font-bold">0.10 dan 0.20</td>
+              <td>Asimetri permukaan ekstrem; pembawa muatan terpusat di inti dalam</td>
+            </tr>
+            <tr>
+              <td class="font-semibold text-editorial-accent">2d-SiP₂ (Pnma)</td>
+              <td class="font-mono">Pm2_1b (Ganjil) / P2_1/m11 (Genap)</td>
+              <td class="font-mono">3 (Lapisan 1=5, 2=4, 3)</td>
+              <td class="font-mono font-semibold">0.80</td>
+              <td>Variasi LDOS sangat lemah; transfer muatan merata antar-lapisan</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Prinsip Dominasi Lapisan Pusat (*Central Layer Dominance*)</h3>
+      <p>
+        Pada seluruh sistem material dua dimensi yang diteliti (2d-P, 2d-SiP, dan 2d-SiP₂), <strong>lapisan pusat (central layer) selalu mendikte tepi pita valensi atas (VBM) dan konduksi bawah (CBM)</strong>. Hal ini terjadi karena atom-atom pada lapisan pusat mengalami interaksi van der Waals dua sisi (dari atas dan bawah), sehingga mengalami hibridisasi orbital dan tolakan tingkat energi paling intensif.
+      </p>
+
+      <p>
+        Sebaliknya, dua lapisan terluar (*outermost layers*) hanya berinteraksi dengan satu tetangga di salah satu sisinya (sisi luar menghadap ruang hampa udara). Akibatnya, hibridisasi orbital pada lapisan terluar jauh lebih minim.
+      </p>
+
+      <h3>Mekanisme Pembungkus Alami (*Natural Cladding & Surface Insulation*)</h3>
+      <p>
+        Dengan menerapkan ambang batas kerapatan pembawa muatan (0.5 dan 3 me per atom), tim peneliti menghitung <strong>celah pita efektif spasial untuk masing-masing lapisan</strong> (Gambar 4e–g):
+      </p>
+
+      <ul class="list-disc pl-5 space-y-2 font-serif text-lg text-editorial-body mb-6">
+        <li>
+          <strong>Lapisan Pusat:</strong> Celah pita efektif menyusut secara teratur dan monotonik seiring bertambahnya jumlah lapisan atom, persis mengikuti perilaku ruah.
+        </li>
+        <li>
+          <strong>Lapisan Terluar:</strong> Celah pita efektif lapisan luar **sama sekali tidak berubah** dari sistem bilayer hingga 5-layer pada ambang batas 3 me/atom!
+        </li>
+        <li>
+          <strong>Lokalisasi Aliran Arus:</strong> Pada `0.1 eV` di bawah VBM (kondisi semikonduktor terdegenerasi tipe-p), rasio kerapatan pembawa muatan bebas lapisan terluar terhadap lapisan pusat hanya `0.4` pada 2d-P dan bahkan anjlok menjadi `0.1` dan `0.2` pada 2d-SiP(`Cmc2_1`).
+        </li>
+      </ul>
+
+      <p>
+        Fenomena ini sangat penting: lapisan terluar material bertindak sebagai lapisan penyekat (*protective wide-gap cladding*) alami yang membatasi dan mengurung pembawa muatan di saluran konduksi bagian dalam (*internal conductive channel*). Hal ini secara inheren melindungi aliran elektron dari hamburan permukaan (*surface scattering*), oksidasi udara, maupun gangguan molekul adsorbat dari lingkungan eksternal!
+      </p>
+    </section>
+
+    <!-- SECTION 6 -->
+    <section id="stabilitas-sintesis">
+      <h2>06. Stabilitas Dinamika Molekuler BOMD & Rute Sintesis Eksperimental</h2>
+
+      <p>
+        Untuk membuktikan bahwa struktur 2d-SiP dan 2d-SiP₂ bukan sekadar konstruksi teoritis di atas kertas melainkan material yang dapat bertahan di laboratorium, para peneliti menjalankan simulasi **dinamika molekuler Born-Oppenheimer (*ab initio* BOMD)** pada suhu ruangan (300 K) dan suhu tinggi (600 K) selama 20 pikodetik (ps) dengan langkah waktu 1 fs.
+      </p>
+
+      <figure class="figure-container">
+        <img 
+          src="assets/fig5_bomd_stability_siliconization.png" 
+          alt="Simulasi Dinamika Molekuler BOMD 600 K, Kalor Pembentukan, dan Skema Rute Sintesis Eksperimental" 
+          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
+          onclick="openLightbox(this.src, this.alt)"
+        >
+        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
+          <strong class="text-editorial-ink font-semibold">Gambar 5.</strong> Uji stabilitas dinamis dan strategi rekayasa sintesis: (a) Evolusi energi potensial PBE untuk lembaran tunggal 2d-SiP dan 2d-SiP₂ selama simulasi BOMD pada temperatur 600 K selama 20 ps. (b) Kalor pembentukan PBE dari struktur yang disampel setiap 5 ps. Ilustrasi skematik dua strategi fabrikasi: (c) eksfoliasi mekanis/cair dari kristal ruah SiP_x, dan (d) silikonisasi langsung lembaran fosforen via paparan fluks uap Si. Perbandingan menyeluruh (e) celah pita HSE06 dan (f) energi interaksi antarlapis (`E_inter`) antara 2d-P, 2d-SiP, dan 2d-SiP₂.
+        </figcaption>
+      </figure>
+
+      <p>
+        Sebagaimana tampak pada Gambar 5a dan 5b, energi potensial sistem tetap berosilasi stabil di sekitar nilai rata-rata konstan sepanjang simulasi 20 ps pada suhu ekstrem 600 K. Kalor pembentukan tetap negatif kokoh di kisaran `-0.17 eV/atom` (SiP) dan `-0.15 eV/atom` (SiP₂). Tidak ditemukan tanda-tanda kerusakan ikatan, putusnya kerangka kovalen, amorfisasi, maupun rekonstruksi kisi menjadi fasa tak diinginkan.
+      </p>
+
+      <h3>Dua Rute Fabrikasi yang Layak Secara Eksperimental</h3>
+      <p>
+        Didukung oleh kalor pembentukan eksotermik dan kestabilan kisi yang tinggi, terdapat dua jalur metodologis untuk merealisasikan material semikonduktor 2d-SiP_x ini di laboratorium:
+      </p>
+
+      <ol class="list-decimal pl-5 space-y-3 font-serif text-lg leading-relaxed text-editorial-body mb-6">
+        <li>
+          <strong>Jalur Eksfoliasi Top-Down (Gambar 5c):</strong> Mengisolasi lembaran atomik dari kristal ruah SiP dan SiP₂ yang disintesis melalui metode fluks Sn atau transpor uap kimiawi (CVT). Karena energi interaksi antarlapisan `E_inter` pada fasa Si-P (`-30` s/d `-45 meV/atom`) jauh lebih lemah dibanding fosfor hitam murni (`-59` s/d `-80 meV/atom`), proses sonikasi cair atau pengelupasan pita mekanis akan menghasilkan rendemen monolayer dan few-layer yang jauh lebih melimpah.
+        </li>
+        <li>
+          <strong>Jalur Silikonisasi Bottom-Up (Gambar 5d):</strong> Memanfaatkan reaktivitas tinggi fosforen yang telah dieksfoliasi atau ditumbuhkan di atas substrat, kemudian diekspos terhadap fluks atom silikon (misalnya melalui deposisi uap kimia/fisik terkontrol atau penembakan plasma Si) pada suhu termal moderat. Atom silikon akan berdifusi dan berinterkalasi secara teratur ke dalam celah antar-lapisan fosforen, membentuk kisi 2d-SiP atau 2d-SiP₂ secara terarah.
+        </li>
+      </ol>
+
+      <div class="callout-box">
+        <div class="callout-title">Kesimpulan Editorial & Dampak pada Teknologi Semikonduktor 2D</div>
+        <p class="callout-body">
+          Studi komputasi kuantum oleh Malyi dkk. ini menghadirkan paradigma baru dalam desain material dua dimensi. Dengan mengubah fosforen menjadi semikonduktor biner 2d-SiP dan 2d-SiP₂, dua kelemahan fatal fosfor hitam—yaitu ketidakstabilan antarmuka dan penurunan celah pita yang terlampau curam akibat fluktuasi tebal—berhasil diatasi secara simultan.
+          <br><br>
+          Penurunan celah pita yang terpangkas hingga 76% (hanya `0.22 eV` pada SiP₂ dari 1 hingga 5 lapis), dikombinasikan dengan celah pita semikonduktor lebar (`>2.0 eV`), ketahanan termal 600 K, serta efek penyekatan alami lapisan terluar, membuka jalan lebar bagi penciptaan fotodetektor tahan lingkungan, transistor berdaya tahan tinggi, dan elemen optoelektronika fleksibel generasi masa depan yang kebal terhadap variabilitas manufaktur skala nano.
+        </p>
+      </div>
+    </section>
+
+    <!-- METADATA & CITATION SECTION -->
+    <section class="mt-16 pt-8 border-t border-editorial-line text-xs font-sans text-editorial-muted">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <div class="font-bold text-editorial-ink uppercase tracking-wider mb-2">Informasi Publikasi Resmi</div>
+          <ul class="space-y-1">
+            <li><strong>Judul Asli:</strong> Tailoring electronic properties of multilayer phosphorene by siliconization</li>
+            <li><strong>Penulis:</strong> Oleksandr I. Malyi, Kostiantyn V. Sopiha, Ihor Radchenko, Ping Wu, and Clas Persson*</li>
+            <li><strong>Afiliasi:</strong> Centre for Materials Science and Nanotechnology, Department of Physics, University of Oslo, Norwegia; Engineering Product Development, Singapore University of Technology and Design (SUTD), Singapura</li>
+            <li><strong>Jurnal:</strong> Physical Chemistry Chemical Physics (PCCP), Vol. 20, Hal. 2075–2083 (2018)</li>
+            <li><strong>Penerbit:</strong> Royal Society of Chemistry (RSC)</li>
+            <li><strong>DOI:</strong> <a href="https://doi.org/10.1039/c7cp06196j" target="_blank" class="text-editorial-accent hover:underline">10.1039/c7cp06196j</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-bold text-editorial-ink uppercase tracking-wider mb-2">Metodologi & Parameter Komputasi</div>
+          <ul class="space-y-1">
+            <li><strong>Paket DFT:</strong> VASP (Vienna Ab Initio Simulation Package)</li>
+            <li><strong>Fungsional XC:</strong> PBE, DFT-D2, optPBE-vdW, optB88-vdW, optB86b-vdW</li>
+            <li><strong>Perhitungan Celah Pita:</strong> Fungsional Hibrida Heyd-Scuseria-Ernzerhof (HSE06)</li>
+            <li><strong>Dinamika Molekuler:</strong> Born-Oppenheimer MD (BOMD, 300 K & 600 K, 20 ps, step 1 fs)</li>
+            <li><strong>Analisis Muatan & Visualisasi:</strong> Partisi Bader (Henkelman Group), VESTA, pymatgen</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-editorial-line flex items-center justify-between">
+        <a href="../../index.html" class="inline-flex items-center gap-1.5 text-xs font-semibold text-editorial-ink hover:text-editorial-accent">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          Kembali ke Katalog Utama Paper-Hub
+        </a>
+        <span class="text-editorial-lightmuted">TelaahSains Hub • Format Editorial Sains Bebas AI Workslop</span>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- LIGHTBOX MODAL FOR FULL RESOLUTION IMAGE INSPECTION -->
+  <div id="lightbox" class="fixed inset-0 bg-black/80 z-50 hidden flex flex-col items-center justify-center p-4 backdrop-blur-xs" onclick="closeLightbox()">
+    <div class="relative max-w-5xl max-h-[90vh] flex flex-col items-center" onclick="event.stopPropagation()">
+      <button onclick="closeLightbox()" class="absolute -top-10 right-0 text-white hover:text-zinc-300 text-sm font-mono flex items-center gap-1">
+        <span>Tutup [ESC]</span>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[80vh] object-contain rounded bg-white p-2 shadow-2xl">
+      <p id="lightbox-caption" class="text-zinc-200 text-xs text-center mt-3 max-w-2xl font-sans"></p>
+    </div>
+  </div>
+
+  <script>
+    // Reading Progress Indicator
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('reading-progress').style.width = scrolled + '%';
+    });
+
+    // Lightbox Controls
+    function openLightbox(src, caption) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox-caption').textContent = caption;
+      document.getElementById('lightbox').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+
+</body>
+</html>
