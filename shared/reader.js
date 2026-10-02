@@ -447,7 +447,7 @@
   }
 
   // --- 4B. FLOATING READER NOTES CONTROLLER (Left Gutter & Mobile Drawer) ---
-  // --- 4. READER NOTES (OFF-CANVAS DRAWER & GENERAL NOTES) ---
+  // --- 4. READER NOTES (INLINE SIDEBAR PANEL & GENERAL NOTES) ---
   const NOTES_PREFIX = 'telaahsains_notes_';
 
   function getPaperNotes(paperId) {
@@ -495,8 +495,8 @@
     const countAll = notes.length;
     const countDone = notes.filter(n => n.done).length;
 
-    const badgeEl = document.getElementById('notes-count-badge');
-    if (badgeEl) badgeEl.textContent = `${countAll} item`;
+    const countEl = document.getElementById('sidebar-notes-count');
+    if (countEl) countEl.textContent = `${countAll} item`;
 
     const sumEl = document.getElementById('notes-summary-text');
     if (sumEl) sumEl.textContent = `${countAll} catatan (${countDone} selesai)`;
@@ -504,9 +504,8 @@
     if (notes.length === 0) {
       container.innerHTML = `
         <div class="notes-empty-state">
-          <div style="font-size: 1.6rem; margin-bottom: 0.4rem;">📝</div>
-          <p style="font-weight: 600; color: var(--text-heading); margin-bottom: 0.25rem;">Belum ada catatan</p>
-          <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.4;">Tuliskan poin penting, kutipan, atau hal yang perlu dipelajari lebih lanjut di kolom atas.</p>
+          <p style="font-weight: 600; color: var(--text-heading); margin-bottom: 0.15rem;">Belum ada catatan</p>
+          <p style="font-size: 0.6875rem; color: var(--text-muted); line-height: 1.4;">Tuliskan poin penting, kutipan, atau hal yang perlu dicari di kolom atas.</p>
         </div>
       `;
       return;
@@ -530,7 +529,7 @@
               <input type="checkbox" ${note.done ? 'checked' : ''} onchange="togglePaperNoteDone('${note.id}')">
               <span>${note.done ? 'Selesai' : 'Tandai selesai'}</span>
             </label>
-            <a href="https://www.google.com/search?q=${searchQuery}" target="_blank" rel="noopener noreferrer" class="notes-search-btn" title="Cari topik ini di Google">
+            <a href="https://www.google.com/search?q=${searchQuery}" target="_blank" rel="noopener noreferrer" class="notes-search-btn" title="Cari di Google">
               <span>🔍 Cari</span>
             </a>
           </div>
@@ -547,13 +546,9 @@
       headerBadge.textContent = count;
       headerBadge.classList.toggle('hidden', count === 0);
     }
-    const edgeBadge = document.getElementById('floating-notes-badge');
-    if (edgeBadge) {
-      edgeBadge.textContent = count;
-    }
-    const countBadge = document.getElementById('notes-count-badge');
-    if (countBadge) {
-      countBadge.textContent = `${count} item`;
+    const countEl = document.getElementById('sidebar-notes-count');
+    if (countEl) {
+      countEl.textContent = `${count} item`;
     }
   }
 
@@ -666,106 +661,81 @@
   }
   window.copyPaperNotesMarkdown = copyPaperNotesMarkdown;
 
-  function openNotesDrawer() {
-    const drawer = document.getElementById('floating-notes-sidebar');
-    const backdrop = document.getElementById('notes-drawer-backdrop');
-    if (drawer) drawer.classList.add('is-open');
-    if (backdrop) backdrop.classList.add('is-open');
-    const input = document.getElementById('note-input-text');
-    if (input) {
-      setTimeout(() => input.focus(), 150);
+  function scrollToNotesPanel() {
+    const panel = document.getElementById('reader-notes-sidebar-panel');
+    if (panel) {
+      panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      panel.style.borderColor = 'var(--accent-color)';
+      setTimeout(() => {
+        panel.style.borderColor = '';
+      }, 1500);
+      const ta = panel.querySelector('#note-input-text');
+      if (ta) {
+        setTimeout(() => ta.focus(), 350);
+      }
     }
   }
-  window.openNotesDrawer = openNotesDrawer;
+  window.scrollToNotesPanel = scrollToNotesPanel;
 
-  function closeNotesDrawer() {
-    const drawer = document.getElementById('floating-notes-sidebar');
-    const backdrop = document.getElementById('notes-drawer-backdrop');
-    if (drawer) drawer.classList.remove('is-open');
-    if (backdrop) backdrop.classList.remove('is-open');
-  }
-  window.closeNotesDrawer = closeNotesDrawer;
-
-  function toggleNotesSidebar() {
-    const drawer = document.getElementById('floating-notes-sidebar');
-    if (drawer && drawer.classList.contains('is-open')) {
-      closeNotesDrawer();
-    } else {
-      openNotesDrawer();
-    }
-  }
-  window.toggleNotesSidebar = toggleNotesSidebar;
-
-  function initFloatingNotes() {
+  function initNotesPanel() {
     const meta = getPaperMetadata();
     if (!meta.paperId) return;
 
-    // 1. Backdrop
-    let backdrop = document.getElementById('notes-drawer-backdrop');
-    if (!backdrop) {
-      backdrop = document.createElement('div');
-      backdrop.id = 'notes-drawer-backdrop';
-      backdrop.className = 'notes-drawer-backdrop';
-      backdrop.onclick = closeNotesDrawer;
-      document.body.appendChild(backdrop);
-    }
+    let panel = document.getElementById('reader-notes-sidebar-panel');
+    if (!panel) {
+      const asideSticky = document.querySelector('aside .sticky') || document.querySelector('aside');
+      if (!asideSticky) return;
 
-    // 2. Off-canvas Drawer
-    let sidebar = document.getElementById('floating-notes-sidebar');
-    if (!sidebar) {
-      sidebar = document.createElement('aside');
-      sidebar.id = 'floating-notes-sidebar';
-      sidebar.className = 'notes-drawer';
+      panel = document.createElement('div');
+      panel.id = 'reader-notes-sidebar-panel';
+      panel.className = 'notes-sidebar-panel space-y-3';
 
-      sidebar.innerHTML = `
+      panel.innerHTML = `
         <!-- Header -->
-        <div class="notes-drawer-header">
-          <div style="display: flex; align-items: center; gap: 0.65rem;">
-            <div class="notes-icon-badge">
-              <svg style="width: 0.95rem; height: 0.95rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
-            </div>
-            <div>
-              <div class="notes-title-text">Catatan Pembaca</div>
-              <div class="notes-subtitle-text">Paper #${meta.paperId}</div>
-            </div>
+        <div class="notes-sidebar-header">
+          <div class="flex items-center gap-1.5">
+            <h4 class="notes-sidebar-title">
+              <span>📝</span> Catatan Pembaca
+            </h4>
           </div>
-          <div style="display: flex; align-items: center; gap: 0.35rem;">
-            <button type="button" onclick="copyPaperNotesMarkdown()" class="notes-tool-btn" title="Salin semua catatan sebagai Markdown">
-              <svg style="width: 0.85rem; height: 0.85rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+          <div class="flex items-center gap-2">
+            <span id="sidebar-notes-count" class="notes-sidebar-count">0 item</span>
+            <button type="button" onclick="copyPaperNotesMarkdown()" class="notes-sidebar-tool-btn" title="Salin semua catatan sebagai Markdown">
+              <svg style="width: 0.8rem; height: 0.8rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
             </button>
-            <button type="button" onclick="closeNotesDrawer()" class="notes-close-btn" title="Tutup bilah catatan">✕</button>
           </div>
         </div>
 
-        <!-- Input Box -->
-        <div class="notes-input-box">
-          <textarea id="note-input-text" class="notes-textarea" placeholder="Tuliskan catatan, poin penting, pertanyaan, atau hal yang perlu dipelajari..."></textarea>
-          <div class="notes-input-actions">
-            <span class="notes-hint">Enter untuk simpan</span>
-            <button type="button" onclick="submitNewNote()" class="notes-submit-btn">+ Tambah Catatan</button>
+        <!-- Input Section -->
+        <div class="notes-sidebar-input-box">
+          <textarea id="note-input-text" class="notes-sidebar-textarea" placeholder="Tuliskan catatan artikel di sini..."></textarea>
+          <div class="flex items-center justify-between text-xs" style="margin-top: 0.35rem;">
+            <span style="font-size: 0.65rem; color: var(--text-faint);">Enter untuk simpan</span>
+            <button type="button" onclick="submitNewNote()" class="notes-sidebar-submit-btn">+ Tambah</button>
           </div>
         </div>
 
-        <!-- Section Bar -->
-        <div class="notes-section-bar">
-          <span style="font-weight: 600; color: var(--text-heading);">Daftar Catatan</span>
-          <span id="notes-count-badge" class="notes-count-badge">0 item</span>
-        </div>
+        <!-- Scrollable Notes List -->
+        <div id="notes-list-container" class="notes-sidebar-list"></div>
 
-        <!-- Scrollable List -->
-        <div id="notes-list-container" class="notes-list-scroll"></div>
-
-        <!-- Footer Bar -->
-        <div class="notes-drawer-footer">
-          <span id="notes-summary-text" style="color: var(--text-muted); font-size: 0.72rem;">0 catatan</span>
-          <button type="button" onclick="clearCompletedNotes()" class="notes-footer-btn" title="Bersihkan catatan yang sudah selesai">Bersihkan Selesai</button>
+        <!-- Footer -->
+        <div class="notes-sidebar-footer">
+          <span id="notes-summary-text">0 catatan</span>
+          <button type="button" onclick="clearCompletedNotes()" class="notes-sidebar-clean-btn" title="Hapus catatan yang sudah ditandai selesai">Bersihkan Selesai</button>
         </div>
       `;
 
-      document.body.appendChild(sidebar);
+      // Insert right after the TOC card (Daftar Isi) if present, else append
+      const tocList = document.getElementById('toc-list');
+      const tocCard = tocList ? tocList.closest('.bg-white, .rounded') : null;
+      if (tocCard && tocCard.parentNode === asideSticky) {
+        tocCard.after(panel);
+      } else {
+        asideSticky.appendChild(panel);
+      }
 
-      // Textarea enter shortcut
-      const ta = sidebar.querySelector('#note-input-text');
+      // Enter shortcut
+      const ta = panel.querySelector('#note-input-text');
       if (ta) {
         ta.addEventListener('keydown', (e) => {
           if (e.key === 'Enter' && !e.shiftKey) {
@@ -774,22 +744,6 @@
           }
         });
       }
-    }
-
-    // 3. Floating Edge Tab Button (Pinned to extreme left border)
-    let pill = document.getElementById('floating-notes-pill');
-    if (!pill) {
-      pill = document.createElement('button');
-      pill.id = 'floating-notes-pill';
-      pill.className = 'floating-notes-edge-btn';
-      pill.title = 'Buka Catatan Pembaca';
-      pill.onclick = toggleNotesSidebar;
-      pill.innerHTML = `
-        <svg style="width: 0.95rem; height: 0.95rem; color: var(--accent-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
-        <span>Catatan</span>
-        <span id="floating-notes-badge" class="notes-edge-badge">0</span>
-      `;
-      document.body.appendChild(pill);
     }
 
     renderNotesList(meta.paperId);
@@ -1093,7 +1047,7 @@
       </button>
 
       <!-- Reader Notes Toggle Button -->
-      <button onclick="toggleNotesSidebar()" id="header-notes-btn" class="reader-toolbar-btn flex items-center gap-1.5" title="Buka Catatan Pembaca">
+      <button onclick="scrollToNotesPanel()" id="header-notes-btn" class="reader-toolbar-btn flex items-center gap-1.5" title="Lihat Catatan Pembaca di Sidebar">
         <svg class="w-3.5 h-3.5 text-editorial-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
         <span class="hidden lg:inline">Catatan</span>
         <span id="header-notes-badge" class="font-mono text-[10px] bg-editorial-accent text-white px-1.5 py-0.2 rounded-full hidden">0</span>
@@ -1206,7 +1160,7 @@
     injectCompletionCard();
     enhanceLightboxModal();
     initFloatingTOC();
-    initFloatingNotes();
+    initNotesPanel();
     setupScrollTracking();
     restoreScrollPosition();
     updatePortalLinks();
@@ -1215,15 +1169,9 @@
     document.addEventListener('keydown', (e) => {
       const lb = document.getElementById('lightbox');
       const isLbOpen = lb && !lb.classList.contains('hidden');
-      const drawer = document.getElementById('floating-notes-sidebar');
-      const isDrawerOpen = drawer && drawer.classList.contains('is-open');
 
-      if (e.key === 'Escape') {
-        if (isLbOpen) {
-          closeLightbox();
-        } else if (isDrawerOpen) {
-          closeNotesDrawer();
-        }
+      if (e.key === 'Escape' && isLbOpen) {
+        closeLightbox();
       } else if (isLbOpen) {
         if (e.key === '+' || e.key === '=') zoomLightbox(0.5);
         if (e.key === '-' || e.key === '_') zoomLightbox(-0.5);
