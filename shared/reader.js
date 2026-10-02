@@ -992,11 +992,12 @@
     const headerBtn = document.getElementById('header-read-btn');
     if (headerBtn) {
       headerBtn.classList.toggle('is-read', isRead);
+      headerBtn.title = isRead ? 'Klik untuk membatalkan tanda selesai baca' : 'Tandai paper ini sudah selesai dibaca';
       headerBtn.innerHTML = isRead
-        ? `<svg class="w-3.5 h-3.5 text-emerald-600 fill-current" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-           <span class="hidden md:inline">Selesai Dibaca</span>`
-        : `<svg class="w-3.5 h-3.5 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-           <span class="hidden md:inline">Tandai Selesai</span>`;
+        ? `<svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+           <span class="btn-label hidden sm:inline">Selesai Dibaca</span>`
+        : `<svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-width="2"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/></svg>
+           <span class="btn-label hidden sm:inline">Tandai Selesai</span>`;
     }
 
     // Bottom completion card
@@ -1070,34 +1071,74 @@
 
     const meta = getPaperMetadata();
 
+    // 1. Refine Reading Time and Journal Metadata into an elegant context badge
+    const timeSpan = Array.from(headerRight.querySelectorAll('span')).find(s => s.textContent.includes('Estimasi Baca'));
+    if (timeSpan) {
+      timeSpan.className = 'header-meta-time';
+      const m = timeSpan.textContent.match(/(\d+)\s*Menit/i);
+      const mins = m ? m[1] : '15';
+      timeSpan.innerHTML = `<svg class="w-3.5 h-3.5 text-editorial-muted shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-width="2"/><path stroke-linecap="round" stroke-width="2" d="M12 6v6l4 2"/></svg><span>${mins} mnt baca</span>`;
+      timeSpan.title = `Estimasi waktu baca: ${mins} menit`;
+    }
+
+    const journalSpan = headerRight.querySelector('span.font-mono');
+    if (journalSpan) {
+      journalSpan.className = 'header-meta-journal';
+      journalSpan.title = journalSpan.textContent.trim();
+    }
+
+    const divider = headerRight.querySelector('div.bg-editorial-line, div[class*="bg-editorial-line"]');
+    if (divider) {
+      divider.className = 'header-meta-divider';
+    }
+
+    // Wrap metadata items into a clean wrapper group
+    const metaElements = [timeSpan, divider, journalSpan].filter(Boolean);
+    if (metaElements.length > 0) {
+      const metaGroup = document.createElement('div');
+      metaGroup.className = 'header-meta-group';
+      metaElements[0].parentNode.insertBefore(metaGroup, metaElements[0]);
+      metaElements.forEach(el => metaGroup.appendChild(el));
+    }
+
+    // 2. Build the unified reader controls cluster
     const cluster = document.createElement('div');
-    cluster.className = 'reader-controls-cluster flex items-center gap-2 border-l border-editorial-line pl-3 ml-1';
+    cluster.className = 'reader-controls-cluster';
     cluster.innerHTML = `
       <!-- Read Checklist Toggle Button -->
       <button onclick="toggleCurrentPaperRead()" id="header-read-btn" class="read-checklist-btn" title="Tandai paper ini sudah selesai dibaca">
-        <svg class="w-3.5 h-3.5 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        <span class="hidden md:inline">Tandai Selesai</span>
+        <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-width="2"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/></svg>
+        <span class="btn-label hidden sm:inline">Tandai Selesai</span>
       </button>
 
-      <!-- Reader Notes Toggle Button -->
-      <button onclick="scrollToNotesPanel()" id="header-notes-btn" class="reader-toolbar-btn flex items-center gap-1.5" title="Lihat Catatan Pembaca di Sisi Kiri">
-        <svg class="w-3.5 h-3.5 text-editorial-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
-        <span class="hidden lg:inline">Catatan</span>
-        <span id="header-notes-badge" class="font-mono text-[10px] bg-editorial-accent text-white px-1.5 py-0.2 rounded-full hidden">0</span>
+      <!-- Reader Notes Quick Button -->
+      <button onclick="scrollToNotesPanel()" id="header-notes-btn" class="reader-toolbar-btn" title="Buka Catatan Pembaca di Sisi Kiri">
+        <svg class="w-3.5 h-3.5 text-editorial-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+        <span class="btn-label hidden md:inline">Catatan</span>
+        <span id="header-notes-badge" class="hidden">0</span>
       </button>
 
-      <!-- Theme Switcher -->
-      <div class="flex items-center border border-editorial-line rounded overflow-hidden text-[11px] bg-white">
-        <button onclick="setTheme('paper')" data-theme-btn="paper" title="Tema Kertas (Siang)" class="px-2 py-0.5 hover:bg-zinc-100 transition-colors">Kertas</button>
-        <button onclick="setTheme('sepia')" data-theme-btn="sepia" title="Tema Sepia (Nyaman)" class="px-2 py-0.5 hover:bg-zinc-100 transition-colors border-l border-editorial-line">Sepia</button>
-        <button onclick="setTheme('dark')" data-theme-btn="dark" title="Tema Dark Slate (Malam)" class="px-2 py-0.5 hover:bg-zinc-100 transition-colors border-l border-editorial-line">Gelap</button>
+      <!-- Theme Switcher (Segmented Control Pill) -->
+      <div class="reader-segmented-group" role="radiogroup" aria-label="Pilihan Tema Tampilan">
+        <button onclick="setTheme('paper')" data-theme-btn="paper" title="Tema Kertas (Terang)" class="reader-segmented-btn" role="radio">
+          <svg class="w-3 h-3 text-amber-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" stroke-width="2"/><path stroke-linecap="round" stroke-width="2" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          <span class="hidden lg:inline">Kertas</span>
+        </button>
+        <button onclick="setTheme('sepia')" data-theme-btn="sepia" title="Tema Sepia (Nyaman Membaca)" class="reader-segmented-btn" role="radio">
+          <svg class="w-3 h-3 text-amber-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          <span class="hidden lg:inline">Sepia</span>
+        </button>
+        <button onclick="setTheme('dark')" data-theme-btn="dark" title="Tema Gelap (Malam Hari)" class="reader-segmented-btn" role="radio">
+          <svg class="w-3 h-3 text-sky-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          <span class="hidden lg:inline">Gelap</span>
+        </button>
       </div>
 
-      <!-- Font Sizer -->
-      <div class="hidden sm:flex items-center border border-editorial-line rounded overflow-hidden text-[11px] bg-white">
-        <button onclick="setFontSize('sm')" data-size-btn="sm" title="Teks Kompak (16px)" class="px-1.5 py-0.5 hover:bg-zinc-100 font-mono transition-colors">A-</button>
-        <button onclick="setFontSize('md')" data-size-btn="md" title="Teks Standar (18px)" class="px-1.5 py-0.5 hover:bg-zinc-100 font-mono transition-colors border-l border-editorial-line">A</button>
-        <button onclick="setFontSize('lg')" data-size-btn="lg" title="Teks Besar (20px)" class="px-1.5 py-0.5 hover:bg-zinc-100 font-mono transition-colors border-l border-editorial-line">A+</button>
+      <!-- Font Sizer (Segmented Control Pill) -->
+      <div class="reader-segmented-group hidden sm:inline-flex" role="radiogroup" aria-label="Ukuran Huruf">
+        <button onclick="setFontSize('sm')" data-size-btn="sm" title="Teks Kompak (16px)" class="reader-segmented-btn" role="radio">A−</button>
+        <button onclick="setFontSize('md')" data-size-btn="md" title="Teks Standar (18px)" class="reader-segmented-btn" role="radio">A</button>
+        <button onclick="setFontSize('lg')" data-size-btn="lg" title="Teks Besar (20px)" class="reader-segmented-btn" role="radio">A+</button>
       </div>
     `;
 
@@ -1105,10 +1146,10 @@
 
     const curTheme = localStorage.getItem(THEME_KEY) || 'paper';
     const curSize = localStorage.getItem(FONT_SIZE_KEY) || 'md';
-    cluster.querySelectorAll(`[data-theme-btn="${curTheme}"]`).forEach(b => b.classList.add('bg-zinc-800', 'text-white'));
-    cluster.querySelectorAll(`[data-size-btn="${curSize}"]`).forEach(b => b.classList.add('bg-zinc-800', 'text-white'));
-
+    setTheme(curTheme, false);
+    setFontSize(curSize, false);
     updateReadChecklistUI(meta.paperId);
+    updateNotesBadge(meta.paperId);
   }
 
   // --- 8. PRECISE SCROLL TRACKING & RESTORATION ---

@@ -54,9 +54,117 @@ body {
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-header {
+/* Outer Header Container */
+header.sticky,
+body[data-paper-id] header {
   background-color: var(--bg-surface) !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  z-index: 40 !important;
+  transition: background-color 0.2s ease, border-color 0.2s ease !important;
+}
+
+/* Header Content Inner Bar: Expand to match wide editorial grid */
+body[data-paper-id] header > div:first-child,
+body[data-paper-id] header > div:not(#reading-progress) {
+  max-width: min(96vw, 1420px) !important;
+  width: 100% !important;
+  height: 3.5rem !important; /* Fixed 56px */
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 1.25rem !important;
+  padding-right: 1.25rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 1rem !important;
+  box-sizing: border-box !important;
+}
+
+/* Hairline Reading Progress Indicator */
+body[data-paper-id] header #reading-progress,
+#reading-progress {
+  height: 2px !important;
+  max-height: 2px !important;
+  min-height: 0 !important;
+  background-color: var(--accent-color) !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  z-index: 50 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: block !important;
+  box-sizing: border-box !important;
+}
+
+/* Header Left: Breadcrumbs & Navigation */
+body[data-paper-id] header > div:first-child > div:first-child {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
+}
+
+/* Back Link "← Katalog Utama" */
+body[data-paper-id] header > div > div:first-child a {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.45rem !important;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: 0.8125rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--text-heading) !important;
+  text-decoration: none !important;
+  padding: 0.35rem 0.6rem !important;
+  border-radius: 6px !important;
+  border: 1px solid transparent !important;
+  background: transparent !important;
+  transition: all 0.15s ease !important;
+  white-space: nowrap !important;
+  line-height: 1 !important;
+}
+
+body[data-paper-id] header > div > div:first-child a:hover {
+  background-color: var(--bg-subtle) !important;
   border-color: var(--border-color) !important;
+  color: var(--accent-color) !important;
+}
+
+body[data-paper-id] header > div > div:first-child a svg {
+  color: var(--text-muted) !important;
+  transition: transform 0.15s ease, color 0.15s ease !important;
+}
+
+body[data-paper-id] header > div > div:first-child a:hover svg {
+  color: var(--accent-color) !important;
+  transform: translateX(-2px) !important;
+}
+
+/* Breadcrumb Separator "/" */
+body[data-paper-id] header > div > div:first-child > span:not([class*="mono"]):not([class*="font"]) {
+  color: var(--border-color) !important;
+  font-weight: 300 !important;
+  user-select: none !important;
+  margin: 0 0.1rem !important;
+}
+
+/* Paper Identifier Badge "Paper #04" */
+body[data-paper-id] header > div > div:first-child span.font-mono {
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: 0.72rem !important;
+  font-weight: 600 !important;
+  color: var(--text-muted) !important;
+  background-color: var(--bg-subtle) !important;
+  border: 1px solid var(--border-color) !important;
+  padding: 0.22rem 0.55rem !important;
+  border-radius: 5px !important;
+  letter-spacing: 0.02em !important;
+  white-space: nowrap !important;
+  user-select: none !important;
 }
 
 .article-body p {
@@ -185,32 +293,61 @@ body.font-size-lg .article-body p {
   }
 }
 
-/* Controls Toolbar */
+/* Controls Toolbar Buttons */
 .reader-toolbar-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.25rem 0.5rem;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  font-size: 0.75rem;
-  font-weight: 500;
-  border-radius: 4px;
-  border: 1px solid var(--border-color);
-  background: var(--bg-surface);
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: all 0.15s ease;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.4rem !important;
+  height: 32px !important;
+  padding: 0 0.75rem !important;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: 0.74rem !important;
+  font-weight: 500 !important;
+  line-height: 1 !important;
+  border-radius: 6px !important;
+  border: 1px solid var(--border-color) !important;
+  background-color: var(--bg-surface) !important;
+  color: var(--text-heading) !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  white-space: nowrap !important;
+  box-sizing: border-box !important;
+  user-select: none !important;
 }
 
 .reader-toolbar-btn:hover {
-  color: var(--text-heading);
-  border-color: var(--accent-color);
+  background-color: var(--bg-subtle) !important;
+  border-color: var(--accent-color) !important;
+  color: var(--accent-color) !important;
 }
 
 .reader-toolbar-btn.active {
-  background: var(--accent-color);
+  background-color: var(--accent-color) !important;
   color: #ffffff !important;
-  border-color: var(--accent-color);
+  border-color: var(--accent-color) !important;
+}
+
+/* Header Notes Badge */
+#header-notes-badge {
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: 0.65rem !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  padding: 0.1rem 0.4rem !important;
+  border-radius: 9999px !important;
+  background-color: var(--accent-color) !important;
+  color: #ffffff !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 17px !important;
+  height: 17px !important;
+  box-sizing: border-box !important;
+}
+
+#header-notes-badge.hidden {
+  display: none !important;
 }
 
 /* Toast Notification */
@@ -266,37 +403,191 @@ body.font-size-lg .article-body p {
 
 /* Read Checklist Button & Badges */
 .read-checklist-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.25rem 0.6rem;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  font-size: 0.72rem;
-  font-weight: 500;
-  border-radius: 4px;
-  border: 1px solid var(--border-color);
-  background: var(--bg-surface);
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: all 0.15s ease;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+  height: 32px !important;
+  padding: 0 0.75rem !important;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: 0.74rem !important;
+  font-weight: 500 !important;
+  line-height: 1 !important;
+  border-radius: 6px !important;
+  border: 1px solid var(--border-color) !important;
+  background-color: var(--bg-surface) !important;
+  color: var(--text-muted) !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  white-space: nowrap !important;
+  box-sizing: border-box !important;
+  user-select: none !important;
 }
 
 .read-checklist-btn:hover {
-  border-color: #059669;
-  color: #059669;
+  background-color: var(--bg-subtle) !important;
+  color: var(--text-heading) !important;
+  border-color: var(--accent-color) !important;
 }
 
 .read-checklist-btn.is-read {
-  background: #ecfdf5;
+  background-color: rgba(16, 185, 129, 0.09) !important;
   color: #047857 !important;
-  border-color: #a7f3d0;
-  font-weight: 600;
+  border-color: rgba(16, 185, 129, 0.35) !important;
+  font-weight: 600 !important;
+}
+
+body.theme-sepia .read-checklist-btn.is-read {
+  background-color: rgba(138, 142, 60, 0.14) !important;
+  color: #556b2f !important;
+  border-color: rgba(138, 142, 60, 0.45) !important;
 }
 
 body.theme-dark .read-checklist-btn.is-read {
-  background: #064e3b;
-  color: #a7f3d0 !important;
-  border-color: #059669;
+  background-color: rgba(16, 185, 129, 0.18) !important;
+  color: #34d399 !important;
+  border-color: rgba(16, 185, 129, 0.4) !important;
+}
+
+/* Segmented Control Pill Group (Theme & Font Size) */
+.reader-segmented-group {
+  display: inline-flex !important;
+  align-items: center !important;
+  background-color: var(--bg-subtle) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 7px !important;
+  padding: 2px !important;
+  gap: 2px !important;
+  box-sizing: border-box !important;
+  height: 32px !important;
+  user-select: none !important;
+}
+
+.reader-segmented-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.35rem !important;
+  height: 26px !important;
+  padding: 0 0.55rem !important;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: 0.73rem !important;
+  font-weight: 500 !important;
+  line-height: 1 !important;
+  color: var(--text-muted) !important;
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  white-space: nowrap !important;
+}
+
+.reader-segmented-btn:hover {
+  color: var(--text-heading) !important;
+}
+
+.reader-segmented-btn.active {
+  background-color: var(--bg-surface) !important;
+  color: var(--text-heading) !important;
+  font-weight: 600 !important;
+  border-color: var(--border-color) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Font Sizer specific button styling */
+.reader-segmented-btn[data-size-btn] {
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: 0.72rem !important;
+  padding: 0 0.5rem !important;
+}
+
+/* Context Metadata in Header (Reading Time & Journal) */
+.header-meta-group {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.55rem !important;
+  margin-left: 0.35rem !important;
+  padding-left: 0.65rem !important;
+  border-left: 1px solid var(--border-color) !important;
+  white-space: nowrap !important;
+}
+
+.header-meta-time {
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: 0.72rem !important;
+  color: var(--text-muted) !important;
+  background-color: var(--bg-subtle) !important;
+  border: 1px solid var(--border-color) !important;
+  padding: 0.22rem 0.55rem !important;
+  border-radius: 5px !important;
+  white-space: nowrap !important;
+  display: none !important;
+}
+
+@media (min-width: 1200px) {
+  .header-meta-time {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.35rem !important;
+  }
+}
+
+.header-meta-journal {
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: 0.72rem !important;
+  font-weight: 600 !important;
+  color: var(--text-heading) !important;
+  background-color: var(--bg-subtle) !important;
+  border: 1px solid var(--border-color) !important;
+  padding: 0.22rem 0.55rem !important;
+  border-radius: 5px !important;
+  white-space: nowrap !important;
+  display: none !important;
+}
+
+@media (min-width: 1380px) {
+  .header-meta-journal {
+    display: inline-block !important;
+  }
+}
+
+.header-meta-divider {
+  background-color: var(--border-color) !important;
+  height: 14px !important;
+  width: 1px !important;
+  display: none !important;
+}
+
+@media (min-width: 1380px) {
+  .header-meta-divider {
+    display: inline-block !important;
+  }
+}
+
+/* Mobile & Tablet Fine-Tuning for Header */
+@media (max-width: 639px) {
+  body[data-paper-id] header > div {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+    gap: 0.4rem !important;
+  }
+
+  body[data-paper-id] header > div > div:first-child span.font-mono,
+  body[data-paper-id] header > div > div:first-child span.text-editorial-line {
+    display: none !important;
+  }
+
+  .read-checklist-btn {
+    padding: 0 0.5rem !important;
+  }
+
+  #header-notes-btn.reader-toolbar-btn {
+    padding: 0 0.5rem !important;
+  }
+
+  .reader-segmented-btn {
+    padding: 0 0.45rem !important;
+  }
 }
 
 /* Resume Pill Toast */
