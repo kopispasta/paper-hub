@@ -344,16 +344,152 @@ body.theme-dark .read-checklist-btn.is-read {
 }
 
 /* ============================================================
-   INLINE SIDEBAR PANEL: CATATAN PEMBACA
-   Matches "Daftar Isi Artikel", "Glosarium Istilah Kunci", "Indeks Gambar Paper"
+   LEFT NOTES SIDEBAR & 3-COLUMN EDITORIAL LAYOUT
    ============================================================ */
+body.has-left-notes #reader-left-sidebar {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+#reader-left-sidebar .sticky {
+  position: sticky;
+  top: 5rem;
+  max-height: calc(100vh - 6rem);
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+#reader-left-sidebar .sticky::-webkit-scrollbar {
+  width: 4px;
+}
+
+#reader-left-sidebar .sticky::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+/* 3-Column Grid for Papers 01-05 (Left Notes, Center Article, Right TOC/Glossary) */
+@media (min-width: 1200px) {
+  body.has-left-notes .max-w-6xl {
+    max-width: min(96vw, 1420px) !important;
+    width: 100% !important;
+  }
+
+  body.has-left-notes .grid.grid-cols-1.lg\:grid-cols-12,
+  body.has-left-notes .grid.lg\:grid-cols-12 {
+    display: grid !important;
+    grid-template-columns: 280px minmax(0, 1fr) 280px !important;
+    gap: 2.25rem !important;
+    align-items: start !important;
+  }
+
+  body.has-left-notes #reader-left-sidebar {
+    grid-column: 1 / 2 !important;
+    width: 100% !important;
+    display: block !important;
+  }
+
+  body.has-left-notes main.article-body {
+    grid-column: 2 / 3 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  body.has-left-notes aside.lg\:col-span-4 {
+    grid-column: 3 / 4 !important;
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+  body.has-left-notes .max-w-6xl {
+    max-width: 98vw !important;
+    width: 100% !important;
+  }
+
+  body.has-left-notes .grid.grid-cols-1.lg\:grid-cols-12,
+  body.has-left-notes .grid.lg\:grid-cols-12 {
+    display: grid !important;
+    grid-template-columns: 240px minmax(0, 1fr) 240px !important;
+    gap: 1.25rem !important;
+    align-items: start !important;
+  }
+
+  body.has-left-notes #reader-left-sidebar {
+    grid-column: 1 / 2 !important;
+    width: 100% !important;
+    display: block !important;
+  }
+
+  body.has-left-notes main.article-body {
+    grid-column: 2 / 3 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  body.has-left-notes aside.lg\:col-span-4 {
+    grid-column: 3 / 4 !important;
+    width: 100% !important;
+  }
+}
+
+/* 2-Column Grid for Papers 06-10 (Left Notes + Center Article) */
+@media (min-width: 1024px) {
+  body.single-paper-with-notes .single-paper-layout-wrapper {
+    display: grid !important;
+    grid-template-columns: 280px minmax(0, 1fr) !important;
+    gap: 2.5rem !important;
+    align-items: start !important;
+    max-width: min(94vw, 1320px) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  body.single-paper-with-notes #reader-left-sidebar {
+    grid-column: 1 / 2 !important;
+    width: 100% !important;
+  }
+
+  body.single-paper-with-notes main.article-body {
+    grid-column: 2 / 3 !important;
+    max-width: 860px !important;
+  }
+}
+
+/* Mobile & Tablet Stacking (< 1024px) */
+@media (max-width: 1023px) {
+  body.has-left-notes .grid.grid-cols-1.lg\:grid-cols-12,
+  body.single-paper-with-notes .single-paper-layout-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  body.has-left-notes main.article-body,
+  body.single-paper-with-notes main.article-body {
+    order: 1 !important;
+  }
+
+  body.has-left-notes #reader-left-sidebar,
+  body.single-paper-with-notes #reader-left-sidebar {
+    order: 2 !important;
+    margin-top: 2rem !important;
+  }
+
+  body.has-left-notes aside.lg\:col-span-4 {
+    order: 3 !important;
+    margin-top: 2rem !important;
+  }
+}
+
+/* Notes Panel Card (Left Sidebar) */
 .notes-sidebar-panel {
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: 6px;
   padding: 1.25rem;
   font-family: "Plus Jakarta Sans", sans-serif;
-  transition: border-color 0.15s ease;
+  margin-top: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .notes-sidebar-header {
@@ -421,8 +557,8 @@ body.theme-dark .read-checklist-btn.is-read {
   font-size: 0.75rem;
   line-height: 1.45;
   resize: vertical;
-  min-height: 62px;
-  max-height: 130px;
+  min-height: 64px;
+  max-height: 140px;
   outline: none;
   transition: border-color 0.15s ease, background 0.15s ease;
 }
@@ -449,7 +585,8 @@ body.theme-dark .read-checklist-btn.is-read {
 }
 
 .notes-sidebar-list {
-  max-height: 250px;
+  max-height: calc(100vh - 24rem);
+  min-height: 120px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -468,7 +605,7 @@ body.theme-dark .read-checklist-btn.is-read {
 
 .notes-empty-state {
   text-align: center;
-  padding: 1.25rem 0.5rem;
+  padding: 1.5rem 0.5rem;
   color: var(--text-muted);
   font-size: 0.75rem;
   line-height: 1.45;
@@ -607,7 +744,7 @@ body.theme-dark .read-checklist-btn.is-read {
   text-decoration: underline;
 }
 
-/* Ensure sticky sidebar scrolls smoothly if combined height is tall on desktop */
+/* Ensure right sticky sidebar scrolls smoothly if tall */
 @media (min-width: 1024px) {
   aside .sticky {
     max-height: calc(100vh - 5.5rem);

@@ -683,8 +683,48 @@
 
     let panel = document.getElementById('reader-notes-sidebar-panel');
     if (!panel) {
-      const asideSticky = document.querySelector('aside .sticky') || document.querySelector('aside');
-      if (!asideSticky) return;
+      const main = document.querySelector('main.article-body, main');
+      if (!main) return;
+
+      let leftSidebar = document.getElementById('reader-left-sidebar');
+      const existingGrid = main.closest('.grid.grid-cols-1.lg\\:grid-cols-12, .grid.lg\\:grid-cols-12');
+
+      if (existingGrid) {
+        // Papers 01-05: 3-column layout (Left: Notes, Center: Main, Right: Aside)
+        if (!leftSidebar) {
+          leftSidebar = document.createElement('aside');
+          leftSidebar.id = 'reader-left-sidebar';
+          leftSidebar.className = 'reader-left-sidebar space-y-6 font-sans';
+          existingGrid.insertBefore(leftSidebar, main);
+        }
+        document.body.classList.add('has-left-notes');
+      } else {
+        // Papers 06-10: Wrap in responsive 2-column layout
+        if (!leftSidebar) {
+          const wrapper = document.createElement('div');
+          wrapper.className = 'single-paper-layout-wrapper max-w-6xl mx-auto px-4 sm:px-6 lg:px-8';
+          main.parentNode.insertBefore(wrapper, main);
+
+          leftSidebar = document.createElement('aside');
+          leftSidebar.id = 'reader-left-sidebar';
+          leftSidebar.className = 'reader-left-sidebar space-y-6 font-sans';
+
+          wrapper.appendChild(leftSidebar);
+          wrapper.appendChild(main);
+
+          main.classList.remove('max-w-4xl', 'mx-auto');
+          main.classList.add('w-full');
+        }
+        document.body.classList.add('has-left-notes', 'single-paper-with-notes');
+      }
+
+      // Sticky container inside leftSidebar
+      let stickyWrapper = leftSidebar.querySelector('.sticky');
+      if (!stickyWrapper) {
+        stickyWrapper = document.createElement('div');
+        stickyWrapper.className = 'sticky top-20';
+        leftSidebar.appendChild(stickyWrapper);
+      }
 
       panel = document.createElement('div');
       panel.id = 'reader-notes-sidebar-panel';
@@ -725,14 +765,7 @@
         </div>
       `;
 
-      // Insert right after the TOC card (Daftar Isi) if present, else append
-      const tocList = document.getElementById('toc-list');
-      const tocCard = tocList ? tocList.closest('.bg-white, .rounded') : null;
-      if (tocCard && tocCard.parentNode === asideSticky) {
-        tocCard.after(panel);
-      } else {
-        asideSticky.appendChild(panel);
-      }
+      stickyWrapper.appendChild(panel);
 
       // Enter shortcut
       const ta = panel.querySelector('#note-input-text');
@@ -1047,7 +1080,7 @@
       </button>
 
       <!-- Reader Notes Toggle Button -->
-      <button onclick="scrollToNotesPanel()" id="header-notes-btn" class="reader-toolbar-btn flex items-center gap-1.5" title="Lihat Catatan Pembaca di Sidebar">
+      <button onclick="scrollToNotesPanel()" id="header-notes-btn" class="reader-toolbar-btn flex items-center gap-1.5" title="Lihat Catatan Pembaca di Sisi Kiri">
         <svg class="w-3.5 h-3.5 text-editorial-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
         <span class="hidden lg:inline">Catatan</span>
         <span id="header-notes-badge" class="font-mono text-[10px] bg-editorial-accent text-white px-1.5 py-0.2 rounded-full hidden">0</span>
