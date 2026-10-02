@@ -222,40 +222,63 @@
     </div>
   </section>
 
-  <!-- MAIN ARTICLE CONTENT -->
-  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 article-body">
+  <!-- MAIN ARTICLE LAYOUT (3 Columns: Left Notes + Center Article + Right Aside) -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 pt-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      
+      <!-- ARTICLE TEXT (Cols 1-8) -->
+      <main class="lg:col-span-8 article-body">
 
-    <!-- TABLE OF CONTENTS (MINI JUMP NAV) -->
-    <nav class="p-4 bg-zinc-50 border border-editorial-line rounded text-xs font-sans mb-8">
-      <div class="font-bold text-editorial-ink uppercase tracking-wider mb-2">Navigasi Bab Telaah</div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-editorial-body">
-        <a href="#latar-belakang" class="hover:text-editorial-accent flex items-center gap-1.5">
-          <span class="text-editorial-lightmuted font-mono">01.</span> Batasan Doxorubicin & Paradigma Kimia Bioortogonal
-        </a>
-        <a href="#arsitektur-sq3370" class="hover:text-editorial-accent flex items-center gap-1.5">
-          <span class="text-editorial-lightmuted font-mono">02.</span> Arsitektur Kimia SQ3370: Mengunci Reaktivitas Tetrazin–TCO
-        </a>
-        <a href="#efikasi-dua-tumor" class="hover:text-editorial-accent flex items-center gap-1.5">
-          <span class="text-editorial-lightmuted font-mono">03.</span> Model Dua Tumor: Ledakan Efek Sistemik Abscopal
-        </a>
-        <a href="#profil-imun-tils" class="hover:text-editorial-accent flex items-center gap-1.5">
-          <span class="text-editorial-lightmuted font-mono">04.</span> Pemetaan Imun Tumor: Mengapa Lesi Distal Ikut Menyusut?
-        </a>
-        <a href="#kombinasi-tlr9a" class="hover:text-editorial-accent flex items-center gap-1.5">
-          <span class="text-editorial-lightmuted font-mono">05.</span> Sinergi TLR9 Agonist: Kesintasan 101 Hari & Remisi 80%
-        </a>
-        <a href="#translasi-klinis" class="hover:text-editorial-accent flex items-center gap-1.5">
-          <span class="text-editorial-lightmuted font-mono">06.</span> Mekanisme Biologis & Peluang Translasi Klinis
-        </a>
-      </div>
-    </nav>
+        <!-- EXECUTIVE SUMMARY ACCORDION -->
+        <div class="border border-editorial-line bg-white rounded p-5 mb-10">
+          <div class="flex items-center justify-between cursor-pointer select-none" onclick="toggleSummary()">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-editorial-accent"></span>
+              <h3 class="text-sm font-bold text-editorial-ink tracking-tight font-sans">
+                Ringkasan Singkat untuk Peneliti (4 Poin Utama)
+              </h3>
+            </div>
+            <span id="summary-chevron" class="text-xs font-mono text-editorial-muted">[- tutup]</span>
+          </div>
+          <div id="summary-content" class="mt-4 pt-4 border-t border-editorial-line text-xs sm:text-sm font-sans text-editorial-body space-y-2.5 leading-relaxed">
+            <p><strong>1. Paradigma Kimia Bioortogonal CAPAC:</strong> Memisahkan injeksi biopolimer tetrazin (SQL70) di sarang tumor dari protodrug non-toksik (SQP33) yang disuntikkan secara intravena, mereplikasi prinsip aktivasi obat tepat sasaran.</p>
+            <p><strong>2. Penembusan Batas Dosis Maksimum (5.9× MTD):</strong> Memungkinkan pemberian dosis kumulatif doksorubisin hingga 143 mg/kg tanpa memicu penurunan berat badan atau tanda kardiotoksisitas klinis.</p>
+            <p><strong>3. Efek Abscopal pada Tumor Jauh:</strong> Walaupun polimer hanya disuntikkan pada tumor primer, 80% mencit mengalami remisi komplit pada tumor metastasis distal yang tidak tersentuh injeksi lokal.</p>
+            <p><strong>4. Sinergi Agonis TLR9 &amp; Translasi Klinis:</strong> Kombinasi dengan CpG ODN memperpanjang kesintasan median mencit hingga 101 hari (vs 26 hari salin) dan memicu respon memori imun jangka panjang (NCT04106492).</p>
+          </div>
+        </div>
 
-    <!-- SECTION 1: CONTEXT & CAPAC PLATFORM -->
-    <section id="latar-belakang">
-      <h2>01. Batasan Doxorubicin & Paradigma Baru Click Chemistry In Vivo</h2>
-      <p class="text-xl font-serif leading-relaxed text-editorial-ink first-letter:text-5xl first-letter:font-bold first-letter:float-left first-letter:mr-3 first-letter:text-editorial-accent first-letter:font-serif">
-        Revolusi imunoterapi kanker—khususnya penghambat pos pemeriksaan imun (immune checkpoint inhibitors seperti anti-PD-1 dan anti-CTLA-4)—telah memberikan harapan kesembuhan spektakuler bagi sebagian pasien onkologi. Namun, kenyataan klinis yang pahit menunjukkan bahwa hanya sebagian kecil pasien (sering kali di bawah 20–30%) yang benar-benar memetik manfaat jangka panjang. Sebagian besar tumor bersifat "dingin" (cold tumors): miskin infiltrasi sel T sitotoksik, tidak mengekspresikan biomarker imun yang memadai, atau dilindungi oleh mikro-lingkungan imunosupresif yang padat.
-      </p>
+        <!-- TABLE OF CONTENTS (MINI JUMP NAV) -->
+        <nav class="p-4 bg-zinc-50 border border-editorial-line rounded text-xs font-sans mb-8">
+          <div class="font-bold text-editorial-ink uppercase tracking-wider mb-2">Navigasi Bab Telaah</div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-editorial-body">
+            <a href="#latar-belakang" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">01.</span> Batasan Doxorubicin &amp; Paradigma Kimia Bioortogonal
+            </a>
+            <a href="#arsitektur-sq3370" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">02.</span> Arsitektur Kimia SQ3370: Mengunci Reaktivitas Tetrazin–TCO
+            </a>
+            <a href="#efikasi-dua-tumor" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">03.</span> Model Dua Tumor: Ledakan Efek Sistemik Abscopal
+            </a>
+            <a href="#profil-imun-tils" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">04.</span> Pemetaan Imun Tumor: Mengapa Lesi Distal Ikut Menyusut?
+            </a>
+            <a href="#kombinasi-tlr9a" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">05.</span> Sinergi TLR9 Agonist: Kesintasan 101 Hari &amp; Remisi 80%
+            </a>
+            <a href="#translasi-klinis" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">06.</span> Mekanisme Biologis &amp; Peluang Translasi Klinis
+            </a>
+          </div>
+        </nav>
+
+        <!-- SECTION 1: CONTEXT & CAPAC PLATFORM -->
+        <section id="latar-belakang">
+          <h2>01. Batasan Doxorubicin &amp; Paradigma Baru Click Chemistry In Vivo</h2>
+          <p class="editorial-dropcap">
+            Revolusi imunoterapi kanker—khususnya penghambat pos pemeriksaan imun (immune checkpoint inhibitors seperti anti-PD-1 dan anti-CTLA-4)—telah memberikan harapan kesembuhan spektakuler bagi sebagian pasien onkologi. Namun, kenyataan klinis yang pahit menunjukkan bahwa hanya sebagian kecil pasien (sering kali di bawah 20–30%) yang benar-benar memetik manfaat jangka panjang. Sebagian besar tumor bersifat "dingin" (cold tumors): miskin infiltrasi sel T sitotoksik, tidak mengekspresikan biomarker imun yang memadai, atau dilindungi oleh mikro-lingkungan imunosupresif yang padat.
+          </p>
 
       <p>
         Akibatnya, kemoterapi sitotoksik konvensional seperti <strong>doksorubisin (Dox)</strong> tetap menjadi pilar utama perawatan kanker di seluruh dunia, mulai dari sarkoma jaringan lunak, kanker payudara, karsinoma kolorektal, hingga limfoma. Padahal, doksorubisin memiliki jendela terapeutik yang teramat sempit: dosis obat yang dibutuhkan untuk membasmi tumor sering kali memicu kardiotoksisitas ireversibel (gagal jantung kongestif) serta limfopenia berat yang justru melumpuhkan sistem kekebalan tubuh pasien sendiri.
@@ -626,7 +649,108 @@
       </div>
     </section>
 
-  </main>
+      </main>
+
+      <!-- SIDEBAR NAVIGATION & GLOSSARY (Cols 9-12) -->
+      <aside class="lg:col-span-4 space-y-8 font-sans">
+        
+        <!-- STICKY TABLE OF CONTENTS -->
+        <div class="sticky top-20 space-y-6">
+          
+          <!-- TABLE OF CONTENTS -->
+          <div class="bg-white border border-editorial-line rounded p-5">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-3 pb-2 border-b border-editorial-line">
+              Daftar Isi Artikel
+            </h4>
+            <nav class="space-y-1.5 text-xs text-editorial-muted" id="toc-list">
+              <a href="#latar-belakang" class="block py-1 hover:text-editorial-accent transition-colors">• 1. Batasan Doxorubicin &amp; CAPAC</a>
+              <a href="#arsitektur-sq3370" class="block py-1 hover:text-editorial-accent transition-colors">• 2. Kimia Bioortogonal SQ3370 (Fig. 1-2)</a>
+              <a href="#efikasi-dua-tumor" class="block py-1 hover:text-editorial-accent transition-colors">• 3. Efikasi Dua Tumor &amp; Abscopal (Fig. 3)</a>
+              <a href="#profil-imun-tils" class="block py-1 hover:text-editorial-accent transition-colors">• 4. Pemetaan Sel Imun TILs (Fig. 4)</a>
+              <a href="#kombinasi-tlr9a" class="block py-1 hover:text-editorial-accent transition-colors">• 5. Sinergi Agonis TLR9 (Fig. 5)</a>
+              <a href="#translasi-klinis" class="block py-1 hover:text-editorial-accent transition-colors">• 6. Translasi &amp; Uji Klinis (Fig. 6)</a>
+            </nav>
+          </div>
+
+          <!-- MINI GLOSSARY FOR RESEARCHERS -->
+          <div class="bg-white border border-editorial-line rounded p-5 space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-editorial-ink pb-2 border-b border-editorial-line">
+              Glosarium Istilah Kunci
+            </h4>
+            <div class="space-y-3 text-xs">
+              <div>
+                <span class="font-semibold text-editorial-ink">Platform CAPAC:</span>
+                <p class="text-editorial-muted mt-0.5">Click Activated Protodrugs Against Cancer; platform penangkapan dan pelepasan molekul obat terarah melalui reaksi klik bioortogonal in vivo.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">Klik IEDDA Tetrazin–TCO:</span>
+                <p class="text-editorial-muted mt-0.5">Inverse Electron-Demand Diels-Alder; reaksi pengikatan molekuler ultra-cepat tanpa katalis beracun antara tetrazin dan trans-cyclooctene.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">Protodrug (SQP33):</span>
+                <p class="text-editorial-muted mt-0.5">Prekursor doksorubisin non-aktif yang 82× lebih aman dibanding kemoterapi bebas dan larut air tinggi (71.8 mg/mL).</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">Efek Abscopal:</span>
+                <p class="text-editorial-muted mt-0.5">Fenomena penyusutan tumor metastasis jauh tanpa paparan langsung akibat bangkitnya kekebalan adaptif T sitotoksik sistemik.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">Infiltrasi Limfosit (TILs):</span>
+                <p class="text-editorial-muted mt-0.5">Sel T sitotoksik CD8+ yang merangsek ke dalam jaringan tumor; rasio CD8+/Tregs melonjak tajam setelah aktivasi SQ3370.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FIGURE INDEX QUICK JUMP -->
+          <div class="bg-white border border-editorial-line rounded p-5">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-3 pb-2 border-b border-editorial-line">
+              Indeks Gambar Paper
+            </h4>
+            <ul class="text-xs space-y-2 text-editorial-muted">
+              <li>
+                <a href="#arsitektur-sq3370" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 1: Skema Arsitektur Platform CAPAC</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 2</span>
+                </a>
+              </li>
+              <li>
+                <a href="#arsitektur-sq3370" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 2: Sintesis SQL70 &amp; Protodrug SQP33</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 3</span>
+                </a>
+              </li>
+              <li>
+                <a href="#efikasi-dua-tumor" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 3: Kurva Efikasi Model Dua Tumor</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 4</span>
+                </a>
+              </li>
+              <li>
+                <a href="#profil-imun-tils" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 4: Flow Cytometry Infiltrasi CD8+ &amp; Tregs</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 6</span>
+                </a>
+              </li>
+              <li>
+                <a href="#kombinasi-tlr9a" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 5: Survival Kaplan-Meier Kombinasi TLR9a</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 7</span>
+                </a>
+              </li>
+              <li>
+                <a href="#translasi-klinis" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 6: Model Mekanisme Efek Abscopal</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 8</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </aside>
+
+    </div>
+  </div>
 
   <!-- LIGHTBOX MODAL FOR FULL RESOLUTION IMAGE INSPECTION -->
   <div id="lightbox" class="fixed inset-0 bg-black/80 z-50 hidden flex flex-col items-center justify-center p-4 backdrop-blur-xs" onclick="closeLightbox()">
@@ -639,6 +763,21 @@
       <p id="lightbox-caption" class="text-zinc-200 text-xs text-center mt-3 max-w-2xl font-sans"></p>
     </div>
   </div>
+
+  <!-- SCRIPT -->
+  <script>
+    function toggleSummary() {
+      const content = document.getElementById('summary-content');
+      const chevron = document.getElementById('summary-chevron');
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        chevron.textContent = '[- tutup]';
+      } else {
+        content.classList.add('hidden');
+        chevron.textContent = '[+ buka]';
+      }
+    }
+  </script>
 
   <!-- Shared Reader Experience Script -->
   <script src="../../shared/reader.js"></script>

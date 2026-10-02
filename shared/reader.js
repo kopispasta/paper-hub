@@ -400,48 +400,32 @@
     });
   };
 
-  // --- 4. FLOATING SCROLLSPY TOC GENERATOR ---
-  function initFloatingTOC() {
-    if (document.querySelector('aside.lg\\:col-span-4')) return;
-    const sections = Array.from(document.querySelectorAll('main section[id]'));
-    if (sections.length < 3) return;
+  // --- 4. SIDEBAR SCROLLSPY TOC CONTROLLER ---
+  function initSidebarTOCScrollSpy() {
+    const tocNav = document.querySelector('aside #toc-list, aside nav');
+    if (!tocNav) return;
+    const links = Array.from(tocNav.querySelectorAll('a[href^="#"]'));
+    if (links.length === 0) return;
 
-    let sidebar = document.getElementById('floating-toc-sidebar');
-    if (!sidebar) {
-      sidebar = document.createElement('aside');
-      sidebar.id = 'floating-toc-sidebar';
-      sidebar.className = 'floating-toc-sidebar hidden xl:block';
+    const sections = links.map(link => {
+      const id = link.getAttribute('href').slice(1);
+      return document.getElementById(id);
+    }).filter(Boolean);
 
-      const title = document.createElement('div');
-      title.className = 'toc-title';
-      title.textContent = 'Daftar Isi Bab';
-      sidebar.appendChild(title);
-
-      const navList = document.createElement('nav');
-      sections.forEach(sec => {
-        const h2 = sec.querySelector('h2');
-        if (!h2) return;
-        const link = document.createElement('a');
-        link.href = `#${sec.id}`;
-        link.className = 'toc-link';
-        link.textContent = h2.textContent.trim();
-        link.setAttribute('data-target-id', sec.id);
-        navList.appendChild(link);
-      });
-      sidebar.appendChild(navList);
-      document.body.appendChild(sidebar);
-    }
+    if (sections.length === 0) return;
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const id = entry.target.id;
-          document.querySelectorAll('.floating-toc-sidebar .toc-link').forEach(link => {
-            link.classList.toggle('active', link.getAttribute('data-target-id') === id);
+          links.forEach(link => {
+            const match = link.getAttribute('href') === `#${id}`;
+            link.classList.toggle('active', match);
+            link.classList.toggle('is-current-section', match);
           });
         }
       });
-    }, { rootMargin: '-20% 0px -70% 0px' });
+    }, { rootMargin: '-15% 0px -70% 0px' });
 
     sections.forEach(sec => observer.observe(sec));
   }
@@ -1233,7 +1217,7 @@
     injectHeaderControls();
     injectCompletionCard();
     enhanceLightboxModal();
-    initFloatingTOC();
+    initSidebarTOCScrollSpy();
     initNotesPanel();
     setupScrollTracking();
     restoreScrollPosition();

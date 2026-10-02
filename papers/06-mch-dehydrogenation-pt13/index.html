@@ -222,40 +222,63 @@
     </div>
   </section>
 
-  <!-- MAIN ARTICLE CONTENT -->
-  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 article-body">
+  <!-- MAIN ARTICLE LAYOUT (3 Columns: Left Notes + Center Article + Right Aside) -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 pt-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      
+      <!-- ARTICLE TEXT (Cols 1-8) -->
+      <main class="lg:col-span-8 article-body">
 
-    <!-- TABLE OF CONTENTS (MINI JUMP NAV) -->
-    <nav class="p-4 bg-zinc-50 border border-editorial-line rounded text-xs font-sans mb-8">
-      <div class="font-bold text-editorial-ink uppercase tracking-wider mb-2">Navigasi Bab Telaah</div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-editorial-body">
-        <a href="#latar-belakang" class="hover:text-editorial-accent flex items-center gap-1.5">
-          <span class="text-editorial-lightmuted font-mono">01.</span> Urgensi Vektor Hidrogen & Siklus LOHC
-        </a>
-        <a href="#adsorpsi-pt13" class="hover:text-editorial-accent flex items-center gap-1.5">
-          <span class="text-editorial-lightmuted font-mono">02.</span> Klaster Pt₁₃ & Adsorpsi Awal
-        </a>
-        <a href="#tahap-1-2" class="hover:text-editorial-accent flex items-center gap-1.5">
-          <span class="text-editorial-lightmuted font-mono">03.</span> Tahap 1 & 2: Pelepasan H₂ Pertama
-        </a>
-        <a href="#tahap-3-4" class="hover:text-editorial-accent flex items-center gap-1.5">
-          <span class="text-editorial-lightmuted font-mono">04.</span> Tahap 3 & 4: Pelepasan H₂ Kedua & Pergeseran RDS
-        </a>
-        <a href="#tahap-5-6" class="hover:text-editorial-accent flex items-center gap-1.5">
-          <span class="text-editorial-lightmuted font-mono">05.</span> Tahap 5 & 6: Aromatisasi Cincin Benzena
-        </a>
-        <a href="#termodinamika-tradeoff" class="hover:text-editorial-accent flex items-center gap-1.5">
-          <span class="text-editorial-lightmuted font-mono">06.</span> Kinetika, Termodinamika & Trade-off LOHC
-        </a>
-      </div>
-    </nav>
+        <!-- EXECUTIVE SUMMARY ACCORDION -->
+        <div class="border border-editorial-line bg-white rounded p-5 mb-10">
+          <div class="flex items-center justify-between cursor-pointer select-none" onclick="toggleSummary()">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-editorial-accent"></span>
+              <h3 class="text-sm font-bold text-editorial-ink tracking-tight font-sans">
+                Ringkasan Singkat untuk Peneliti (4 Poin Utama)
+              </h3>
+            </div>
+            <span id="summary-chevron" class="text-xs font-mono text-editorial-muted">[- tutup]</span>
+          </div>
+          <div id="summary-content" class="mt-4 pt-4 border-t border-editorial-line text-xs sm:text-sm font-sans text-editorial-body space-y-2.5 leading-relaxed">
+            <p><strong>1. Pangkasan Beban Termodinamika:</strong> Gugus pendorong elektron amino (-NH₂) pada MCA memangkas beban energi bebas dehidrogenasi bersih sebesar 11.38 kcal/mol (ΔG turun ke 26.48 kcal/mol dibanding 37.86 kcal/mol pada MCH).</p>
+            <p><strong>2. Percepatan Kinetika Global:</strong> Gugus penarik elektron nitro (-NO₂) pada MNC menurunkan barrier aktivasi global ke angka terendah 56.37 kcal/mol pada klaster Pt₁₃.</p>
+            <p><strong>3. Pergeseran Tahap Penentu Laju (RDS):</strong> Pada MCH murni, pemutusan ikatan C-H pertama adalah RDS (barrier 49.33 kcal/mol), sedangkan pada MCA bergeser ke pelepasan H₂ kedua (Tahap 4, barrier 47.96 kcal/mol).</p>
+            <p><strong>4. Dilema Trade-Off Gravimetrik:</strong> Keunggulan termodinamika MCA dan MNC diimbangi oleh penurunan kapasitas simpan hidrogen gravimetrik dari 6.12 wt% (MCH murni) menjadi 5.31 wt% (MCA) dan 4.20 wt% (MNC).</p>
+          </div>
+        </div>
 
-    <!-- INTRO & BACKGROUND -->
-    <section id="latar-belakang">
-      <h2>01. Urgensi Vektor Energi Hidrogen & Siklus LOHC Metilsikloheksana</h2>
-      <p class="text-xl font-serif leading-relaxed text-editorial-ink first-letter:text-5xl first-letter:font-bold first-letter:float-left first-letter:mr-3 first-letter:text-editorial-accent first-letter:font-serif">
-        Peralihan global menuju sistem energi bebas emisi karbon menempatkan hidrogen sebagai salah satu vektor energi paling krusial di abad ke-21. Namun, sifat fisis gas hidrogen yang sangat ringan dan mudah meledak menghadirkan rintangan logistik masif: kompresi mekanik bertekanan tinggi (350–700 bar) dan pencairan kriogenik ekstrem (-253 °C) tidak hanya menyerap sebagian besar input energi terbarukan, melainkan juga menuntut infrastruktur tangki khusus yang berisiko tinggi terhadap kerapuhan material logam.
-      </p>
+        <!-- TABLE OF CONTENTS (MINI JUMP NAV) -->
+        <nav class="p-4 bg-zinc-50 border border-editorial-line rounded text-xs font-sans mb-8">
+          <div class="font-bold text-editorial-ink uppercase tracking-wider mb-2">Navigasi Bab Telaah</div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-editorial-body">
+            <a href="#latar-belakang" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">01.</span> Urgensi Vektor Hidrogen &amp; Siklus LOHC
+            </a>
+            <a href="#adsorpsi-pt13" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">02.</span> Klaster Pt₁₃ &amp; Adsorpsi Awal
+            </a>
+            <a href="#tahap-1-2" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">03.</span> Tahap 1 &amp; 2: Pelepasan H₂ Pertama
+            </a>
+            <a href="#tahap-3-4" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">04.</span> Tahap 3 &amp; 4: Pelepasan H₂ Kedua &amp; Pergeseran RDS
+            </a>
+            <a href="#tahap-5-6" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">05.</span> Tahap 5 &amp; 6: Aromatisasi Cincin Benzena
+            </a>
+            <a href="#termodinamika-tradeoff" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">06.</span> Kinetika, Termodinamika &amp; Trade-off LOHC
+            </a>
+          </div>
+        </nav>
+
+        <!-- INTRO & BACKGROUND -->
+        <section id="latar-belakang">
+          <h2>01. Urgensi Vektor Energi Hidrogen &amp; Siklus LOHC Metilsikloheksana</h2>
+          <p class="editorial-dropcap">
+            Peralihan global menuju sistem energi bebas emisi karbon menempatkan hidrogen sebagai salah satu vektor energi paling krusial di abad ke-21. Namun, sifat fisis gas hidrogen yang sangat ringan dan mudah meledak menghadirkan rintangan logistik masif: kompresi mekanik bertekanan tinggi (350–700 bar) dan pencairan kriogenik ekstrem (-253 °C) tidak hanya menyerap sebagian besar input energi terbarukan, melainkan juga menuntut infrastruktur tangki khusus yang berisiko tinggi terhadap kerapuhan material logam.
+          </p>
 
       <p>
         Sebagai solusi kompromi yang sangat menjanjikan, teknologi <strong>Liquid Organic Hydrogen Carrier (LOHC)</strong> memungkinkan hidrogen disimpan dan ditranspor dalam bentuk cairan organik stabil pada suhu dan tekanan lingkungan normal, memanfaatkan jaringan pipa, truk tangki, dan kapal bahan bakar minyak bumi yang sudah tersedia secara luas. Di antara kandidat LOHC, pasangan siklus <strong>metilsikloheksana / toluena (MCH/TOL)</strong> menjadi sistem yang paling matang secara industri (contohnya pada demonstrasi skala besar <em>SPERA Hydrogen</em>).
@@ -754,7 +777,108 @@
       </div>
     </section>
 
-  </main>
+      </main>
+
+      <!-- SIDEBAR NAVIGATION & GLOSSARY (Cols 9-12) -->
+      <aside class="lg:col-span-4 space-y-8 font-sans">
+        
+        <!-- STICKY TABLE OF CONTENTS -->
+        <div class="sticky top-20 space-y-6">
+          
+          <!-- TABLE OF CONTENTS -->
+          <div class="bg-white border border-editorial-line rounded p-5">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-3 pb-2 border-b border-editorial-line">
+              Daftar Isi Artikel
+            </h4>
+            <nav class="space-y-1.5 text-xs text-editorial-muted" id="toc-list">
+              <a href="#latar-belakang" class="block py-1 hover:text-editorial-accent transition-colors">• 1. Urgensi Hidrogen &amp; LOHC (Fig. 1)</a>
+              <a href="#adsorpsi-pt13" class="block py-1 hover:text-editorial-accent transition-colors">• 2. Klaster Pt₁₃ &amp; Adsorpsi (Fig. 2-3)</a>
+              <a href="#tahap-1-2" class="block py-1 hover:text-editorial-accent transition-colors">• 3. Pelepasan H₂ Pertama (Fig. 4-5)</a>
+              <a href="#tahap-3-4" class="block py-1 hover:text-editorial-accent transition-colors">• 4. Pelepasan H₂ Kedua (Fig. 6-7)</a>
+              <a href="#tahap-5-6" class="block py-1 hover:text-editorial-accent transition-colors">• 5. Aromatisasi Cincin (Fig. 8-9)</a>
+              <a href="#termodinamika-tradeoff" class="block py-1 hover:text-editorial-accent transition-colors">• 6. Kinetika &amp; Trade-off (Fig. 10-13)</a>
+            </nav>
+          </div>
+
+          <!-- MINI GLOSSARY FOR RESEARCHERS -->
+          <div class="bg-white border border-editorial-line rounded p-5 space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-editorial-ink pb-2 border-b border-editorial-line">
+              Glosarium Istilah Kunci
+            </h4>
+            <div class="space-y-3 text-xs">
+              <div>
+                <span class="font-semibold text-editorial-ink">LOHC (Liquid Organic Hydrogen Carrier):</span>
+                <p class="text-editorial-muted mt-0.5">Minyak organik sintetis pembawa hidrogen yang dapat dihidrogenasi dan didehidrogenasi siklis pada kondisi ambien.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">Klaster Pt₁₃ (Simetri D₅ₕ):</span>
+                <p class="text-editorial-muted mt-0.5">Klaster nano platina ikosahedral terdistorsi dengan koordinasi atom tak jenuh yang menyajikan aktivitas katalitik istimewa.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">Tahap Penentu Laju (RDS):</span>
+                <p class="text-editorial-muted mt-0.5">Langkah kinetika dengan energi aktivasi tertinggi dalam 6 tahap dehidrogenasi yang membatasi kecepatan produksi gas hidrogen.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">Efek Substituen (-NH₂ vs -NO₂):</span>
+                <p class="text-editorial-muted mt-0.5">Gugus donor elektron amino dan penarik elektron nitro yang memodulasi kerapatan orbital cincin dan memangkas barrier reaksi.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">Kapasitas Simpan Gravimetrik:</span>
+                <p class="text-editorial-muted mt-0.5">Persentase bobot H₂ yang tersimpan per bobot total molekul LOHC (MCH 6.12 wt% vs MCA 5.31 wt% vs MNC 4.20 wt%).</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FIGURE INDEX QUICK JUMP -->
+          <div class="bg-white border border-editorial-line rounded p-5">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-3 pb-2 border-b border-editorial-line">
+              Indeks Gambar Paper
+            </h4>
+            <ul class="text-xs space-y-2 text-editorial-muted">
+              <li>
+                <a href="#latar-belakang" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 1: Siklus LOHC MCH/Toluena</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 2</span>
+                </a>
+              </li>
+              <li>
+                <a href="#adsorpsi-pt13" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 2-3: Klaster Pt₁₃ &amp; Konformasi Adsorpsi</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 3-4</span>
+                </a>
+              </li>
+              <li>
+                <a href="#tahap-1-2" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 4-5: Energi Bebas &amp; TS Pelepasan H₂ Pertama</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 5-6</span>
+                </a>
+              </li>
+              <li>
+                <a href="#tahap-3-4" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 6-7: Energi Bebas &amp; TS Pelepasan H₂ Kedua</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 7-8</span>
+                </a>
+              </li>
+              <li>
+                <a href="#tahap-5-6" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 8-9: Energi Bebas &amp; TS Aromatisasi</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 9-10</span>
+                </a>
+              </li>
+              <li>
+                <a href="#termodinamika-tradeoff" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 10-13: Perbandingan Energi &amp; Trade-off LOHC</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 11-14</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </aside>
+
+    </div>
+  </div>
 
   <!-- LIGHTBOX MODAL FOR FULL RESOLUTION IMAGE INSPECTION -->
   <div id="lightbox" class="fixed inset-0 bg-black/80 z-50 hidden flex flex-col items-center justify-center p-4 backdrop-blur-xs" onclick="closeLightbox()">
@@ -767,6 +891,21 @@
       <p id="lightbox-caption" class="text-zinc-200 text-xs text-center mt-3 max-w-2xl font-sans"></p>
     </div>
   </div>
+
+  <!-- SCRIPT -->
+  <script>
+    function toggleSummary() {
+      const content = document.getElementById('summary-content');
+      const chevron = document.getElementById('summary-chevron');
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        chevron.textContent = '[- tutup]';
+      } else {
+        content.classList.add('hidden');
+        chevron.textContent = '[+ buka]';
+      }
+    }
+  </script>
 
   <!-- Shared Reader Experience Script -->
   <script src="../../shared/reader.js"></script>

@@ -222,40 +222,63 @@
     </div>
   </section>
 
-  <!-- MAIN ARTICLE CONTENT -->
-  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 article-body">
+  <!-- MAIN ARTICLE LAYOUT (3 Columns: Left Notes + Center Article + Right Aside) -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 pt-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      
+      <!-- ARTICLE TEXT (Cols 1-8) -->
+      <main class="lg:col-span-8 article-body">
 
-    <!-- TABLE OF CONTENTS (MINI JUMP NAV) -->
-    <nav class="p-4 bg-zinc-50 border border-editorial-line rounded text-xs font-sans mb-8">
-      <div class="font-bold text-editorial-ink uppercase tracking-wider mb-2">Navigasi Bab Telaah</div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-editorial-body">
-        <a href="#latar-belakang" class="hover:text-editorial-accent flex items-center gap-1.5">
-          <span class="text-editorial-lightmuted font-mono">01.</span> Resistensi Kanker & Scaffold Piridotetrazin
-        </a>
-        <a href="#sintesis-heterosiklik" class="hover:text-editorial-accent flex items-center gap-1.5">
-          <span class="text-editorial-lightmuted font-mono">02.</span> Kimia Hijau PASE & Arsitektur Heterosiklik
-        </a>
-        <a href="#aktivitas-nci60" class="hover:text-editorial-accent flex items-center gap-1.5">
-          <span class="text-editorial-lightmuted font-mono">03.</span> Skrining Sitotoksisitas Panel NCI-60
-        </a>
-        <a href="#docking-jak2" class="hover:text-editorial-accent flex items-center gap-1.5">
-          <span class="text-editorial-lightmuted font-mono">04.</span> Penambatan Molekuler Janus Kinase-2 (JAK2)
-        </a>
-        <a href="#dft-orbital" class="hover:text-editorial-accent flex items-center gap-1.5">
-          <span class="text-editorial-lightmuted font-mono">05.</span> Kuantum DFT: Orbital FMO & Peta MEP
-        </a>
-        <a href="#farmakokinetika-adme" class="hover:text-editorial-accent flex items-center gap-1.5">
-          <span class="text-editorial-lightmuted font-mono">06.</span> Profil ADME In Silico & Karakter Obat
-        </a>
-      </div>
-    </nav>
+        <!-- EXECUTIVE SUMMARY ACCORDION -->
+        <div class="border border-editorial-line bg-white rounded p-5 mb-10">
+          <div class="flex items-center justify-between cursor-pointer select-none" onclick="toggleSummary()">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-editorial-accent"></span>
+              <h3 class="text-sm font-bold text-editorial-ink tracking-tight font-sans">
+                Ringkasan Singkat untuk Peneliti (4 Poin Utama)
+              </h3>
+            </div>
+            <span id="summary-chevron" class="text-xs font-mono text-editorial-muted">[- tutup]</span>
+          </div>
+          <div id="summary-content" class="mt-4 pt-4 border-t border-editorial-line text-xs sm:text-sm font-sans text-editorial-body space-y-2.5 leading-relaxed">
+            <p><strong>1. Filosofi Kimia Hijau PASE:</strong> Reaksi one-pot fusi termal tanpa pelarut (solvent-free) dan tanpa katalis logam berhasil menyatukan cincin heterosiklik piridotetrazin dan azepin dengan rendemen tinggi (67–89%) dalam waktu 2–3 jam.</p>
+            <p><strong>2. Selektivitas Sitotoksisitas NCI-60:</strong> Skrining pada 60 lini sel kanker manusia membuktikan Senyawa 9 memiliki hambatan pertumbuhan kuat 77.94% pada kanker kolon HCT-116 dan 51.58% pada leukemia RPMI-8226.</p>
+            <p><strong>3. Penambatan Enzimatik JAK2:</strong> Senyawa 9 tertambat kuat pada kantung pengikatan ATP kinase JAK2 (-7.25 kcal/mol) dengan jaringan ikatan hidrogen Glu930 dan Leu932, setara ligan klinis referensi 2HB (-7.45 kcal/mol).</p>
+            <p><strong>4. Orbital Kuantum DFT &amp; ADME Bebas Resistensi:</strong> Celah HOMO–LUMO yang sangat sempit (0.0875 eV) menunjukkan tingginya reaktivitas transfer elektron molekul, lolos Aturan Lipinski tanpa menjadi substrat pompa efluks P-glikoprotein.</p>
+          </div>
+        </div>
 
-    <!-- SECTION 1: CONTEXT & PASE -->
-    <section id="latar-belakang">
-      <h2>01. Tantangan Resistensi Kanker & Urgensi Scaffold Piridotetrazin</h2>
-      <p class="text-xl font-serif leading-relaxed text-editorial-ink first-letter:text-5xl first-letter:font-bold first-letter:float-left first-letter:mr-3 first-letter:text-editorial-accent first-letter:font-serif">
-        Cincin heterosiklik yang kaya akan atom nitrogen merupakan inti dari lebih dari 75% molekul obat onkologi modern yang telah disetujui badan regulasi dunia. Di antara berbagai arsitektur nitrogen, kerangka <strong>piridina</strong>, <strong>1,2,4,5-tetrazin</strong>, serta cincin beranggota tujuh <strong>azepin (triazepin dan tetrazepin)</strong> menempati posisi istimewa berkat kemampuannya membentuk ikatan hidrogen multipel, berinteraksi pi-pi dengan residu enzim, dan menembus membran biologis dengan efisiensi tinggi.
-      </p>
+        <!-- TABLE OF CONTENTS (MINI JUMP NAV) -->
+        <nav class="p-4 bg-zinc-50 border border-editorial-line rounded text-xs font-sans mb-8">
+          <div class="font-bold text-editorial-ink uppercase tracking-wider mb-2">Navigasi Bab Telaah</div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-editorial-body">
+            <a href="#latar-belakang" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">01.</span> Resistensi Kanker &amp; Scaffold Piridotetrazin
+            </a>
+            <a href="#sintesis-heterosiklik" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">02.</span> Kimia Hijau PASE &amp; Arsitektur Heterosiklik
+            </a>
+            <a href="#aktivitas-nci60" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">03.</span> Skrining Sitotoksisitas Panel NCI-60
+            </a>
+            <a href="#docking-jak2" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">04.</span> Penambatan Molekuler Janus Kinase-2 (JAK2)
+            </a>
+            <a href="#dft-orbital" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">05.</span> Kuantum DFT: Orbital FMO &amp; Peta MEP
+            </a>
+            <a href="#farmakokinetika-adme" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">06.</span> Profil ADME In Silico &amp; Karakter Obat
+            </a>
+          </div>
+        </nav>
+
+        <!-- SECTION 1: CONTEXT & PASE -->
+        <section id="latar-belakang">
+          <h2>01. Tantangan Resistensi Kanker &amp; Urgensi Scaffold Piridotetrazin</h2>
+          <p class="editorial-dropcap">
+            Cincin heterosiklik yang kaya akan atom nitrogen merupakan inti dari lebih dari 75% molekul obat onkologi modern yang telah disetujui badan regulasi dunia. Di antara berbagai arsitektur nitrogen, kerangka <strong>piridina</strong>, <strong>1,2,4,5-tetrazin</strong>, serta cincin beranggota tujuh <strong>azepin (triazepin dan tetrazepin)</strong> menempati posisi istimewa berkat kemampuannya membentuk ikatan hidrogen multipel, berinteraksi pi-pi dengan residu enzim, dan menembus membran biologis dengan efisiensi tinggi.
+          </p>
 
       <p>
         Namun, sintesis cincin tetrazin dan azepin terpadu (<em>fused bridgehead heterocycles</em>) selama berpuluh-puluh tahun dihadapkan pada tantangan berat: reaksi multitahap yang rumit, penggunaan pelarut organik beracun yang boros, kebutuhan katalis logam berat yang mahal, serta rendemen akhir yang rendah. Untuk menjawab tantangan kimia hijau abad ke-21, tim peneliti gabungan Fakultas Sains dan Farmasi <strong>Al-Azhar University, Kairo, Mesir</strong> (Aisha Y. Hassan, Sara N. Shabaan, Samiha A. El-Sebaey, dan dipimpin oleh Dr. Eman S. Abou-Amra) mengadopsi filosofi <strong>Pot, Atom, and Step Economy (PASE)</strong>.
@@ -833,7 +856,114 @@
       </div>
     </section>
 
-  </main>
+      </main>
+
+      <!-- SIDEBAR NAVIGATION & GLOSSARY (Cols 9-12) -->
+      <aside class="lg:col-span-4 space-y-8 font-sans">
+        
+        <!-- STICKY TABLE OF CONTENTS -->
+        <div class="sticky top-20 space-y-6">
+          
+          <!-- TABLE OF CONTENTS -->
+          <div class="bg-white border border-editorial-line rounded p-5">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-3 pb-2 border-b border-editorial-line">
+              Daftar Isi Artikel
+            </h4>
+            <nav class="space-y-1.5 text-xs text-editorial-muted" id="toc-list">
+              <a href="#latar-belakang" class="block py-1 hover:text-editorial-accent transition-colors">• 1. Resistensi Kanker &amp; Piridotetrazin</a>
+              <a href="#sintesis-heterosiklik" class="block py-1 hover:text-editorial-accent transition-colors">• 2. Kimia Hijau PASE (Fig. 1-2)</a>
+              <a href="#aktivitas-nci60" class="block py-1 hover:text-editorial-accent transition-colors">• 3. Skrining NCI-60 (Fig. 3 &amp; Tabel)</a>
+              <a href="#docking-jak2" class="block py-1 hover:text-editorial-accent transition-colors">• 4. Penambatan JAK2 (Fig. 4 &amp; Tabel)</a>
+              <a href="#dft-orbital" class="block py-1 hover:text-editorial-accent transition-colors">• 5. Kuantum DFT FMO &amp; MEP (Fig. 5-6)</a>
+              <a href="#farmakokinetika-adme" class="block py-1 hover:text-editorial-accent transition-colors">• 6. Farmakokinetika ADME (Fig. 7)</a>
+            </nav>
+          </div>
+
+          <!-- MINI GLOSSARY FOR RESEARCHERS -->
+          <div class="bg-white border border-editorial-line rounded p-5 space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-editorial-ink pb-2 border-b border-editorial-line">
+              Glosarium Istilah Kunci
+            </h4>
+            <div class="space-y-3 text-xs">
+              <div>
+                <span class="font-semibold text-editorial-ink">Janus Kinase-2 (JAK2):</span>
+                <p class="text-editorial-muted mt-0.5">Tirosin kinase pensinyalan intraseluler jalur JAK-STAT; mutasi hiperaktifnya memicu proliferasi abnormal kanker dan leukemia.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">Filosofi PASE:</span>
+                <p class="text-editorial-muted mt-0.5">Pot, Atom, and Step Economy—strategi sintesis satu wadah bebas pelarut dengan rendemen tinggi (hingga 89%) dan minim limbah.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">Panel NCI-60:</span>
+                <p class="text-editorial-muted mt-0.5">Panel skrining sitotoksisitas komprehensif 60 lini sel kanker manusia oleh National Cancer Institute AS.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">Celah HOMO–LUMO:</span>
+                <p class="text-editorial-muted mt-0.5">Perbedaan energi orbital batas kuantum DFT; nilai sempit (0.0875 eV) menunjukkan transfer muatan mudah dan reaktivitas biologis tinggi.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">Efluks P-glikoprotein (P-gp):</span>
+                <p class="text-editorial-muted mt-0.5">Pompa transpor membran yang mengeluarkan obat dari sel kanker; senyawa yang bukan substrat P-gp kebal terhadap resistensi multidrug.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FIGURE INDEX QUICK JUMP -->
+          <div class="bg-white border border-editorial-line rounded p-5">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-3 pb-2 border-b border-editorial-line">
+              Indeks Gambar Paper
+            </h4>
+            <ul class="text-xs space-y-2 text-editorial-muted">
+              <li>
+                <a href="#sintesis-heterosiklik" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 1: Sintesis PASE Senyawa 2–5</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 2</span>
+                </a>
+              </li>
+              <li>
+                <a href="#sintesis-heterosiklik" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 2: Anelasi Senyawa 6–10</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 3</span>
+                </a>
+              </li>
+              <li>
+                <a href="#aktivitas-nci60" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 3: Spektrum Hambatan Sel NCI-60</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 5</span>
+                </a>
+              </li>
+              <li>
+                <a href="#docking-jak2" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 4: Penambatan Kompleks JAK2-9</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 7</span>
+                </a>
+              </li>
+              <li>
+                <a href="#dft-orbital" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 5: Visualisasi Orbital HOMO-LUMO</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 8</span>
+                </a>
+              </li>
+              <li>
+                <a href="#dft-orbital" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 6: Peta Potensial Elektrostatik MEP</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 9</span>
+                </a>
+              </li>
+              <li>
+                <a href="#farmakokinetika-adme" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 7: Radar Bioavailabilitas SwissADME</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 10</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </aside>
+
+    </div>
+  </div>
 
   <!-- LIGHTBOX MODAL FOR FULL RESOLUTION IMAGE INSPECTION -->
   <div id="lightbox" class="fixed inset-0 bg-black/80 z-50 hidden flex flex-col items-center justify-center p-4 backdrop-blur-xs" onclick="closeLightbox()">
@@ -846,6 +976,21 @@
       <p id="lightbox-caption" class="text-zinc-200 text-xs text-center mt-3 max-w-2xl font-sans"></p>
     </div>
   </div>
+
+  <!-- SCRIPT -->
+  <script>
+    function toggleSummary() {
+      const content = document.getElementById('summary-content');
+      const chevron = document.getElementById('summary-chevron');
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        chevron.textContent = '[- tutup]';
+      } else {
+        content.classList.add('hidden');
+        chevron.textContent = '[+ buka]';
+      }
+    }
+  </script>
 
   <!-- Shared Reader Experience Script -->
   <script src="../../shared/reader.js"></script>

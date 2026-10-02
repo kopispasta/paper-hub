@@ -14,6 +14,11 @@ paper-hub/
 ├── index.html                           # Portal Utama (Dashboard Katalog Paper)
 ├── README.md                            # Dokumentasi repositori & indeks sitasi
 ├── serve.sh                             # Skrip peluncur server lokal satu-klik
+├── docs/                                # Dokumentasi & Standar Editorial
+│   └── PANDUAN_DESAIN_PAPER.md          # Spesifikasi baku pembuatan halaman paper baru
+├── shared/                              # Shared reader engine & styling
+│   ├── reader.js                        # State sync, scrollspy, notes sidebar, lightbox
+│   └── reader.css                       # Stylings for reader components & typography
 └── papers/                              # Direktori masing-masing paper
     ├── 01-mos2-mxene-her/               # Paper 1: MoS2/Ti3C2 MXene untuk HER Basa
     │   ├── index.html                   # Showcase lengkap Paper 1
@@ -94,3 +99,4 @@ Lalu buka peramban Anda di: `http://localhost:8080`
 6. **Histori Bacaan & Checklist Status:** Pelacakan presisi progres scroll, bagian terakhir yang dibaca, tombol bookmark, serta checklist tanda selesai baca yang tersinkronisasi instan antara portal utama dan lembar artikel paper.
 7. **Sinkronisasi Lintas Perangkat (Cross-Device Sync):** Fitur ekspor/impor JSON dan tautan instan (dengan kode QR) untuk memindahkan seluruh riwayat baca, checklist, dan bookmark ke ponsel pintar atau tablet tanpa perlu membuat akun pengguna.
 8. **Buku Catatan Pembaca (Floating Notes Sidebar):** Bilah catatan interaktif di sisi kiri untuk mencatat poin-poin penting (*Key Points*) dan hal-hal yang belum dipahami (*To-Research*). Dilengkapi tombol pencarian instan satu-klik ke Google & Google Scholar, checklist penyelesaian pemahaman, ekspor rangkuman format Markdown, serta sinkronisasi otomatis antar perangkat.
+9. **Standar Desain & Panduan Pembuatan Paper Baru:** Spesifikasi master dan panduan terperinci untuk membuat halaman paper baru (#11+) dengan tata letak 3-kolom seragam, tanpa *workslop*, dan bebas dari delimiter LaTeX yang rusak dapat dibaca di [docs/PANDUAN_DESAIN_PAPER.md](docs/PANDUAN_DESAIN_PAPER.md).
