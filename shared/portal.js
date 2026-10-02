@@ -63,6 +63,9 @@
           if (Array.isArray(parsed.bms || parsed.bookmarks)) {
             data.bookmarks = (parsed.bms || parsed.bookmarks).map(id => String(id).padStart(2, '0'));
           }
+          if (parsed.notes && typeof parsed.notes === 'object') {
+            data.notes = parsed.notes;
+          }
           if (parsed.theme) data.theme = parsed.theme;
           if (parsed.size || parsed.fontSize) data.fontSize = parsed.size || parsed.fontSize;
           if (parsed.last || parsed.lastReading) data.lastReading = parsed.last || parsed.lastReading;
@@ -111,6 +114,21 @@
     } catch (e) {}
   }
 
+  function getAllPapersNotes() {
+    const res = {};
+    for (let i = 1; i <= 10; i++) {
+      const pid = String(i).padStart(2, '0');
+      const n = localStorage.getItem('telaahsains_notes_' + pid);
+      if (n) {
+        try {
+          const arr = JSON.parse(n);
+          if (Array.isArray(arr) && arr.length > 0) res[pid] = arr;
+        } catch (e) {}
+      }
+    }
+    return res;
+  }
+
   function pushLocalToSession(customTime) {
     try {
       let localRead = [];
@@ -128,6 +146,7 @@
         readPapers: localRead.map(id => String(id).padStart(2, '0')),
         bookmarks: localBms.map(id => String(id).padStart(2, '0')),
         lastReading: localLast,
+        notes: getAllPapersNotes(),
         theme: localTheme,
         fontSize: localSize,
         updatedAt: time
@@ -161,6 +180,22 @@
         if (Array.isArray(incoming.bookmarks)) {
           const normalized = Array.from(new Set(incoming.bookmarks.map(id => String(id).padStart(2, '0'))));
           localStorage.setItem(BOOKMARK_KEY, JSON.stringify(normalized));
+        }
+        if (incoming.notes && typeof incoming.notes === 'object') {
+          Object.keys(incoming.notes).forEach(pid => {
+            const normPid = String(pid).padStart(2, '0');
+            const incNotes = incoming.notes[pid];
+            if (Array.isArray(incNotes)) {
+              let cur = [];
+              try { cur = JSON.parse(localStorage.getItem('telaahsains_notes_' + normPid)) || []; } catch (e) {}
+              const curIds = new Set(cur.map(n => n.id));
+              const merged = [...cur];
+              incNotes.forEach(inN => {
+                if (!curIds.has(inN.id)) merged.push(inN);
+              });
+              localStorage.setItem('telaahsains_notes_' + normPid, JSON.stringify(merged));
+            }
+          });
         }
         if (incoming.theme) localStorage.setItem(THEME_KEY, incoming.theme);
         if (incoming.fontSize) localStorage.setItem(FONT_SIZE_KEY, incoming.fontSize);
@@ -565,6 +600,7 @@
       read: readPapers.map(id => String(id).padStart(2, '0')),
       bms: bookmarks.map(id => String(id).padStart(2, '0')),
       last: lastReading,
+      notes: getAllPapersNotes(),
       theme: theme,
       size: fontSize,
       ts: updatedAt
@@ -591,6 +627,18 @@
     if (readEl) readEl.textContent = readList.length + ' paper';
     const bmsEl = document.getElementById('sync-status-bms');
     if (bmsEl) bmsEl.textContent = bms.length + ' paper';
+
+    const allNotes = getAllPapersNotes();
+    let totalNotes = 0;
+    let papersWithNotes = 0;
+    Object.keys(allNotes).forEach(k => {
+      if (allNotes[k].length > 0) {
+        totalNotes += allNotes[k].length;
+        papersWithNotes++;
+      }
+    });
+    const notesEl = document.getElementById('sync-status-notes');
+    if (notesEl) notesEl.textContent = `${totalNotes} catatan (${papersWithNotes} paper)`;
 
     // Populate URL input
     const syncUrl = getSyncUrl();
@@ -707,6 +755,22 @@
       const bmsList = Array.from(new Set((data.bms || data.bookmarks).map(id => String(id).padStart(2, '0'))));
       localStorage.setItem(BOOKMARK_KEY, JSON.stringify(bmsList));
     }
+    if (data.notes && typeof data.notes === 'object') {
+      Object.keys(data.notes).forEach(pid => {
+        const normPid = String(pid).padStart(2, '0');
+        const incNotes = data.notes[pid];
+        if (Array.isArray(incNotes)) {
+          let cur = [];
+          try { cur = JSON.parse(localStorage.getItem('telaahsains_notes_' + normPid)) || []; } catch (e) {}
+          const curIds = new Set(cur.map(n => n.id));
+          const merged = [...cur];
+          incNotes.forEach(inN => {
+            if (!curIds.has(inN.id)) merged.push(inN);
+          });
+          localStorage.setItem('telaahsains_notes_' + normPid, JSON.stringify(merged));
+        }
+      });
+    }
     if (data.theme) localStorage.setItem(THEME_KEY, data.theme);
     if (data.size || data.fontSize) localStorage.setItem(FONT_SIZE_KEY, data.size || data.fontSize);
     if (data.last || data.lastReading) {
@@ -717,6 +781,7 @@
 
     updateReadUI();
     updateBookmarkUI();
+    updateNotesUI();
     renderLastReadingWidget();
     syncTheme();
     applyAllFilters();
@@ -724,16 +789,20 @@
   }
 
   function resetSyncData() {
-    if (!confirm('Apakah Anda yakin ingin menghapus semua histori bacaan dan bookmark di perangkat ini?')) return;
+    if (!confirm('Apakah Anda yakin ingin menghapus semua histori bacaan, catatan, dan bookmark di perangkat ini?')) return;
     localStorage.removeItem(READ_KEY);
     localStorage.removeItem(BOOKMARK_KEY);
     localStorage.removeItem(LAST_READING_KEY);
+    for (let i = 1; i <= 10; i++) {
+      localStorage.removeItem('telaahsains_notes_' + String(i).padStart(2, '0'));
+    }
     const now = Date.now();
     localStorage.setItem(SYNC_TIME_KEY, String(now));
     pushLocalToSession(now);
 
     updateReadUI();
     updateBookmarkUI();
+    updateNotesUI();
     renderLastReadingWidget();
     applyAllFilters();
     updateOutgoingLinks();
@@ -741,6 +810,32 @@
     showPortalToast('Data lokal berhasil direset.');
   }
   window.resetSyncData = resetSyncData;
+
+  function updateNotesUI() {
+    document.querySelectorAll('[data-paper-id]').forEach(el => {
+      const pid = String(el.getAttribute('data-paper-id') || '').padStart(2, '0');
+      let notes = [];
+      try { notes = JSON.parse(localStorage.getItem('telaahsains_notes_' + pid)) || []; } catch (e) {}
+      
+      let badge = el.querySelector('.paper-notes-indicator');
+      if (notes.length > 0) {
+        if (!badge) {
+          badge = document.createElement('span');
+          badge.className = 'paper-notes-indicator inline-flex items-center gap-1 text-[10px] font-semibold text-amber-700 bg-amber-50 border border-amber-200 px-1.5 py-0.5 rounded';
+          const metaContainer = el.querySelector('.flex.items-center.gap-2, .paper-meta-row');
+          if (metaContainer) {
+            metaContainer.appendChild(badge);
+          } else {
+            el.appendChild(badge);
+          }
+        }
+        badge.innerHTML = `📝 ${notes.length} catatan`;
+        badge.classList.remove('hidden');
+      } else if (badge) {
+        badge.classList.add('hidden');
+      }
+    });
+  }
 
   // Modal event listeners (Escape & outside click)
   document.addEventListener('keydown', (e) => {
@@ -775,6 +870,7 @@
     syncTheme();
     updateBookmarkUI();
     updateReadUI();
+    updateNotesUI();
     renderLastReadingWidget();
     updateOutgoingLinks();
     const savedView = localStorage.getItem(VIEW_KEY) || 'grid';
@@ -789,10 +885,11 @@
 
   // Cross-tab and window storage synchronization
   window.addEventListener('storage', (e) => {
-    if (e.key === READ_KEY || e.key === BOOKMARK_KEY || e.key === THEME_KEY || e.key === LAST_READING_KEY || e.key === SYNC_TIME_KEY) {
+    if (e.key === READ_KEY || e.key === BOOKMARK_KEY || e.key === THEME_KEY || e.key === LAST_READING_KEY || e.key === SYNC_TIME_KEY || (e.key && e.key.startsWith('telaahsains_notes_'))) {
       reconcileSyncState();
       updateReadUI();
       updateBookmarkUI();
+      updateNotesUI();
       renderLastReadingWidget();
       syncTheme();
       applyAllFilters();
@@ -806,6 +903,7 @@
     syncTheme();
     updateBookmarkUI();
     updateReadUI();
+    updateNotesUI();
     renderLastReadingWidget();
     applyAllFilters();
     updateOutgoingLinks();
@@ -818,6 +916,7 @@
       syncTheme();
       updateBookmarkUI();
       updateReadUI();
+      updateNotesUI();
       renderLastReadingWidget();
       applyAllFilters();
       updateOutgoingLinks();
