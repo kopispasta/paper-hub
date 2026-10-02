@@ -447,10 +447,8 @@
   }
 
   // --- 4B. FLOATING READER NOTES CONTROLLER (Left Gutter & Mobile Drawer) ---
+  // --- 4. READER NOTES (OFF-CANVAS DRAWER & GENERAL NOTES) ---
   const NOTES_PREFIX = 'telaahsains_notes_';
-  const NOTES_COLLAPSED_KEY = 'telaahsains_notes_collapsed';
-  let currentNotesFilter = 'all';
-  let selectedNoteType = 'keypoint';
 
   function getPaperNotes(paperId) {
     if (!paperId) return [];
@@ -495,74 +493,46 @@
     const notes = getPaperNotes(paperId);
 
     const countAll = notes.length;
-    const countKp = notes.filter(n => n.type === 'keypoint').length;
-    const countRs = notes.filter(n => n.type === 'research').length;
     const countDone = notes.filter(n => n.done).length;
 
-    const cAll = document.getElementById('notes-count-all');
-    if (cAll) cAll.textContent = countAll;
-    const cKp = document.getElementById('notes-count-kp');
-    if (cKp) cKp.textContent = countKp;
-    const cRs = document.getElementById('notes-count-rs');
-    if (cRs) cRs.textContent = countRs;
+    const badgeEl = document.getElementById('notes-count-badge');
+    if (badgeEl) badgeEl.textContent = `${countAll} item`;
 
     const sumEl = document.getElementById('notes-summary-text');
     if (sumEl) sumEl.textContent = `${countAll} catatan (${countDone} selesai)`;
 
-    const filtered = notes.filter(n => {
-      if (currentNotesFilter === 'all') return true;
-      return n.type === currentNotesFilter;
-    });
-
-    if (filtered.length === 0) {
+    if (notes.length === 0) {
       container.innerHTML = `
         <div class="notes-empty-state">
-          <div style="font-size: 1.5rem; margin-bottom: 0.35rem;">${currentNotesFilter === 'research' ? '❓' : currentNotesFilter === 'keypoint' ? '📌' : '📝'}</div>
-          <p style="font-weight: 600; color: var(--text-heading); margin-bottom: 0.25rem;">Belum ada catatan ${currentNotesFilter === 'research' ? 'yang perlu dicari' : currentNotesFilter === 'keypoint' ? 'poin penting' : ''}</p>
-          <p style="font-size: 0.6875rem; color: var(--text-muted); line-height: 1.4;">Tuliskan poin penting artikel atau hal yang belum dipahami pada kolom di atas.</p>
+          <div style="font-size: 1.6rem; margin-bottom: 0.4rem;">📝</div>
+          <p style="font-weight: 600; color: var(--text-heading); margin-bottom: 0.25rem;">Belum ada catatan</p>
+          <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.4;">Tuliskan poin penting, kutipan, atau hal yang perlu dipelajari lebih lanjut di kolom atas.</p>
         </div>
       `;
       return;
     }
 
-    container.innerHTML = filtered.map(note => {
-      const isResearch = note.type === 'research';
-      const typeClass = isResearch ? 'is-research' : 'is-keypoint';
+    container.innerHTML = notes.map(note => {
       const completedClass = note.done ? 'is-completed' : '';
-      const badgeHtml = isResearch
-        ? '<span class="notes-item-badge badge-research">❓ Perlu Dicari</span>'
-        : '<span class="notes-item-badge badge-keypoint">📌 Poin Penting</span>';
-
       const timeStr = formatNoteTime(note.createdAt);
       const safeText = escapeHtml(note.text);
-
-      const searchButtons = isResearch ? `
-        <div class="notes-item-tools">
-          <a href="https://www.google.com/search?q=${encodeURIComponent(note.text)}" target="_blank" rel="noopener noreferrer" class="notes-search-btn" title="Cari di Google Web">
-            <span>🔍 Google</span>
-          </a>
-          <a href="https://scholar.google.com/scholar?q=${encodeURIComponent(note.text)}" target="_blank" rel="noopener noreferrer" class="notes-search-btn" title="Cari di Google Scholar">
-            <span>🎓 Scholar</span>
-          </a>
-        </div>
-      ` : '';
+      const searchQuery = encodeURIComponent(note.text);
 
       return `
-        <div class="notes-item-card ${typeClass} ${completedClass}" data-note-id="${note.id}">
-          <div class="notes-item-header">
-            ${badgeHtml}
-            <div style="display: flex; align-items: center; gap: 0.35rem;">
-              <span class="notes-item-time">${timeStr}</span>
-              <button onclick="deletePaperNote('${note.id}')" class="notes-del-btn" title="Hapus catatan">✕</button>
-            </div>
+        <div class="notes-card ${completedClass}" data-note-id="${note.id}">
+          <div class="notes-card-header">
+            <span class="notes-card-time">${timeStr}</span>
+            <button type="button" onclick="deletePaperNote('${note.id}')" class="notes-card-del-btn" title="Hapus catatan">✕</button>
           </div>
-          <div class="notes-item-text">${safeText}</div>
-          <div class="notes-item-actions">
+          <div class="notes-card-text">${safeText}</div>
+          <div class="notes-card-footer">
             <label class="notes-check-label">
               <input type="checkbox" ${note.done ? 'checked' : ''} onchange="togglePaperNoteDone('${note.id}')">
-              <span>${note.done ? 'Sudah dipahami' : 'Tandai selesai'}</span>
+              <span>${note.done ? 'Selesai' : 'Tandai selesai'}</span>
             </label>
-            ${searchButtons}
+            <a href="https://www.google.com/search?q=${searchQuery}" target="_blank" rel="noopener noreferrer" class="notes-search-btn" title="Cari topik ini di Google">
+              <span>🔍 Cari</span>
+            </a>
           </div>
         </div>
       `;
@@ -577,9 +547,13 @@
       headerBadge.textContent = count;
       headerBadge.classList.toggle('hidden', count === 0);
     }
-    const pillBadge = document.getElementById('floating-notes-badge');
-    if (pillBadge) {
-      pillBadge.textContent = count;
+    const edgeBadge = document.getElementById('floating-notes-badge');
+    if (edgeBadge) {
+      edgeBadge.textContent = count;
+    }
+    const countBadge = document.getElementById('notes-count-badge');
+    if (countBadge) {
+      countBadge.textContent = `${count} item`;
     }
   }
 
@@ -598,7 +572,6 @@
     const newNote = {
       id: 'note_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4),
       text: text,
-      type: selectedNoteType || 'keypoint',
       done: false,
       createdAt: Date.now()
     };
@@ -607,27 +580,9 @@
     savePaperNotes(meta.paperId, notes);
     input.value = '';
     renderNotesList(meta.paperId);
-    showToast(newNote.type === 'research' ? 'Pertanyaan dicatat untuk dicari nanti!' : 'Poin penting berhasil dicatat!');
+    showToast('Catatan berhasil ditambahkan!');
   }
   window.submitNewNote = submitNewNote;
-
-  function setNoteType(type) {
-    selectedNoteType = type;
-    document.querySelectorAll('.notes-type-btn').forEach(btn => {
-      btn.classList.toggle('active', btn.getAttribute('data-type') === type);
-    });
-  }
-  window.setNoteType = setNoteType;
-
-  function setNotesFilter(filter) {
-    currentNotesFilter = filter;
-    document.querySelectorAll('.notes-tab-btn').forEach(btn => {
-      btn.classList.toggle('active', btn.getAttribute('data-filter') === filter);
-    });
-    const meta = getPaperMetadata();
-    if (meta.paperId) renderNotesList(meta.paperId);
-  }
-  window.setNotesFilter = setNotesFilter;
 
   function togglePaperNoteDone(noteId) {
     const meta = getPaperMetadata();
@@ -639,7 +594,7 @@
       savePaperNotes(meta.paperId, notes);
       renderNotesList(meta.paperId);
       if (note.done) {
-        showToast('Catatan ditandai selesai dipahami!');
+        showToast('Catatan ditandai selesai!');
       }
     }
   }
@@ -682,33 +637,18 @@
       return;
     }
 
-    const keypoints = notes.filter(n => n.type === 'keypoint');
-    const research = notes.filter(n => n.type === 'research');
-
     const lines = [];
     lines.push(`### Catatan Pembaca: Paper #${meta.paperId} - ${meta.title}`);
     lines.push(`*Dicatat via TelaahSains Hub (${new Date().toLocaleDateString('id-ID')})*\n`);
 
-    if (keypoints.length > 0) {
-      lines.push('#### 📌 Poin Penting:');
-      keypoints.forEach(k => {
-        lines.push(`- ${k.done ? '[x]' : '[ ]'} ${k.text}`);
-      });
-      lines.push('');
-    }
-
-    if (research.length > 0) {
-      lines.push('#### ❓ Hal yang Perlu Dicari Tahu:');
-      research.forEach(r => {
-        lines.push(`- ${r.done ? '[x]' : '[ ]'} ${r.text}`);
-      });
-      lines.push('');
-    }
+    notes.forEach(n => {
+      lines.push(`- ${n.done ? '[x]' : '[ ]'} ${n.text}`);
+    });
 
     const md = lines.join('\n');
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(md).then(() => {
-        showToast('Semua catatan tersalin dalam format Markdown!');
+        showToast('Catatan tersalin dalam format Markdown!');
       }).catch(() => fallbackCopyNotes(md));
     } else {
       fallbackCopyNotes(md);
@@ -726,37 +666,41 @@
   }
   window.copyPaperNotesMarkdown = copyPaperNotesMarkdown;
 
-  function toggleNotesSidebar() {
-    const sidebar = document.getElementById('floating-notes-sidebar');
-    const pill = document.getElementById('floating-notes-pill');
-    if (!sidebar) return;
+  function openNotesDrawer() {
+    const drawer = document.getElementById('floating-notes-sidebar');
+    const backdrop = document.getElementById('notes-drawer-backdrop');
+    if (drawer) drawer.classList.add('is-open');
+    if (backdrop) backdrop.classList.add('is-open');
+    const input = document.getElementById('note-input-text');
+    if (input) {
+      setTimeout(() => input.focus(), 150);
+    }
+  }
+  window.openNotesDrawer = openNotesDrawer;
 
-    const isMobile = window.innerWidth < 1280;
-    if (isMobile) {
-      const isOpen = sidebar.classList.contains('drawer-open');
-      if (isOpen) {
-        closeNotesDrawer();
-      } else {
-        openNotesDrawer();
-      }
+  function closeNotesDrawer() {
+    const drawer = document.getElementById('floating-notes-sidebar');
+    const backdrop = document.getElementById('notes-drawer-backdrop');
+    if (drawer) drawer.classList.remove('is-open');
+    if (backdrop) backdrop.classList.remove('is-open');
+  }
+  window.closeNotesDrawer = closeNotesDrawer;
+
+  function toggleNotesSidebar() {
+    const drawer = document.getElementById('floating-notes-sidebar');
+    if (drawer && drawer.classList.contains('is-open')) {
+      closeNotesDrawer();
     } else {
-      const isCollapsed = sidebar.classList.contains('is-collapsed');
-      if (isCollapsed) {
-        sidebar.classList.remove('is-collapsed');
-        if (pill) pill.classList.add('is-hidden');
-        localStorage.setItem(NOTES_COLLAPSED_KEY, 'false');
-      } else {
-        sidebar.classList.add('is-collapsed');
-        if (pill) pill.classList.remove('is-hidden');
-        localStorage.setItem(NOTES_COLLAPSED_KEY, 'true');
-      }
+      openNotesDrawer();
     }
   }
   window.toggleNotesSidebar = toggleNotesSidebar;
 
-  function openNotesDrawer() {
-    const sidebar = document.getElementById('floating-notes-sidebar');
-    if (!sidebar) return;
+  function initFloatingNotes() {
+    const meta = getPaperMetadata();
+    if (!meta.paperId) return;
+
+    // 1. Backdrop
     let backdrop = document.getElementById('notes-drawer-backdrop');
     if (!backdrop) {
       backdrop = document.createElement('div');
@@ -765,92 +709,62 @@
       backdrop.onclick = closeNotesDrawer;
       document.body.appendChild(backdrop);
     }
-    backdrop.classList.remove('hidden');
-    sidebar.classList.add('drawer-open');
-    document.body.style.overflow = 'hidden';
-  }
-  window.openNotesDrawer = openNotesDrawer;
 
-  function closeNotesDrawer() {
-    const sidebar = document.getElementById('floating-notes-sidebar');
-    const backdrop = document.getElementById('notes-drawer-backdrop');
-    if (sidebar) sidebar.classList.remove('drawer-open');
-    if (backdrop) backdrop.classList.add('hidden');
-    document.body.style.overflow = '';
-  }
-  window.closeNotesDrawer = closeNotesDrawer;
-
-  function initFloatingNotes() {
-    const meta = getPaperMetadata();
-    if (!meta.paperId) return;
-
+    // 2. Off-canvas Drawer
     let sidebar = document.getElementById('floating-notes-sidebar');
     if (!sidebar) {
       sidebar = document.createElement('aside');
       sidebar.id = 'floating-notes-sidebar';
-      sidebar.className = 'floating-notes-sidebar';
-
-      const isCollapsedSaved = localStorage.getItem(NOTES_COLLAPSED_KEY);
-      // Default: collapsed on < 1440px, expanded on >= 1440px
-      const shouldCollapse = isCollapsedSaved === 'true' || (isCollapsedSaved === null && window.innerWidth < 1440);
-      if (shouldCollapse) {
-        sidebar.classList.add('is-collapsed');
-      }
+      sidebar.className = 'notes-drawer';
 
       sidebar.innerHTML = `
         <!-- Header -->
-        <div class="notes-header">
-          <div class="notes-header-title">
+        <div class="notes-drawer-header">
+          <div style="display: flex; align-items: center; gap: 0.65rem;">
             <div class="notes-icon-badge">
-              <svg style="width: 0.9rem; height: 0.9rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+              <svg style="width: 0.95rem; height: 0.95rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
             </div>
             <div>
               <div class="notes-title-text">Catatan Pembaca</div>
               <div class="notes-subtitle-text">Paper #${meta.paperId}</div>
             </div>
           </div>
-          <div class="notes-header-actions">
-            <button type="button" onclick="copyPaperNotesMarkdown()" class="notes-action-btn" title="Salin semua catatan sebagai Markdown">
+          <div style="display: flex; align-items: center; gap: 0.35rem;">
+            <button type="button" onclick="copyPaperNotesMarkdown()" class="notes-tool-btn" title="Salin semua catatan sebagai Markdown">
               <svg style="width: 0.85rem; height: 0.85rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
             </button>
-            <button type="button" onclick="toggleNotesSidebar()" class="notes-action-btn" title="Sembunyikan bilah catatan">
-              <span>◀</span>
-            </button>
+            <button type="button" onclick="closeNotesDrawer()" class="notes-close-btn" title="Tutup bilah catatan">✕</button>
           </div>
         </div>
 
-        <!-- Input Section -->
-        <div class="notes-input-section">
-          <textarea id="note-input-text" class="notes-textarea" placeholder="Tulis poin penting atau hal yang belum dipahami... (Enter untuk simpan)"></textarea>
-          <div class="notes-form-row">
-            <div class="notes-type-pills">
-              <button type="button" onclick="setNoteType('keypoint')" class="notes-type-btn active" data-type="keypoint">📌 Poin</button>
-              <button type="button" onclick="setNoteType('research')" class="notes-type-btn" data-type="research">❓ Cari Nanti</button>
-            </div>
-            <button type="button" onclick="submitNewNote()" class="notes-submit-btn">+ Simpan</button>
+        <!-- Input Box -->
+        <div class="notes-input-box">
+          <textarea id="note-input-text" class="notes-textarea" placeholder="Tuliskan catatan, poin penting, pertanyaan, atau hal yang perlu dipelajari..."></textarea>
+          <div class="notes-input-actions">
+            <span class="notes-hint">Enter untuk simpan</span>
+            <button type="button" onclick="submitNewNote()" class="notes-submit-btn">+ Tambah Catatan</button>
           </div>
         </div>
 
-        <!-- Filter Tabs -->
-        <div class="notes-filter-tabs">
-          <button type="button" onclick="setNotesFilter('all')" class="notes-tab-btn active" data-filter="all">Semua (<span id="notes-count-all">0</span>)</button>
-          <button type="button" onclick="setNotesFilter('keypoint')" class="notes-tab-btn" data-filter="keypoint">📌 Poin (<span id="notes-count-kp">0</span>)</button>
-          <button type="button" onclick="setNotesFilter('research')" class="notes-tab-btn" data-filter="research">❓ Cari (<span id="notes-count-rs">0</span>)</button>
+        <!-- Section Bar -->
+        <div class="notes-section-bar">
+          <span style="font-weight: 600; color: var(--text-heading);">Daftar Catatan</span>
+          <span id="notes-count-badge" class="notes-count-badge">0 item</span>
         </div>
 
         <!-- Scrollable List -->
-        <div id="notes-list-container" class="notes-list-body"></div>
+        <div id="notes-list-container" class="notes-list-scroll"></div>
 
         <!-- Footer Bar -->
-        <div class="notes-footer-bar">
-          <span id="notes-summary-text">0 catatan</span>
-          <button type="button" onclick="clearCompletedNotes()" class="notes-clean-btn" title="Bersihkan catatan yang sudah selesai">Bersihkan Selesai</button>
+        <div class="notes-drawer-footer">
+          <span id="notes-summary-text" style="color: var(--text-muted); font-size: 0.72rem;">0 catatan</span>
+          <button type="button" onclick="clearCompletedNotes()" class="notes-footer-btn" title="Bersihkan catatan yang sudah selesai">Bersihkan Selesai</button>
         </div>
       `;
 
       document.body.appendChild(sidebar);
 
-      // Add textarea enter shortcut
+      // Textarea enter shortcut
       const ta = sidebar.querySelector('#note-input-text');
       if (ta) {
         ta.addEventListener('keydown', (e) => {
@@ -862,22 +776,19 @@
       }
     }
 
-    // Floating Pill Button
+    // 3. Floating Edge Tab Button (Pinned to extreme left border)
     let pill = document.getElementById('floating-notes-pill');
     if (!pill) {
       pill = document.createElement('button');
       pill.id = 'floating-notes-pill';
-      pill.className = 'floating-notes-pill';
+      pill.className = 'floating-notes-edge-btn';
       pill.title = 'Buka Catatan Pembaca';
       pill.onclick = toggleNotesSidebar;
       pill.innerHTML = `
-        <svg style="width: 0.9rem; height: 0.9rem;" class="text-editorial-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+        <svg style="width: 0.95rem; height: 0.95rem; color: var(--accent-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
         <span>Catatan</span>
-        <span id="floating-notes-badge" class="notes-badge-count">0</span>
+        <span id="floating-notes-badge" class="notes-edge-badge">0</span>
       `;
-      if (!sidebar.classList.contains('is-collapsed')) {
-        pill.classList.add('is-hidden');
-      }
       document.body.appendChild(pill);
     }
 
@@ -1182,7 +1093,7 @@
       </button>
 
       <!-- Reader Notes Toggle Button -->
-      <button onclick="toggleNotesSidebar()" id="header-notes-btn" class="reader-toolbar-btn flex items-center gap-1.5" title="Buka Catatan Pembaca (Poin Penting & Perlu Dicari)">
+      <button onclick="toggleNotesSidebar()" id="header-notes-btn" class="reader-toolbar-btn flex items-center gap-1.5" title="Buka Catatan Pembaca">
         <svg class="w-3.5 h-3.5 text-editorial-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
         <span class="hidden lg:inline">Catatan</span>
         <span id="header-notes-badge" class="font-mono text-[10px] bg-editorial-accent text-white px-1.5 py-0.2 rounded-full hidden">0</span>
@@ -1304,9 +1215,15 @@
     document.addEventListener('keydown', (e) => {
       const lb = document.getElementById('lightbox');
       const isLbOpen = lb && !lb.classList.contains('hidden');
+      const drawer = document.getElementById('floating-notes-sidebar');
+      const isDrawerOpen = drawer && drawer.classList.contains('is-open');
 
-      if (e.key === 'Escape' && isLbOpen) {
-        closeLightbox();
+      if (e.key === 'Escape') {
+        if (isLbOpen) {
+          closeLightbox();
+        } else if (isDrawerOpen) {
+          closeNotesDrawer();
+        }
       } else if (isLbOpen) {
         if (e.key === '+' || e.key === '=') zoomLightbox(0.5);
         if (e.key === '-' || e.key === '_') zoomLightbox(-0.5);
