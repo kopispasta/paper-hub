@@ -161,24 +161,24 @@
         <!-- Category Filter Buttons -->
         <div class="flex items-center gap-1.5 overflow-x-auto text-xs font-medium pb-1 lg:pb-0" id="filter-container">
           <button onclick="filterCategory('all')" id="btn-cat-all" class="filter-cat-btn px-3 py-1.5 rounded bg-editorial-ink text-white whitespace-nowrap transition-colors">
-            Semua (10)
+            Semua (11)
           </button>
           <button onclick="filterCategory('material')" id="btn-cat-material" class="filter-cat-btn px-3 py-1.5 rounded bg-white border border-editorial-line text-editorial-muted hover:text-editorial-ink whitespace-nowrap transition-colors">
-            Material & Energi (5)
+            Material &amp; Energi (6)
           </button>
           <button onclick="filterCategory('thermo')" id="btn-cat-thermo" class="filter-cat-btn px-3 py-1.5 rounded bg-white border border-editorial-line text-editorial-muted hover:text-editorial-ink whitespace-nowrap transition-colors">
             Fisika Termoelektrik (3)
           </button>
           <button onclick="filterCategory('biomed')" id="btn-cat-biomed" class="filter-cat-btn px-3 py-1.5 rounded bg-white border border-editorial-line text-editorial-muted hover:text-editorial-ink whitespace-nowrap transition-colors">
-            Biomedis & Kimia Medisinal (4)
+            Biomedis &amp; Kimia Medisinal (4)
           </button>
-                    <button onclick="filterCategory('bookmarks')" id="btn-cat-bookmarks" class="filter-cat-btn px-3 py-1.5 rounded bg-white border border-editorial-line text-amber-600 hover:text-amber-700 whitespace-nowrap transition-colors flex items-center gap-1">
+          <button onclick="filterCategory('bookmarks')" id="btn-cat-bookmarks" class="filter-cat-btn px-3 py-1.5 rounded bg-white border border-editorial-line text-amber-600 hover:text-amber-700 whitespace-nowrap transition-colors flex items-center gap-1">
             <span>⭐ Tersimpan</span>
             <span id="bookmark-count" class="px-1.5 py-0.2 rounded-full bg-amber-50 text-[10px] font-bold border border-amber-200/60">0</span>
           </button>
           <button onclick="filterCategory('completed')" id="btn-cat-completed" class="filter-cat-btn px-3 py-1.5 rounded bg-white border border-editorial-line text-emerald-700 hover:text-emerald-800 whitespace-nowrap transition-colors flex items-center gap-1">
             <span>✔️ Selesai</span>
-            <span id="completed-count" class="px-1.5 py-0.2 rounded-full bg-emerald-50 text-[10px] font-bold border border-emerald-200/60">0/10</span>
+            <span id="completed-count" class="px-1.5 py-0.2 rounded-full bg-emerald-50 text-[10px] font-bold border border-emerald-200/60">0/11</span>
           </button>
         </div>
 
@@ -906,6 +906,72 @@
         </a>
       </article>
 
+      <!-- CARD 11: Oxygen-Doped Li6PS5Cl Solid Electrolyte Interphase (MLIP-MD) -->
+      <article class="paper-card bg-white border border-editorial-line rounded p-6 flex flex-col justify-between" data-paper-item data-paper-id="11" data-category="material" data-tags="machinelearning dft" data-keywords="li6ps5cl argyrodite baterai solid state battery all-solid-state sei solid electrolyte interphase oxygen doping kist sevennet nequip mlip machine learning interatomic potential wiley advanced science">
+        <div>
+          <!-- Header Meta -->
+          <div class="flex items-center justify-between text-xs text-editorial-muted mb-3">
+            <div class="flex items-center gap-1.5">
+              <span class="font-semibold uppercase tracking-wider text-indigo-700">Baterai All-Solid-State &amp; MLIP</span>
+              <span data-read-badge="11" class="hidden text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-1.5 py-0.2 rounded">✓ Selesai</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="font-mono text-[11px]">Adv. Sci. (Wiley, 2026)</span>
+              <button onclick="toggleBookmark('11', event)" data-bookmark-btn="11" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+              </button>
+              <button onclick="toggleReadStatus('11', event)" data-read-btn="11" class="text-zinc-300 hover:text-emerald-600 transition-colors p-0.5" title="Tandai sudah selesai dibaca">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Title -->
+          <h2 class="text-xl font-bold font-sans text-editorial-ink tracking-tight leading-snug mb-3">
+            <a href="papers/11-oxygen-doped-li6ps5cl-sei-mlip/index.html" class="hover:text-editorial-accent transition-colors">
+              Peningkatan Konduktivitas Ionik pada Solid Electrolyte Interphase (SEI) Argyrodite Li₆PS₅Cl Melalui Doping Oksigen: Analisis Atomistik Potensial Interatomik Machine Learning
+            </a>
+          </h2>
+
+          <!-- Excerpt -->
+          <p class="text-sm font-serif italic text-editorial-body leading-relaxed mb-4">
+            Simulasi MLIP-MD berskala 17.024 atom membuktikan produk dekomposisi antarmuka Li | Li₆PS₅Cl membentuk fasa kristalin tunggal Li₂S tersubstitusi anion. Doping oksigen moderat menginduksi distorsi lokal yang melipatgandakan konduktivitas ionik SEI hingga ~100×, memecahkan teka-teki trade-off stabilitas siklus baterai all-solid-state.
+          </p>
+
+          <!-- Thumbnail Image Preview -->
+          <div class="border border-editorial-line/80 rounded bg-editorial-softbg p-2 mb-4 overflow-hidden flex items-center justify-center">
+            <img src="papers/11-oxygen-doped-li6ps5cl-sei-mlip/assets/fig3_ml_phase_identification_workflow.png" alt="Klasifikasi Fasa SEI Berbasis GNN SevenNet dan Evolusi Antarmuka" class="max-h-36 w-auto object-contain">
+          </div>
+
+          <!-- Highlight Metrics Strip -->
+          <div class="grid grid-cols-3 gap-2 py-3 border-y border-editorial-line text-center text-xs font-sans mb-4">
+            <div>
+              <div class="text-[10px] text-editorial-muted uppercase">Konduktivitas SEI</div>
+              <div class="font-bold text-editorial-accent font-mono">~100× (x = 0.07)</div>
+            </div>
+            <div>
+              <div class="text-[10px] text-editorial-muted uppercase">Siklus Baterai</div>
+              <div class="font-bold text-emerald-700 font-mono">197 Siklus (5.5×)</div>
+            </div>
+            <div>
+              <div class="text-[10px] text-editorial-muted uppercase">Celah Pasivasi</div>
+              <div class="font-bold text-editorial-ink font-mono">2.68 eV (HSE06)</div>
+            </div>
+          </div>
+
+          <!-- Author Byline -->
+          <div class="text-xs text-editorial-muted mb-6">
+            <span class="font-semibold text-editorial-ink">S. Yang, S. Kang, N. Artrith, J.-H. Lee, B. Lee*</span> • KIST &amp; Utrecht Univ
+          </div>
+        </div>
+
+        <!-- Read Action Button -->
+        <a href="papers/11-oxygen-doped-li6ps5cl-sei-mlip/index.html" class="w-full py-2.5 px-4 bg-editorial-softbg hover:bg-editorial-accent hover:text-white border border-editorial-line hover:border-editorial-accent rounded text-xs font-bold text-editorial-ink text-center transition-all flex items-center justify-center gap-1.5">
+          <span>Buka Telaah Lengkap</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </article>
+
     </div>
     </div>
     <!-- END OF PAPER GRID CONTAINER -->
@@ -1339,6 +1405,50 @@
         </td>
         <td class="py-3.5 px-3 text-center align-top whitespace-nowrap">
           <a href="papers/10-phosphorene-siliconization-sip-sip2/index.html" class="inline-flex items-center gap-1 px-3 py-1.5 bg-editorial-softbg hover:bg-editorial-accent hover:text-white border border-editorial-line hover:border-editorial-accent rounded text-[11px] font-bold text-editorial-ink transition-all shadow-xs">
+            <span>Buka</span>
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </td>
+      </tr>
+
+      <!-- ROW 11: Oxygen-Doped Li6PS5Cl Solid Electrolyte Interphase -->
+      <tr class="border-b border-editorial-line hover:bg-zinc-50/80 transition-colors" data-paper-item data-paper-id="11" data-category="material" data-tags="machinelearning dft" data-keywords="li6ps5cl argyrodite baterai solid state battery all-solid-state sei solid electrolyte interphase oxygen doping kist sevennet nequip mlip machine learning interatomic potential wiley advanced science">
+        <td class="py-3.5 px-3 text-center align-top">
+          <div class="font-mono font-bold text-xs text-editorial-ink mb-1">#11</div>
+          <div class="flex items-center justify-center gap-1">
+            <button onclick="toggleBookmark('11', event)" data-bookmark-btn="11" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai simpan">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+            </button>
+            <button onclick="toggleReadStatus('11', event)" data-read-btn="11" class="text-zinc-300 hover:text-emerald-600 transition-colors p-0.5" title="Tandai selesai">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </button>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <a href="papers/11-oxygen-doped-li6ps5cl-sei-mlip/index.html" class="font-bold text-editorial-ink hover:text-editorial-accent font-sans leading-snug block mb-1.5 text-xs">
+            Peningkatan Konduktivitas Ionik pada Solid Electrolyte Interphase (SEI) Argyrodite Li₆PS₅Cl Melalui Doping Oksigen: Analisis Atomistik Potensial Interatomik Machine Learning
+          </a>
+          <span class="inline-block font-mono text-[10px] text-editorial-muted bg-zinc-100 border border-editorial-line/60 px-1.5 py-0.5 rounded">Adv. Sci. (Wiley, 2026)</span>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <div class="text-[11px] font-semibold text-indigo-700 mb-1.5">Baterai All-Solid-State &amp; MLIP</div>
+          <div class="flex flex-wrap gap-1">
+            <span class="text-[10px] bg-zinc-100 text-zinc-600 px-1.5 py-0.5 rounded font-mono font-medium">#MachineLearning</span><span class="text-[10px] bg-zinc-100 text-zinc-600 px-1.5 py-0.5 rounded font-mono font-medium">#DFT-Kuantum</span>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <div class="space-y-1 text-[11px]">
+            <div><span class="text-editorial-muted">Konduktivitas SEI:</span> <strong class="text-editorial-accent font-mono">~100× (x = 0.07)</strong></div>
+            <div><span class="text-editorial-muted">Siklus Baterai:</span> <strong class="text-emerald-700 font-mono">197 Siklus (5.5×)</strong></div>
+            <div><span class="text-editorial-muted">Celah Pasivasi:</span> <strong class="text-editorial-ink font-mono">2.68 eV (HSE06)</strong></div>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top text-[11px] text-editorial-muted leading-relaxed">
+          <div class="font-semibold text-editorial-ink">S. Yang, S. Kang, B. Lee*</div>
+          <div class="text-[10px] mt-0.5">KIST (Korea) &amp; Utrecht Univ (Belanda)</div>
+        </td>
+        <td class="py-3.5 px-3 text-center align-top whitespace-nowrap">
+          <a href="papers/11-oxygen-doped-li6ps5cl-sei-mlip/index.html" class="inline-flex items-center gap-1 px-3 py-1.5 bg-editorial-softbg hover:bg-editorial-accent hover:text-white border border-editorial-line hover:border-editorial-accent rounded text-[11px] font-bold text-editorial-ink transition-all shadow-xs">
             <span>Buka</span>
             <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
           </a>

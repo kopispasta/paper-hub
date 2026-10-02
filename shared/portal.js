@@ -116,7 +116,8 @@
 
   function getAllPapersNotes() {
     const res = {};
-    for (let i = 1; i <= 10; i++) {
+    const maxPapers = Math.max(document.querySelectorAll('[data-paper-item]').length, 25);
+    for (let i = 1; i <= maxPapers; i++) {
       const pid = String(i).padStart(2, '0');
       const n = localStorage.getItem('telaahsains_notes_' + pid);
       if (n) {
@@ -391,7 +392,8 @@
   function updateReadUI() {
     const readList = getReadPapers();
     const countEl = document.getElementById('completed-count');
-    if (countEl) countEl.textContent = `${readList.length}/10`;
+    const totalPapers = document.querySelectorAll('[data-paper-item]').length || 11;
+    if (countEl) countEl.textContent = `${readList.length}/${totalPapers}`;
 
     document.querySelectorAll('[data-read-btn]').forEach(btn => {
       const pid = String(btn.getAttribute('data-read-btn')).padStart(2, '0');
@@ -793,7 +795,8 @@
     localStorage.removeItem(READ_KEY);
     localStorage.removeItem(BOOKMARK_KEY);
     localStorage.removeItem(LAST_READING_KEY);
-    for (let i = 1; i <= 10; i++) {
+    const maxPapers = Math.max(document.querySelectorAll('[data-paper-item]').length, 25);
+    for (let i = 1; i <= maxPapers; i++) {
       localStorage.removeItem('telaahsains_notes_' + String(i).padStart(2, '0'));
     }
     const now = Date.now();
