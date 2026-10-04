@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Peningkatan Konduktivitas Ionik SEI Li6PS5Cl Melalui Doping Oksigen: Studi MLIP-MD — TelaahSains Hub</title>
+  <title>Peningkatan Konduktivitas Ionik SEI Li₆PS₅Cl Melalui Doping Oksigen: Studi MLIP-MD — TelaahSains Hub</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -13,43 +13,116 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Tailwind Configuration matching Editorial Design System -->
+  <!-- Tailwind Configuration matching Design System -->
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
             editorial: {
-              bg: '#fcfcfc',
-              softbg: '#fafafa',
-              card: '#ffffff',
-              ink: '#18181b',
-              body: '#27272a',
-              muted: '#71717a',
-              lightmuted: '#a1a1aa',
-              line: '#e4e4e7',
-              accent: '#0a74c0',
-              accenthover: '#085d99',
+              ink: '#161616',        /* Deep charcoal black for text */
+              body: '#262626',       /* Warm reading body text */
+              muted: '#666666',      /* Subtle secondary meta */
+              lightmuted: '#8c8c8c', /* Captions & tiny labels */
+              line: '#e5e5e5',       /* Hairline dividers */
+              softbg: '#fafafa',     /* Off-white background */
+              paper: '#ffffff',      /* Pure white card backgrounds */
+              accent: '#0a74c0',     /* Royal Society of Chemistry editorial blue */
+              accentDark: '#08538a', /* Deep hover blue */
+              accentLight: '#f0f7fc' /* Minimalist blue wash for active states */
             }
           },
           fontFamily: {
-            serif: ['Newsreader', 'Georgia', 'serif'],
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'monospace'],
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            serif: ['"Newsreader"', 'Georgia', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
           }
         }
       }
     }
   </script>
 
+  <style>
+    /* Editorial Typographic Rhythm matching Papers 01-05 */
+    body {
+      background-color: #fafafa;
+      color: #262626;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .article-body p {
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 1.125rem; /* 18px */
+      line-height: 1.82;
+      color: #262626;
+      margin-bottom: 1.6rem;
+    }
+
+    .article-body p strong {
+      font-weight: 600;
+      color: #161616;
+    }
+
+    .editorial-dropcap::first-letter {
+      font-size: 4rem;
+      float: left;
+      line-height: 0.8;
+      margin-right: 0.65rem;
+      margin-top: 0.25rem;
+      font-weight: 600;
+      color: #161616;
+      font-family: "Newsreader", Georgia, serif;
+    }
+
+    /* Publication-style Scientific Table */
+    .pub-table {
+      border-top: 2px solid #161616;
+      border-bottom: 2px solid #161616;
+      width: 100%;
+    }
+    .pub-table th {
+      border-bottom: 1px solid #161616;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 600;
+      font-size: 0.8125rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.75rem 0.5rem;
+    }
+    .pub-table td {
+      border-bottom: 1px solid #eeeeee;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 0.875rem;
+      padding: 0.75rem 0.5rem;
+    }
+    .pub-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Reading Indicator */
+    #reading-progress {
+      transition: width 0.1s ease-out;
+    }
+
+    /* Figure Box */
+    .figure-container {
+      background: #ffffff;
+      border: 1px solid #e5e5e5;
+      border-radius: 4px;
+      padding: 1.25rem;
+      margin: 2.5rem 0;
+    }
+  </style>
+
   <!-- Shared Reader System CSS -->
   <link rel="stylesheet" href="../../shared/reader.css">
 </head>
-<body class="bg-editorial-bg text-editorial-body antialiased selection:bg-blue-100 selection:text-blue-900">
+
+<body class="selection:bg-editorial-accentLight selection:text-editorial-accent" data-paper-id="11">
 
   <!-- TOP HEADER & PROGRESS STRIP -->
-  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-editorial-line font-sans">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-editorial-line font-sans transition-all">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
       <div class="flex items-center gap-3">
         <a href="../../index.html" class="flex items-center gap-2 text-xs font-semibold text-editorial-ink hover:text-editorial-accent transition-colors">
           <svg class="w-4 h-4 text-editorial-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
@@ -59,101 +132,96 @@
         <span class="text-xs font-mono text-editorial-muted">Paper #11</span>
       </div>
 
-      <div class="flex items-center gap-4 text-xs text-editorial-muted">
+      <div class="flex items-center gap-4 text-xs font-sans text-editorial-muted">
         <span class="hidden sm:inline">Estimasi Baca: 22 Menit</span>
         <div class="h-3 w-px bg-editorial-line hidden sm:inline"></div>
         <span class="font-mono text-editorial-ink font-semibold">Adv. Sci. (Wiley)</span>
       </div>
     </div>
-    <!-- Reading Progress Indicator -->
+    <!-- Reading Progress Bar -->
     <div id="reading-progress" class="h-0.5 bg-editorial-accent w-0 transition-all duration-150"></div>
   </header>
 
-  <!-- ARTICLE HERO SECTION -->
+  <!-- ARTICLE HERO -->
   <section class="bg-white border-b border-editorial-line pt-12 pb-10">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <!-- Badges -->
-      <div class="flex flex-wrap items-center gap-2 mb-6 text-xs font-sans">
-        <span class="px-2 py-0.5 rounded bg-blue-50 text-editorial-accent font-semibold uppercase tracking-wider text-[11px] border border-blue-200/60">
-          Baterai All-Solid-State &amp; Elektrolit Padat
-        </span>
-        <span class="text-editorial-lightmuted">•</span>
-        <span class="text-editorial-muted">Machine Learning Interatomic Potential (SevenNet GNN)</span>
-        <span class="text-editorial-lightmuted">•</span>
-        <span class="text-editorial-muted">Antarmuka Anoda Li | Argyrodite Li₆PS₅Cl</span>
+      <!-- Category Tag & Meta -->
+      <div class="flex items-center gap-3 text-xs font-semibold tracking-wider uppercase text-editorial-accent mb-4 font-sans">
+        <span>Fitur Baterai Padat &amp; Material Energi</span>
+        <span class="text-editorial-line">•</span>
+        <span class="text-editorial-muted">Potensial Interatomik Machine Learning (SevenNet GNN)</span>
       </div>
 
-      <!-- Headline -->
-      <h1 class="font-serif text-3xl sm:text-4xl md:text-[2.65rem] leading-[1.22] font-semibold text-editorial-ink tracking-tight mb-5">
-        Peningkatan Konduktivitas Ionik pada Solid Electrolyte Interphase (SEI) Argyrodite Li₆PS₅Cl Melalui Doping Oksigen: Analisis Atomistik Potensial Interatomik Machine Learning
+      <!-- Main Headline -->
+      <h1 class="text-3xl sm:text-4xl lg:text-[42px] font-bold text-editorial-ink tracking-tight font-sans leading-[1.18] mb-6">
+        Peningkatan Konduktivitas Ionik pada Solid Electrolyte Interphase Argyrodite Li₆PS₅Cl Melalui Doping Oksigen: Analisis Atomistik Machine Learning
       </h1>
 
-      <!-- Lead Paragraph -->
-      <p class="font-sans text-base sm:text-lg text-editorial-muted leading-relaxed mb-6 font-normal">
-        Bagaimana simulasi dinamika molekuler berskala masif dengan Machine Learning Interatomic Potential (MLIP-MD) SevenNet memecahkan misteri interfasial tersembunyi antara anoda logam litium dan elektrolit padat argyrodite—mengungkap bahwa fasa SEI dominan adalah larutan padat kristalin tunggal Li₂S tersubstitusi anion yang konduktivitas ioniknya melonjak hingga dua orde magnitudo akibat distorsi kisi lokal dari doping oksigen moderat.
+      <!-- Standfirst (Lead Paragraph) -->
+      <p class="text-lg sm:text-xl font-serif italic text-editorial-body leading-relaxed mb-8 border-l-2 border-editorial-accent pl-5">
+        Mengungkap tabir reaksi reduksi spontan pada anoda litium, simulasi dinamika molekuler berskala masif dengan Machine Learning Interatomic Potential (SevenNet) memecahkan misteri interfasial solid electrolyte interphase (SEI) argyrodite: produk dekomposisi terbukti bukan fasa terpisah melainkan larutan padat kristalin tunggal Li₂S tersubstitusi anion yang konduktivitas ioniknya melonjak hingga dua orde magnitudo akibat distorsi kisi lokal dari doping oksigen moderat.
       </p>
 
-      <!-- Author Strip -->
-      <div class="pt-4 pb-6 border-y border-editorial-line text-xs font-sans text-editorial-muted flex flex-wrap justify-between items-center gap-y-3 mb-8">
+      <!-- Authors & Affiliations -->
+      <div class="pt-6 border-t border-editorial-line flex flex-wrap items-center justify-between gap-4 text-xs text-editorial-muted font-sans">
         <div>
-          <span class="font-semibold text-editorial-ink">Sojeong Yang, Sungwoo Kang, Atefeh Yadegarifard, Hyun-Jae Lee, Nongnuch Artrith, Jung-Hoon Lee, Byungju Lee*</span>
-          <span class="block text-editorial-lightmuted mt-0.5">Korea Institute of Science and Technology (KIST), Utrecht University &amp; Korea University</span>
+          <div class="text-editorial-ink font-semibold text-sm">
+            Sojeong Yang, Sungwoo Kang, Atefeh Yadegarifard, Hyun-Jae Lee, Nongnuch Artrith, Jung-Hoon Lee, Byungju Lee*
+          </div>
+          <div class="mt-1 text-editorial-muted">
+            Computational Science Research Center, KIST • Utrecht University • Korea University
+          </div>
         </div>
-        <div class="text-right font-mono text-[11px]">
-          <div class="text-editorial-ink font-semibold">Advanced Science 2026, 0:e76563</div>
-          <div class="text-editorial-muted">DOI: 10.1002/advs.76563 • Open Access</div>
-        </div>
-      </div>
-
-      <!-- Abstract Graphic Figure -->
-      <figure class="figure-container">
-        <img 
-          src="assets/fig3_ml_phase_identification_workflow.png" 
-          alt="Alur Kerja Klasifikasi Fasa SEI Berbasis Graph Neural Network SevenNet dan Evolusi Fraksi Fasa Interfasial" 
-          class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
-          onclick="openLightbox(this.src, this.alt)"
-        >
-        <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
-          <strong class="text-editorial-ink font-semibold">Visual Abstract.</strong> Integrasi simulasi SevenNet MLIP-MD dengan framework klasifikasi fasa otomatis berbasis GNN node embeddings: (a) Arsitektur pengekstrakan fitur embedding Li dari SevenNet yang dihubungkan ke classifier MLP, dan (b–d) evolusi fraksi fasa kinetik antarmuka Li | Li₆PS₅₋ₓClOₓ yang mengonfirmasi pembentukan fasa tunggal dominan `Li₂S₁₋ₓ₋ᵧP₀.₅ₓCl₀.₅ₓOᵧ` bebas dari segregasi fasa oksida terpisah.
-        </figcaption>
-      </figure>
-
-      <!-- 4 Key Metrics Strip -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 my-8 font-sans">
-        <div class="p-3 bg-white border border-editorial-line rounded shadow-xs">
-          <div class="text-[11px] uppercase tracking-wider text-editorial-muted font-semibold">Lonjakan Konduktivitas SEI</div>
-          <div class="text-2xl font-bold text-editorial-accent mt-0.5 font-mono">~100×</div>
-          <div class="text-[11px] text-editorial-muted mt-0.5">Naik hampir 2 orde pada x = 0.07</div>
-        </div>
-        <div class="p-3 bg-white border border-editorial-line rounded shadow-xs">
-          <div class="text-[11px] uppercase tracking-wider text-editorial-muted font-semibold">Stabilitas Siklus Baterai</div>
-          <div class="text-2xl font-bold text-emerald-700 mt-0.5 font-mono">197 Siklus</div>
-          <div class="text-[11px] text-editorial-muted mt-0.5">5.5× lebih awet (Indrawan dkk.)</div>
-        </div>
-        <div class="p-3 bg-white border border-editorial-line rounded shadow-xs">
-          <div class="text-[11px] uppercase tracking-wider text-editorial-muted font-semibold">Celah Pita Pasivasi</div>
-          <div class="text-2xl font-bold text-editorial-ink mt-0.5 font-mono">2.68 eV</div>
-          <div class="text-[11px] text-editorial-muted mt-0.5">HSE06 isolator kebocoran elektron</div>
-        </div>
-        <div class="p-3 bg-white border border-editorial-line rounded shadow-xs">
-          <div class="text-[11px] uppercase tracking-wider text-editorial-muted font-semibold">Presisi Gaya Antarmuka</div>
-          <div class="text-2xl font-bold text-editorial-ink mt-0.5 font-mono">&lt;0.10 eV/Å</div>
-          <div class="text-[11px] text-editorial-muted mt-0.5">Ketidakpastian ensemble 5 SevenNet</div>
+        <div class="text-right">
+          <div class="text-editorial-ink font-medium">Advanced Science (Wiley-VCH) • Open Access</div>
+          <div>Artikel e76563 (2026) • DOI: 10.1002/advs.76563</div>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- MAIN ARTICLE LAYOUT WRAPPER (3 Columns: Left Notes + Center Article + Right Aside) -->
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 pt-10">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+  <!-- KEY FINDINGS AT A GLANCE (Restrained, Monochrome Table) -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="bg-white border border-editorial-line rounded p-6 shadow-sm font-sans">
+      <h2 class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-4 flex items-center justify-between border-b border-editorial-line pb-2">
+        <span>Rangkuman Angka Kunci Kinerja Interfasial SEI (Li₆PS₅₋ₓClOₓ | Li)</span>
+        <span class="text-editorial-muted font-normal lowercase font-mono">Yang et al., 2026</span>
+      </h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-left">
+        <div>
+          <div class="text-xs text-editorial-muted">Konduktivitas Ionik SEI</div>
+          <div class="text-2xl font-bold text-editorial-ink mt-0.5">~100× <span class="text-xs font-normal text-editorial-muted">Lipat</span></div>
+          <div class="text-[11px] text-editorial-muted mt-1">Naik hampir 2 orde pada x = 0.07</div>
+        </div>
+        <div>
+          <div class="text-xs text-editorial-muted">Stabilitas Siklus Baterai</div>
+          <div class="text-2xl font-bold text-editorial-ink mt-0.5">197 <span class="text-xs font-normal text-editorial-muted">Siklus</span></div>
+          <div class="text-[11px] text-editorial-muted mt-1">5.5× lebih awet (Indrawan dkk.)</div>
+        </div>
+        <div>
+          <div class="text-xs text-editorial-muted">Celah Pita Pasivasi</div>
+          <div class="text-2xl font-bold text-editorial-ink mt-0.5">2.68 <span class="text-xs font-normal text-editorial-muted">eV</span></div>
+          <div class="text-[11px] text-editorial-muted mt-1">HSE06 isolator kebocoran elektron</div>
+        </div>
+        <div>
+          <div class="text-xs text-editorial-muted">Presisi Gaya Antarmuka</div>
+          <div class="text-2xl font-bold text-editorial-ink mt-0.5">&lt;0.10 <span class="text-xs font-normal text-editorial-muted">eV/Å</span></div>
+          <div class="text-[11px] text-editorial-muted mt-1">Ketidakpastian ensemble 5 SevenNet</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN ARTICLE LAYOUT (Text + Sticky TOC) -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
       
       <!-- ARTICLE TEXT (Cols 1-8) -->
       <main class="lg:col-span-8 article-body">
 
-        <!-- EXECUTIVE SUMMARY ACCORDION -->
+        <!-- EXECUTIVE SUMMARY ACCORDION (Clean Minimalist) -->
         <div class="border border-editorial-line bg-white rounded p-5 mb-10">
           <div class="flex items-center justify-between cursor-pointer select-none" onclick="toggleSummary()">
             <div class="flex items-center gap-2">
@@ -164,11 +232,12 @@
             </div>
             <span id="summary-chevron" class="text-xs font-mono text-editorial-muted">[- tutup]</span>
           </div>
+
           <div id="summary-content" class="mt-4 pt-4 border-t border-editorial-line text-xs sm:text-sm font-sans text-editorial-body space-y-2.5 leading-relaxed">
-            <p><strong>1. Identitas Asli Fasa SEI Terkubur:</strong> Simulasi MLIP-MD berskala 17.024 atom membuktikan bahwa produk reduksi Li₆PS₅Cl pada anoda Li bukanlah fasa dekomposisi terpisah stoikiometris (Li₂S + LiCl + Li₃P), melainkan fasa kristalin tunggal tersubstitusi anion `Li₂S₁₋ₓ₋ᵧP₀.₅ₓCl₀.₅ₓOᵧ` akibat keterbatasan kinetika difusi atom P dan Cl.</p>
+            <p><strong>1. Identitas Asli Fasa SEI Terkubur:</strong> Simulasi MLIP-MD berskala 17.024 atom membuktikan bahwa produk reduksi Li₆PS₅Cl pada anoda Li bukanlah fasa dekomposisi terpisah stoikiometris (Li₂S + LiCl + Li₃P), melainkan fasa kristalin tunggal tersubstitusi anion Li₂S₁₋ₓ₋ᵧP₀.₅ₓCl₀.₅ₓOᵧ akibat keterbatasan kinetika difusi atom P dan Cl.</p>
             <p><strong>2. Lonjakan Transpor Ionik Akibat Frustrasi Kisi:</strong> Doping oksigen parsial ke dalam SEI menginduksi distorsi lokal kuat karena perbedaan radius ionik O²⁻ yang jauh lebih kecil dibanding S²⁻, menciptakan lanskap energi terfrustrasi yang memacu frekuensi lompatan ion Li hingga konduktivitas ionik naik hampir dua orde magnitudo.</p>
-            <p><strong>3. Trade-Off Termodinamika &amp; Konduktivitas Ruah:</strong> Peningkatan kadar oksigen menurunkan konduktivitas ionik ruah elektrolit padat (bulk SSE) dan meningkatkan energi di atas hull (`E_hull`), sehingga konsentrasi oksigen yang berlebihan justru merusak stabilitas fasa dan mempercepat pembentukan impuritas.</p>
-            <p><strong>4. Penjelasan Rasional Efek Non-Monotonik:</strong> Analisis konduktivitas efektif tumpukan (`σ_eff`) membuktikan bahwa doping oksigen moderat (seperti Li₆PS₄.₇₅ClO₀.₂₅ / Li₂S₀.₆₈P₀.₁₄Cl₀.₁₄O₀.₀₄) mencapai kompromi paling optimal, menjelaskan mengapa eksperimen baterai simetris menunjukkan lonjakan masa pakai 5.5 kali lipat hanya pada doping moderat.</p>
+            <p><strong>3. Trade-Off Termodinamika &amp; Konduktivitas Ruah:</strong> Peningkatan kadar oksigen menurunkan konduktivitas ionik ruah elektrolit padat (bulk SSE) dan meningkatkan energi di atas hull (E_hull), sehingga konsentrasi oksigen yang berlebihan justru merusak stabilitas fasa dan mempercepat pembentukan impuritas.</p>
+            <p><strong>4. Penjelasan Rasional Efek Non-Monotonik:</strong> Analisis konduktivitas efektif tumpukan (σ_eff) membuktikan bahwa doping oksigen moderat (seperti Li₆PS₄.₇₅ClO₀.₂₅ / Li₂S₀.₆₈P₀.₁₄Cl₀.₁₄O₀.₀₄) mencapai kompromi paling optimal, menjelaskan mengapa eksperimen baterai simetris menunjukkan lonjakan masa pakai 5.5 kali lipat hanya pada doping moderat.</p>
           </div>
         </div>
 
@@ -197,15 +266,18 @@
           </div>
         </nav>
 
-        <!-- SECTION 1 -->
-        <section id="dilema-interfasial">
-          <h2>01. Dilema Interfasial Baterai Solid-State &amp; Rintangan SEI Terkubur</h2>
+        <!-- SECTION 1: Dilema Interfasial & SEI Terkubur -->
+        <section id="dilema-interfasial" class="pt-2">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            1. Dilema Interfasial Baterai Solid-State dan Rintangan SEI Terkubur
+          </h2>
+          
           <p class="editorial-dropcap">
             Peralihan global menuju elektrifikasi transportasi dan penyimpanan energi berkapasitas besar menuntut baterai generasi baru dengan kerapatan energi teoritis yang jauh melampaui teknologi litium-ion konvensional. Mengganti elektrolit cair yang mudah terbakar dengan elektrolit padat (Solid-State Electrolyte, SSE) memungkinkan integrasi langsung anoda logam litium murni—material anoda dengan kapasitas spesifik tertinggi (3860 mAh/g) dan potensial elektrokimia paling rendah (-3.04 V vs SHE).
           </p>
 
           <p>
-            Di antara berbagai kandidat elektrolit padat anorganik, kelompok <strong>sulfida tipe argyrodite seperti Li₆PS₅Cl</strong> menjadi bintang utama berkat konduktivitas ionik suhu ruangnya yang sangat tinggi (`1–10 mS/cm`), kemudahan pemrosesan mekanik berbasis pelet dingin (*cold-pressing*), serta modulus geser yang bersahabat untuk meminimalkan hambatan kontak antarbutir (*grain boundaries*).
+            Di antara berbagai kandidat elektrolit padat anorganik, kelompok <strong>sulfida tipe argyrodite seperti Li₆PS₅Cl</strong> menjadi bintang utama berkat konduktivitas ionik suhu ruangnya yang sangat tinggi (1–10 mS/cm), kemudahan pemrosesan mekanik berbasis pelet dingin (<em>cold-pressing</em>), serta modulus geser yang bersahabat untuk meminimalkan hambatan kontak antarbutir (<em>grain boundaries</em>).
           </p>
 
           <p>
@@ -217,17 +289,21 @@
               <strong>Sensitivitas Ekstrem terhadap Kelembapan Udara:</strong> Ikatan P-S pada anion PS₄³⁻ sangat rentan mengalami hidrolisis saat terpapar uap air lingkungan, melepaskan gas hidrogen sulfida (H₂S) yang sangat beracun dan merusak kerangka kristal konduktif.
             </li>
             <li>
-              <strong>Ketidakstabilan Termodinamika pada Antarmuka Li Metal:</strong> Jendela stabilitas elektrokimia intrinsik Li₆PS₅Cl sangat sempit (~1.7–2.3 V vs Li/Li⁺). Begitu bersentuhan langsung dengan anoda logam Li (potensial 0 V), potensial kimiawi Li yang sangat tinggi memicu reduksi spontan, membentuk lapisan antar-fasa padat (Solid Electrolyte Interphase, SEI) yang terkubur (*buried interphase*).
+              <strong>Ketidakstabilan Termodinamika pada Antarmuka Li Metal:</strong> Jendela stabilitas elektrokimia intrinsik Li₆PS₅Cl sangat sempit (~1.7–2.3 V vs Li/Li⁺). Begitu bersentuhan langsung dengan anoda logam Li (potensial 0 V), potensial kimiawi Li yang sangat tinggi memicu reduksi spontan, membentuk lapisan antar-fasa padat (Solid Electrolyte Interphase, SEI) yang terkubur (<em>buried interphase</em>).
             </li>
           </ol>
 
-          <div class="callout-box">
-            <div class="callout-title">Tantangan Karakterisasi: Sifat Alami Antarmuka Terkubur (Buried Interface)</div>
-            <p class="callout-body">
-              Secara konvensional, teori termodinamika DFT memprediksi bahwa dekomposisi Li₆PS₅Cl oleh logam Li akan menghasilkan fasa terpisah stoikiometris: Li₂S, Li₃P, dan LiCl. Namun, fasa Li₂S murni memiliki konduktivitas ionik yang sangat buruk (`~10⁻⁸ mS/cm`), bertindak sebagai penghambat masif perpindahan ion litium yang memicu polarisasi tegangan, pertumbuhan dendrit litium, dan korsleting sel.
-              <br><br>
-              Mengetahui struktur mikro riil, komposisi lokal, serta sifat transpor SEI secara eksperimental teramat sulit karena antarmuka ini terkubur di dalam sel tertutup dan sangat reaktif terhadap berkas instrumen mikroskopi elektron. Di sinilah simulasi komputasi multiskala berperan krusial.
-            </p>
+          <!-- Callout Box -->
+          <div class="my-6 p-5 bg-[#f0f7fc] border-l-4 border-editorial-accent rounded-r">
+            <div class="font-bold text-editorial-accent text-sm font-sans mb-1.5">Tantangan Karakterisasi: Sifat Alami Antarmuka Terkubur (Buried Interface)</div>
+            <div class="text-xs sm:text-sm font-sans text-editorial-body leading-relaxed space-y-2">
+              <p>
+                Secara konvensional, teori termodinamika DFT memprediksi bahwa dekomposisi Li₆PS₅Cl oleh logam Li akan menghasilkan fasa terpisah stoikiometris: Li₂S, Li₃P, dan LiCl. Namun, fasa Li₂S murni memiliki konduktivitas ionik yang sangat buruk (~10⁻⁸ mS/cm), bertindak sebagai penghambat masif perpindahan ion litium yang memicu polarisasi tegangan, pertumbuhan dendrit litium, dan korsleting sel.
+              </p>
+              <p>
+                Mengetahui struktur mikro riil, komposisi lokal, serta sifat transpor SEI secara eksperimental teramat sulit karena antarmuka ini terkubur di dalam sel tertutup dan sangat reaktif terhadap berkas instrumen mikroskopi elektron. Di sinilah simulasi komputasi multiskala berperan krusial.
+              </p>
+            </div>
           </div>
 
           <p>
@@ -235,27 +311,36 @@
           </p>
         </section>
 
-        <!-- SECTION 2 -->
-        <section id="arsitektur-sevennet">
-          <h2>02. Potensial Interatomik SevenNet &amp; Presisi Gaya Antarmuka Skala Kuantum</h2>
+        <!-- SECTION 2: Potensial SevenNet & Presisi Gaya -->
+        <section id="arsitektur-sevennet" class="pt-8">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            2. Potensial Interatomik SevenNet dan Presisi Gaya Antarmuka Skala Kuantum
+          </h2>
+
           <p class="editorial-dropcap">
-            Simulasi Ab Initio Molecular Dynamics (AIMD) konvensional berbasis Teori Fungsional Kerapatan (DFT) terbatas pada ratusan atom dengan durasi puluhan pikodetik karena beban komputasi penskalaan kubik `O(N³)`. Skala tersebut terlampau kecil untuk menangkap fenomena interfasial reaktif yang melibatkan ribuan atom dan proses nukleasi kristal yang membutuhkan durasi nanodetik.
+            Simulasi Ab Initio Molecular Dynamics (AIMD) konvensional berbasis Teori Fungsional Kerapatan (DFT) terbatas pada ratusan atom dengan durasi puluhan pikodetik karena beban komputasi penskalaan kubik O(N³). Skala tersebut terlampau kecil untuk menangkap fenomena interfasial reaktif yang melibatkan ribuan atom dan proses nukleasi kristal yang membutuhkan durasi nanodetik.
           </p>
 
           <p>
-            Untuk mengatasi rintangan ini, Dr. Byungju Lee dan tim peneliti di KIST mengadopsi <strong>SevenNet</strong>, model potensial interatomik berbasis *Graph Neural Network* (GNN) yang mengimplementasikan arsitektur ekuivarian rotasi dan translasi 3 dimensi `E(3)` (NequIP). SevenNet dilatih secara ekstensif menggunakan dataset konfigurasi atomik AIMD antarmuka dan fasa ruah terdistorsi yang dihitung menggunakan fungsional presisi tinggi `optB88-vdW` pada paket VASP.
+            Untuk mengatasi rintangan ini, Dr. Byungju Lee dan tim peneliti di KIST mengadopsi <strong>SevenNet</strong>, model potensial interatomik berbasis <em>Graph Neural Network</em> (GNN) yang mengimplementasikan arsitektur ekuivarian rotasi dan translasi 3 dimensi E(3) (NequIP). SevenNet dilatih secara ekstensif menggunakan dataset konfigurasi atomik AIMD antarmuka dan fasa ruah terdistorsi yang dihitung menggunakan fungsional presisi tinggi optB88-vdW pada paket VASP.
           </p>
 
-          <!-- FIGURE 1 -->
+          <!-- FIGURE 1 EMBEDDED -->
           <figure class="figure-container">
-            <img 
-              src="assets/fig1_reaction_energy_eos_uncertainty.png" 
-              alt="Validasi Potensial Interatomik SevenNet: Energi Reaksi, Persamaan Keadaan EOS, dan Ketidakpastian Gaya Antarmuka" 
-              class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
-              onclick="openLightbox(this.src, this.alt)"
-            >
-            <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
-              <strong class="text-editorial-ink font-semibold">Fig. 1.</strong> Validasi ketat potensial interatomik SevenNet MLIP terhadap perhitungan ab-initio DFT: (a, b) Kurva energi reaksi reduksi kimiawi antara logam Li dengan Li₆PS₅Cl murni dan Li₆PS₄ClO₁, menunjukkan kesesuaian sempurna antara DFT (kotak) dan MLIP (lingkaran); (c) Persamaan keadaan (Equation of State, EOS) energi vs volume per atom untuk fasa-fasa dekomposisi potensial (Li₆PS₅Cl, Li₂S, Li₃P, LiCl, dan Li₂O); (d) Analisis ketidakpastian gaya antarmuka ensemble 5 model MLIP independen pada berbagai ketebalan antarmuka `L_inter` (2, 4, dan 10 Å), membuktikan ketidakpastian rata-rata selalu berada di bawah ambang aman 0.1 eV/Å sepanjang 1200 ps.
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig1_reaction_energy_eos_uncertainty.png" 
+                alt="Validasi Potensial Interatomik SevenNet: Energi Reaksi, Persamaan Keadaan EOS, dan Ketidakpastian Gaya Antarmuka" 
+                class="w-full max-w-2xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig1_reaction_energy_eos_uncertainty.png', 'Gambar 1: Validasi ketat potensial interatomik SevenNet MLIP terhadap perhitungan ab-initio DFT')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 1 | Validasi presisi kuantum potensial interatomik SevenNet MLIP.</span> 
+              <strong>(a, b)</strong> Kurva energi reaksi reduksi kimiawi antara logam Li dengan Li₆PS₅Cl murni dan Li₆PS₄ClO₁, menunjukkan kesesuaian sempurna antara DFT (kotak) dan MLIP (lingkaran); 
+              <strong>(c)</strong> Persamaan keadaan (Equation of State, EOS) energi vs volume per atom untuk fasa-fasa dekomposisi potensial (Li₆PS₅Cl, Li₂S, Li₃P, LiCl, dan Li₂O); 
+              <strong>(d)</strong> Analisis ketidakpastian gaya antarmuka ensemble 5 model MLIP independen pada berbagai ketebalan antarmuka L_inter (2, 4, dan 10 Å), membuktikan ketidakpastian rata-rata selalu berada di bawah ambang aman 0.1 eV/Å sepanjang 1200 ps.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Yang et al., Adv. Sci. 2026, 0:e76563 / Wiley-VCH. (Klik gambar untuk perbesar)</div>
             </figcaption>
           </figure>
 
@@ -264,9 +349,9 @@
           </p>
 
           <ul class="list-disc pl-5 space-y-1.5 font-serif text-base text-editorial-body mb-6">
-            <li><strong>Root Mean Square Error (RMSE) Energi:</strong> `7.3 meV/atom` (training set) dan `7.0 meV/atom` (validation set).</li>
-            <li><strong>RMSE Gaya Atomik:</strong> `0.124 eV/Å` (training set) dan `0.135 eV/Å` (validation set).</li>
-            <li><strong>Ketidakpastian Gaya Antarmuka (Ensemble Uncertainty):</strong> Rata-rata deviasi gaya antar 5 model independen di zona kontak antarmuka selalu stabil di bawah `0.1 eV/Å` melintasi ketebalan 2 s/d 10 Å yang mencakup hingga 4.773 atom (Gambar 1d).</li>
+            <li><strong>Root Mean Square Error (RMSE) Energi:</strong> 7.3 meV/atom (training set) dan 7.0 meV/atom (validation set).</li>
+            <li><strong>RMSE Gaya Atomik:</strong> 0.124 eV/Å (training set) dan 0.135 eV/Å (validation set).</li>
+            <li><strong>Ketidakpastian Gaya Antarmuka (Ensemble Uncertainty):</strong> Rata-rata deviasi gaya antar 5 model independen di zona kontak antarmuka selalu stabil di bawah 0.1 eV/Å melintasi ketebalan 2 s/d 10 Å yang mencakup hingga 4.773 atom (Gambar 1d).</li>
           </ul>
 
           <p>
@@ -274,23 +359,32 @@
           </p>
         </section>
 
-        <!-- SECTION 3 -->
-        <section id="kinetika-difusi">
-          <h2>03. Tiga Rezim Difusi Kinetika &amp; Efek Penundaan Kristalisasi SEI</h2>
+        <!-- SECTION 3: Tiga Rezim Difusi Kinetika & MSD -->
+        <section id="kinetika-difusi" class="pt-8">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            3. Tiga Rezim Difusi Kinetika dan Efek Penundaan Kristalisasi SEI
+          </h2>
+
           <p class="editorial-dropcap">
-            Berbekal SevenNet MLIP, tim peneliti melakukan simulasi dinamika molekuler berskala besar pada antarmuka kristal `Li₆PS₅₋ₓClOₓ(110) | Li(110)` (dengan variasi doping oksigen `x = 0.0, 0.25, 0.5`) di bawah ansambel NPT pada tekanan 1000 bar dan rentang suhu 300, 400, hingga 600 K. Ukuran supercell antarmuka mencapai 17.024 atom, memberikan resolusi statistik yang belum pernah tercapai sebelumnya.
+            Berbekal SevenNet MLIP, tim peneliti melakukan simulasi dinamika molekuler berskala besar pada antarmuka kristal Li₆PS₅₋ₓClOₓ(110) | Li(110) (dengan variasi doping oksigen x = 0.0, 0.25, 0.5) di bawah ansambel NPT pada tekanan 1000 bar dan rentang suhu 300, 400, hingga 600 K. Ukuran supercell antarmuka mencapai 17.024 atom, memberikan resolusi statistik yang belum pernah tercapai sebelumnya.
           </p>
 
-          <!-- FIGURE 2 -->
+          <!-- FIGURE 2 EMBEDDED -->
           <figure class="figure-container">
-            <img 
-              src="assets/fig2_atomic_structures_msd_reduction.png" 
-              alt="Evolusi Struktur Antarmuka Li6PS5Cl | Li pada 600 K, Tiga Rezim Difusi MSD, dan Fraksi Reduksi Kinetik" 
-              class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
-              onclick="openLightbox(this.src, this.alt)"
-            >
-            <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
-              <strong class="text-editorial-ink font-semibold">Fig. 2.</strong> Simulasi MLIP-MD evolusi antarmuka: (a) Snapshot struktur atomik antarmuka Li₆PS₅Cl(110) | Li(110) pada suhu 600 K pada durasi 0, 200, 500, dan 2000 ps (menampilkan transisi dari amorf menuju fasa teratur); (b) Kurva Mean Squared Displacement (MSD) ion Li asal elektrolit yang memetakan tiga rezim difusi khas: cepat (reduksi), moderat (nukleasi/kristalisasi), dan lambat (SEI terkristalisasi); (c) Fraksi reduksi kimiawi `f_r` elektrolit sebagai fungsi waktu pada 300 K, 400 K, dan 600 K.
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig2_atomic_structures_msd_reduction.png" 
+                alt="Evolusi Struktur Antarmuka Li6PS5Cl | Li pada 600 K, Tiga Rezim Difusi MSD, dan Fraksi Reduksi Kinetik" 
+                class="w-full max-w-2xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig2_atomic_structures_msd_reduction.png', 'Gambar 2: Evolusi struktur atom antarmuka Li₆PS₅Cl(110) | Li(110) dan kurva MSD')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 2 | Evolusi mikrostruktur antarmuka dan pemetaan tiga rezim difusi.</span> 
+              <strong>(a)</strong> Snapshot struktur atomik antarmuka Li₆PS₅Cl(110) | Li(110) pada suhu 600 K pada durasi 0, 200, 500, dan 2000 ps (menampilkan transisi dari amorf menuju fasa teratur); 
+              <strong>(b)</strong> Kurva Mean Squared Displacement (MSD) ion Li asal elektrolit yang memetakan tiga rezim difusi khas: cepat (reduksi), moderat (nukleasi/kristalisasi), dan lambat (SEI terkristalisasi); 
+              <strong>(c)</strong> Fraksi reduksi kimiawi f_r elektrolit sebagai fungsi waktu pada 300 K, 400 K, dan 600 K.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Yang et al., Adv. Sci. 2026, 0:e76563 / Wiley-VCH.</div>
             </figcaption>
           </figure>
 
@@ -298,81 +392,104 @@
             Analisis perpindahan kuadrat rata-rata (Mean Squared Displacement, MSD) pada ion-ion litium asal elektrolit (mengecualikan atom Li dari logam anoda) pada suhu 600 K secara transparan mengungkap eksistensi <strong>tiga rezim difusi kinetika</strong> yang sangat teratur:
           </p>
 
-          <div class="overflow-x-auto my-6">
-            <table class="editorial-table">
-              <thead>
-                <tr>
-                  <th>Rezim Kinetika</th>
-                  <th>Rentang Waktu (600 K)</th>
-                  <th>Karakteristik Fisika &amp; Kimiawi</th>
-                  <th>Status Fraksi Reduksi (f_r)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="font-medium text-editorial-ink">1. Rezim Difusi Cepat (Fast)</td>
-                  <td class="font-mono">0 – 40 ps</td>
-                  <td>Dekomposisi destruktif cepat akibat injeksi elektron bebas dari logam Li ke kerangka fosfor argyrodite.</td>
-                  <td class="font-mono">0.30 → 1.00 (Reduksi tuntas P⁵⁺ ke P³⁻)</td>
-                </tr>
-                <tr>
-                  <td class="font-medium text-editorial-ink">2. Rezim Difusi Moderat</td>
-                  <td class="font-mono">40 – 400 ps (Undoped)<br>40 – 1050 ps (O-doped)</td>
-                  <td>Reorganisasi susunan atomik amorf, eliminasi cacat, dan nukleasi kristal fasa padat baru.</td>
-                  <td class="font-mono">f_r = 1.00 (Konstan tereduksi penuh)</td>
-                </tr>
-                <tr>
-                  <td class="font-medium text-editorial-ink">3. Rezim Difusi Lambat (Slow)</td>
-                  <td class="font-mono">&gt;400 ps (Undoped)<br>&gt;1050 ps (O-doped)</td>
-                  <td>Transportasi ionik tunak (*steady-state*) di dalam kerangka kisi SEI yang telah mengkristal kokoh.</td>
-                  <td class="font-mono">Fasa SEI terkristalisasi stabil hingga 2000 ps</td>
-                </tr>
-              </tbody>
-            </table>
+          <!-- PUBLICATION TABLE 1 -->
+          <div class="my-6">
+            <div class="text-xs font-semibold text-editorial-muted uppercase tracking-wider mb-2 font-sans">
+              Tabel 1 | Tiga Rezim Difusi Kinetika Selama Reduksi Antarmuka Li₆PS₅₋ₓClOₓ | Li (600 K)
+            </div>
+            <div class="overflow-x-auto">
+              <table class="pub-table">
+                <thead>
+                  <tr class="text-editorial-ink">
+                    <th class="text-left">Rezim Kinetika</th>
+                    <th class="text-left">Rentang Waktu (600 K)</th>
+                    <th class="text-left">Karakteristik Fisika &amp; Kimiawi</th>
+                    <th class="text-left">Status Fraksi Reduksi (f_r)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">1. Rezim Difusi Cepat (Fast)</td>
+                    <td class="font-mono">0 – 40 ps</td>
+                    <td>Dekomposisi destruktif cepat akibat injeksi elektron bebas dari logam Li ke kerangka fosfor argyrodite.</td>
+                    <td class="font-mono">0.30 → 1.00 (Reduksi tuntas P⁵⁺ ke P³⁻)</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">2. Rezim Difusi Moderat</td>
+                    <td class="font-mono">40 – 400 ps (Undoped)<br>40 – 1050 ps (O-doped)</td>
+                    <td>Reorganisasi susunan atomik amorf, eliminasi cacat, dan nukleasi kristal fasa padat baru.</td>
+                    <td class="font-mono">f_r = 1.00 (Konstan tereduksi penuh)</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">3. Rezim Difusi Lambat (Slow)</td>
+                    <td class="font-mono">&gt;400 ps (Undoped)<br>&gt;1050 ps (O-doped)</td>
+                    <td>Transportasi ionik tunak (<em>steady-state</em>) di dalam kerangka kisi SEI yang telah mengkristal kokoh.</td>
+                    <td class="font-mono">Fasa SEI terkristalisasi stabil hingga 2000 ps</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
 
           <p>
             Fraksi reduksi kimiawi elektrolit didefinisikan secara kuantitatif melalui pemutusan ikatan koordinasi anion di sekitar atom fosfor:
           </p>
 
-          <div class="p-4 bg-zinc-50 border border-editorial-line rounded font-mono text-xs my-4 text-center">
-            f_r = [8N(P) + 6N(PS) + 4N(PS₂) + 2N(PS₃)] / [8Z]
+          <!-- Equation Card 1 -->
+          <div class="my-6 p-4 bg-editorial-softbg border border-editorial-line rounded font-mono text-sm space-y-3">
+            <div class="flex items-center justify-between border-b border-editorial-line pb-2">
+              <span class="text-xs uppercase font-sans font-bold text-editorial-muted">Definisi Kuantitatif • Fraksi Reduksi Kimiawi</span>
+              <span class="text-xs text-editorial-lightmuted">(Persamaan 1)</span>
+            </div>
+            <div class="text-center py-1 text-editorial-ink font-semibold">
+              f_r = [8N(P) + 6N(PS) + 4N(PS₂) + 2N(PS₃)] / [8Z]
+            </div>
           </div>
 
           <p>
-            Di mana `N(PS_x)` adalah jumlah atom fosfor yang dikoordinasikan oleh `x` atom anion (S atau O) dalam radius pemotongan 3 Å, dan `Z` adalah total satuan rumus elektrolit. Menariknya, penambahan oksigen tidak mengubah kecepatan reduksi kimiawi (fraksi `f_r` mencapai 1.0 pada waktu yang sama, yaitu ~40 ps pada 600 K dan ~400 ps pada 400 K).
+            Di mana N(PS_x) adalah jumlah atom fosfor yang dikoordinasikan oleh x atom anion (S atau O) dalam radius pemotongan 3 Å, dan Z adalah total satuan rumus elektrolit. Menariknya, penambahan oksigen tidak mengubah kecepatan reduksi kimiawi (fraksi f_r mencapai 1.0 pada waktu yang sama, yaitu ~40 ps pada 600 K dan ~400 ps pada 400 K).
           </p>
 
           <p>
-            Namun, <strong>oksigen secara dramatis menunda kinetika kristalisasi</strong>. Pada antarmuka tanpa oksigen, kristalisasi SEI rampung pada ~400 ps. Sebaliknya, pada sistem berdoping oksigen `Li₆PS₄.₇₅ClO₀.₂₅`, penataan kisi berlangsung jauh lebih lambat dan baru mencapai konvergensi penuh pada ~1050 ps (ditandai panah merah putus-putus pada Gambar 2b). 
+            Namun, <strong>oksigen secara dramatis menunda kinetika kristalisasi</strong>. Pada antarmuka tanpa oksigen, kristalisasi SEI rampung pada ~400 ps. Sebaliknya, pada sistem berdoping oksigen Li₆PS₄.₇₅ClO₀.₂₅, penataan kisi berlangsung jauh lebih lambat dan baru mencapai konvergensi penuh pada ~1050 ps (ditandai panah merah putus-putus pada Gambar 2b). 
           </p>
 
           <p>
-            Yang paling mengejutkan: setelah SEI sepenuhnya terkristalisasi (`>1050 ps`), kemiringan kurva MSD ion Li pada sistem berdoping oksigen justru <strong>jauh lebih curam</strong> daripada sistem tanpa doping! Ini adalah bukti langsung bahwa SEI yang mengandung oksigen memiliki difusivitas ionik litium yang jauh lebih tinggi.
+            Yang paling mengejutkan: setelah SEI sepenuhnya terkristalisasi (>1050 ps), kemiringan kurva MSD ion Li pada sistem berdoping oksigen justru <strong>jauh lebih curam</strong> daripada sistem tanpa doping! Ini adalah bukti langsung bahwa SEI yang mengandung oksigen memiliki difusivitas ionik litium yang jauh lebih tinggi.
           </p>
         </section>
 
-        <!-- SECTION 4 -->
-        <section id="identifikasi-fasa">
-          <h2>04. Klasifikasi Fase Berbasis GNN: Terungkapnya Fasa Li₂S Tersubstitusi Anion</h2>
+        <!-- SECTION 4: Klasifikasi Fasa Berbasis GNN -->
+        <section id="identifikasi-fasa" class="pt-8">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            4. Klasifikasi Fase Berbasis GNN: Terungkapnya Fasa Li₂S Tersubstitusi Anion
+          </h2>
+
           <p class="editorial-dropcap">
-            Untuk mengidentifikasi fasa-fasa kristalin apa saja yang sebenarnya menyusun SEI secara objektif, para penulis merancang model klasifikasi pembelajaran mesin berbasis representasi lingkungan atomik lokal. Dari model SevenNet, vektor *node embeddings* atom litium pada lapisan tersembunyi terakhir diekstraksi sebagai fitur representasi geometri dan kimiawi, lalu dilatih menggunakan Multi-Layer Perceptron (MLP) dua lapis dengan fungsi aktivasi ReLU (Gambar 3a).
+            Untuk mengidentifikasi fasa-fasa kristalin apa saja yang sebenarnya menyusun SEI secara objektif, para penulis merancang model klasifikasi pembelajaran mesin berbasis representasi lingkungan atomik lokal. Dari model SevenNet, vektor <em>node embeddings</em> atom litium pada lapisan tersembunyi terakhir diekstraksi sebagai fitur representasi geometri dan kimiawi, lalu dilatih menggunakan Multi-Layer Perceptron (MLP) dua lapis dengan fungsi aktivasi ReLU (Gambar 3a).
           </p>
 
           <p>
-            Model klasifikasi ini mencapai akurasi *macro-F1 score* sebesar `0.9972` pada test set. Basis data pelatihan mencakup seluruh fasa dekomposisi biner Materials Project (Li₂S, Li₃P, LiCl, Li₂O) serta fasa larutan padat tersubstitusi berbasis Li₂S (`Li₂S₁₋ₓP₀.₅ₓCl₀.₅ₓ`).
+            Model klasifikasi ini mencapai akurasi <em>macro-F1 score</em> sebesar 0.9972 pada test set. Basis data pelatihan mencakup seluruh fasa dekomposisi biner Materials Project (Li₂S, Li₃P, LiCl, Li₂O) serta fasa larutan padat tersubstitusi berbasis Li₂S (Li₂S₁₋ₓP₀.₅ₓCl₀.₅ₓ).
           </p>
 
-          <!-- FIGURE 3 -->
+          <!-- FIGURE 3 EMBEDDED -->
           <figure class="figure-container">
-            <img 
-              src="assets/fig3_ml_phase_identification_workflow.png" 
-              alt="Skema Machine Learning Phase Identification dan Evolusi Fraksi Fasa Kinetik pada Berbagai Antarmuka" 
-              class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
-              onclick="openLightbox(this.src, this.alt)"
-            >
-            <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
-              <strong class="text-editorial-ink font-semibold">Fig. 3.</strong> Hasil klasifikasi fasa otomatis selama simulasi 2 ns pada 600 K: (b) Antarmuka Li₆PS₅Cl | Li dengan rasio anti-site `R_as = 0`; (c) Antarmuka Li₆PS₅Cl | Li dengan `R_as = 0.5`; (d) Antarmuka berdoping oksigen Li₆PS₄.₇₅ClO₀.₂₅ | Li. Inset grafik memperlihatkan konvergensi fraksi fasa dominan `Li₂S₁₋ₓ₋ᵧP₀.₅ₓCl₀.₅ₓOᵧ` di atas 30% dari total volume antarmuka.
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig3_ml_phase_identification_workflow.png" 
+                alt="Skema Machine Learning Phase Identification dan Evolusi Fraksi Fasa Kinetik pada Berbagai Antarmuka" 
+                class="w-full max-w-2xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig3_ml_phase_identification_workflow.png', 'Gambar 3: Alur kerja klasifikasi fasa otomatis berbasis GNN node embeddings dan evolusi fraksi fasa kinetik')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 3 | Alur kerja identifikasi fasa berbasis GNN dan evolusi fraksi fasa kinetik.</span> 
+              <strong>(a)</strong> Arsitektur ekstraksi representasi geometri dan kimiawi dari SevenNet yang dihubungkan ke classifier MLP; 
+              <strong>(b)</strong> Hasil klasifikasi fraksi fasa selama simulasi 2 ns pada 600 K untuk antarmuka Li₆PS₅Cl | Li dengan rasio anti-site R_as = 0; 
+              <strong>(c)</strong> Antarmuka Li₆PS₅Cl | Li dengan R_as = 0.5; 
+              <strong>(d)</strong> Antarmuka berdoping oksigen Li₆PS₄.₇₅ClO₀.₂₅ | Li. Inset grafik memperlihatkan konvergensi fraksi fasa dominan Li₂S₁₋ₓ₋ᵧP₀.₅ₓCl₀.₅ₓOᵧ di atas 30% dari total volume antarmuka.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Yang et al., Adv. Sci. 2026, 0:e76563 / Wiley-VCH.</div>
             </figcaption>
           </figure>
 
@@ -380,13 +497,17 @@
             Penerapan model klasifikasi ini menghasilkan penemuan ilmiah yang sangat fundamental:
           </p>
 
-          <div class="callout-box">
-            <div class="callout-title">Koreksi Paradigma Termodinamika: Mengapa Tidak Terbentuk LiCl dan Li₃P Murni?</div>
-            <p class="callout-body">
-              Termodinamika kesetimbangan konvensional memprediksi bahwa reduksi Li₆PS₅Cl oleh Li akan menghasilkan produk dekomposisi terpisah: Li₂S + LiCl + Li₃P. Namun, pemisahan fasa makroskopis LiCl dan Li₃P murni menuntut migrasi dan pengelompokan (*aggregation*) atom P dan Cl melintasi jarak jauh.
-              <br><br>
-              Simulasi membuktikan bahwa pada suhu 600 K sekalipun, atom P dan Cl bersifat nyaris tidak bergerak (*virtually immobile*). Akibatnya, alih-alih membentuk fasa terpisah, sistem terkunci secara kinetik membentuk fasa larutan padat kristal tunggal berstruktur Li₂S di mana atom S sebagian digantikan oleh P, Cl, dan O secara acak: <strong>Li₂S₁₋ₓ₋ᵧP₀.₅ₓCl₀.₅ₓOᵧ</strong> (disebut sebagai *bulk-SEI*).
-            </p>
+          <!-- Callout Box -->
+          <div class="my-6 p-5 bg-[#f0f7fc] border-l-4 border-editorial-accent rounded-r">
+            <div class="font-bold text-editorial-accent text-sm font-sans mb-1.5">Koreksi Paradigma Termodinamika: Mengapa Tidak Terbentuk LiCl dan Li₃P Murni?</div>
+            <div class="text-xs sm:text-sm font-sans text-editorial-body leading-relaxed space-y-2">
+              <p>
+                Termodinamika kesetimbangan konvensional memprediksi bahwa reduksi Li₆PS₅Cl oleh Li akan menghasilkan produk dekomposisi terpisah: Li₂S + LiCl + Li₃P. Namun, pemisahan fasa makroskopis LiCl dan Li₃P murni menuntut migrasi dan pengelompokan (<em>aggregation</em>) atom P dan Cl melintasi jarak jauh.
+              </p>
+              <p>
+                Simulasi membuktikan bahwa pada suhu 600 K sekalipun, atom P dan Cl bersifat nyaris tidak bergerak (<em>virtually immobile</em>). Akibatnya, alih-alih membentuk fasa terpisah, sistem terkunci secara kinetik membentuk fasa larutan padat kristal tunggal berstruktur Li₂S di mana atom S sebagian digantikan oleh P, Cl, dan O secara acak: <strong>Li₂S₁₋ₓ₋ᵧP₀.₅ₓCl₀.₅ₓOᵧ</strong> (disebut sebagai <em>bulk-SEI</em>).
+              </p>
+            </div>
           </div>
 
           <p>
@@ -394,27 +515,36 @@
           </p>
 
           <p>
-            Selain itu, perbandingan antara antarmuka dengan rasio cacat anti-site `R_as = 0` (tanpa pertukaran posisi S 4d dan Cl 4a) dan `R_as = 0.5` (Gambar 3b vs 3c) membuktikan bahwa kinetika reaksi antarmuka sama sekali tidak dipengaruhi oleh rasio anti-site ruah. Begitu elektrolit tereduksi oleh logam Li, sifat transpor interfasial sepenuhnya ditentukan oleh struktur fasa SEI substitusional yang baru terbentuk, bukan lagi oleh cacat kisi elektrolit induknya.
+            Selain itu, perbandingan antara antarmuka dengan rasio cacat anti-site R_as = 0 (tanpa pertukaran posisi S 4d dan Cl 4a) dan R_as = 0.5 (Gambar 3b vs 3c) membuktikan bahwa kinetika reaksi antarmuka sama sekali tidak dipengaruhi oleh rasio anti-site ruah. Begitu elektrolit tereduksi oleh logam Li, sifat transpor interfasial sepenuhnya ditentukan oleh struktur fasa SEI substitusional yang baru terbentuk, bukan lagi oleh cacat kisi elektrolit induknya.
           </p>
         </section>
 
-        <!-- SECTION 5 -->
-        <section id="lonjakan-konduktivitas">
-          <h2>05. Lonjakan Dua Orde Konduktivitas Ionik SEI &amp; Trade-off Termodinamika E_hull</h2>
+        <!-- SECTION 5: Lonjakan Dua Orde Konduktivitas & Trade-Off E_hull -->
+        <section id="lonjakan-konduktivitas" class="pt-8">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            5. Lonjakan Dua Orde Konduktivitas Ionik SEI dan Trade-off Termodinamika E_hull
+          </h2>
+
           <p class="editorial-dropcap">
-            Setelah mengidentifikasi bahwa `Li₂S₁₋ₓ₋ᵧP₀.₅ₓCl₀.₅ₓOᵧ` adalah fasa penyusun utama SEI, para penulis merekonstruksi supercell fasa ruah SEI (`Li₂S₀.₇₂₋ₓP₀.₁₄Cl₀.₁₄Oₓ`) untuk mengevaluasi koefisien difusi dan konduktivitas ioniknya pada suhu ruang (300 K) melalui ekstrapolasi hubungan Arrhenius dari simulasi pada 600, 700, dan 800 K.
+            Setelah mengidentifikasi bahwa Li₂S₁₋ₓ₋ᵧP₀.₅ₓCl₀.₅ₓOᵧ adalah fasa penyusun utama SEI, para penulis merekonstruksi supercell fasa ruah SEI (Li₂S₀.₇₂₋ₓP₀.₁₄Cl₀.₁₄Oₓ) untuk mengevaluasi koefisien difusi dan konduktivitas ioniknya pada suhu ruang (300 K) melalui ekstrapolasi hubungan Arrhenius dari simulasi pada 600, 700, dan 800 K.
           </p>
 
-          <!-- FIGURE 4 -->
+          <!-- FIGURE 4 EMBEDDED -->
           <figure class="figure-container">
-            <img 
-              src="assets/fig4_ionic_conductivity_ehull_rdf.png" 
-              alt="Konduktivitas Ionik pada 300 K vs Energi di Atas Hull (Ehull) untuk Elektrolit Padat dan Fasa Bulk-SEI serta Analisis RDF" 
-              class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
-              onclick="openLightbox(this.src, this.alt)"
-            >
-            <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
-              <strong class="text-editorial-ink font-semibold">Fig. 4.</strong> Analisis transpor ionik dan stabilitas termodinamika: (a) Konduktivitas ionik pada 300 K vs energi di atas hull (`E_hull`) untuk elektrolit padat ruah Li₆PS₅₋ₓClOₓ; (b) Konduktivitas ionik vs `E_hull` untuk fasa bulk-SEI Li₂S₀.₇₂₋ₓP₀.₁₄Cl₀.₁₄Oₓ, memperlihatkan lonjakan konduktivitas ionik hingga dua orde magnitudo seiring kenaikan kadar oksigen; (c) Radial Distribution Function (RDF) pasangan Li-Li pada Li₂S murni, SEI tanpa oksigen, dan SEI berdoping oksigen (x = 0.04) pada 600 K yang menunjukkan pelebaran puncak akibat distorsi kisi lokal.
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig4_ionic_conductivity_ehull_rdf.png" 
+                alt="Konduktivitas Ionik pada 300 K vs Energi di Atas Hull (Ehull) untuk Elektrolit Padat dan Fasa Bulk-SEI serta Analisis RDF" 
+                class="w-full max-w-2xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig4_ionic_conductivity_ehull_rdf.png', 'Gambar 4: Analisis transpor ionik, kestabilan termodinamika Ehull, dan Radial Distribution Function RDF')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 4 | Hubungan konduktivitas ionik vs energi di atas hull (E_hull) dan analisis RDF.</span> 
+              <strong>(a)</strong> Konduktivitas ionik pada 300 K vs energi di atas hull (E_hull) untuk elektrolit padat ruah Li₆PS₅₋ₓClOₓ; 
+              <strong>(b)</strong> Konduktivitas ionik vs E_hull untuk fasa bulk-SEI Li₂S₀.₇₂₋ₓP₀.₁₄Cl₀.₁₄Oₓ, memperlihatkan lonjakan konduktivitas ionik hingga dua orde magnitudo seiring kenaikan kadar oksigen; 
+              <strong>(c)</strong> Radial Distribution Function (RDF) pasangan Li-Li pada Li₂S murni, SEI tanpa oksigen, dan SEI berdoping oksigen (x = 0.04) pada 600 K yang menunjukkan pelebaran puncak akibat distorsi kisi lokal.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Yang et al., Adv. Sci. 2026, 0:e76563 / Wiley-VCH.</div>
             </figcaption>
           </figure>
 
@@ -429,98 +559,136 @@
             <li>
               <strong>Perilaku Fasa Antarmuka (Bulk-SEI, Gambar 4b):</strong> Sebaliknya, pada fasa SEI substitusional, doping oksigen memicu lonjakan konduktivitas ionik yang luar biasa:
               <ul class="list-disc pl-5 mt-2 space-y-1 text-base">
-                <li>Pada kadar `x = 0.04` (Li₂S₀.₆₈P₀.₁₄Cl₀.₁₄O₀.₀₄): konduktivitas ionik melonjak <strong>satu orde magnitudo</strong> dibanding SEI murni tanpa oksigen.</li>
-                <li>Pada kadar `x = 0.07` (Li₂S₀.₆₅P₀.₁₄Cl₀.₁₄O₀.₀₇): konduktivitas ionik melonjak <strong>hampir dua orde magnitudo</strong> mendekati angka `~10⁻¹ mS/cm`.</li>
+                <li>Pada kadar x = 0.04 (Li₂S₀.₆₈P₀.₁₄Cl₀.₁₄O₀.₀₄): konduktivitas ionik melonjak <strong>satu orde magnitudo</strong> dibanding SEI murni tanpa oksigen.</li>
+                <li>Pada kadar x = 0.07 (Li₂S₀.₆₅P₀.₁₄Cl₀.₁₄O₀.₀₇): konduktivitas ionik melonjak <strong>hampir dua orde magnitudo</strong> mendekati angka ~10⁻¹ mS/cm.</li>
               </ul>
             </li>
           </ol>
 
-          <div class="callout-box">
-            <div class="callout-title">Mekanisme Atomistik: Frustrated Energy Landscape Akibat Ketidakcocokan Ukuran Anion</div>
-            <p class="callout-body">
-              Mengapa oksigen melipatgandakan difusi ion Li di dalam SEI? Analisis Radial Distribution Function (RDF, Gambar 4c) memberikan jawabannya:
-              <br><br>
-              Radius ionik O²⁻ (1.40 Å) jauh lebih kecil daripada S²⁻ (1.84 Å) dan Cl⁻ (1.81 Å). Penyusupan anion O ke dalam subkisi Li₂S menggeser puncak jarak Li-O ke jarak yang jauh lebih pendek, mendistorsi kerangka koordinasi tetrahedron di sekitarnya.
-              <br><br>
-              Distorsi lokal yang kuat ini menciptakan <strong>lanskap energi potensial yang terfrustrasi (frustrated energy landscape)</strong>. Hambatan energi antar-situs lompatan (*hopping barrier*) menjadi bervariasi dan tidak lagi simetris kaku, membuka ragam jalur difusi baru yang memungkinkan ion Li melompat dengan frekuensi yang jauh lebih tinggi dibanding kisi Li₂S simetris biasa.
-            </p>
+          <!-- Callout Box -->
+          <div class="my-6 p-5 bg-[#f0f7fc] border-l-4 border-editorial-accent rounded-r">
+            <div class="font-bold text-editorial-accent text-sm font-sans mb-1.5">Mekanisme Atomistik: Frustrated Energy Landscape Akibat Ketidakcocokan Ukuran Anion</div>
+            <div class="text-xs sm:text-sm font-sans text-editorial-body leading-relaxed space-y-2">
+              <p>
+                Mengapa oksigen melipatgandakan difusi ion Li di dalam SEI? Analisis Radial Distribution Function (RDF, Gambar 4c) memberikan jawabannya:
+              </p>
+              <p>
+                Radius ionik O²⁻ (1.40 Å) jauh lebih kecil daripada S²⁻ (1.84 Å) dan Cl⁻ (1.81 Å). Penyusupan anion O ke dalam subkisi Li₂S menggeser puncak jarak Li-O ke jarak yang jauh lebih pendek, mendistorsi kerangka koordinasi tetrahedron di sekitarnya.
+              </p>
+              <p>
+                Distorsi lokal yang kuat ini menciptakan <strong>lanskap energi potensial yang terfrustrasi (<em>frustrated energy landscape</em>)</strong>. Hambatan energi antar-situs lompatan (<em>hopping barrier</em>) menjadi bervariasi dan tidak lagi simetris kaku, membuka ragam jalur difusi baru yang memungkinkan ion Li melompat dengan frekuensi yang jauh lebih tinggi dibanding kisi Li₂S simetris biasa.
+              </p>
+            </div>
           </div>
 
           <p>
-            Namun, penelitian ini juga mengungkap <strong>hukum trade-off termodinamika</strong>: seiring melonjaknya konduktivitas ionik, nilai energi di atas hull (`E_hull`) dari fasa SEI juga meningkat tajam dari ~0.038 eV/atom ke ~0.057 eV/atom (Gambar 4b). Artinya, kestabilan termodinamika fasa SEI semakin berkurang. Jika doping oksigen diberikan secara berlebihan, SEI akan menjadi tidak stabil dan rentan terurai menjadi impuritas yang merugikan.
+            Namun, penelitian ini juga mengungkap <strong>hukum trade-off termodinamika</strong>: seiring melonjaknya konduktivitas ionik, nilai energi di atas hull (E_hull) dari fasa SEI juga meningkat tajam dari ~0.038 eV/atom ke ~0.057 eV/atom (Gambar 4b). Artinya, kestabilan termodinamika fasa SEI semakin berkurang. Jika doping oksigen diberikan secara berlebihan, SEI akan menjadi tidak stabil dan rentan terurai menjadi impuritas yang merugikan.
           </p>
         </section>
 
-        <!-- SECTION 6 -->
-        <section id="pasivasi-validasi">
-          <h2>06. Pasivasi Elektronik, Validasi XRD &amp; Rekayasa Konduktivitas Tumpukan σ_eff</h2>
+        <!-- SECTION 6: Pasivasi, Validasi XRD, & Rekayasa Tumpukan -->
+        <section id="pasivasi-validasi" class="pt-8 border-t border-editorial-line mt-10">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            6. Pasivasi Elektronik, Validasi XRD, dan Rekayasa Konduktivitas Tumpukan
+          </h2>
+
           <p class="editorial-dropcap">
             Agar SEI dapat berfungsi sebagai lapisan pasivasi sejati, ia wajib memenuhi satu syarat mutlak: menjadi <strong>penyekat elektronik (electronic insulator)</strong>. Jika elektron dari logam Li dapat bocor dan menembus SEI menuju elektrolit, reduksi kimiawi akan terus berlangsung tanpa henti hingga elektrolit habis terkonsumsi.
           </p>
 
           <p>
-            Perhitungan struktur pita elektronik menggunakan fungsional hibrida Heyd-Scuseria-Ernzerhof (HSE06) mengonfirmasi bahwa fasa model SEI murni (`Li₂S₀.₇₅P₀.₁₂₅Cl₀.₁₂₅`) dan berdoping oksigen (`Li₂S₀.₆₈₈P₀.₁₂₅Cl₀.₁₂₅O₀.₀₆₂`) merupakan semikonduktor celah lebar dengan nilai celah pita masing-masing sebesar <strong>2.70 eV</strong> dan <strong>2.68 eV</strong> tanpa kerapatan keadaan (DOS) di tingkat Fermi.
+            Perhitungan struktur pita elektronik menggunakan fungsional hibrida Heyd-Scuseria-Ernzerhof (HSE06) mengonfirmasi bahwa fasa model SEI murni (Li₂S₀.₇₅P₀.₁₂₅Cl₀.₁₂₅) dan berdoping oksigen (Li₂S₀.₆₈₈P₀.₁₂₅Cl₀.₁₂₅O₀.₀₆₂) merupakan semikonduktor celah lebar dengan nilai celah pita masing-masing sebesar <strong>2.70 eV</strong> dan <strong>2.68 eV</strong> tanpa kerapatan keadaan (DOS) di tingkat Fermi.
           </p>
 
-          <!-- FIGURE 5 -->
+          <!-- FIGURE 5 EMBEDDED -->
           <figure class="figure-container">
-            <img 
-              src="assets/fig5_interface_stability_phase_fractions.png" 
-              alt="Uji Kestabilan Kinetik Kontak Antarmuka SEI | SSE pada Suhu 600 K Sepanjang 1.5 Nanodetik" 
-              class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
-              onclick="openLightbox(this.src, this.alt)"
-            >
-            <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
-              <strong class="text-editorial-ink font-semibold">Fig. 5.</strong> Uji kestabilan kinetik antarmuka kontak langsung antara SEI yang telah terbentuk dengan elektrolit padat pada 600 K selama 1500 ps: (a, b) Antarmuka Li₆PS₅Cl | Li₂S₀.₇₂P₀.₁₄Cl₀.₁₄; (c, d) Antarmuka berdoping oksigen Li₆PS₄.₇₅ClO₀.₂₅ | Li₂S₀.₆₈P₀.₁₄Cl₀.₁₄O₀.₀₄. Kedua sistem mempertahankan integritas fasa elektrolit tanpa mengalami reduksi lanjutan, membuktikan efek pasivasi pasca pembentukan SEI.
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig5_interface_stability_phase_fractions.png" 
+                alt="Uji Kestabilan Kinetik Kontak Antarmuka SEI | SSE pada Suhu 600 K Sepanjang 1.5 Nanodetik" 
+                class="w-full max-w-2xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig5_interface_stability_phase_fractions.png', 'Gambar 5: Uji kestabilan kinetik antarmuka kontak langsung SEI | SSE pada 600 K')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 5 | Uji kestabilan kinetik kontak antarmuka SEI | SSE pada suhu 600 K (1.5 ns).</span> 
+              <strong>(a, b)</strong> Antarmuka Li₆PS₅Cl | Li₂S₀.₇₂P₀.₁₄Cl₀.₁₄; 
+              <strong>(c, d)</strong> Antarmuka berdoping oksigen Li₆PS₄.₇₅ClO₀.₂₅ | Li₂S₀.₆₈P₀.₁₄Cl₀.₁₄O₀.₀₄. Kedua sistem mempertahankan integritas fasa elektrolit tanpa mengalami reduksi lanjutan, membuktikan efek pasivasi pasca pembentukan SEI.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Yang et al., Adv. Sci. 2026, 0:e76563 / Wiley-VCH.</div>
             </figcaption>
           </figure>
 
           <p>
-            Untuk membuktikan pasivasi kinetik ini secara dinamis, tim peneliti merekayasa antarmuka kontak langsung antara lapisan SEI dengan elektrolit padat (`SEI | SSE`) dan menyimulasikannya pada suhu 600 K selama 1.5 nanodetik (Gambar 5). Hasil klasifikasi fasa menunjukkan bahwa wilayah elektrolit Li₆PS₅₋ₓClOₓ tetap utuh dan stabil tanpa mengalami degradasi, membuktikan bahwa lapisan SEI fasa tunggal ini efektif mengunci transfer massa dan elektron.
+            Untuk membuktikan pasivasi kinetik ini secara dinamis, tim peneliti merekayasa antarmuka kontak langsung antara lapisan SEI dengan elektrolit padat (SEI | SSE) dan menyimulasikannya pada suhu 600 K selama 1.5 nanodetik (Gambar 5). Hasil klasifikasi fasa menunjukkan bahwa wilayah elektrolit Li₆PS₅₋ₓClOₓ tetap utuh dan stabil tanpa mengalami degradasi, membuktikan bahwa lapisan SEI fasa tunggal ini efektif mengunci transfer massa dan elektron.
           </p>
 
-          <h3>Konfirmasi Eksperimental Pola Difraksi Sinar-X (XRD) &amp; RDF</h3>
+          <h3 class="text-lg font-bold font-sans text-editorial-ink tracking-tight mt-6 mb-3">
+            Konfirmasi Eksperimental Pola Difraksi Sinar-X (XRD) &amp; RDF
+          </h3>
+
           <p>
-            Keberadaan fasa SEI `Li₂S₁₋ₓP₀.₅ₓCl₀.₅ₓ` bukan sekadar artefak simulasi komputer, melainkan terkonfirmasi secara presisi oleh data eksperimen laboratorium independen.
+            Keberadaan fasa SEI Li₂S₁₋ₓP₀.₅ₓCl₀.₅ₓ bukan sekadar artefak simulasi komputer, melainkan terkonfirmasi secara presisi oleh data eksperimen laboratorium independen.
           </p>
 
-          <!-- FIGURE 6 -->
+          <!-- FIGURE 6 EMBEDDED -->
           <figure class="figure-container">
-            <img 
-              src="assets/fig6_rdf_xrd_conductivity_validation.png" 
-              alt="Validasi Eksperimental: Pola Difraksi Sinar-X XRD, RDF Antarmuka vs Fasa Ruah, dan Spektrum Konduktivitas Eksperimen" 
-              class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
-              onclick="openLightbox(this.src, this.alt)"
-            >
-            <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
-              <strong class="text-editorial-ink font-semibold">Fig. 6.</strong> Validasi menyeluruh terhadap data eksperimen: (a) Kesesuaian profil RDF antara SEI hasil simulasi antarmuka MD (garis padat) dengan fasa bulk-SEI Li₂S₀.₇₂P₀.₁₄Cl₀.₁₄ pada 600 K; (b) Spektrum difraksi sinar-X (XRD) terhitung dari fasa DFT Li₂S₀.₇₅P₀.₁₂₅Cl₀.₁₂₅ (garis hitam) yang bersesuaian sempurna dengan pola XRD eksperimen sintesis bulk-SEI oleh Alt dkk. (Joule 2024, garis merah putus-putus) serta posisi puncak Bragg Li₂S; (c) Perbandingan rentang konduktivitas ionik eksperimen pada 300 K untuk berbagai fasa biner dengan nilai terhitung bulk-SEI.
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig6_rdf_xrd_conductivity_validation.png" 
+                alt="Validasi Eksperimental: Pola Difraksi Sinar-X XRD, RDF Antarmuka vs Fasa Ruah, dan Spektrum Konduktivitas Eksperimen" 
+                class="w-full max-w-2xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig6_rdf_xrd_conductivity_validation.png', 'Gambar 6: Validasi komparatif difraksi sinar-X (XRD) dan konduktivitas terhadap data eksperimen')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 6 | Validasi komparatif difraksi sinar-X (XRD) dan konduktivitas terhadap data eksperimen.</span> 
+              <strong>(a)</strong> Kesesuaian profil RDF antara SEI hasil simulasi antarmuka MD (garis padat) dengan fasa bulk-SEI Li₂S₀.₇₂P₀.₁₄Cl₀.₁₄ pada 600 K; 
+              <strong>(b)</strong> Spektrum difraksi sinar-X (XRD) terhitung dari fasa DFT Li₂S₀.₇₅P₀.₁₂₅Cl₀.₁₂₅ (garis hitam) yang bersesuaian sempurna dengan pola XRD eksperimen sintesis bulk-SEI oleh Alt dkk. (Joule 2024, garis merah putus-putus) serta posisi puncak Bragg Li₂S; 
+              <strong>(c)</strong> Perbandingan rentang konduktivitas ionik eksperimen pada 300 K untuk berbagai fasa biner dengan nilai terhitung bulk-SEI.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Yang et al., Adv. Sci. 2026, 0:e76563 / Wiley-VCH.</div>
             </figcaption>
           </figure>
 
           <p>
-            Pada riset penting yang dipublikasikan oleh Alt dkk. di jurnal <em>Joule</em> (2024), sintesis langsung fasa ruah SEI dari reaksi serbuk Li₆PS₅Cl dan logam Li menghasilkan pola XRD di mana fasa Li₂S mendominasi hingga 89 wt.% dengan puncak Bragg yang melebar. Sebagaimana tampak pada Gambar 6b, pola XRD terhitung dari struktur DFT `Li₂S₀.₇₅P₀.₁₂₅Cl₀.₁₂₅` bersesuaian sangat identik dengan data eksperimen tersebut, membuktikan bahwa kisi kristal dasar SEI memang berupa kerangka Li₂S yang mengikat larutan padat P dan Cl.
+            Pada riset penting yang dipublikasikan oleh Alt dkk. di jurnal <em>Joule</em> (2024), sintesis langsung fasa ruah SEI dari reaksi serbuk Li₆PS₅Cl dan logam Li menghasilkan pola XRD di mana fasa Li₂S mendominasi hingga 89 wt.% dengan puncak Bragg yang melebar. Sebagaimana tampak pada Gambar 6b, pola XRD terhitung dari struktur DFT Li₂S₀.₇₅P₀.₁₂₅Cl₀.₁₂₅ bersesuaian sangat identik dengan data eksperimen tersebut, membuktikan bahwa kisi kristal dasar SEI memang berupa kerangka Li₂S yang mengikat larutan padat P dan Cl.
           </p>
 
-          <h3>Model Tumpukan Seri &amp; Konduktivitas Efektif (σ_eff)</h3>
+          <h3 class="text-lg font-bold font-sans text-editorial-ink tracking-tight mt-6 mb-3">
+            Model Tumpukan Seri &amp; Konduktivitas Efektif (σ_eff)
+          </h3>
+
           <p>
             Untuk menghubungkan konduktivitas ionik mikroskopis dengan kinerja baterai makroskopis, antarmuka dimodelkan sebagai dua konduktor ionik yang tersusun secara seri sepanjang arah tegak lurus bidang elektroda:
           </p>
 
-          <div class="p-4 bg-zinc-50 border border-editorial-line rounded font-mono text-xs my-4 text-center">
-            R_total = (L_SSE / σ_SSE) + (d_SEI / σ_SEI)<br><br>
-            σ_eff = (L_SSE + d_SEI) / R_total
+          <!-- Equation Card 2 -->
+          <div class="my-6 p-4 bg-editorial-softbg border border-editorial-line rounded font-mono text-sm space-y-3">
+            <div class="flex items-center justify-between border-b border-editorial-line pb-2">
+              <span class="text-xs uppercase font-sans font-bold text-editorial-muted">Model Sirkuit Seri • Resistansi &amp; Konduktivitas Efektif</span>
+              <span class="text-xs text-editorial-lightmuted">(Persamaan 2 &amp; 3)</span>
+            </div>
+            <div class="text-center py-1 text-editorial-ink font-semibold">
+              R_total = (L_SSE / σ_SSE) + (d_SEI / σ_SEI)
+            </div>
+            <div class="text-center py-1 text-editorial-ink font-semibold">
+              σ_eff = (L_SSE + d_SEI) / R_total
+            </div>
           </div>
 
-          <!-- FIGURE 7 -->
+          <!-- FIGURE 7 EMBEDDED -->
           <figure class="figure-container">
-            <img 
-              src="assets/fig7_effective_ionic_conductivity_stack.png" 
-              alt="Estimasi Konduktivitas Ionik Efektif (sigma_eff) Tumpukan SSE/SEI sebagai Fungsi Ketebalan Lapisan SEI" 
-              class="w-full h-auto cursor-zoom-in rounded border border-editorial-line/60"
-              onclick="openLightbox(this.src, this.alt)"
-            >
-            <figcaption class="mt-3 text-xs text-editorial-muted font-sans leading-normal">
-              <strong class="text-editorial-ink font-semibold">Fig. 7.</strong> Konduktivitas ionik efektif (`σ_eff`) tumpukan SSE/SEI sebagai fungsi ketebalan lapisan SEI (`d_SEI`) dengan tebal elektrolit tetap `L_SSE = 500 µm`: Sistem tanpa doping Li₆PS₅Cl (kotak abu-abu) mengalami penurunan konduktivitas drastis saat SEI terbentuk karena tingginya resistansi SEI murni. Sebaliknya, sistem berdoping oksigen moderat Li₆PS₄.₇₅ClO₀.₂₅ / Li₂S₀.₆₈P₀.₁₄Cl₀.₁₄O₀.₀₄ (lingkaran merah) mempertahankan konduktivitas efektif tertinggi melintasi seluruh rentang ketebalan SEI praktis.
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig7_effective_ionic_conductivity_stack.png" 
+                alt="Estimasi Konduktivitas Ionik Efektif (sigma_eff) Tumpukan SSE/SEI sebagai Fungsi Ketebalan Lapisan SEI" 
+                class="w-full max-w-2xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig7_effective_ionic_conductivity_stack.png', 'Gambar 7: Konduktivitas ionik efektif σ_eff tumpukan SSE/SEI sebagai fungsi ketebalan lapisan SEI')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 7 | Konduktivitas ionik efektif (σ_eff) tumpukan SSE/SEI sebagai fungsi ketebalan SEI.</span> 
+              Perhitungan pada ketebalan elektrolit tetap L_SSE = 500 µm: Sistem tanpa doping Li₆PS₅Cl (kotak abu-abu) mengalami penurunan konduktivitas drastis saat SEI terbentuk karena tingginya resistansi SEI murni. Sebaliknya, sistem berdoping oksigen moderat Li₆PS₄.₇₅ClO₀.₂₅ / Li₂S₀.₆₈P₀.₁₄Cl₀.₁₄O₀.₀₄ (lingkaran merah) mempertahankan konduktivitas efektif tertinggi melintasi seluruh rentang ketebalan SEI praktis.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Yang et al., Adv. Sci. 2026, 0:e76563 / Wiley-VCH. (Klik gambar untuk perbesar)</div>
             </figcaption>
           </figure>
 
@@ -530,73 +698,52 @@
 
           <ul class="list-disc pl-5 space-y-2 font-serif text-base text-editorial-body mb-6">
             <li>
-              Pada kondisi ideal tanpa SEI (`d_SEI = 0`), elektrolit murni Li₆PS₅Cl memang memiliki konduktivitas tertinggi (~28 mS/cm). Namun, begitu lapisan SEI terbentuk bahkan hanya setebal puluhan nanometer, nilai `σ_eff` anjlok tajam karena SEI murni bertindak sebagai hambatan leher botol (*transport bottleneck*).
+              Pada kondisi ideal tanpa SEI (d_SEI = 0), elektrolit murni Li₆PS₅Cl memang memiliki konduktivitas tertinggi (~28 mS/cm). Namun, begitu lapisan SEI terbentuk bahkan hanya setebal puluhan nanometer, nilai σ_eff anjlok tajam karena SEI murni bertindak sebagai hambatan leher botol (<em>transport bottleneck</em>).
             </li>
             <li>
-              Pada sistem berdoping oksigen moderat (`Li₆PS₄.₇₅ClO₀.₂₅ / Li₂S₀.₆₈P₀.₁₄Cl₀.₁₄O₀.₀₄`), penurunan konduktivitas ruah elektrolit yang sedikit (~20 mS/cm) terbayar lunas oleh melonjaknya konduktivitas lapisan SEI. Hasilnya, sistem ini <strong>mempertahankan konduktivitas efektif tertinggi</strong> di atas seluruh sistem lain pada rentang ketebalan SEI 50 hingga 500 nm.
+              Pada sistem berdoping oksigen moderat (Li₆PS₄.₇₅ClO₀.₂₅ / Li₂S₀.₆₈P₀.₁₄Cl₀.₁₄O₀.₀₄), penurunan konduktivitas ruah elektrolit yang sedikit (~20 mS/cm) terbayar lunas oleh melonjaknya konduktivitas lapisan SEI. Hasilnya, sistem ini <strong>mempertahankan konduktivitas efektif tertinggi</strong> di atas seluruh sistem lain pada rentang ketebalan SEI 50 hingga 500 nm.
             </li>
             <li>
-              Pada sistem doping oksigen tinggi (`Li₆PS₄.₅ClO₀.₅`), resistansi SEI memang paling kebal terhadap pertambahan tebal, namun konduktivitas ruahnya yang anjlok membatasi performa keseluruhan sel.
+              Pada sistem doping oksigen tinggi (Li₆PS₄.₅ClO₀.₅), resistansi SEI memang paling kebal terhadap pertambahan tebal, namun konduktivitas ruahnya yang anjlok membatasi performa keseluruhan sel.
             </li>
           </ul>
 
-          <div class="callout-box">
-            <div class="callout-title">Kesimpulan Editorial &amp; Pedoman Desain Rasional Baterai Padat Masa Depan</div>
-            <p class="callout-body">
-              Temuan komputasi atomistik oleh Sojeong Yang dan Byungju Lee dkk. ini berhasil mengurai teka-teki perilaku non-monotonik yang selama ini membingungkan para peneliti eksperimen baterai:
-              <br><br>
-              Mengapa doping oksigen pada konsentrasi moderat (5%) menghasilkan ketahanan siklus 197 putaran (5.5 kali lipat lebih awet), sedangkan konsentrasi 10% justru merosot ke 52 putaran? Jawabannya terletak pada keseimbangan trade-off: oksigen moderat melipatgandakan laju difusi ion Li pada SEI tanpa mengorbankan stabilitas fasa dan konduktivitas ruah secara berlebihan.
-              <br><br>
-              Penelitian ini membuktikan bahwa masa depan desain elektrolit padat tidak boleh hanya terpaku pada angka konduktivitas ruah (bulk SSE), melainkan wajib mengoptimalkan sifat kinetika dan termodinamika fasa SEI yang terbentuk di antarmuka anoda logam litium.
+          <!-- Callout Box -->
+          <div class="my-6 p-5 bg-[#f0f7fc] border-l-4 border-editorial-accent rounded-r">
+            <div class="font-bold text-editorial-accent text-sm font-sans mb-1.5">Kesimpulan Editorial &amp; Pedoman Desain Rasional Baterai Padat Masa Depan</div>
+            <div class="text-xs sm:text-sm font-sans text-editorial-body leading-relaxed space-y-2">
+              <p>
+                Temuan komputasi atomistik oleh Sojeong Yang dan Byungju Lee dkk. ini berhasil mengurai teka-teki perilaku non-monotonik yang selama ini membingungkan para peneliti eksperimen baterai:
+              </p>
+              <p>
+                Mengapa doping oksigen pada konsentrasi moderat (5%) menghasilkan ketahanan siklus 197 putaran (5.5 kali lipat lebih awet), sedangkan konsentrasi 10% justru merosot ke 52 putaran? Jawabannya terletak pada keseimbangan trade-off: oksigen moderat melipatgandakan laju difusi ion Li pada SEI tanpa mengorbankan stabilitas fasa dan konduktivitas ruah secara berlebihan.
+              </p>
+              <p>
+                Penelitian ini membuktikan bahwa masa depan desain elektrolit padat tidak boleh hanya terpaku pada angka konduktivitas ruah (bulk SSE), melainkan wajib mengoptimalkan sifat kinetika dan termodinamika fasa SEI yang terbentuk di antarmuka anoda logam litium.
+              </p>
+            </div>
+          </div>
+
+          <!-- CITATION BLOCK -->
+          <div class="mt-10 p-5 bg-white border border-editorial-line rounded font-sans">
+            <div class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-2">
+              Sitasi Paper Resmi (APA Format)
+            </div>
+            <p class="font-mono text-xs text-editorial-body leading-relaxed select-all">
+              Yang, S., Kang, S., Yadegarifard, A., Lee, H.-J., Artrith, N., Lee, J.-H., &amp; Lee, B. (2026). Enhanced Ionic Conductivity at the Solid Electrolyte Interphase of Oxygen-Doped Li6PS5Cl. <em>Advanced Science</em>, e76563. https://doi.org/10.1002/advs.76563
             </p>
-          </div>
-        </section>
 
-        <!-- METADATA & CITATION SECTION -->
-        <section class="mt-16 pt-8 border-t border-editorial-line text-xs font-sans text-editorial-muted">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <div class="font-bold text-editorial-ink uppercase tracking-wider mb-2">Informasi Publikasi Resmi</div>
-              <ul class="space-y-1">
-                <li><strong>Judul Asli:</strong> Enhanced Ionic Conductivity at the Solid Electrolyte Interphase of Oxygen-Doped Li₆PS₅Cl</li>
-                <li><strong>Penulis:</strong> Sojeong Yang, Sungwoo Kang, Atefeh Yadegarifard, Hyun-Jae Lee, Nongnuch Artrith, Jung-Hoon Lee, and Byungju Lee*</li>
-                <li><strong>Afiliasi:</strong> Computational Science Research Center, Korea Institute of Science and Technology (KIST), Seoul; Utrecht University; Korea University</li>
-                <li><strong>Jurnal:</strong> Advanced Science (Wiley-VCH), 2026; 0:e76563</li>
-                <li><strong>DOI:</strong> <a href="https://doi.org/10.1002/advs.76563" target="_blank" class="text-editorial-accent hover:underline">10.1002/advs.76563</a></li>
-                <li><strong>Lisensi:</strong> Creative Commons Attribution (CC BY 4.0) Open Access</li>
-              </ul>
-
-              <!-- Citation Buttons -->
-              <div class="mt-4 flex flex-wrap gap-2">
-                <button onclick="copyCitation('apa', 'Yang, S., Kang, S., Yadegarifard, A., Lee, H.-J., Artrith, N., Lee, J.-H., &amp; Lee, B. (2026). Enhanced Ionic Conductivity at the Solid Electrolyte Interphase of Oxygen-Doped Li6PS5Cl. Advanced Science, e76563. https://doi.org/10.1002/advs.76563')" class="reader-toolbar-btn">
-                  <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
-                  Salin Sitasi APA
-                </button>
-                <button onclick="copyCitation('bibtex', '@article{yang2026enhanced,\n  title={Enhanced Ionic Conductivity at the Solid Electrolyte Interphase of Oxygen-Doped Li6PS5Cl},\n  author={Yang, Sojeong and Kang, Sungwoo and Yadegarifard, Atefeh and Lee, Hyun-Jae and Artrith, Nongnuch and Lee, Jung-Hoon and Lee, Byungju},\n  journal={Advanced Science},\n  pages={e76563},\n  year={2026},\n  publisher={Wiley Online Library},\n  doi={10.1002/advs.76563}\n}')" class="reader-toolbar-btn">
-                  <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
-                  Salin BibTeX
-                </button>
-              </div>
+            <!-- Citation Quick Buttons -->
+            <div class="mt-4 flex flex-wrap gap-2">
+              <button onclick="copyCitation('apa', 'Yang, S., Kang, S., Yadegarifard, A., Lee, H.-J., Artrith, N., Lee, J.-H., &amp; Lee, B. (2026). Enhanced Ionic Conductivity at the Solid Electrolyte Interphase of Oxygen-Doped Li6PS5Cl. Advanced Science, e76563. https://doi.org/10.1002/advs.76563')" class="reader-toolbar-btn">
+                <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                Salin Sitasi APA
+              </button>
+              <button onclick="copyCitation('bibtex', '@article{yang2026enhanced,\n  title={Enhanced Ionic Conductivity at the Solid Electrolyte Interphase of Oxygen-Doped Li6PS5Cl},\n  author={Yang, Sojeong and Kang, Sungwoo and Yadegarifard, Atefeh and Lee, Hyun-Jae and Artrith, Nongnuch and Lee, Jung-Hoon and Lee, Byungju},\n  journal={Advanced Science},\n  pages={e76563},\n  year={2026},\n  publisher={Wiley Online Library},\n  doi={10.1002/advs.76563}\n}')" class="reader-toolbar-btn">
+                <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                Salin BibTeX
+              </button>
             </div>
-            <div>
-              <div class="font-bold text-editorial-ink uppercase tracking-wider mb-2">Metodologi &amp; Parameter Komputasi</div>
-              <ul class="space-y-1">
-                <li><strong>Arsitektur MLIP:</strong> SevenNet (E(3)-equivariant Graph Neural Network berbasis NequIP)</li>
-                <li><strong>Perangkat Lunak MD:</strong> LAMMPS (Ensemble NPT Nosé-Hoover, 1000 bar, step 1 fs)</li>
-                <li><strong>Kalkulasi DFT Acuan:</strong> VASP (PAW, optB88-vdW cutoff 520 eV, k-mesh length 40)</li>
-                <li><strong>Perhitungan Celah Pita:</strong> Fungsional Hibrida HSE06 (Heyd-Scuseria-Ernzerhof)</li>
-                <li><strong>Klasifikasi Fasa Otomatis:</strong> Multi-Layer Perceptron (scikit-learn, node embeddings Li, F1 0.9972)</li>
-                <li><strong>Ukuran Sistem Simulasi:</strong> 17.024 atom (Li₆PS₅₋ₓClOₓ | Li) &amp; 12.924 atom (SEI | SSE)</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="mt-8 pt-6 border-t border-editorial-line flex items-center justify-between">
-            <a href="../../index.html" class="inline-flex items-center gap-1.5 text-xs font-semibold text-editorial-ink hover:text-editorial-accent">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-              Kembali ke Katalog Utama Paper-Hub
-            </a>
-            <span class="text-editorial-lightmuted">TelaahSains Hub • Format Editorial Sains Bebas AI Workslop</span>
           </div>
         </section>
 
@@ -623,7 +770,7 @@
             </nav>
           </div>
 
-          <!-- CARD 2: GLOSARIUM ISTILAH KUNCI (5 Istilah Relevan) -->
+          <!-- CARD 2: GLOSARIUM ISTILAH KUNCI -->
           <div class="bg-white border border-editorial-line rounded p-5 space-y-3">
             <h4 class="text-xs font-bold uppercase tracking-wider text-editorial-ink pb-2 border-b border-editorial-line">
               Glosarium Istilah Kunci
@@ -709,20 +856,38 @@
     </div>
   </div>
 
-  <!-- LIGHTBOX MODAL FOR FULL RESOLUTION IMAGE INSPECTION -->
-  <div id="lightbox" class="fixed inset-0 bg-black/80 z-50 hidden flex flex-col items-center justify-center p-4 backdrop-blur-xs" onclick="closeLightbox()">
-    <div class="relative max-w-5xl max-h-[90vh] flex flex-col items-center" onclick="event.stopPropagation()">
-      <button onclick="closeLightbox()" class="absolute -top-10 right-0 text-white hover:text-zinc-300 text-sm font-mono flex items-center gap-1">
-        <span>Tutup [ESC]</span>
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-      </button>
-      <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[80vh] object-contain rounded bg-white p-2 shadow-2xl">
-      <p id="lightbox-caption" class="text-zinc-200 text-xs text-center mt-3 max-w-2xl font-sans"></p>
+  <!-- LIGHTBOX MODAL (For full-res image viewing) -->
+  <div id="lightbox" class="fixed inset-0 bg-black/80 z-50 hidden flex flex-col items-center justify-center p-4 backdrop-blur-sm" onclick="closeLightbox()">
+    <div class="relative max-w-5xl max-h-[90vh] bg-white rounded p-3 shadow-2xl flex flex-col" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between pb-2 mb-2 border-b border-editorial-line text-xs font-sans text-editorial-ink">
+        <span id="lightbox-caption" class="font-bold"></span>
+        <button onclick="closeLightbox()" class="p-1 hover:bg-editorial-softbg rounded text-editorial-muted hover:text-editorial-ink">
+          ✕ Tutup
+        </button>
+      </div>
+      <div class="overflow-auto max-h-[80vh] flex items-center justify-center p-2">
+        <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[75vh] object-contain">
+      </div>
     </div>
   </div>
 
-  <!-- INLINE TOGGLE SUMMARY SCRIPT -->
+  <!-- FOOTER -->
+  <footer class="border-t border-editorial-line bg-white py-10 text-xs text-editorial-muted font-sans">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <span class="font-bold text-editorial-ink">KimiaFokus</span> — Diseminasi Riset Sains Material Indonesia bergaya editorial terpercaya.
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://doi.org/10.1002/advs.76563" target="_blank" class="hover:underline text-editorial-accent">Paper Asli di Wiley Online Library</a>
+        <span>•</span>
+        <a href="#" class="hover:text-editorial-ink">Kembali ke Atas ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT -->
   <script>
+    // Minimalist Summary Toggle
     function toggleSummary() {
       const content = document.getElementById('summary-content');
       const chevron = document.getElementById('summary-chevron');
@@ -736,7 +901,7 @@
     }
   </script>
 
-  <!-- SHARED READER EXPERIENCE SCRIPT -->
+  <!-- Shared Reader Experience Script -->
   <script src="../../shared/reader.js"></script>
 
 </body>
