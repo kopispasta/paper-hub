@@ -50,9 +50,12 @@ paper-hub/
     ├── 10-phosphorene-siliconization-sip-sip2/ # Paper 10: Silikonisasi Fosforen 2D SiP & SiP2
     │   ├── index.html                   # Showcase lengkap Paper 10
     │   └── assets/                      # 5 Gambar resolusi tinggi (Fig. 1 s/d Fig. 5)
-    └── 11-oxygen-doped-li6ps5cl-sei-mlip/ # Paper 11: Konduktivitas Ionik SEI Li6PS5Cl Terdoping Oksigen
-        ├── index.html                   # Showcase lengkap Paper 11
-        └── assets/                      # 7 Gambar resolusi tinggi (Fig. 1 s/d Fig. 7)
+    ├── 11-oxygen-doped-li6ps5cl-sei-mlip/ # Paper 11: Konduktivitas Ionik SEI Li6PS5Cl Terdoping Oksigen
+    │   ├── index.html                   # Showcase lengkap Paper 11
+    │   └── assets/                      # 7 Gambar resolusi tinggi (Fig. 1 s/d Fig. 7)
+    └── 12-pbe-hse-neural-functional/    # Paper 12: Prediksi Celah Pita HSE Neural Functional
+        ├── index.html                   # Showcase lengkap Paper 12
+        └── assets/                      # 4 Gambar resolusi tinggi (Fig. 1 s/d Fig. 4)
 ```
 
 ---
@@ -72,6 +75,7 @@ paper-hub/
 | 09 | **Discovery of BIIB068: A Selective, Potent, Reversible Bruton’s Tyrosine Kinase Inhibitor as an Orally Efficacious Agent for Autoimmune Diseases** | *Journal of Medicinal Chemistry* 63 (ACS, 2020) | BTK Reversibel, SBDD, Kantung H3, PDB 6TFP, Selektivitas >400x (395 Kinase), In Vivo TI-2 93%, Fase I Manusia | [Buka Paper 09](papers/09-biib068-btk-inhibitor-lupus/index.html) |
 | 10 | **Tailoring electronic properties of multilayer phosphorene by siliconization** | *Physical Chemistry Chemical Physics* 20 (RSC, 2018) | Silikonisasi Fosforen, 2d-SiP, 2d-SiP₂, Celah Pita Tebal 0.22 eV, Tumpukan Cmc2₁/Pnma, BOMD 600K | [Buka Paper 10](papers/10-phosphorene-siliconization-sip-sip2/index.html) |
 | 11 | **Enhanced Ionic Conductivity at the Solid Electrolyte Interphase of Oxygen-Doped Li₆PS₅Cl** | *Advanced Science* (Wiley-VCH, 2026) | Baterai All-Solid-State, Argyrodite Li₆PS₅Cl, Doping Oksigen, SEI Li₂S Substitusional, SevenNet GNN MLIP, NequIP, 197 Siklus | [Buka Paper 11](papers/11-oxygen-doped-li6ps5cl-sei-mlip/index.html) |
+| 12 | **Predicting HSE band gaps from PBE charge densities via neural network functionals** | *Journal of Physics: Condensed Matter* 32 (IOP Publishing, 2020) | DFT, PBE, HSE06, Celah Pita, Neural Network Functional, Real-Space Kerapatan Muatan, FFT Downsampling 8×, RMSE 172.6 meV | [Buka Paper 12](papers/12-pbe-hse-neural-functional/index.html) |
 
 ---
 

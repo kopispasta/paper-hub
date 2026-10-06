@@ -391,8 +391,7 @@
 
   function updateReadUI() {
     const readList = getReadPapers();
-    const countEl = document.getElementById('completed-count');
-    const totalPapers = document.querySelectorAll('[data-paper-item]').length || 11;
+    const totalPapers = document.querySelectorAll('#paper-grid [data-paper-item]').length || document.querySelectorAll('article[data-paper-item]').length || 12;
     if (countEl) countEl.textContent = `${readList.length}/${totalPapers}`;
 
     document.querySelectorAll('[data-read-btn]').forEach(btn => {

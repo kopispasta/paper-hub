@@ -161,10 +161,10 @@
         <!-- Category Filter Buttons -->
         <div class="flex items-center gap-1.5 overflow-x-auto text-xs font-medium pb-1 lg:pb-0" id="filter-container">
           <button onclick="filterCategory('all')" id="btn-cat-all" class="filter-cat-btn px-3 py-1.5 rounded bg-editorial-ink text-white whitespace-nowrap transition-colors">
-            Semua (11)
+            Semua (12)
           </button>
           <button onclick="filterCategory('material')" id="btn-cat-material" class="filter-cat-btn px-3 py-1.5 rounded bg-white border border-editorial-line text-editorial-muted hover:text-editorial-ink whitespace-nowrap transition-colors">
-            Material &amp; Energi (6)
+            Material &amp; Energi (7)
           </button>
           <button onclick="filterCategory('thermo')" id="btn-cat-thermo" class="filter-cat-btn px-3 py-1.5 rounded bg-white border border-editorial-line text-editorial-muted hover:text-editorial-ink whitespace-nowrap transition-colors">
             Fisika Termoelektrik (3)
@@ -178,7 +178,7 @@
           </button>
           <button onclick="filterCategory('completed')" id="btn-cat-completed" class="filter-cat-btn px-3 py-1.5 rounded bg-white border border-editorial-line text-emerald-700 hover:text-emerald-800 whitespace-nowrap transition-colors flex items-center gap-1">
             <span>✔️ Selesai</span>
-            <span id="completed-count" class="px-1.5 py-0.2 rounded-full bg-emerald-50 text-[10px] font-bold border border-emerald-200/60">0/11</span>
+            <span id="completed-count" class="px-1.5 py-0.2 rounded-full bg-emerald-50 text-[10px] font-bold border border-emerald-200/60">0/12</span>
           </button>
         </div>
 
@@ -972,6 +972,72 @@
         </a>
       </article>
 
+      <!-- CARD 12: Predicting HSE band gaps from PBE charge densities via neural network functionals -->
+      <article class="paper-card bg-white border border-editorial-line rounded p-6 flex flex-col justify-between" data-paper-item data-paper-id="12" data-category="material" data-tags="machinelearning dft material2d" data-keywords="pbe hse hse06 band gap celah pita neural network functional fungsional kerapatan muatan mit iop lentz kolpak charge density fft downsampling aimd">
+        <div>
+          <!-- Header Meta -->
+          <div class="flex items-center justify-between text-xs text-editorial-muted mb-3">
+            <div class="flex items-center gap-1.5">
+              <span class="font-semibold uppercase tracking-wider text-editorial-accent">Kimia Komputasi &amp; Fungsional NN</span>
+              <span data-read-badge="12" class="hidden text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-1.5 py-0.2 rounded">✓ Selesai</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="font-mono text-[11px]">J. Phys.: Condens. Matter (2020)</span>
+              <button onclick="toggleBookmark('12', event)" data-bookmark-btn="12" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai untuk dibaca nanti">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+              </button>
+              <button onclick="toggleReadStatus('12', event)" data-read-btn="12" class="text-zinc-300 hover:text-emerald-600 transition-colors p-0.5" title="Tandai sudah selesai dibaca">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Title -->
+          <h2 class="text-xl font-bold font-sans text-editorial-ink tracking-tight leading-snug mb-3">
+            <a href="papers/12-pbe-hse-neural-functional/index.html" class="hover:text-editorial-accent transition-colors">
+              Prediksi Celah Pita HSE dari Kerapatan Muatan PBE Melalui Fungsional Jaringan Saraf Tiruan: Akselerasi Presisi Skala Ab Initio
+            </a>
+          </h2>
+
+          <!-- Excerpt -->
+          <p class="text-sm font-serif italic text-editorial-body leading-relaxed mb-4">
+            Merumuskan fungsional neural network yang beroperasi langsung pada kisi kerapatan muatan ruang-nyata PBE tanpa deskriptor koordinat atomik. Berhasil memangkas galat prediksi celah pita kuasipartikel hingga RMSE 172.6 meV (34% lebih presisi dari regresi linier) di 7 fasa semikonduktor dengan ketahanan generalisasi suhu 600 K.
+          </p>
+
+          <!-- Thumbnail Image Preview -->
+          <div class="border border-editorial-line/80 rounded bg-editorial-softbg p-2 mb-4 overflow-hidden flex items-center justify-center">
+            <img src="papers/12-pbe-hse-neural-functional/assets/fig3_nn_functional_parity_residuals.png" alt="Parity Plot dan Distribusi Residual Celah Pita Fungsional Neural Network" class="max-h-36 w-auto object-contain">
+          </div>
+
+          <!-- Highlight Metrics Strip -->
+          <div class="grid grid-cols-3 gap-2 py-3 border-y border-editorial-line text-center text-xs font-sans mb-4">
+            <div>
+              <div class="text-[10px] text-editorial-muted uppercase">RMSE Global</div>
+              <div class="font-bold text-editorial-accent font-mono">172.6 meV</div>
+            </div>
+            <div>
+              <div class="text-[10px] text-editorial-muted uppercase">Reduksi Grid</div>
+              <div class="font-bold text-emerald-700 font-mono">8× Lipat</div>
+            </div>
+            <div>
+              <div class="text-[10px] text-editorial-muted uppercase">Sampel Fasa</div>
+              <div class="font-bold text-editorial-ink font-mono">7 Fasa (538 Data)</div>
+            </div>
+          </div>
+
+          <!-- Author Byline -->
+          <div class="text-xs text-editorial-muted mb-6">
+            <span class="font-semibold text-editorial-ink">Levi C. Lentz &amp; Alexie M. Kolpak*</span> • MIT Mechanical Engineering
+          </div>
+        </div>
+
+        <!-- Read Action Button -->
+        <a href="papers/12-pbe-hse-neural-functional/index.html" class="w-full py-2.5 px-4 bg-editorial-softbg hover:bg-editorial-accent hover:text-white border border-editorial-line hover:border-editorial-accent rounded text-xs font-bold text-editorial-ink text-center transition-all flex items-center justify-center gap-1.5">
+          <span>Buka Telaah Lengkap</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </article>
+
     </div>
     </div>
     <!-- END OF PAPER GRID CONTAINER -->
@@ -1454,6 +1520,50 @@
           </a>
         </td>
       </tr>
+
+      <!-- ROW 12: Predicting HSE band gaps from PBE charge densities via neural network functionals -->
+      <tr class="border-b border-editorial-line hover:bg-zinc-50/80 transition-colors" data-paper-item data-paper-id="12" data-category="material" data-tags="machinelearning dft material2d" data-keywords="pbe hse hse06 band gap celah pita neural network functional fungsional kerapatan muatan mit iop lentz kolpak charge density fft downsampling aimd">
+        <td class="py-3.5 px-3 text-center align-top">
+          <div class="font-mono font-bold text-xs text-editorial-ink mb-1">#12</div>
+          <div class="flex items-center justify-center gap-1">
+            <button onclick="toggleBookmark('12', event)" data-bookmark-btn="12" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai simpan">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+            </button>
+            <button onclick="toggleReadStatus('12', event)" data-read-btn="12" class="text-zinc-300 hover:text-emerald-600 transition-colors p-0.5" title="Tandai selesai">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </button>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <a href="papers/12-pbe-hse-neural-functional/index.html" class="font-bold text-editorial-ink hover:text-editorial-accent font-sans leading-snug block mb-1.5 text-xs">
+            Prediksi Celah Pita HSE dari Kerapatan Muatan PBE Melalui Fungsional Jaringan Saraf Tiruan: Akselerasi Presisi Skala Ab Initio
+          </a>
+          <span class="inline-block font-mono text-[10px] text-editorial-muted bg-zinc-100 border border-editorial-line/60 px-1.5 py-0.5 rounded">J. Phys.: Condens. Matter (2020)</span>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <div class="text-[11px] font-semibold text-editorial-accent mb-1.5">Kimia Komputasi &amp; Fungsional NN</div>
+          <div class="flex flex-wrap gap-1">
+            <span class="text-[10px] bg-zinc-100 text-zinc-600 px-1.5 py-0.5 rounded font-mono font-medium">#MachineLearning</span><span class="text-[10px] bg-zinc-100 text-zinc-600 px-1.5 py-0.5 rounded font-mono font-medium">#DFT-Kuantum</span><span class="text-[10px] bg-zinc-100 text-zinc-600 px-1.5 py-0.5 rounded font-mono font-medium">#Material2D</span>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <div class="space-y-1 text-[11px]">
+            <div><span class="text-editorial-muted">Akurasi RMSE:</span> <strong class="text-editorial-accent font-mono">172.6 meV</strong></div>
+            <div><span class="text-editorial-muted">Reduksi Grid:</span> <strong class="text-emerald-700 font-mono">8× Lipat (Stride 2)</strong></div>
+            <div><span class="text-editorial-muted">Dataset:</span> <strong class="text-editorial-ink font-mono">7 Fasa (538 Pasang)</strong></div>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top text-[11px] text-editorial-muted leading-relaxed">
+          <div class="font-semibold text-editorial-ink">L. C. Lentz, A. M. Kolpak*</div>
+          <div class="text-[10px] mt-0.5">MIT Dept. of Mechanical Engineering (USA)</div>
+        </td>
+        <td class="py-3.5 px-3 text-center align-top whitespace-nowrap">
+          <a href="papers/12-pbe-hse-neural-functional/index.html" class="inline-flex items-center gap-1 px-3 py-1.5 bg-editorial-softbg hover:bg-editorial-accent hover:text-white border border-editorial-line hover:border-editorial-accent rounded text-[11px] font-bold text-editorial-ink transition-all shadow-xs">
+            <span>Buka</span>
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </td>
+      </tr>
         </tbody>
       </table>
     </div>
@@ -1521,9 +1631,15 @@ paper-hub/<br>
 &nbsp; &nbsp; ├── 09-biib068-btk-inhibitor-lupus/ # Paper 9: BIIB068 Reversible BTK Inhibitor<br>
 &nbsp; &nbsp; │ &nbsp; ├── index.html<br>
 &nbsp; &nbsp; │ &nbsp; └── assets/ (toc, fig1–fig8, scheme1)<br>
-&nbsp; &nbsp; └── 10-phosphorene-siliconization-sip-sip2/ # Paper 10: Silikonisasi Fosforen 2D SiP & SiP2<br>
+&nbsp; &nbsp; ├── 10-phosphorene-siliconization-sip-sip2/ # Paper 10: Silikonisasi Fosforen 2D SiP & SiP2<br>
+&nbsp; &nbsp; │ &nbsp; ├── index.html<br>
+&nbsp; &nbsp; │ &nbsp; └── assets/ (fig1–fig5)<br>
+&nbsp; &nbsp; ├── 11-oxygen-doped-li6ps5cl-sei-mlip/ # Paper 11: Doping Oksigen SEI Li6PS5Cl MLIP<br>
+&nbsp; &nbsp; │ &nbsp; ├── index.html<br>
+&nbsp; &nbsp; │ &nbsp; └── assets/ (fig1–fig7)<br>
+&nbsp; &nbsp; └── 12-pbe-hse-neural-functional/ &nbsp; &nbsp; # Paper 12: Prediksi Celah Pita HSE Neural Functional<br>
 &nbsp; &nbsp; &nbsp; &nbsp; ├── index.html<br>
-&nbsp; &nbsp; &nbsp; &nbsp; └── assets/ (fig1–fig5)
+&nbsp; &nbsp; &nbsp; &nbsp; └── assets/ (fig1–fig4)
         </div>
 
         <div>

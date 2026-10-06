@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prediksi Celah Pita HSE dari Kerapatan Muatan PBE Melalui Fungsional Jaringan Saraf Tiruan: Akselerasi Presisi Skala Ab Initio — TelaahSains Hub</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Newsreader (Serif Editorial) & Plus Jakarta Sans (UI Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind Configuration matching Design System -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            editorial: {
+              ink: '#161616',        /* Deep charcoal black for text */
+              body: '#262626',       /* Warm reading body text */
+              muted: '#666666',      /* Subtle secondary meta */
+              lightmuted: '#8c8c8c', /* Captions & tiny labels */
+              line: '#e5e5e5',       /* Hairline dividers */
+              softbg: '#fafafa',     /* Off-white background */
+              paper: '#ffffff',      /* Pure white card backgrounds */
+              accent: '#0a74c0',     /* Royal Society of Chemistry editorial blue */
+              accentDark: '#08538a', /* Deep hover blue */
+              accentLight: '#f0f7fc' /* Minimalist blue wash for active states */
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            serif: ['"Newsreader"', 'Georgia', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Editorial Typographic Rhythm matching Papers 01-05 */
+    body {
+      background-color: #fafafa;
+      color: #262626;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .article-body p {
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 1.125rem; /* 18px */
+      line-height: 1.82;
+      color: #262626;
+      margin-bottom: 1.6rem;
+    }
+
+    .article-body p strong {
+      font-weight: 600;
+      color: #161616;
+    }
+
+    .editorial-dropcap::first-letter {
+      font-size: 4rem;
+      float: left;
+      line-height: 0.8;
+      margin-right: 0.65rem;
+      margin-top: 0.25rem;
+      font-weight: 600;
+      color: #161616;
+      font-family: "Newsreader", Georgia, serif;
+    }
+
+    /* Publication-style Scientific Table */
+    .pub-table {
+      border-top: 2px solid #161616;
+      border-bottom: 2px solid #161616;
+      width: 100%;
+    }
+    .pub-table th {
+      border-bottom: 1px solid #161616;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 600;
+      font-size: 0.8125rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.75rem 0.5rem;
+    }
+    .pub-table td {
+      border-bottom: 1px solid #eeeeee;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 0.875rem;
+      padding: 0.75rem 0.5rem;
+    }
+    .pub-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Reading Indicator */
+    #reading-progress {
+      transition: width 0.1s ease-out;
+    }
+
+    /* Figure Box */
+    .figure-container {
+      background: #ffffff;
+      border: 1px solid #e5e5e5;
+      border-radius: 4px;
+      padding: 1.25rem;
+      margin: 2.5rem 0;
+    }
+  </style>
+
+  <!-- Shared Reader System CSS -->
+  <link rel="stylesheet" href="../../shared/reader.css">
+</head>
+
+<body class="selection:bg-editorial-accentLight selection:text-editorial-accent" data-paper-id="12">
+
+  <!-- TOP HEADER & PROGRESS STRIP -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-editorial-line font-sans transition-all">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="../../index.html" class="flex items-center gap-2 text-xs font-semibold text-editorial-ink hover:text-editorial-accent transition-colors">
+          <svg class="w-4 h-4 text-editorial-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          <span>Katalog Utama</span>
+        </a>
+        <span class="text-editorial-line">/</span>
+        <span class="text-xs font-mono text-editorial-muted">Paper #12</span>
+      </div>
+
+      <div class="flex items-center gap-4 text-xs font-sans text-editorial-muted">
+        <span class="hidden sm:inline">Estimasi Baca: 20 Menit</span>
+        <div class="h-3 w-px bg-editorial-line hidden sm:inline"></div>
+        <span class="font-mono text-editorial-ink font-semibold">J. Phys.: Condens. Matter</span>
+      </div>
+    </div>
+    <!-- Reading Progress Bar -->
+    <div id="reading-progress" class="h-0.5 bg-editorial-accent w-0 transition-all duration-150"></div>
+  </header>
+
+  <!-- ARTICLE HERO -->
+  <section class="bg-white border-b border-editorial-line pt-12 pb-10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Category Tag & Meta -->
+      <div class="flex items-center gap-3 text-xs font-semibold tracking-wider uppercase text-editorial-accent mb-4 font-sans">
+        <span>Kimia Komputasi &amp; Pembelajaran Mesin</span>
+        <span class="text-editorial-line">•</span>
+        <span class="text-editorial-muted">Fungsional Kerapatan Muatan Real-Space</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-3xl sm:text-4xl lg:text-[42px] font-bold text-editorial-ink tracking-tight font-sans leading-[1.18] mb-6">
+        Prediksi Celah Pita HSE dari Kerapatan Muatan PBE Melalui Fungsional Jaringan Saraf Tiruan: Akselerasi Presisi Skala Ab Initio
+      </h1>
+
+      <!-- Standfirst (Lead Paragraph) -->
+      <p class="text-lg sm:text-xl font-serif italic text-editorial-body leading-relaxed mb-8 border-l-2 border-editorial-accent pl-5">
+        Menjembatani paradoks klasik antara efisiensi komputasi GGA-PBE yang murah namun meremehkan celah pita dan tingginya biaya fungsional hibrida HSE06 yang sangat mahal, tim peneliti MIT merumuskan fungsional jaringan saraf tiruan yang memetakan langsung kisi kerapatan muatan ruang-nyata PBE ke celah pita target HSE. Tanpa bergantung pada koordinat atomik diskrit, metode fungsional terintegrasi ini memangkas galat prediksi hingga RMSE 172.6 meV pada 7 fasa semikonduktor serta mempertahankan ketahanan transferabilitas bahkan pada eksitasi termal tinggi 600 K.
+      </p>
+
+      <!-- Authors & Affiliations -->
+      <div class="pt-6 border-t border-editorial-line flex flex-wrap items-center justify-between gap-4 text-xs text-editorial-muted font-sans">
+        <div>
+          <div class="text-editorial-ink font-semibold text-sm">
+            Levi C. Lentz &amp; Alexie M. Kolpak*
+          </div>
+          <div class="mt-1 text-editorial-muted">
+            Department of Mechanical Engineering, Massachusetts Institute of Technology (MIT), Cambridge, MA, USA
+          </div>
+        </div>
+        <div class="text-right">
+          <div class="text-editorial-ink font-medium">Journal of Physics: Condensed Matter (IOP Publishing)</div>
+          <div>J. Phys.: Condens. Matter 32 (2020) 155901 (9pp) • DOI: 10.1088/1361-648X/ab5f3a</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- KEY FINDINGS AT A GLANCE (Restrained, Monochrome Table) -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="bg-white border border-editorial-line rounded p-6 shadow-sm font-sans">
+      <h2 class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-4 flex items-center justify-between border-b border-editorial-line pb-2">
+        <span>Rangkuman Angka Kunci Kinerja Fungsional Neural Network (PBE → HSE)</span>
+        <span class="text-editorial-muted font-normal lowercase font-mono">Lentz &amp; Kolpak, 2020</span>
+      </h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-left">
+        <div>
+          <div class="text-xs text-editorial-muted">Akurasi Global RMSE</div>
+          <div class="text-2xl font-bold text-editorial-ink mt-0.5">172.6 <span class="text-xs font-normal text-editorial-muted">meV</span></div>
+          <div class="text-[11px] text-editorial-muted mt-1">34% lebih presisi dari regresi linier</div>
+        </div>
+        <div>
+          <div class="text-xs text-editorial-muted">Reduksi Dimensi Grid</div>
+          <div class="text-2xl font-bold text-editorial-ink mt-0.5">8× <span class="text-xs font-normal text-editorial-muted">Lipat</span></div>
+          <div class="text-[11px] text-editorial-muted mt-1">Downsampling FFT stride 2 tanpa distorsi</div>
+        </div>
+        <div>
+          <div class="text-xs text-editorial-muted">Keragaman Material</div>
+          <div class="text-2xl font-bold text-editorial-ink mt-0.5">7 <span class="text-xs font-normal text-editorial-muted">Fasa</span></div>
+          <div class="text-[11px] text-editorial-muted mt-1">Si, Ge, GaAs, MoS₂, Sn/Ti/Zr-Phos</div>
+        </div>
+        <div>
+          <div class="text-xs text-editorial-muted">Dataset Komite Jaringan</div>
+          <div class="text-2xl font-bold text-editorial-ink mt-0.5">538 <span class="text-xs font-normal text-editorial-muted">Pasang</span></div>
+          <div class="text-[11px] text-editorial-muted mt-1">Ensemble 5 model neural net 150-neuron</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN ARTICLE LAYOUT (Text + Sticky TOC) -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      
+      <!-- ARTICLE TEXT (Cols 1-8) -->
+      <main class="lg:col-span-8 article-body">
+
+        <!-- EXECUTIVE SUMMARY ACCORDION (Clean Minimalist) -->
+        <div class="border border-editorial-line bg-white rounded p-5 mb-10">
+          <div class="flex items-center justify-between cursor-pointer select-none" onclick="toggleSummary()">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-editorial-accent"></span>
+              <h3 class="text-sm font-bold text-editorial-ink tracking-tight font-sans">
+                Ringkasan Singkat untuk Peneliti (4 Poin Utama)
+              </h3>
+            </div>
+            <span id="summary-chevron" class="text-xs font-mono text-editorial-muted">[- tutup]</span>
+          </div>
+
+          <div id="summary-content" class="mt-4 pt-4 border-t border-editorial-line text-xs sm:text-sm font-sans text-editorial-body space-y-2.5 leading-relaxed">
+            <p><strong>1. Paradoks Komputasi Celah Pita DFT:</strong> Fungsional semi-lokal standar (PBE) menderita *self-interaction error* (SIE) kronis yang menyebabkan *underestimation* celah pita semikonduktor sebesar 30–50%. Sebaliknya, fungsional hibrida *screened-exchange* (HSE06) mampu memprediksi celah pita secara akurat namun menuntut beban komputasi 2 hingga 3 orde magnitudo lebih mahal, membatasi simulasi supercell dan *high-throughput screening*.</p>
+            <p><strong>2. Paradigma Fungsional Neural Network Real-Space:</strong> Berbeda dengan pendekatan machine learning konvensional yang mengandalkan deskriptor koordinat atomik diskrit (seperti SOAP atau CGCNN), metode ini melatih jaringan saraf tiruan secara langsung pada fungsional integral kerapatan muatan ruang-nyata: `E_gap^HSE = ∫ f(ρ_PBE(r)) d³r`. Pendekatan fungsional murni ini secara inheren mempertahankan invarian translasi dan rotasi tanpa memerlukan augmentasi data geometris.</p>
+            <p><strong>3. Efisiensi Skalabilitas Lewat Downsampling Grid FFT:</strong> Kisi kerapatan muatan FFT riil yang memuat ratusan ribu hingga 1.38×10⁶ titik spasial berhasil direduksi sebesar faktor 8 melalui skema *spatial downsampling* berbasis stride 2. Penataan ini mempertahankan struktur fungsional lokal secara utuh sembari memangkas drastis waktu komputasi pelatihan model.</p>
+            <p><strong>4. Keunggulan Presisi dan Generalisasi Termal:</strong> Evaluasi pada 538 konfigurasi non-logam di 7 fasa semikonduktor/isolator membuktikan model komite neural network meraih RMSE 172.6 meV (memangkas galat hingga 34% dibanding regresi linier 263.1 meV). Pada pengujian transferabilitas konfigurasi dinamis suhu tinggi 600 K yang tidak pernah dilatih, model tetap mempertahankan keunggulan akurasi tanpa mengalami kegagalan ekstrapolasi.</p>
+          </div>
+        </div>
+
+        <!-- TABLE OF CONTENTS (MINI JUMP NAV) -->
+        <nav class="p-4 bg-zinc-50 border border-editorial-line rounded text-xs font-sans mb-8">
+          <div class="font-bold text-editorial-ink uppercase tracking-wider mb-2">Navigasi Bab Telaah</div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-editorial-body">
+            <a href="#dilema-komputasi-dft" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">01.</span> Dilema Biaya DFT: Batasan PBE vs Mahalnya HSE
+            </a>
+            <a href="#formulasi-fungsional-nn" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">02.</span> Formulasi Jaringan Saraf pada Kernel Kerapatan Muatan
+            </a>
+            <a href="#akuisisi-aimd-downsampling" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">03.</span> Trajektori AIMD &amp; Downsampling Grid Spasial FFT
+            </a>
+            <a href="#kinerja-akurasi-parity" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">04.</span> Kinerja Pemodelan vs Regresi Linier Standar
+            </a>
+            <a href="#analisis-distribusi-galat" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">05.</span> Distribusi Galat Fasa &amp; Generalisasi Suhu 600 K
+            </a>
+            <a href="#prospek-screening-metodologi" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">06.</span> Prospek Skrining Material Skala Besar &amp; Metodologi
+            </a>
+          </div>
+        </nav>
+
+        <!-- BAB 1 -->
+        <section id="dilema-komputasi-dft" class="pt-2">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            1. Dilema Biaya Komputasi DFT: Batasan PBE dan Mahalnya Fungsional Hibrida HSE
+          </h2>
+          <p class="editorial-dropcap">
+            Dalam rekayasa material kuantum kontemporer—mulai dari fotovoltaik berefisiensi tinggi, fotokatalis pemecah air, hingga devais semikonduktor daya generasi lanjut—celah pita elektronik (*electronic band gap*) merupakan parameter fundamental yang menentukan seluruh fungsionalitas optoelektronik material. Sejak perumusan teorema Hohenberg-Kohn dan persamaan Kohn-Sham, Teori Fungsional Kerapatan (Density Functional Theory, DFT) telah menjadi pilar utama komputasi *ab initio* keadaan dasar zat padat. Namun demikian, komunitas fisika material senantiasa terbelenggu oleh paradoks akurasi versus biaya komputasi yang tajam antara berbagai tingkatan tangga Jacob (*Jacob's ladder*) fungsional pertukaran-korelasi.
+          </p>
+          <p>
+            Pendekatan General Gradient Approximation (GGA), khususnya parameterisasi Perdew-Burke-Ernzerhof (PBE), menjadi standar kerja de facto dalam simulasi penapisan skala besar (*high-throughput screening*) karena efisiensi skalabilitas komputasinya yang sangat terjangkau (`O(N³)` atau lebih baik). Namun, GGA-PBE mengalami kelemahan bawaan mendasar berupa galat swa-interaksi (*self-interaction error*, SIE) dan ketiadaan lompatan potensial diskontinuitas turunan (*derivative discontinuity*). Konsekuensinya, PBE secara sistematis meremehkan (*underestimates*) celah pita kristal hingga 30–50%, bahkan acap kali keliru memprediksi semikonduktor celah sempit (seperti Ge murni) sebagai logam semi-tanpa celah.
+          </p>
+
+          <!-- Callout Box 1 -->
+          <div class="my-6 p-5 bg-[#f0f7fc] border-l-4 border-editorial-accent rounded-r">
+            <div class="font-bold text-editorial-accent text-sm font-sans mb-1.5">
+              Akar Masalah Fisika: Mengapa PBE Gagal Memprediksi Celah Pita Eksperimental?
+            </div>
+            <div class="text-xs sm:text-sm font-sans text-editorial-body leading-relaxed space-y-2">
+              <p>
+                Persamaan Kohn-Sham memetakan sistem banyak-elektron nyata ke sistem partikel independen fiktif. Nilai eigen Kohn-Sham (`ε_i`) pada prinsipnya bukan eksitasi kuasipartikel nyata melainkan parameter Lagrange matematika. Pada fungsional semi-lokal seperti PBE, potensial pertukaran-korelasi `v_xc(r) = δE_xc / δρ(r)` kontinu terhadap jumlah elektron `N`, mengabaikan lompatan diskontinuitas turunan `Δ_xc`. Akibatnya, celah pita Kohn-Sham `E_gap^KS = ε_LUMO - ε_HOMO` jauh lebih kecil daripada celah pita kuasipartikel sejati `E_gap = I - A`.
+              </p>
+              <p>
+                Fungsional hibrida Heyd-Scuseria-Ernzerhof (HSE06) mengatasi cacat ini dengan menyertakan fraksi pertukaran eksak Hartree-Fock jarak-pendek (*short-range exact exchange*, ~25%) yang disaring melalui parameter penyaringan `ω = 0.2 Å⁻¹`. Integrasi pertukaran eksak ini mengeliminasi sebagian besar SIE dan menghasilkan celah pita yang berkesesuaian sangat tinggi terhadap eksperimen. Namun, evaluasi integral pertukaran non-lokal dua-elektron menaikkan kebutuhan memori dan waktu komputasi CPU sebesar 100 hingga 1.000 kali lipat dibanding perhitungan PBE standar.
+              </p>
+            </div>
+          </div>
+
+          <p>
+            Upaya kompromi yang lazim digunakan dalam literatur komputasi adalah menerapkan penskalaan linier sederhana: peneliti kerap mengasumsikan bahwa celah pita HSE memiliki korelasi linier terhadap celah pita PBE (`E_gap^HSE ≈ m · E_gap^PBE + b`). Meskipun korelasi kasar ini dapat memberikan perkiraan umum untuk struktur kristal setimbang sempurna, relasi linier terbukti gagal total ketika material mengalami distorsi kisi akibat dinamika fonon termal pada suhu riil, pembentukan cacat titik (*point defects*), maupun dopan interstisial. Pada kondisi-kondisi tersebut, fluktuasi medan potensial lokal dan hibridisasi orbital menghasilkan deviasi celah pita non-linier yang rumit.
+          </p>
+          <p>
+            Kondisi ini memicu pertanyaan riset fundamental: <em>apakah mungkin mengekstrak celah pita akurat setingkat HSE06 secara langsung dari perhitungan kerapatan muatan PBE yang murah, tanpa harus pernah menyelesaikan integral pertukaran non-lokal HSE yang amat mahal?</em> Levi C. Lentz dan Alexie M. Kolpak dari MIT menjawab tantangan ini dengan merevolusi formulasi jaringan saraf tiruan agar bertindak sebagai fungsional terintegrasi pada ruang kerapatan muatan riil.
+          </p>
+        </section>
+
+        <!-- BAB 2 -->
+        <section id="formulasi-fungsional-nn" class="pt-8">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            2. Formulasi Fungsional Neural Network: Pelatihan Langsung pada Kernel Kerapatan Muatan
+          </h2>
+          <p class="editorial-dropcap">
+            Mayoritas arsitektur pembelajaran mesin (machine learning, ML) yang berkembang pesat dalam ilmu material mutakhir—seperti Smooth Overlap of Atomic Positions (SOAP), Atom-Centered Symmetry Functions (ACSF), SchNet, atau Crystal Graph Convolutional Neural Networks (CGCNN)—dibangun di atas representasi koordinat posisi atomik `{R_i}` dan nomor atom `{Z_i}`. Kendati terbukti ampuh untuk memprediksi permukaan energi potensial (Potential Energy Surfaces, PES), deskriptor berbasis koordinat atomik menghadapi keterbatasan serius ketika harus memprediksi sifat eksitasi elektronik seperti celah pita kristal.
+          </p>
+          <p>
+            Celah pita suatu material merupakan sifat global yang sangat sensitif terhadap rincian kerapatan muatan valensi lokal, polarisasi ikatan kimia, serta delokalisasi elektron di ruang antar-atom. Koordinat atomik semata tidak memuat informasi distribusi muatan elektronik keadaan dasar secara eksplisit. Merujuk langsung pada teorema dasar Hohenberg-Kohn yang menetapkan bahwa kerapatan muatan keadaan dasar `ρ(r)` secara unik menentukan seluruh sifat kuantum sistem, Lentz dan Kolpak merumuskan fungsional jaringan saraf tiruan yang beroperasi langsung pada kisi kerapatan muatan ruang-nyata `ρ(r)`.
+          </p>
+
+          <!-- Equation Card 1 -->
+          <div class="my-6 p-4 bg-editorial-softbg border border-editorial-line rounded font-mono text-sm space-y-3">
+            <div class="flex items-center justify-between border-b border-editorial-line pb-2">
+              <span class="text-xs uppercase font-sans font-bold text-editorial-muted">Formulasi Matematika • Fungsional Integral Neural Network</span>
+              <span class="text-xs text-editorial-lightmuted">(Persamaan 1)</span>
+            </div>
+            <div class="text-center py-2 text-editorial-ink font-semibold">
+              E_gap^HSE = Θ[ρ_PBE(r)] = ∫ f(ρ_PBE(r)) d³r
+            </div>
+            <div class="text-xs font-sans text-editorial-muted text-center">
+              Fungsional `Θ` memetakan medan skalar kerapatan muatan `ρ_PBE(r)` ke besaran skalar celah pita `E_gap^HSE` melalui integrasi volume sel satuan.
+            </div>
+          </div>
+
+          <p>
+            Di mana `f(ρ)` adalah transformasi non-linier yang dipelajari oleh jaringan saraf tiruan terhadap nilai skalar kerapatan muatan lokal. Dalam implementasi komputasi praktis berbasis gelombang bidang (*plane-wave pseudopotential*), kerapatan muatan direpresentasikan pada kisi diskrit Fast Fourier Transform (FFT) yang membagi sel satuan menjadi `N_grid` titik spasial bervolume diferensial `dV = V_cell / N_grid`. Dengan demikian, integral analitik pada Persamaan 1 bertransformasi menjadi penjumlahan riemann terbobot di seluruh titik kisi komputasi:
+          </p>
+
+          <!-- Equation Card 2 -->
+          <div class="my-6 p-4 bg-editorial-softbg border border-editorial-line rounded font-mono text-sm space-y-3">
+            <div class="flex items-center justify-between border-b border-editorial-line pb-2">
+              <span class="text-xs uppercase font-sans font-bold text-editorial-muted">Bentuk Diskrit Komputasi • Penjumlahan Kisi FFT</span>
+              <span class="text-xs text-editorial-lightmuted">(Persamaan 2)</span>
+            </div>
+            <div class="text-center py-2 text-editorial-ink font-semibold">
+              E_gap^HSE ≈ (V_cell / N_grid) ∑_{i=1}^{N_grid} NN(ρ_i; W, b)
+            </div>
+            <div class="text-xs font-sans text-editorial-muted text-center">
+              `NN(ρ_i; W, b)` merepresentasikan keluaran neuron tersembunyi yang dievaluasi pada tiap titik kisi `ρ_i` dengan matriks bobot `W` dan bias `b`.
+            </div>
+          </div>
+
+          <p>
+            Keunggulan arsitektural dari formulasi fungsional integratif ini sangat luar biasa dibanding model berbasis deskriptor posisi:
+          </p>
+          <ul class="list-disc pl-6 space-y-2 text-sm sm:text-base font-serif text-editorial-body mb-6">
+            <li><strong>Invarian Simetri Alami:</strong> Karena integrasi volume `∫ d³r` bersifat invarian terhadap translasi dan rotasi kisi koordinat, model secara otomatis memenuhi seluruh hukum simetri ruang tanpa membutuhkan teknik augmentasi data geometris (*rotational/translational data augmentation*) yang boros memori.</li>
+            <li><strong>Agnostik Ukuran Sel Satuan:</strong> Model dapat mengevaluasi supercell dengan jumlah atom dan volume sel berapapun tanpa memodifikasi arsitektur jaringan, sebab normalisasi volume `V_cell / N_grid` secara inheren menjaga konsistensi dimensi fisik energi per satuan volume.</li>
+            <li><strong>Keringanan Arsitektur:</strong> Tidak dibutuhkan model *deep learning* berlapis-lapis yang rawan *overfitting*. Jaringan saraf hanya memerlukan 1 neuron masukan (menerima nilai kerapatan muatan skalar `ρ_i`), 1 lapisan tersembunyi (*single hidden layer*) berisi 150 neuron dengan fungsi aktivasi tangens hiperbolik `tanh`, dan 1 lapisan luaran linier sebelum proses integrasi numerik.</li>
+          </ul>
+
+          <p>
+            Untuk mengatasi sensitivitas inisialisasi bobot acak (*random weight initialization*) dan mencegah terjebak pada minimum lokal fungsi biaya, Lentz dan Kolpak mengadopsi skema <strong>Komite Jaringan Saraf Tiruan (*Committee of Neural Networks*)</strong>. Lima model independen dilatih secara paralel dengan inisialisasi bobot awal yang diacak. Prediksi akhir celah pita diperoleh dari rata-rata ensemble kelima model tersebut, yang terbukti secara empiris meningkatkan ketahanan model dan mereduksi varians prediksi residu secara drastis.
+          </p>
+        </section>
+
+        <!-- BAB 3 -->
+        <section id="akuisisi-aimd-downsampling" class="pt-8">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            3. Akuisisi Data Trajektori AIMD dan Strategi Downsampling Grid FFT
+          </h2>
+          <p class="editorial-dropcap">
+            Kekuatan model pembelajaran mesin sangat ditentukan oleh keterwakilan fisis dari ruang konfigurasi sampel pelatihan. Dalam simulasi material zat padat, melatih model hanya pada struktur relaksasi minimum energi nol Kelvin (`T = 0 K`) menghasilkan model yang kaku dan rentan gagal ketika berhadapan dengan fluktuasi termal lingkungan nyata. Untuk menghasilkan kumpulan data yang mencakup variasi panjang ikatan, sudut distorsi, dan deformasi kisi yang kaya, penulis menjalankan simulasi Dinamika Molekuler Ab Initio (Ab Initio Molecular Dynamics, AIMD) dalam ansambel kanonikal (NVT) pada suhu 300 K.
+          </p>
+          <p>
+            Tujuh fasa material semikonduktor dan isolator non-logam dipilih untuk merepresentasikan variasi ikatan kimia, kepolaran kisi, dan rentang celah pita yang sangat lebar: mulai dari semikonduktor kovalen klasik (Si, Ge), semikonduktor polar III-V (GaAs), material dua dimensi transisi dikalkogenida (MoS₂ monolayer), hingga senyawa fosfat logam transisi berikatan ionik kuat (SnPhos, TiPhos, ZrPhos) yang memiliki celah pita ultra-lebar mencapai lebih dari 6.0 eV.
+          </p>
+
+          <!-- FIGURE 1 -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig1_aimd_trajectories.png" 
+                alt="Trajektori Suhu AIMD dan Celah Pita PBE Serta Histogram Distribusi" 
+                class="w-full max-w-2xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig1_aimd_trajectories.png', 'Gambar 1: Trajektori AIMD dan Fluktuasi Celah Pita PBE')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 1 | Trajektori dinamika termal AIMD dan pemetaan fluktuasi celah pita PBE pada tujuh fasa non-logam.</span> 
+              <strong>(Atas Kiri)</strong> Evolusi suhu sesaat sepanjang trajektori AIMD pada termostat 300 K untuk GaAs, Ge, MoS₂, Si, SnPhos, TiPhos, dan ZrPhos; 
+              <strong>(Atas Kanan)</strong> Fluktuasi nilai celah pita elektronik PBE yang berosilasi secara dinamis akibat distorsi vibrasi kisi termal seiring waktu; 
+              <strong>(Bawah)</strong> Histogram distribusi frekuensi celah pita PBE yang memperlihatkan rentang dispersi energi kontinu selebar 0.3 hingga 1.3 eV di sekitar nilai setimbang.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Lentz &amp; Kolpak, J. Phys.: Condens. Matter 32 (2020) 155901 / IOP Publishing. (Klik gambar untuk perbesar)</div>
+            </figcaption>
+          </figure>
+
+          <p>
+            Sebagaimana diperlihatkan pada Gambar 1, dinamika vibrasi termal fonon pada suhu kamar menginduksi pergeseran energi celah pita yang sangat signifikan. Pada fasa GaAs misalnya, celah pita PBE berfluktuasi dari 0.17 eV hingga 1.13 eV (rentang selebar ~0.96 eV), sedangkan pada ZrPhos dispersi celah pita membentang dari 3.73 eV hingga 5.09 eV. Dari setiap trajektori sepanjang rentang waktu multi-pikodetik, konfigurasi snapshot diekstraksi secara berkala dengan interval temporal yang cukup lebar guna memastikan independensi statistik antar-konfigurasi.
+          </p>
+
+          <!-- PUBLICATION TABLE 1 -->
+          <div class="my-6">
+            <div class="text-xs font-semibold text-editorial-muted uppercase tracking-wider mb-2 font-sans">
+              Tabel 1 | Karakteristik Struktur Kristal, Ukuran Supercell, dan Rentang Celah Pita Komputasi
+            </div>
+            <div class="overflow-x-auto">
+              <table class="pub-table">
+                <thead>
+                  <tr class="text-editorial-ink">
+                    <th class="text-left">Fasa Material</th>
+                    <th class="text-center">Jumlah Atom</th>
+                    <th class="text-center">Jumlah Sampel</th>
+                    <th class="text-center">Rentang E_gap PBE (eV)</th>
+                    <th class="text-center">Rentang E_gap HSE (eV)</th>
+                    <th class="text-right">Titik Grid FFT Penuh</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">GaAs (Zincblende)</td>
+                    <td class="text-center font-mono">8</td>
+                    <td class="text-center font-mono">72</td>
+                    <td class="text-center font-mono">0.17 – 1.13</td>
+                    <td class="text-center font-mono">0.94 – 1.94</td>
+                    <td class="text-right font-mono">~350.000</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">Ge (Diamond Cubic)</td>
+                    <td class="text-center font-mono">8</td>
+                    <td class="text-center font-mono">68</td>
+                    <td class="text-center font-mono">0.00 – 0.27</td>
+                    <td class="text-center font-mono">0.29 – 0.92</td>
+                    <td class="text-right font-mono">~320.000</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">MoS₂ (Monolayer 2H)</td>
+                    <td class="text-center font-mono">24</td>
+                    <td class="text-center font-mono">78</td>
+                    <td class="text-center font-mono">1.14 – 1.83</td>
+                    <td class="text-center font-mono">1.70 – 2.50</td>
+                    <td class="text-right font-mono">~850.000</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">Si (Diamond Cubic)</td>
+                    <td class="text-center font-mono">8</td>
+                    <td class="text-center font-mono">80</td>
+                    <td class="text-center font-mono">0.36 – 0.88</td>
+                    <td class="text-center font-mono">0.97 – 1.57</td>
+                    <td class="text-right font-mono">~300.000</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">SnPhos (SnP₂O₇)</td>
+                    <td class="text-center font-mono">26</td>
+                    <td class="text-center font-mono">79</td>
+                    <td class="text-center font-mono">2.37 – 3.49</td>
+                    <td class="text-center font-mono">3.51 – 4.96</td>
+                    <td class="text-right font-mono">~1.150.000</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">TiPhos (TiP₂O₇)</td>
+                    <td class="text-center font-mono">26</td>
+                    <td class="text-center font-mono">81</td>
+                    <td class="text-center font-mono">2.21 – 3.40</td>
+                    <td class="text-center font-mono">3.86 – 5.17</td>
+                    <td class="text-right font-mono">~1.220.000</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">ZrPhos (ZrP₂O₇)</td>
+                    <td class="text-center font-mono">26</td>
+                    <td class="text-center font-mono">3.73 – 5.09</td>
+                    <td class="text-center font-mono">5.16 – 6.64</td>
+                    <td class="text-right font-mono">~1.380.000</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <p>
+            Meskipun formulasi fungsional integratif sangat elegan, tantangan komputasi masif muncul pada skala kisi FFT. Kerapatan muatan yang dihasilkan oleh paket DFT gelombang-bidang (VASP) pada tingkat konvergensi energi potong (*kinetic energy cutoff*) standar menuntut kisi spasial yang luar biasa padat: berkisar antara 300.000 titik (untuk sel Si 8-atom) hingga lebih dari 1.380.000 titik spasial (untuk sel ZrPhos 26-atom). Mengevaluasi propagasi maju (*forward pass*) dan perambatan mundur gradien (*backpropagation*) jaringan saraf tiruan pada 1.38 juta titik untuk setiap struktur dalam setiap epok pelatihan akan menimbulkan beban komputasi grafis (GPU) dan memori yang eksorbitan.
+          </p>
+
+          <!-- Callout Box 2 -->
+          <div class="my-6 p-5 bg-[#f0f7fc] border-l-4 border-editorial-accent rounded-r">
+            <div class="font-bold text-editorial-accent text-sm font-sans mb-1.5">
+              Inovasi Komputasi: Strategi Downsampling Kisi Spasial Stride 2 Tanpa Distorsi Fisika
+            </div>
+            <div class="text-xs sm:text-sm font-sans text-editorial-body leading-relaxed space-y-2">
+              <p>
+                Kerapatan muatan elektronik `ρ(r)` dalam kristal riil memiliki sifat kemulusan spasial (*spatial smoothness*) yang tinggi karena dibatasi oleh potensial elektrostatis Coulomb kontinu dan fungsi gelombang orbital atom. Variasi kerapatan antara dua titik kisi FFT yang berdampingan (dengan jarak fraksional `Δr ~ 0.05 - 0.1 Å`) memiliki korelasi silang yang sangat kuat.
+              </p>
+              <p>
+                Penulis menerapkan skema *spatial downsampling* teratur dengan mengambil setiap titik ke-2 di sepanjang ketiga sumbu kisi kristalografi (`x, y, z`). Pengurangan dengan langkah stride `s = 2` ini memangkas total jumlah titik evaluasi sebesar faktor `2³ = 8 kali lipat` (misalnya dari 1.380.000 titik menjadi ~172.500 titik per sel). Pengujian konvergensi membuktikan bahwa integrasi pada kisi ter-downsample menghasilkan integrasi numerik kerapatan total yang identik (`∫ ρ d³r = N_elektron` dengan deviasi &lt; 0.001%) sembari menghemat waktu komputasi pelatihan sebesar 87.5%.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- BAB 4 -->
+        <section id="kinerja-akurasi-parity" class="pt-8">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            4. Kinerja Pemodelan vs Regresi Linier Standar: Pangkasan Error Global
+          </h2>
+          <p class="editorial-dropcap">
+            Untuk menguji secara objektif kapasitas prediktif fungsional jaringan saraf tiruan, kumpulan data 538 konfigurasi dibagi menjadi himpunan pelatihan (*training set*, 80%) dan himpunan pengujian independen (*test set*, 20%). Sebagai pembanding ilmiah baku, penulis membandingkan kinerja jaringan saraf terhadap garis dasar (*baseline*) regresi linier universal `E_gap^HSE = m · E_gap^PBE + b` yang dilatih pada himpunan data yang persis sama.
+          </p>
+          <p>
+            Hasil regresi linier global disajikan pada Gambar 2. Secara agregat, regresi linier menghasilkan kemiringan `m = 1.399` dan intersep `b = 0.347 eV`. Parameter ini selaras dengan tren umum literatur bahwa celah pita HSE kira-kira 1.4 kali lebih besar daripada celah pita PBE ditambah pergeseran konstan. Namun, regresi linier menghasilkan galat kuadrat rata-rata (Root Mean Square Error, RMSE) yang cukup masif yaitu <strong>360.25 meV</strong> dengan Mean Absolute Error (MAE) sebesar <strong>274.67 meV</strong> di seluruh dataset.
+          </p>
+
+          <!-- FIGURE 2 -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig2_hse_vs_pbe_linear_regression.png" 
+                alt="Regresi Linier Celah Pita HSE Terhadap Celah Pita PBE" 
+                class="w-full max-w-2xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig2_hse_vs_pbe_linear_regression.png', 'Gambar 2: Regresi Linier Baseline Celah Pita HSE vs PBE')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 2 | Analisis regresi linier baseline celah pita HSE versus PBE pada 538 konfigurasi.</span> 
+              Garis kesesuaian terbaik menghasilkan persamaan linier `E_gap^HSE = 1.399 · E_gap^PBE + 0.347 eV` dengan dispersi data yang lebar (RMSE = 360.25 meV, MAE = 274.67 meV). Deviasi data terbesar teramati pada fasa GaAs dan Ge celah sempit serta fosfat transisi celah lebar (SnPhos, TiPhos, ZrPhos).
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Lentz &amp; Kolpak, J. Phys.: Condens. Matter 32 (2020) 155901 / IOP Publishing. (Klik gambar untuk perbesar)</div>
+            </figcaption>
+          </figure>
+
+          <p>
+            Ketika fungsional jaringan saraf tiruan (NN Functional) diuji pada data uji independen yang tidak pernah dilihat selama pelatihan, lompatan akurasi yang dicapai sangat impresif. Sebagaimana divisualisasikan pada kurva paritas dan distribusi residual pada Gambar 3, prediksi fungsional neural network memusat secara ketat di sekitar garis ideal `y = x`.
+          </p>
+
+          <!-- FIGURE 3 -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig3_nn_functional_parity_residuals.png" 
+                alt="Parity Plot dan Distribusi Residual Fungsional NN vs Regresi Linier" 
+                class="w-full max-w-2xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig3_nn_functional_parity_residuals.png', 'Gambar 3: Parity Plot dan Distribusi Residual Fungsional NN vs Regresi')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 3 | Perbandingan kurva paritas dan distribusi residual celah pita pada test set independen.</span> 
+              <strong>(Atas)</strong> Kurva paritas celah pita prediksi versus perhitungan acuan HSE06 untuk model fungsional jaringan saraf (titik biru) dan regresi linier (titik oranye); 
+              <strong>(Bawah)</strong> Histogram distribusi galat residual (`E_gap^prediksi - E_gap^HSE`). Fungsional jaringan saraf mencapai RMSE 172.6 meV dengan kurva Gaussian yang simetris dan terpusat di titik nol, jauh lebih unggul dibandingkan regresi linier yang memiliki RMSE 263.1 meV serta sebaran ekor galat yang lebar.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Lentz &amp; Kolpak, J. Phys.: Condens. Matter 32 (2020) 155901 / IOP Publishing. (Klik gambar untuk perbesar)</div>
+            </figcaption>
+          </figure>
+
+          <p>
+            Secara global pada test set independen, fungsional neural network membukukan <strong>RMSE sebesar 172.6 meV</strong>, memangkas galat regresi linier (RMSE 263.1 meV pada test set) hingga <strong>34.4%</strong>. Yang paling krusial, analisis residual pada panel bawah Gambar 3 membuktikan bahwa residual jaringan saraf membentuk kurva Gaussian murni dengan rata-rata galat mendekati nol (`μ ≈ 0 meV`), menandakan ketiadaan bias sistematis (*unbiased predictor*). Sebaliknya, residual regresi linier memiliki varians lebar dengan ekor kesalahan yang menjulur hingga lebih dari 600 meV.
+          </p>
+
+          <!-- PUBLICATION TABLE 2 -->
+          <div class="my-6">
+            <div class="text-xs font-semibold text-editorial-muted uppercase tracking-wider mb-2 font-sans">
+              Tabel 2 | Rincian Metrik Galat RMSE per Fasa Material pada Test Set Independen
+            </div>
+            <div class="overflow-x-auto">
+              <table class="pub-table">
+                <thead>
+                  <tr class="text-editorial-ink">
+                    <th class="text-left">Fasa Material</th>
+                    <th class="text-right">RMSE Regresi Linier (meV)</th>
+                    <th class="text-right">RMSE Fungsional NN (meV)</th>
+                    <th class="text-right">Reduksi Galat Mutlak (meV)</th>
+                    <th class="text-right">Peningkatan Presisi (%)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">GaAs</td>
+                    <td class="text-right font-mono">303.68</td>
+                    <td class="text-right font-mono">145.89</td>
+                    <td class="text-right font-mono text-editorial-accent">-157.79</td>
+                    <td class="text-right font-mono font-semibold">51.96%</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">Ge</td>
+                    <td class="text-right font-mono">264.25</td>
+                    <td class="text-right font-mono">206.78</td>
+                    <td class="text-right font-mono text-editorial-accent">-57.47</td>
+                    <td class="text-right font-mono font-semibold">21.75%</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">MoS₂</td>
+                    <td class="text-right font-mono">257.10</td>
+                    <td class="text-right font-mono">182.41</td>
+                    <td class="text-right font-mono text-editorial-accent">-74.69</td>
+                    <td class="text-right font-mono font-semibold">29.05%</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">Si</td>
+                    <td class="text-right font-mono">289.22</td>
+                    <td class="text-right font-mono">120.45</td>
+                    <td class="text-right font-mono text-editorial-accent">-168.77</td>
+                    <td class="text-right font-mono font-semibold">58.35%</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">SnPhos</td>
+                    <td class="text-right font-mono">181.10</td>
+                    <td class="text-right font-mono">151.01</td>
+                    <td class="text-right font-mono text-editorial-accent">-30.09</td>
+                    <td class="text-right font-mono font-semibold">16.62%</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">TiPhos</td>
+                    <td class="text-right font-mono">280.98</td>
+                    <td class="text-right font-mono">196.38</td>
+                    <td class="text-right font-mono text-editorial-accent">-84.60</td>
+                    <td class="text-right font-mono font-semibold">30.11%</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">ZrPhos</td>
+                    <td class="text-right font-mono">258.43</td>
+                    <td class="text-right font-mono">169.33</td>
+                    <td class="text-right font-mono text-editorial-accent">-89.10</td>
+                    <td class="text-right font-mono font-semibold">34.48%</td>
+                  </tr>
+                  <tr class="bg-zinc-50 font-semibold">
+                    <td class="text-editorial-ink">Rata-rata Keseluruhan (Test Set)</td>
+                    <td class="text-right font-mono">263.10</td>
+                    <td class="text-right font-mono text-editorial-accent">172.60</td>
+                    <td class="text-right font-mono text-editorial-accent">-90.50</td>
+                    <td class="text-right font-mono font-bold">34.40%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <p>
+            Tabel 2 membedah kinerja model secara rinci pada tiap fasa. Terlihat bahwa peningkatan akurasi paling spektakuler dicapai pada semikonduktor kovalen silikon (Si), di mana RMSE terpangkas dari 289.22 meV menjadi <strong>120.45 meV</strong> (peningkatan akurasi sebesar 58.35%), serta pada galium arsenida (GaAs) yang terpangkas dari 303.68 meV menjadi <strong>145.89 meV</strong> (peningkatan 51.96%). Hal ini membuktikan bahwa fungsional neural network mampu menangkap korelasi non-linier antara deformasi kerapatan muatan ikatan valensi lokal dengan celah pita eksitasi kuasipartikel, yang secara fundamental mustahil dipetakan oleh relasi linier biasa.
+          </p>
+        </section>
+
+        <!-- BAB 5 -->
+        <section id="analisis-distribusi-galat" class="pt-8">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            5. Analisis Distribusi Galat dan Generalisasi Suhu Tinggi 600 K
+          </h2>
+          <p class="editorial-dropcap">
+            Salah satu kelemahan paling kronis dari regresi linier universal adalah kecenderungannya mengalami <em>phase-dependent systematic offset</em> (pergeseran sistematik bergantung material). Ketika model linier dipaksa mencocokkan seluruh fasa material secara serentak, kemiringan dan intersep global akan mengorbankan fasa-fasa tertentu guna meminimalkan galat total. Fenomena ini dianalisis secara mendalam melalui pembedahan distribusi galat individu per fasa pada Gambar 4.
+          </p>
+
+          <!-- FIGURE 4 -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig4_error_distributions_comparison.png" 
+                alt="Distribusi Galat per Fasa Material Fungsional NN vs Regresi Linier" 
+                class="w-full max-w-2xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig4_error_distributions_comparison.png', 'Gambar 4: Distribusi Galat per Fasa Fungsional NN vs Regresi')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 4 | Histogram distribusi galat prediksi celah pita per fasa material untuk fungsional NN dan regresi linier.</span> 
+              Kurva distribusi galat fungsional jaringan saraf (biru) konsisten berpusat di sekitar nilai nol pada ketujuh fasa material. Sebaliknya, regresi linier (oranye) mengalami pergeseran puncak (*mean error shift*) yang signifikan: meremehkan celah pita pada Si dan MoS₂ hingga lebih dari 200 meV, serta melebih-lebihkan celah pita pada Ge dan GaAs.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Lentz &amp; Kolpak, J. Phys.: Condens. Matter 32 (2020) 155901 / IOP Publishing. (Klik gambar untuk perbesar)</div>
+            </figcaption>
+          </figure>
+
+          <p>
+            Sebagaimana diungkapkan pada Gambar 4, regresi linier memperlihatkan pergeseran bias rata-rata yang parah pada material individu: pada Si, puncak distribusi regresi linier tergeser ke arah negatif sebesar ~200 meV (meremehkan celah pita secara konsisten), sedangkan pada GaAs tergeser ke arah positif sebesar ~250 meV. Fenomena ini membuktikan bahwa hubungan antara celah pita PBE dan HSE memiliki intersep kimiawi unik untuk masing-masing fasa. Fungsional jaringan saraf secara otomatis menginternalisasi perbedaan kimiawi lokal ini langsung dari fitur kerapatan muatan `ρ(r)`, menghasilkan kurva galat yang terkonsentrasi simetris di sekitar nol meV untuk seluruh fasa tanpa membutuhkan parameter penyesuaian khusus.
+          </p>
+          <p>
+            Ujian paling berat bagi model machine learning dalam komputasi kuantum adalah <strong>uji transferabilitas ekstrapolasi termal</strong>. Apakah model yang dilatih pada konfigurasi termal 300 K mampu mempertahankan akurasinya ketika material dieksitasi pada suhu 600 K, di mana vibrasi fonon menghasilkan pemanjangan ikatan ekstrem dan distorsi kisi yang tidak pernah ada dalam data pelatihan? Penulis menguji hipotesis ini dengan menjalankan simulasi AIMD baru pada suhu 600 K untuk GaAs, MoS₂, dan Si, lalu mengevaluasinya langsung dengan model komite neural network yang telah dibekukan.
+          </p>
+
+          <!-- PUBLICATION TABLE 3 -->
+          <div class="my-6">
+            <div class="text-xs font-semibold text-editorial-muted uppercase tracking-wider mb-2 font-sans">
+              Tabel 3 | Uji Ekstrapolasi Termal: Evaluasi Prediksi Celah Pita pada Trajektori AIMD 600 K
+            </div>
+            <div class="overflow-x-auto">
+              <table class="pub-table">
+                <thead>
+                  <tr class="text-editorial-ink">
+                    <th class="text-left">Fasa Material Uji (600 K)</th>
+                    <th class="text-right">RMSE Regresi Linier (meV)</th>
+                    <th class="text-right">RMSE Fungsional NN (meV)</th>
+                    <th class="text-right">Margin Keunggulan Presisi (%)</th>
+                    <th class="text-left">Karakteristik Fisika Ekstrapolasi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">GaAs (600 K)</td>
+                    <td class="text-right font-mono">371.58</td>
+                    <td class="text-right font-mono text-editorial-accent">236.79</td>
+                    <td class="text-right font-mono font-semibold">36.27%</td>
+                    <td>Ketahanan transferabilitas kuat terhadap penyempitan celah pita termal.</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">MoS₂ (600 K)</td>
+                    <td class="text-right font-mono">287.21</td>
+                    <td class="text-right font-mono text-editorial-accent">244.99</td>
+                    <td class="text-right font-mono font-semibold">14.70%</td>
+                    <td>Tetap melampaui regresi kendati terdapat tekukan termal lapisan 2D monolayer.</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">Si (600 K)</td>
+                    <td class="text-right font-mono">311.92</td>
+                    <td class="text-right font-mono text-editorial-accent">137.94</td>
+                    <td class="text-right font-mono font-semibold">55.78%</td>
+                    <td>Presisi sangat stabil (hanya naik 17 meV dibanding test set 300 K).</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <p>
+            Data pada Tabel 3 menegaskan keandalan fungsional neural network. Pada fasa silikon di suhu 600 K, fungsional NN mempertahankan RMSE spektakuler sebesar <strong>137.94 meV</strong>, mengungguli regresi linier (311.92 meV) hingga lebih dari 55%. Pada GaAs dan MoS₂, fungsional NN tetap konsisten mengungguli regresi linier dengan selisih yang substansial. Keberhasilan ini membuktikan bahwa fungsional integratif pada ruang kerapatan muatan tidak menghafal koordinat posisi partikel (*overfitting on atomic coordinates*), melainkan benar-benar mempelajari fisika lokal pemetaan kerapatan elektron ke respons eksitasi kuasipartikel.
+          </p>
+        </section>
+
+        <!-- BAB 6 -->
+        <section id="prospek-screening-metodologi" class="pt-8 border-t border-editorial-line mt-10">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            6. Prospek Integrasi Screening Skrining Material Skala Besar &amp; Metodologi
+          </h2>
+          <p class="editorial-dropcap">
+            Keberhasilan memprediksi celah pita berpresisi fungsional hibrida HSE06 secara langsung dari kerapatan muatan GGA-PBE membuka paradigma baru dalam alur kerja komputasi sains material (*materials discovery pipeline*). Secara tradisional, penapisan material skala tinggi terhambat oleh disparitas biaya: peneliti terpaksa mengandalkan celah pita PBE yang tidak akurat untuk menapis ribuan kandidat material, sehingga berisiko menolak kandidat potensial yang salah diprediksi sebagai logam atau isolator berlebih.
+          </p>
+          <p>
+            Dengan mengintegrasikan fungsional jaringan saraf real-space ini ke dalam rantai pasca-pemrosesan (*post-processing stage*) perhitungan DFT standar, celah pita berkualitas HSE06 dapat dievaluasi secara instan hanya dalam fraksi detik setelah konvergensi SCF PBE tercapai. Beban komputasi evaluasi fungsional neural network pada kisi yang di-downsample hanya memakan waktu milidetik per struktur di CPU biasa, memberikan akselerasi komputasi efektif sebesar <strong>100 hingga 1.000 kali lipat</strong> dibanding menjalankan perhitungan swa-konsisten HSE06 secara penuh.
+          </p>
+
+          <!-- Callout Box 3 -->
+          <div class="my-6 p-5 bg-[#f0f7fc] border-l-4 border-editorial-accent rounded-r">
+            <div class="font-bold text-editorial-accent text-sm font-sans mb-1.5">
+              Rincian Metodologi DFT &amp; Pelatihan Model Machine Learning
+            </div>
+            <div class="text-xs sm:text-sm font-sans text-editorial-body leading-relaxed space-y-2">
+              <p><strong>Perhitungan DFT (VASP):</strong> Diselesaikan menggunakan paket Vienna Ab initio Simulation Package dengan potensial Projector Augmented-Wave (PAW). Fungsional GGA-PBE digunakan untuk optimasi struktur, trajektori AIMD (langkah waktu 1.0 fs pada termostat Nosé-Hoover), dan pembangkitan kisi kerapatan muatan `CHGCAR`. Celah pita patokan dihitung menggunakan fungsional hibrida terseleksi HSE06 dengan parameter penyaringan standar `ω = 0.2 Å⁻¹` dan fraksi pertukaran eksak 25%.</p>
+              <p><strong>Arsitektur Jaringan &amp; Optimasi:</strong> Jaringan saraf terdiri atas 1 neuron input skalar `ρ(r)`, 1 hidden layer berisi 150 neuron dengan aktivasi `tanh`, dan 1 neuron output integratif. Bobot dioptimasi menggunakan algoritma Levenberg-Marquardt dengan fungsi kerugian mean squared error (MSE) dan regularisasi L2 Bayesian untuk mencegah *overfitting*. Ensemble komite terdiri atas 5 model independen.</p>
+              <p><strong>Prapemrosesan Data:</strong> Berkas kerapatan muatan tiga dimensi diekstraksi dari format grid VASP, dinormalisasi terhadap volume sel, dan diturunkan resolusinya menggunakan algoritma pencuplikan teratur stride 2 di sepanjang sumbu kristalografi utama.</p>
+            </div>
+          </div>
+
+          <p>
+            Sebagai kesimpulan, karya inovatif Lentz dan Kolpak membuktikan secara meyakinkan bahwa kerapatan muatan keadaan dasar PBE memuat informasi korelasi elektronik yang jauh lebih kaya daripada sekadar energi totalnya. Fungsional neural network real-space membuktikan dirinya sebagai instrumen komputasi presisi tinggi, hemat sumber daya, dan tahan uji terhadap eksitasi termal, meletakkan fondasi kokoh bagi eksplorasi material masa depan berbasis kecerdasan buatan kuantum.
+          </p>
+
+          <!-- CITATION BLOCK RESMI -->
+          <div class="mt-10 p-5 bg-white border border-editorial-line rounded font-sans">
+            <div class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-2">
+              Sitasi Paper Resmi (APA Format)
+            </div>
+            <p class="font-mono text-xs text-editorial-body leading-relaxed select-all">
+              Lentz, L. C., &amp; Kolpak, A. M. (2020). Predicting HSE band gaps from PBE charge densities via neural network functionals. Journal of Physics: Condensed Matter, 32(15), 155901. https://doi.org/10.1088/1361-648X/ab5f3a
+            </p>
+
+            <!-- Quick Copy Buttons -->
+            <div class="mt-4 flex flex-wrap gap-2">
+              <button onclick="copyCitation('apa', 'Lentz, L. C., &amp; Kolpak, A. M. (2020). Predicting HSE band gaps from PBE charge densities via neural network functionals. Journal of Physics: Condensed Matter, 32(15), 155901. https://doi.org/10.1088/1361-648X/ab5f3a')" class="reader-toolbar-btn">
+                <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                Salin Sitasi APA
+              </button>
+              <button onclick="copyCitation('bibtex', '@article{Lentz2020,\n  author = {Levi C. Lentz and Alexie M. Kolpak},\n  title = {Predicting {HSE} band gaps from {PBE} charge densities via neural network functionals},\n  journal = {Journal of Physics: Condensed Matter},\n  volume = {32},\n  number = {15},\n  pages = {155901},\n  year = {2020},\n  publisher = {IOP Publishing},\n  doi = {10.1088/1361-648X/ab5f3a}\n}')" class="reader-toolbar-btn">
+                <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                Salin BibTeX
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- SIDEBAR NAVIGATION & GLOSSARY (Cols 9-12) -->
+      <aside class="lg:col-span-4 space-y-8 font-sans">
+        
+        <!-- STICKY CONTAINER -->
+        <div class="sticky top-20 space-y-6">
+          
+          <!-- CARD 1: DAFTAR ISI ARTIKEL (Wajib ID #toc-list untuk ScrollSpy) -->
+          <div class="bg-white border border-editorial-line rounded p-5">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-3 pb-2 border-b border-editorial-line">
+              Daftar Isi Artikel
+            </h4>
+            <nav class="space-y-1.5 text-xs text-editorial-muted" id="toc-list">
+              <a href="#dilema-komputasi-dft" class="block py-1 hover:text-editorial-accent transition-colors">• 1. Dilema DFT: PBE vs Mahalnya HSE</a>
+              <a href="#formulasi-fungsional-nn" class="block py-1 hover:text-editorial-accent transition-colors">• 2. Formulasi Jaringan Saraf Real-Space</a>
+              <a href="#akuisisi-aimd-downsampling" class="block py-1 hover:text-editorial-accent transition-colors">• 3. Trajektori AIMD &amp; Downsampling (Fig. 1)</a>
+              <a href="#kinerja-akurasi-parity" class="block py-1 hover:text-editorial-accent transition-colors">• 4. Kinerja Akurasi vs Regresi (Fig. 2-3)</a>
+              <a href="#analisis-distribusi-galat" class="block py-1 hover:text-editorial-accent transition-colors">• 5. Distribusi Galat &amp; Suhu 600 K (Fig. 4)</a>
+              <a href="#prospek-screening-metodologi" class="block py-1 hover:text-editorial-accent transition-colors">• 6. Skrining Material &amp; Metodologi</a>
+            </nav>
+          </div>
+
+          <!-- CARD 2: GLOSARIUM ISTILAH KUNCI -->
+          <div class="bg-white border border-editorial-line rounded p-5 space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-editorial-ink pb-2 border-b border-editorial-line">
+              Glosarium Istilah Kunci
+            </h4>
+            <div class="space-y-3 text-xs">
+              <div>
+                <span class="font-semibold text-editorial-ink">GGA-PBE:</span>
+                <p class="text-editorial-muted mt-0.5">Fungsional kerapatan semi-lokal standar yang efisien secara komputasi namun meremehkan celah pita akibat self-interaction error.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">HSE06 (Screened Hybrid):</span>
+                <p class="text-editorial-muted mt-0.5">Fungsional hibrida dengan 25% pertukaran eksak Hartree-Fock jarak pendek tersaring, berpresisi tinggi mendekati eksperimen namun sangat mahal.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">Fungsional Kerapatan Real-Space:</span>
+                <p class="text-editorial-muted mt-0.5">Pemetaan fungsional yang beroperasi langsung pada kisi muatan `ρ(r)` melalui integral spasial, mempertahankan invarian rotasi/translasi secara alami.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">Downsampling Grid Spasial FFT:</span>
+                <p class="text-editorial-muted mt-0.5">Teknik reduksi titik kisi FFT dengan stride 2 yang memangkas ukuran data hingga 8× lipat tanpa mendistorsi integral kerapatan fisik.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">Komite Jaringan Saraf:</span>
+                <p class="text-editorial-muted mt-0.5">Ensemble 5 model neural net independen berbobot awal acak untuk mengeliminasi keterjebakan minimum lokal dan menekan varians residu.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 3: INDEKS GAMBAR PAPER -->
+          <div class="bg-white border border-editorial-line rounded p-5">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-3 pb-2 border-b border-editorial-line">
+              Indeks Gambar Paper
+            </h4>
+            <ul class="text-xs space-y-2 text-editorial-muted">
+              <li>
+                <a href="#akuisisi-aimd-downsampling" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 1: Trajektori Suhu &amp; Fluktuasi Celah Pita</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 3</span>
+                </a>
+              </li>
+              <li>
+                <a href="#kinerja-akurasi-parity" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 2: Regresi Linier HSE vs PBE Baseline</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 4</span>
+                </a>
+              </li>
+              <li>
+                <a href="#kinerja-akurasi-parity" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 3: Parity Plot &amp; Histogram Residual</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 5</span>
+                </a>
+              </li>
+              <li>
+                <a href="#analisis-distribusi-galat" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 4: Perbandingan Distribusi Galat per Fasa</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 6</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- LIGHTBOX MODAL (For full-res image viewing) -->
+  <div id="lightbox" class="fixed inset-0 bg-black/80 z-50 hidden flex flex-col items-center justify-center p-4 backdrop-blur-sm" onclick="closeLightbox()">
+    <div class="relative max-w-5xl max-h-[90vh] bg-white rounded p-3 shadow-2xl flex flex-col" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between pb-2 mb-2 border-b border-editorial-line text-xs font-sans text-editorial-ink">
+        <span id="lightbox-caption" class="font-bold"></span>
+        <button onclick="closeLightbox()" class="p-1 hover:bg-editorial-softbg rounded text-editorial-muted hover:text-editorial-ink">
+          ✕ Tutup
+        </button>
+      </div>
+      <div class="overflow-auto max-h-[80vh] flex items-center justify-center p-2">
+        <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[75vh] object-contain">
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-editorial-line bg-white py-10 text-xs text-editorial-muted font-sans">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <span class="font-bold text-editorial-ink">KimiaFokus</span> — Diseminasi Riset Sains Material Indonesia bergaya editorial terpercaya.
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://doi.org/10.1088/1361-648X/ab5f3a" target="_blank" class="hover:underline text-editorial-accent">Paper Asli di IOP Publishing</a>
+        <span>•</span>
+        <a href="#" class="hover:text-editorial-ink">Kembali ke Atas ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    // Minimalist Summary Toggle
+    function toggleSummary() {
+      const content = document.getElementById('summary-content');
+      const chevron = document.getElementById('summary-chevron');
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        chevron.textContent = '[- tutup]';
+      } else {
+        content.classList.add('hidden');
+        chevron.textContent = '[+ buka]';
+      }
+    }
+  </script>
+
+  <!-- Shared Reader Experience Script -->
+  <script src="../../shared/reader.js"></script>
+
+</body>
+</html>
