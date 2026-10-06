@@ -234,9 +234,9 @@
           </div>
 
           <div id="summary-content" class="mt-4 pt-4 border-t border-editorial-line text-xs sm:text-sm font-sans text-editorial-body space-y-2.5 leading-relaxed">
-            <p><strong>1. Paradoks Komputasi Celah Pita DFT:</strong> Fungsional semi-lokal standar (PBE) menderita *self-interaction error* (SIE) kronis yang menyebabkan *underestimation* celah pita semikonduktor sebesar 30–50%. Sebaliknya, fungsional hibrida *screened-exchange* (HSE06) mampu memprediksi celah pita secara akurat namun menuntut beban komputasi 2 hingga 3 orde magnitudo lebih mahal, membatasi simulasi supercell dan *high-throughput screening*.</p>
-            <p><strong>2. Paradigma Fungsional Neural Network Real-Space:</strong> Berbeda dengan pendekatan machine learning konvensional yang mengandalkan deskriptor koordinat atomik diskrit (seperti SOAP atau CGCNN), metode ini melatih jaringan saraf tiruan secara langsung pada fungsional integral kerapatan muatan ruang-nyata: `E_gap^HSE = ∫ f(ρ_PBE(r)) d³r`. Pendekatan fungsional murni ini secara inheren mempertahankan invarian translasi dan rotasi tanpa memerlukan augmentasi data geometris.</p>
-            <p><strong>3. Efisiensi Skalabilitas Lewat Downsampling Grid FFT:</strong> Kisi kerapatan muatan FFT riil yang memuat ratusan ribu hingga 1.38×10⁶ titik spasial berhasil direduksi sebesar faktor 8 melalui skema *spatial downsampling* berbasis stride 2. Penataan ini mempertahankan struktur fungsional lokal secara utuh sembari memangkas drastis waktu komputasi pelatihan model.</p>
+            <p><strong>1. Paradoks Komputasi Celah Pita DFT:</strong> Fungsional semi-lokal standar (PBE) menderita <em>self-interaction error</em> (SIE) kronis yang menyebabkan <em>underestimation</em> celah pita semikonduktor sebesar 30–50%. Sebaliknya, fungsional hibrida <em>screened-exchange</em> (HSE06) mampu memprediksi celah pita secara akurat namun menuntut beban komputasi 2 hingga 3 orde magnitudo lebih mahal, membatasi simulasi supercell dan <em>high-throughput screening</em>.</p>
+            <p><strong>2. Paradigma Fungsional Neural Network Real-Space:</strong> Berbeda dengan pendekatan machine learning konvensional yang mengandalkan deskriptor koordinat atomik diskrit (seperti SOAP atau CGCNN), metode ini melatih jaringan saraf tiruan secara langsung pada fungsional integral kerapatan muatan ruang-nyata: E_gap^HSE = ∫ f(ρ_PBE(r)) d³r. Pendekatan fungsional murni ini secara inheren mempertahankan invarian translasi dan rotasi tanpa memerlukan augmentasi data geometris.</p>
+            <p><strong>3. Efisiensi Skalabilitas Lewat Downsampling Grid FFT:</strong> Kisi kerapatan muatan FFT riil yang memuat ratusan ribu hingga 1.38×10⁶ titik spasial berhasil direduksi sebesar faktor 8 melalui skema <em>spatial downsampling</em> berbasis stride 2. Penataan ini mempertahankan struktur fungsional lokal secara utuh sembari memangkas drastis waktu komputasi pelatihan model.</p>
             <p><strong>4. Keunggulan Presisi dan Generalisasi Termal:</strong> Evaluasi pada 538 konfigurasi non-logam di 7 fasa semikonduktor/isolator membuktikan model komite neural network meraih RMSE 172.6 meV (memangkas galat hingga 34% dibanding regresi linier 263.1 meV). Pada pengujian transferabilitas konfigurasi dinamis suhu tinggi 600 K yang tidak pernah dilatih, model tetap mempertahankan keunggulan akurasi tanpa mengalami kegagalan ekstrapolasi.</p>
           </div>
         </div>
@@ -272,10 +272,10 @@
             1. Dilema Biaya Komputasi DFT: Batasan PBE dan Mahalnya Fungsional Hibrida HSE
           </h2>
           <p class="editorial-dropcap">
-            Dalam rekayasa material kuantum kontemporer—mulai dari fotovoltaik berefisiensi tinggi, fotokatalis pemecah air, hingga devais semikonduktor daya generasi lanjut—celah pita elektronik (*electronic band gap*) merupakan parameter fundamental yang menentukan seluruh fungsionalitas optoelektronik material. Sejak perumusan teorema Hohenberg-Kohn dan persamaan Kohn-Sham, Teori Fungsional Kerapatan (Density Functional Theory, DFT) telah menjadi pilar utama komputasi *ab initio* keadaan dasar zat padat. Namun demikian, komunitas fisika material senantiasa terbelenggu oleh paradoks akurasi versus biaya komputasi yang tajam antara berbagai tingkatan tangga Jacob (*Jacob's ladder*) fungsional pertukaran-korelasi.
+            Dalam rekayasa material kuantum kontemporer—mulai dari fotovoltaik berefisiensi tinggi, fotokatalis pemecah air, hingga devais semikonduktor daya generasi lanjut—celah pita elektronik (<em>electronic band gap</em>) merupakan parameter fundamental yang menentukan seluruh fungsionalitas optoelektronik material. Sejak perumusan teorema Hohenberg-Kohn dan persamaan Kohn-Sham, Teori Fungsional Kerapatan (Density Functional Theory, DFT) telah menjadi pilar utama komputasi <em>ab initio</em> keadaan dasar zat padat. Namun demikian, komunitas fisika material senantiasa terbelenggu oleh paradoks akurasi versus biaya komputasi yang tajam antara berbagai tingkatan tangga Jacob (<em>Jacob's ladder</em>) fungsional pertukaran-korelasi.
           </p>
           <p>
-            Pendekatan General Gradient Approximation (GGA), khususnya parameterisasi Perdew-Burke-Ernzerhof (PBE), menjadi standar kerja de facto dalam simulasi penapisan skala besar (*high-throughput screening*) karena efisiensi skalabilitas komputasinya yang sangat terjangkau (`O(N³)` atau lebih baik). Namun, GGA-PBE mengalami kelemahan bawaan mendasar berupa galat swa-interaksi (*self-interaction error*, SIE) dan ketiadaan lompatan potensial diskontinuitas turunan (*derivative discontinuity*). Konsekuensinya, PBE secara sistematis meremehkan (*underestimates*) celah pita kristal hingga 30–50%, bahkan acap kali keliru memprediksi semikonduktor celah sempit (seperti Ge murni) sebagai logam semi-tanpa celah.
+            Pendekatan General Gradient Approximation (GGA), khususnya parameterisasi Perdew-Burke-Ernzerhof (PBE), menjadi standar kerja de facto dalam simulasi penapisan skala besar (<em>high-throughput screening</em>) karena efisiensi skalabilitas komputasinya yang sangat terjangkau (O(N³) atau lebih baik). Namun, GGA-PBE mengalami kelemahan bawaan mendasar berupa galat swa-interaksi (<em>self-interaction error</em>, SIE) dan ketiadaan lompatan potensial diskontinuitas turunan (<em>derivative discontinuity</em>). Konsekuensinya, PBE secara sistematis meremehkan (<em>underestimates</em>) celah pita kristal hingga 30–50%, bahkan acap kali keliru memprediksi semikonduktor celah sempit (seperti Ge murni) sebagai logam semi-tanpa celah.
           </p>
 
           <!-- Callout Box 1 -->
@@ -285,16 +285,16 @@
             </div>
             <div class="text-xs sm:text-sm font-sans text-editorial-body leading-relaxed space-y-2">
               <p>
-                Persamaan Kohn-Sham memetakan sistem banyak-elektron nyata ke sistem partikel independen fiktif. Nilai eigen Kohn-Sham (`ε_i`) pada prinsipnya bukan eksitasi kuasipartikel nyata melainkan parameter Lagrange matematika. Pada fungsional semi-lokal seperti PBE, potensial pertukaran-korelasi `v_xc(r) = δE_xc / δρ(r)` kontinu terhadap jumlah elektron `N`, mengabaikan lompatan diskontinuitas turunan `Δ_xc`. Akibatnya, celah pita Kohn-Sham `E_gap^KS = ε_LUMO - ε_HOMO` jauh lebih kecil daripada celah pita kuasipartikel sejati `E_gap = I - A`.
+                Persamaan Kohn-Sham memetakan sistem banyak-elektron nyata ke sistem partikel independen fiktif. Nilai eigen Kohn-Sham (ε_i) pada prinsipnya bukan eksitasi kuasipartikel nyata melainkan parameter Lagrange matematika. Pada fungsional semi-lokal seperti PBE, potensial pertukaran-korelasi v_xc(r) = δE_xc / δρ(r) kontinu terhadap jumlah elektron N, mengabaikan lompatan diskontinuitas turunan Δ_xc. Akibatnya, celah pita Kohn-Sham E_gap^KS = ε_LUMO - ε_HOMO jauh lebih kecil daripada celah pita kuasipartikel sejati E_gap = I - A.
               </p>
               <p>
-                Fungsional hibrida Heyd-Scuseria-Ernzerhof (HSE06) mengatasi cacat ini dengan menyertakan fraksi pertukaran eksak Hartree-Fock jarak-pendek (*short-range exact exchange*, ~25%) yang disaring melalui parameter penyaringan `ω = 0.2 Å⁻¹`. Integrasi pertukaran eksak ini mengeliminasi sebagian besar SIE dan menghasilkan celah pita yang berkesesuaian sangat tinggi terhadap eksperimen. Namun, evaluasi integral pertukaran non-lokal dua-elektron menaikkan kebutuhan memori dan waktu komputasi CPU sebesar 100 hingga 1.000 kali lipat dibanding perhitungan PBE standar.
+                Fungsional hibrida Heyd-Scuseria-Ernzerhof (HSE06) mengatasi cacat ini dengan menyertakan fraksi pertukaran eksak Hartree-Fock jarak-pendek (<em>short-range exact exchange</em>, ~25%) yang disaring melalui parameter penyaringan ω = 0.2 Å⁻¹. Integrasi pertukaran eksak ini mengeliminasi sebagian besar SIE dan menghasilkan celah pita yang berkesesuaian sangat tinggi terhadap eksperimen. Namun, evaluasi integral pertukaran non-lokal dua-elektron menaikkan kebutuhan memori dan waktu komputasi CPU sebesar 100 hingga 1.000 kali lipat dibanding perhitungan PBE standar.
               </p>
             </div>
           </div>
 
           <p>
-            Upaya kompromi yang lazim digunakan dalam literatur komputasi adalah menerapkan penskalaan linier sederhana: peneliti kerap mengasumsikan bahwa celah pita HSE memiliki korelasi linier terhadap celah pita PBE (`E_gap^HSE ≈ m · E_gap^PBE + b`). Meskipun korelasi kasar ini dapat memberikan perkiraan umum untuk struktur kristal setimbang sempurna, relasi linier terbukti gagal total ketika material mengalami distorsi kisi akibat dinamika fonon termal pada suhu riil, pembentukan cacat titik (*point defects*), maupun dopan interstisial. Pada kondisi-kondisi tersebut, fluktuasi medan potensial lokal dan hibridisasi orbital menghasilkan deviasi celah pita non-linier yang rumit.
+            Upaya kompromi yang lazim digunakan dalam literatur komputasi adalah menerapkan penskalaan linier sederhana: peneliti kerap mengasumsikan bahwa celah pita HSE memiliki korelasi linier terhadap celah pita PBE (E_gap^HSE ≈ m · E_gap^PBE + b). Meskipun korelasi kasar ini dapat memberikan perkiraan umum untuk struktur kristal setimbang sempurna, relasi linier terbukti gagal total ketika material mengalami distorsi kisi akibat dinamika fonon termal pada suhu riil, pembentukan cacat titik (<em>point defects</em>), maupun dopan interstisial. Pada kondisi-kondisi tersebut, fluktuasi medan potensial lokal dan hibridisasi orbital menghasilkan deviasi celah pita non-linier yang rumit.
           </p>
           <p>
             Kondisi ini memicu pertanyaan riset fundamental: <em>apakah mungkin mengekstrak celah pita akurat setingkat HSE06 secara langsung dari perhitungan kerapatan muatan PBE yang murah, tanpa harus pernah menyelesaikan integral pertukaran non-lokal HSE yang amat mahal?</em> Levi C. Lentz dan Alexie M. Kolpak dari MIT menjawab tantangan ini dengan merevolusi formulasi jaringan saraf tiruan agar bertindak sebagai fungsional terintegrasi pada ruang kerapatan muatan riil.
@@ -307,10 +307,10 @@
             2. Formulasi Fungsional Neural Network: Pelatihan Langsung pada Kernel Kerapatan Muatan
           </h2>
           <p class="editorial-dropcap">
-            Mayoritas arsitektur pembelajaran mesin (machine learning, ML) yang berkembang pesat dalam ilmu material mutakhir—seperti Smooth Overlap of Atomic Positions (SOAP), Atom-Centered Symmetry Functions (ACSF), SchNet, atau Crystal Graph Convolutional Neural Networks (CGCNN)—dibangun di atas representasi koordinat posisi atomik `{R_i}` dan nomor atom `{Z_i}`. Kendati terbukti ampuh untuk memprediksi permukaan energi potensial (Potential Energy Surfaces, PES), deskriptor berbasis koordinat atomik menghadapi keterbatasan serius ketika harus memprediksi sifat eksitasi elektronik seperti celah pita kristal.
+            Mayoritas arsitektur pembelajaran mesin (machine learning, ML) yang berkembang pesat dalam ilmu material mutakhir—seperti Smooth Overlap of Atomic Positions (SOAP), Atom-Centered Symmetry Functions (ACSF), SchNet, atau Crystal Graph Convolutional Neural Networks (CGCNN)—dibangun di atas representasi koordinat posisi atomik {R_i} dan nomor atom {Z_i}. Kendati terbukti ampuh untuk memprediksi permukaan energi potensial (Potential Energy Surfaces, PES), deskriptor berbasis koordinat atomik menghadapi keterbatasan serius ketika harus memprediksi sifat eksitasi elektronik seperti celah pita kristal.
           </p>
           <p>
-            Celah pita suatu material merupakan sifat global yang sangat sensitif terhadap rincian kerapatan muatan valensi lokal, polarisasi ikatan kimia, serta delokalisasi elektron di ruang antar-atom. Koordinat atomik semata tidak memuat informasi distribusi muatan elektronik keadaan dasar secara eksplisit. Merujuk langsung pada teorema dasar Hohenberg-Kohn yang menetapkan bahwa kerapatan muatan keadaan dasar `ρ(r)` secara unik menentukan seluruh sifat kuantum sistem, Lentz dan Kolpak merumuskan fungsional jaringan saraf tiruan yang beroperasi langsung pada kisi kerapatan muatan ruang-nyata `ρ(r)`.
+            Celah pita suatu material merupakan sifat global yang sangat sensitif terhadap rincian kerapatan muatan valensi lokal, polarisasi ikatan kimia, serta delokalisasi elektron di ruang antar-atom. Koordinat atomik semata tidak memuat informasi distribusi muatan elektronik keadaan dasar secara eksplisit. Merujuk langsung pada teorema dasar Hohenberg-Kohn yang menetapkan bahwa kerapatan muatan keadaan dasar ρ(r) secara unik menentukan seluruh sifat kuantum sistem, Lentz dan Kolpak merumuskan fungsional jaringan saraf tiruan yang beroperasi langsung pada kisi kerapatan muatan ruang-nyata ρ(r).
           </p>
 
           <!-- Equation Card 1 -->
@@ -323,12 +323,12 @@
               E_gap^HSE = Θ[ρ_PBE(r)] = ∫ f(ρ_PBE(r)) d³r
             </div>
             <div class="text-xs font-sans text-editorial-muted text-center">
-              Fungsional `Θ` memetakan medan skalar kerapatan muatan `ρ_PBE(r)` ke besaran skalar celah pita `E_gap^HSE` melalui integrasi volume sel satuan.
+              Fungsional Θ memetakan medan skalar kerapatan muatan ρ_PBE(r) ke besaran skalar celah pita E_gap^HSE melalui integrasi volume sel satuan.
             </div>
           </div>
 
           <p>
-            Di mana `f(ρ)` adalah transformasi non-linier yang dipelajari oleh jaringan saraf tiruan terhadap nilai skalar kerapatan muatan lokal. Dalam implementasi komputasi praktis berbasis gelombang bidang (*plane-wave pseudopotential*), kerapatan muatan direpresentasikan pada kisi diskrit Fast Fourier Transform (FFT) yang membagi sel satuan menjadi `N_grid` titik spasial bervolume diferensial `dV = V_cell / N_grid`. Dengan demikian, integral analitik pada Persamaan 1 bertransformasi menjadi penjumlahan riemann terbobot di seluruh titik kisi komputasi:
+            Di mana f(ρ) adalah transformasi non-linier yang dipelajari oleh jaringan saraf tiruan terhadap nilai skalar kerapatan muatan lokal. Dalam implementasi komputasi praktis berbasis gelombang bidang (<em>plane-wave pseudopotential</em>), kerapatan muatan direpresentasikan pada kisi diskrit Fast Fourier Transform (FFT) yang membagi sel satuan menjadi N_grid titik spasial bervolume diferensial dV = V_cell / N_grid. Dengan demikian, integral analitik pada Persamaan 1 bertransformasi menjadi penjumlahan riemann terbobot di seluruh titik kisi komputasi:
           </p>
 
           <!-- Equation Card 2 -->
@@ -341,7 +341,7 @@
               E_gap^HSE ≈ (V_cell / N_grid) ∑_{i=1}^{N_grid} NN(ρ_i; W, b)
             </div>
             <div class="text-xs font-sans text-editorial-muted text-center">
-              `NN(ρ_i; W, b)` merepresentasikan keluaran neuron tersembunyi yang dievaluasi pada tiap titik kisi `ρ_i` dengan matriks bobot `W` dan bias `b`.
+              NN(ρ_i; W, b) merepresentasikan keluaran neuron tersembunyi yang dievaluasi pada tiap titik kisi ρ_i dengan matriks bobot W dan bias b.
             </div>
           </div>
 
@@ -349,13 +349,13 @@
             Keunggulan arsitektural dari formulasi fungsional integratif ini sangat luar biasa dibanding model berbasis deskriptor posisi:
           </p>
           <ul class="list-disc pl-6 space-y-2 text-sm sm:text-base font-serif text-editorial-body mb-6">
-            <li><strong>Invarian Simetri Alami:</strong> Karena integrasi volume `∫ d³r` bersifat invarian terhadap translasi dan rotasi kisi koordinat, model secara otomatis memenuhi seluruh hukum simetri ruang tanpa membutuhkan teknik augmentasi data geometris (*rotational/translational data augmentation*) yang boros memori.</li>
-            <li><strong>Agnostik Ukuran Sel Satuan:</strong> Model dapat mengevaluasi supercell dengan jumlah atom dan volume sel berapapun tanpa memodifikasi arsitektur jaringan, sebab normalisasi volume `V_cell / N_grid` secara inheren menjaga konsistensi dimensi fisik energi per satuan volume.</li>
-            <li><strong>Keringanan Arsitektur:</strong> Tidak dibutuhkan model *deep learning* berlapis-lapis yang rawan *overfitting*. Jaringan saraf hanya memerlukan 1 neuron masukan (menerima nilai kerapatan muatan skalar `ρ_i`), 1 lapisan tersembunyi (*single hidden layer*) berisi 150 neuron dengan fungsi aktivasi tangens hiperbolik `tanh`, dan 1 lapisan luaran linier sebelum proses integrasi numerik.</li>
+            <li><strong>Invarian Simetri Alami:</strong> Karena integrasi volume ∫ d³r bersifat invarian terhadap translasi dan rotasi kisi koordinat, model secara otomatis memenuhi seluruh hukum simetri ruang tanpa membutuhkan teknik augmentasi data geometris (<em>rotational/translational data augmentation</em>) yang boros memori.</li>
+            <li><strong>Agnostik Ukuran Sel Satuan:</strong> Model dapat mengevaluasi supercell dengan jumlah atom dan volume sel berapapun tanpa memodifikasi arsitektur jaringan, sebab normalisasi volume V_cell / N_grid secara inheren menjaga konsistensi dimensi fisik energi per satuan volume.</li>
+            <li><strong>Keringanan Arsitektur:</strong> Tidak dibutuhkan model <em>deep learning</em> berlapis-lapis yang rawan <em>overfitting</em>. Jaringan saraf hanya memerlukan 1 neuron masukan (menerima nilai kerapatan muatan skalar ρ_i), 1 lapisan tersembunyi (<em>single hidden layer</em>) berisi 150 neuron dengan fungsi aktivasi tangens hiperbolik tanh, dan 1 lapisan luaran linier sebelum proses integrasi numerik.</li>
           </ul>
 
           <p>
-            Untuk mengatasi sensitivitas inisialisasi bobot acak (*random weight initialization*) dan mencegah terjebak pada minimum lokal fungsi biaya, Lentz dan Kolpak mengadopsi skema <strong>Komite Jaringan Saraf Tiruan (*Committee of Neural Networks*)</strong>. Lima model independen dilatih secara paralel dengan inisialisasi bobot awal yang diacak. Prediksi akhir celah pita diperoleh dari rata-rata ensemble kelima model tersebut, yang terbukti secara empiris meningkatkan ketahanan model dan mereduksi varians prediksi residu secara drastis.
+            Untuk mengatasi sensitivitas inisialisasi bobot acak (<em>random weight initialization</em>) dan mencegah terjebak pada minimum lokal fungsi biaya, Lentz dan Kolpak mengadopsi skema <strong>Komite Jaringan Saraf Tiruan (<em>Committee of Neural Networks</em>)</strong>. Lima model independen dilatih secara paralel dengan inisialisasi bobot awal yang diacak. Prediksi akhir celah pita diperoleh dari rata-rata ensemble kelima model tersebut, yang terbukti secara empiris meningkatkan ketahanan model dan mereduksi varians prediksi residu secara drastis.
           </p>
         </section>
 
@@ -365,7 +365,7 @@
             3. Akuisisi Data Trajektori AIMD dan Strategi Downsampling Grid FFT
           </h2>
           <p class="editorial-dropcap">
-            Kekuatan model pembelajaran mesin sangat ditentukan oleh keterwakilan fisis dari ruang konfigurasi sampel pelatihan. Dalam simulasi material zat padat, melatih model hanya pada struktur relaksasi minimum energi nol Kelvin (`T = 0 K`) menghasilkan model yang kaku dan rentan gagal ketika berhadapan dengan fluktuasi termal lingkungan nyata. Untuk menghasilkan kumpulan data yang mencakup variasi panjang ikatan, sudut distorsi, dan deformasi kisi yang kaya, penulis menjalankan simulasi Dinamika Molekuler Ab Initio (Ab Initio Molecular Dynamics, AIMD) dalam ansambel kanonikal (NVT) pada suhu 300 K.
+            Kekuatan model pembelajaran mesin sangat ditentukan oleh keterwakilan fisis dari ruang konfigurasi sampel pelatihan. Dalam simulasi material zat padat, melatih model hanya pada struktur relaksasi minimum energi nol Kelvin (T = 0 K) menghasilkan model yang kaku dan rentan gagal ketika berhadapan dengan fluktuasi termal lingkungan nyata. Untuk menghasilkan kumpulan data yang mencakup variasi panjang ikatan, sudut distorsi, dan deformasi kisi yang kaya, penulis menjalankan simulasi Dinamika Molekuler Ab Initio (Ab Initio Molecular Dynamics, AIMD) dalam ansambel kanonikal (NVT) pada suhu 300 K.
           </p>
           <p>
             Tujuh fasa material semikonduktor dan isolator non-logam dipilih untuk merepresentasikan variasi ikatan kimia, kepolaran kisi, dan rentang celah pita yang sangat lebar: mulai dari semikonduktor kovalen klasik (Si, Ge), semikonduktor polar III-V (GaAs), material dua dimensi transisi dikalkogenida (MoS₂ monolayer), hingga senyawa fosfat logam transisi berikatan ionik kuat (SnPhos, TiPhos, ZrPhos) yang memiliki celah pita ultra-lebar mencapai lebih dari 6.0 eV.
@@ -473,7 +473,7 @@
           </div>
 
           <p>
-            Meskipun formulasi fungsional integratif sangat elegan, tantangan komputasi masif muncul pada skala kisi FFT. Kerapatan muatan yang dihasilkan oleh paket DFT gelombang-bidang (VASP) pada tingkat konvergensi energi potong (*kinetic energy cutoff*) standar menuntut kisi spasial yang luar biasa padat: berkisar antara 300.000 titik (untuk sel Si 8-atom) hingga lebih dari 1.380.000 titik spasial (untuk sel ZrPhos 26-atom). Mengevaluasi propagasi maju (*forward pass*) dan perambatan mundur gradien (*backpropagation*) jaringan saraf tiruan pada 1.38 juta titik untuk setiap struktur dalam setiap epok pelatihan akan menimbulkan beban komputasi grafis (GPU) dan memori yang eksorbitan.
+            Meskipun formulasi fungsional integratif sangat elegan, tantangan komputasi masif muncul pada skala kisi FFT. Kerapatan muatan yang dihasilkan oleh paket DFT gelombang-bidang (VASP) pada tingkat konvergensi energi potong (<em>kinetic energy cutoff</em>) standar menuntut kisi spasial yang luar biasa padat: berkisar antara 300.000 titik (untuk sel Si 8-atom) hingga lebih dari 1.380.000 titik spasial (untuk sel ZrPhos 26-atom). Mengevaluasi propagasi maju (<em>forward pass</em>) dan perambatan mundur gradien (<em>backpropagation</em>) jaringan saraf tiruan pada 1.38 juta titik untuk setiap struktur dalam setiap epok pelatihan akan menimbulkan beban komputasi grafis (GPU) dan memori yang eksorbitan.
           </p>
 
           <!-- Callout Box 2 -->
@@ -483,10 +483,10 @@
             </div>
             <div class="text-xs sm:text-sm font-sans text-editorial-body leading-relaxed space-y-2">
               <p>
-                Kerapatan muatan elektronik `ρ(r)` dalam kristal riil memiliki sifat kemulusan spasial (*spatial smoothness*) yang tinggi karena dibatasi oleh potensial elektrostatis Coulomb kontinu dan fungsi gelombang orbital atom. Variasi kerapatan antara dua titik kisi FFT yang berdampingan (dengan jarak fraksional `Δr ~ 0.05 - 0.1 Å`) memiliki korelasi silang yang sangat kuat.
+                Kerapatan muatan elektronik ρ(r) dalam kristal riil memiliki sifat kemulusan spasial (<em>spatial smoothness</em>) yang tinggi karena dibatasi oleh potensial elektrostatis Coulomb kontinu dan fungsi gelombang orbital atom. Variasi kerapatan antara dua titik kisi FFT yang berdampingan (dengan jarak fraksional Δr ~ 0.05 - 0.1 Å) memiliki korelasi silang yang sangat kuat.
               </p>
               <p>
-                Penulis menerapkan skema *spatial downsampling* teratur dengan mengambil setiap titik ke-2 di sepanjang ketiga sumbu kisi kristalografi (`x, y, z`). Pengurangan dengan langkah stride `s = 2` ini memangkas total jumlah titik evaluasi sebesar faktor `2³ = 8 kali lipat` (misalnya dari 1.380.000 titik menjadi ~172.500 titik per sel). Pengujian konvergensi membuktikan bahwa integrasi pada kisi ter-downsample menghasilkan integrasi numerik kerapatan total yang identik (`∫ ρ d³r = N_elektron` dengan deviasi &lt; 0.001%) sembari menghemat waktu komputasi pelatihan sebesar 87.5%.
+                Penulis menerapkan skema <em>spatial downsampling</em> teratur dengan mengambil setiap titik ke-2 di sepanjang ketiga sumbu kisi kristalografi (x, y, z). Pengurangan dengan langkah stride s = 2 ini memangkas total jumlah titik evaluasi sebesar faktor 2³ = 8 kali lipat (misalnya dari 1.380.000 titik menjadi ~172.500 titik per sel). Pengujian konvergensi membuktikan bahwa integrasi pada kisi ter-downsample menghasilkan integrasi numerik kerapatan total yang identik (∫ ρ d³r = N_elektron dengan deviasi &lt; 0.001%) sembari menghemat waktu komputasi pelatihan sebesar 87.5%.
               </p>
             </div>
           </div>
@@ -498,10 +498,10 @@
             4. Kinerja Pemodelan vs Regresi Linier Standar: Pangkasan Error Global
           </h2>
           <p class="editorial-dropcap">
-            Untuk menguji secara objektif kapasitas prediktif fungsional jaringan saraf tiruan, kumpulan data 538 konfigurasi dibagi menjadi himpunan pelatihan (*training set*, 80%) dan himpunan pengujian independen (*test set*, 20%). Sebagai pembanding ilmiah baku, penulis membandingkan kinerja jaringan saraf terhadap garis dasar (*baseline*) regresi linier universal `E_gap^HSE = m · E_gap^PBE + b` yang dilatih pada himpunan data yang persis sama.
+            Untuk menguji secara objektif kapasitas prediktif fungsional jaringan saraf tiruan, kumpulan data 538 konfigurasi dibagi menjadi himpunan pelatihan (<em>training set</em>, 80%) dan himpunan pengujian independen (<em>test set</em>, 20%). Sebagai pembanding ilmiah baku, penulis membandingkan kinerja jaringan saraf terhadap garis dasar (<em>baseline</em>) regresi linier universal E_gap^HSE = m · E_gap^PBE + b yang dilatih pada himpunan data yang persis sama.
           </p>
           <p>
-            Hasil regresi linier global disajikan pada Gambar 2. Secara agregat, regresi linier menghasilkan kemiringan `m = 1.399` dan intersep `b = 0.347 eV`. Parameter ini selaras dengan tren umum literatur bahwa celah pita HSE kira-kira 1.4 kali lebih besar daripada celah pita PBE ditambah pergeseran konstan. Namun, regresi linier menghasilkan galat kuadrat rata-rata (Root Mean Square Error, RMSE) yang cukup masif yaitu <strong>360.25 meV</strong> dengan Mean Absolute Error (MAE) sebesar <strong>274.67 meV</strong> di seluruh dataset.
+            Hasil regresi linier global disajikan pada Gambar 2. Secara agregat, regresi linier menghasilkan kemiringan m = 1.399 dan intersep b = 0.347 eV. Parameter ini selaras dengan tren umum literatur bahwa celah pita HSE kira-kira 1.4 kali lebih besar daripada celah pita PBE ditambah pergeseran konstan. Namun, regresi linier menghasilkan galat kuadrat rata-rata (Root Mean Square Error, RMSE) yang cukup masif yaitu <strong>360.25 meV</strong> dengan Mean Absolute Error (MAE) sebesar <strong>274.67 meV</strong> di seluruh dataset.
           </p>
 
           <!-- FIGURE 2 -->
@@ -516,13 +516,13 @@
             </div>
             <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
               <span class="font-bold text-editorial-ink">Gambar 2 | Analisis regresi linier baseline celah pita HSE versus PBE pada 538 konfigurasi.</span> 
-              Garis kesesuaian terbaik menghasilkan persamaan linier `E_gap^HSE = 1.399 · E_gap^PBE + 0.347 eV` dengan dispersi data yang lebar (RMSE = 360.25 meV, MAE = 274.67 meV). Deviasi data terbesar teramati pada fasa GaAs dan Ge celah sempit serta fosfat transisi celah lebar (SnPhos, TiPhos, ZrPhos).
+              Garis kesesuaian terbaik menghasilkan persamaan linier E_gap^HSE = 1.399 · E_gap^PBE + 0.347 eV dengan dispersi data yang lebar (RMSE = 360.25 meV, MAE = 274.67 meV). Deviasi data terbesar teramati pada fasa GaAs dan Ge celah sempit serta fosfat transisi celah lebar (SnPhos, TiPhos, ZrPhos).
               <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Lentz &amp; Kolpak, J. Phys.: Condens. Matter 32 (2020) 155901 / IOP Publishing. (Klik gambar untuk perbesar)</div>
             </figcaption>
           </figure>
 
           <p>
-            Ketika fungsional jaringan saraf tiruan (NN Functional) diuji pada data uji independen yang tidak pernah dilihat selama pelatihan, lompatan akurasi yang dicapai sangat impresif. Sebagaimana divisualisasikan pada kurva paritas dan distribusi residual pada Gambar 3, prediksi fungsional neural network memusat secara ketat di sekitar garis ideal `y = x`.
+            Ketika fungsional jaringan saraf tiruan (NN Functional) diuji pada data uji independen yang tidak pernah dilihat selama pelatihan, lompatan akurasi yang dicapai sangat impresif. Sebagaimana divisualisasikan pada kurva paritas dan distribusi residual pada Gambar 3, prediksi fungsional neural network memusat secara ketat di sekitar garis ideal y = x.
           </p>
 
           <!-- FIGURE 3 -->
@@ -538,13 +538,13 @@
             <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
               <span class="font-bold text-editorial-ink">Gambar 3 | Perbandingan kurva paritas dan distribusi residual celah pita pada test set independen.</span> 
               <strong>(Atas)</strong> Kurva paritas celah pita prediksi versus perhitungan acuan HSE06 untuk model fungsional jaringan saraf (titik biru) dan regresi linier (titik oranye); 
-              <strong>(Bawah)</strong> Histogram distribusi galat residual (`E_gap^prediksi - E_gap^HSE`). Fungsional jaringan saraf mencapai RMSE 172.6 meV dengan kurva Gaussian yang simetris dan terpusat di titik nol, jauh lebih unggul dibandingkan regresi linier yang memiliki RMSE 263.1 meV serta sebaran ekor galat yang lebar.
+              <strong>(Bawah)</strong> Histogram distribusi galat residual (E_gap^prediksi - E_gap^HSE). Fungsional jaringan saraf mencapai RMSE 172.6 meV dengan kurva Gaussian yang simetris dan terpusat di titik nol, jauh lebih unggul dibandingkan regresi linier yang memiliki RMSE 263.1 meV serta sebaran ekor galat yang lebar.
               <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Lentz &amp; Kolpak, J. Phys.: Condens. Matter 32 (2020) 155901 / IOP Publishing. (Klik gambar untuk perbesar)</div>
             </figcaption>
           </figure>
 
           <p>
-            Secara global pada test set independen, fungsional neural network membukukan <strong>RMSE sebesar 172.6 meV</strong>, memangkas galat regresi linier (RMSE 263.1 meV pada test set) hingga <strong>34.4%</strong>. Yang paling krusial, analisis residual pada panel bawah Gambar 3 membuktikan bahwa residual jaringan saraf membentuk kurva Gaussian murni dengan rata-rata galat mendekati nol (`μ ≈ 0 meV`), menandakan ketiadaan bias sistematis (*unbiased predictor*). Sebaliknya, residual regresi linier memiliki varians lebar dengan ekor kesalahan yang menjulur hingga lebih dari 600 meV.
+            Secara global pada test set independen, fungsional neural network membukukan <strong>RMSE sebesar 172.6 meV</strong>, memangkas galat regresi linier (RMSE 263.1 meV pada test set) hingga <strong>34.4%</strong>. Yang paling krusial, analisis residual pada panel bawah Gambar 3 membuktikan bahwa residual jaringan saraf membentuk kurva Gaussian murni dengan rata-rata galat mendekati nol (μ ≈ 0 meV), menandakan ketiadaan bias sistematis (<em>unbiased predictor</em>). Sebaliknya, residual regresi linier memiliki varians lebar dengan ekor kesalahan yang menjulur hingga lebih dari 600 meV.
           </p>
 
           <!-- PUBLICATION TABLE 2 -->
@@ -651,13 +651,13 @@
             </div>
             <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
               <span class="font-bold text-editorial-ink">Gambar 4 | Histogram distribusi galat prediksi celah pita per fasa material untuk fungsional NN dan regresi linier.</span> 
-              Kurva distribusi galat fungsional jaringan saraf (biru) konsisten berpusat di sekitar nilai nol pada ketujuh fasa material. Sebaliknya, regresi linier (oranye) mengalami pergeseran puncak (*mean error shift*) yang signifikan: meremehkan celah pita pada Si dan MoS₂ hingga lebih dari 200 meV, serta melebih-lebihkan celah pita pada Ge dan GaAs.
+              Kurva distribusi galat fungsional jaringan saraf (biru) konsisten berpusat di sekitar nilai nol pada ketujuh fasa material. Sebaliknya, regresi linier (oranye) mengalami pergeseran puncak (<em>mean error shift</em>) yang signifikan: meremehkan celah pita pada Si dan MoS₂ hingga lebih dari 200 meV, serta melebih-lebihkan celah pita pada Ge dan GaAs.
               <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Lentz &amp; Kolpak, J. Phys.: Condens. Matter 32 (2020) 155901 / IOP Publishing. (Klik gambar untuk perbesar)</div>
             </figcaption>
           </figure>
 
           <p>
-            Sebagaimana diungkapkan pada Gambar 4, regresi linier memperlihatkan pergeseran bias rata-rata yang parah pada material individu: pada Si, puncak distribusi regresi linier tergeser ke arah negatif sebesar ~200 meV (meremehkan celah pita secara konsisten), sedangkan pada GaAs tergeser ke arah positif sebesar ~250 meV. Fenomena ini membuktikan bahwa hubungan antara celah pita PBE dan HSE memiliki intersep kimiawi unik untuk masing-masing fasa. Fungsional jaringan saraf secara otomatis menginternalisasi perbedaan kimiawi lokal ini langsung dari fitur kerapatan muatan `ρ(r)`, menghasilkan kurva galat yang terkonsentrasi simetris di sekitar nol meV untuk seluruh fasa tanpa membutuhkan parameter penyesuaian khusus.
+            Sebagaimana diungkapkan pada Gambar 4, regresi linier memperlihatkan pergeseran bias rata-rata yang parah pada material individu: pada Si, puncak distribusi regresi linier tergeser ke arah negatif sebesar ~200 meV (meremehkan celah pita secara konsisten), sedangkan pada GaAs tergeser ke arah positif sebesar ~250 meV. Fenomena ini membuktikan bahwa hubungan antara celah pita PBE dan HSE memiliki intersep kimiawi unik untuk masing-masing fasa. Fungsional jaringan saraf secara otomatis menginternalisasi perbedaan kimiawi lokal ini langsung dari fitur kerapatan muatan ρ(r), menghasilkan kurva galat yang terkonsentrasi simetris di sekitar nol meV untuk seluruh fasa tanpa membutuhkan parameter penyesuaian khusus.
           </p>
           <p>
             Ujian paling berat bagi model machine learning dalam komputasi kuantum adalah <strong>uji transferabilitas ekstrapolasi termal</strong>. Apakah model yang dilatih pada konfigurasi termal 300 K mampu mempertahankan akurasinya ketika material dieksitasi pada suhu 600 K, di mana vibrasi fonon menghasilkan pemanjangan ikatan ekstrem dan distorsi kisi yang tidak pernah ada dalam data pelatihan? Penulis menguji hipotesis ini dengan menjalankan simulasi AIMD baru pada suhu 600 K untuk GaAs, MoS₂, dan Si, lalu mengevaluasinya langsung dengan model komite neural network yang telah dibekukan.
@@ -707,7 +707,7 @@
           </div>
 
           <p>
-            Data pada Tabel 3 menegaskan keandalan fungsional neural network. Pada fasa silikon di suhu 600 K, fungsional NN mempertahankan RMSE spektakuler sebesar <strong>137.94 meV</strong>, mengungguli regresi linier (311.92 meV) hingga lebih dari 55%. Pada GaAs dan MoS₂, fungsional NN tetap konsisten mengungguli regresi linier dengan selisih yang substansial. Keberhasilan ini membuktikan bahwa fungsional integratif pada ruang kerapatan muatan tidak menghafal koordinat posisi partikel (*overfitting on atomic coordinates*), melainkan benar-benar mempelajari fisika lokal pemetaan kerapatan elektron ke respons eksitasi kuasipartikel.
+            Data pada Tabel 3 menegaskan keandalan fungsional neural network. Pada fasa silikon di suhu 600 K, fungsional NN mempertahankan RMSE spektakuler sebesar <strong>137.94 meV</strong>, mengungguli regresi linier (311.92 meV) hingga lebih dari 55%. Pada GaAs dan MoS₂, fungsional NN tetap konsisten mengungguli regresi linier dengan selisih yang substansial. Keberhasilan ini membuktikan bahwa fungsional integratif pada ruang kerapatan muatan tidak menghafal koordinat posisi partikel (<em>overfitting on atomic coordinates</em>), melainkan benar-benar mempelajari fisika lokal pemetaan kerapatan elektron ke respons eksitasi kuasipartikel.
           </p>
         </section>
 
@@ -717,10 +717,10 @@
             6. Prospek Integrasi Screening Skrining Material Skala Besar &amp; Metodologi
           </h2>
           <p class="editorial-dropcap">
-            Keberhasilan memprediksi celah pita berpresisi fungsional hibrida HSE06 secara langsung dari kerapatan muatan GGA-PBE membuka paradigma baru dalam alur kerja komputasi sains material (*materials discovery pipeline*). Secara tradisional, penapisan material skala tinggi terhambat oleh disparitas biaya: peneliti terpaksa mengandalkan celah pita PBE yang tidak akurat untuk menapis ribuan kandidat material, sehingga berisiko menolak kandidat potensial yang salah diprediksi sebagai logam atau isolator berlebih.
+            Keberhasilan memprediksi celah pita berpresisi fungsional hibrida HSE06 secara langsung dari kerapatan muatan GGA-PBE membuka paradigma baru dalam alur kerja komputasi sains material (<em>materials discovery pipeline</em>). Secara tradisional, penapisan material skala tinggi terhambat oleh disparitas biaya: peneliti terpaksa mengandalkan celah pita PBE yang tidak akurat untuk menapis ribuan kandidat material, sehingga berisiko menolak kandidat potensial yang salah diprediksi sebagai logam atau isolator berlebih.
           </p>
           <p>
-            Dengan mengintegrasikan fungsional jaringan saraf real-space ini ke dalam rantai pasca-pemrosesan (*post-processing stage*) perhitungan DFT standar, celah pita berkualitas HSE06 dapat dievaluasi secara instan hanya dalam fraksi detik setelah konvergensi SCF PBE tercapai. Beban komputasi evaluasi fungsional neural network pada kisi yang di-downsample hanya memakan waktu milidetik per struktur di CPU biasa, memberikan akselerasi komputasi efektif sebesar <strong>100 hingga 1.000 kali lipat</strong> dibanding menjalankan perhitungan swa-konsisten HSE06 secara penuh.
+            Dengan mengintegrasikan fungsional jaringan saraf real-space ini ke dalam rantai pasca-pemrosesan (<em>post-processing stage</em>) perhitungan DFT standar, celah pita berkualitas HSE06 dapat dievaluasi secara instan hanya dalam fraksi detik setelah konvergensi SCF PBE tercapai. Beban komputasi evaluasi fungsional neural network pada kisi yang di-downsample hanya memakan waktu milidetik per struktur di CPU biasa, memberikan akselerasi komputasi efektif sebesar <strong>100 hingga 1.000 kali lipat</strong> dibanding menjalankan perhitungan swa-konsisten HSE06 secara penuh.
           </p>
 
           <!-- Callout Box 3 -->
@@ -729,8 +729,8 @@
               Rincian Metodologi DFT &amp; Pelatihan Model Machine Learning
             </div>
             <div class="text-xs sm:text-sm font-sans text-editorial-body leading-relaxed space-y-2">
-              <p><strong>Perhitungan DFT (VASP):</strong> Diselesaikan menggunakan paket Vienna Ab initio Simulation Package dengan potensial Projector Augmented-Wave (PAW). Fungsional GGA-PBE digunakan untuk optimasi struktur, trajektori AIMD (langkah waktu 1.0 fs pada termostat Nosé-Hoover), dan pembangkitan kisi kerapatan muatan `CHGCAR`. Celah pita patokan dihitung menggunakan fungsional hibrida terseleksi HSE06 dengan parameter penyaringan standar `ω = 0.2 Å⁻¹` dan fraksi pertukaran eksak 25%.</p>
-              <p><strong>Arsitektur Jaringan &amp; Optimasi:</strong> Jaringan saraf terdiri atas 1 neuron input skalar `ρ(r)`, 1 hidden layer berisi 150 neuron dengan aktivasi `tanh`, dan 1 neuron output integratif. Bobot dioptimasi menggunakan algoritma Levenberg-Marquardt dengan fungsi kerugian mean squared error (MSE) dan regularisasi L2 Bayesian untuk mencegah *overfitting*. Ensemble komite terdiri atas 5 model independen.</p>
+              <p><strong>Perhitungan DFT (VASP):</strong> Diselesaikan menggunakan paket Vienna Ab initio Simulation Package dengan potensial Projector Augmented-Wave (PAW). Fungsional GGA-PBE digunakan untuk optimasi struktur, trajektori AIMD (langkah waktu 1.0 fs pada termostat Nosé-Hoover), dan pembangkitan kisi kerapatan muatan <code class="font-mono text-xs bg-slate-100 text-editorial-ink px-1.5 py-0.5 rounded border border-slate-200">CHGCAR</code>. Celah pita patokan dihitung menggunakan fungsional hibrida terseleksi HSE06 dengan parameter penyaringan standar ω = 0.2 Å⁻¹ dan fraksi pertukaran eksak 25%.</p>
+              <p><strong>Arsitektur Jaringan &amp; Optimasi:</strong> Jaringan saraf terdiri atas 1 neuron input skalar ρ(r), 1 hidden layer berisi 150 neuron dengan aktivasi tanh, dan 1 neuron output integratif. Bobot dioptimasi menggunakan algoritma Levenberg-Marquardt dengan fungsi kerugian mean squared error (MSE) dan regularisasi L2 Bayesian untuk mencegah <em>overfitting</em>. Ensemble komite terdiri atas 5 model independen.</p>
               <p><strong>Prapemrosesan Data:</strong> Berkas kerapatan muatan tiga dimensi diekstraksi dari format grid VASP, dinormalisasi terhadap volume sel, dan diturunkan resolusinya menggunakan algoritma pencuplikan teratur stride 2 di sepanjang sumbu kristalografi utama.</p>
             </div>
           </div>
@@ -801,7 +801,7 @@
               </div>
               <div>
                 <span class="font-semibold text-editorial-ink">Fungsional Kerapatan Real-Space:</span>
-                <p class="text-editorial-muted mt-0.5">Pemetaan fungsional yang beroperasi langsung pada kisi muatan `ρ(r)` melalui integral spasial, mempertahankan invarian rotasi/translasi secara alami.</p>
+                <p class="text-editorial-muted mt-0.5">Pemetaan fungsional yang beroperasi langsung pada kisi muatan ρ(r) melalui integral spasial, mempertahankan invarian rotasi/translasi secara alami.</p>
               </div>
               <div>
                 <span class="font-semibold text-editorial-ink">Downsampling Grid Spasial FFT:</span>
