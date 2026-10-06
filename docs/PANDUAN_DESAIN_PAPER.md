@@ -35,12 +35,14 @@ Demi mencegah rusaknya spasi vertikal, keterpotongan tabel, dan pembelahan tag t
    - Satuan & Eksponen: `Å` (bukan `\AA`), `cm²·V⁻¹·s⁻¹`, `10²⁰`, `cm⁻³`, `(Ω·m·s)⁻¹`, `W·m⁻¹·K⁻¹·s⁻¹`, `Å³`, `eV`, `°C`.
    - Simbol Relasi: `≈` atau `~` (bukan `\sim`), `>>` atau `≫` (bukan `\gg`), `→` (bukan `\to`), `Δ` (bukan `\Delta`).
 
-3. **Gunakan Inline Code Backtick untuk Besaran Fisik & Energi**:
-   - Tulis besaran seperti `E_ads`, `ΔE_rxn`, `E_g`, `E_form`, `E_hull`, `σ_eff`, `ΔG`, `ΔH`, `R_ct`, `L_SSE`, `d_SEI` di dalam tanda backtick tunggal.
-   - Perbandingan & nilai mutlak: `|E_ads(MCA)| > |E_ads(MCH)| > |E_ads(MNC)|` (dalam satu baris kode inline utuh).
+3. **Murni Semantic HTML — Dilarang Keras Sintaks Markdown Mentah**:
+   - **Italics Istilah Asing**: Selalu gunakan tag HTML `<em>istilah</em>`, **DILARANG KERAS** menggunakan tanda asteris markdown seperti `*electronic band gap*` karena browser membaca tanda asteris secara harafiah!
+   - **Tebal / Penekanan**: Selalu gunakan `<strong>teks</strong>`, bukan `**teks**`.
+   - **Variabel & Besaran Fisik di HTML**: Tulis langsung sebagai teks polos Unicode bersih tanpa tanda backtick (misal: `E_ads`, `ΔE_rxn`, `E_g`, `E_hull`, `σ_eff`, `IC_50`, `K_d`). **JANGAN** membungkus variabel dengan backtick mentah (`` `E_g` ``) di dalam dokumen HTML, karena browser akan merender karakter backtick secara literal ke layar pembaca.
+   - **Nama File / Perintah Kode**: Jika merujuk nama berkas atau perintah teknis (seperti `CHGCAR`), gunakan tag semantic `<code class="font-mono text-xs bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200">CHGCAR</code>`.
 
 4. **Tabel Data Ilmiah**:
-   - Setiap sel tabel harus berupa teks sebaris atau backticked code. Jangan menggunakan *line break* `<br>` berlebihan di dalam sel tabel numerik.
+   - Setiap sel tabel harus berupa teks sebaris bersih atau badge angka font-mono. Jangan menggunakan *line break* `<br>` berlebihan di dalam sel tabel numerik.
 
 ---
 
