@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teori Fungsional Kerapatan Double-Hybrid Empiris: Menjembatani Jurang WFT dan DFT — TelaahSains Hub</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Newsreader (Serif Editorial) & Plus Jakarta Sans (UI Sans) & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind Configuration matching Design System -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            editorial: {
+              ink: '#161616',        /* Deep charcoal black for text */
+              body: '#262626',       /* Warm reading body text */
+              muted: '#666666',      /* Subtle secondary meta */
+              lightmuted: '#8c8c8c', /* Captions & tiny labels */
+              line: '#e5e5e5',       /* Hairline dividers */
+              softbg: '#fafafa',     /* Off-white background */
+              paper: '#ffffff',      /* Pure white card backgrounds */
+              accent: '#0a74c0',     /* Royal Society of Chemistry editorial blue */
+              accentDark: '#08538a', /* Deep hover blue */
+              accentLight: '#f0f7fc' /* Minimalist blue wash for active states */
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            serif: ['"Newsreader"', 'Georgia', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Editorial Typographic Rhythm (Baku Paper 01-05) */
+    body {
+      background-color: #fafafa;
+      color: #262626;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .article-body p {
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 1.125rem; /* 18px */
+      line-height: 1.82;
+      color: #262626;
+      margin-bottom: 1.6rem;
+    }
+
+    .article-body p strong {
+      font-weight: 600;
+      color: #161616;
+    }
+
+    .editorial-dropcap::first-letter {
+      font-size: 4rem;
+      float: left;
+      line-height: 0.8;
+      margin-right: 0.65rem;
+      margin-top: 0.25rem;
+      font-weight: 600;
+      color: #161616;
+      font-family: "Newsreader", Georgia, serif;
+    }
+
+    /* Publication-style Scientific Table */
+    .pub-table {
+      border-top: 2px solid #161616;
+      border-bottom: 2px solid #161616;
+      width: 100%;
+    }
+    .pub-table th {
+      border-bottom: 1px solid #161616;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 600;
+      font-size: 0.8125rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.75rem 0.5rem;
+    }
+    .pub-table td {
+      border-bottom: 1px solid #eeeeee;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 0.875rem;
+      padding: 0.75rem 0.5rem;
+    }
+    .pub-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Reading Indicator */
+    #reading-progress {
+      transition: width 0.1s ease-out;
+    }
+
+    /* Figure Box */
+    .figure-container {
+      background: #ffffff;
+      border: 1px solid #e5e5e5;
+      border-radius: 4px;
+      padding: 1.25rem;
+      margin: 2.5rem 0;
+    }
+  </style>
+
+  <!-- Shared Reader System CSS -->
+  <link rel="stylesheet" href="../../shared/reader.css">
+</head>
+
+<body class="selection:bg-editorial-accentLight selection:text-editorial-accent" data-paper-id="13">
+
+  <!-- TOP HEADER & PROGRESS STRIP -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-editorial-line font-sans transition-all">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="../../index.html" class="flex items-center gap-2 text-xs font-semibold text-editorial-ink hover:text-editorial-accent transition-colors">
+          <svg class="w-4 h-4 text-editorial-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          <span>Katalog Utama</span>
+        </a>
+        <span class="text-editorial-line">/</span>
+        <span class="text-xs font-mono text-editorial-muted">Paper #13</span>
+      </div>
+
+      <div class="flex items-center gap-4 text-xs font-sans text-editorial-muted">
+        <span class="hidden sm:inline">Estimasi Baca: 25 Menit</span>
+        <div class="h-3 w-px bg-editorial-line hidden sm:inline"></div>
+        <span class="font-mono text-editorial-ink font-semibold">Isr. J. Chem. (Wiley)</span>
+      </div>
+    </div>
+    <!-- Reading Progress Indicator -->
+    <div id="reading-progress" class="h-0.5 bg-editorial-accent w-0 transition-all duration-150"></div>
+  </header>
+
+  <!-- ARTICLE HERO SECTION -->
+  <section class="bg-white border-b border-editorial-line pt-12 pb-10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Category Tag & Meta -->
+      <div class="flex items-center gap-3 text-xs font-semibold tracking-wider uppercase text-editorial-accent mb-4 font-sans">
+        <span>Kimia Komputasi &amp; Mekanika Kuantum Molekular</span>
+        <span class="text-editorial-line">•</span>
+        <span class="text-editorial-muted">Double-Hybrid DFT Anak Tangga ke-5</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-3xl sm:text-4xl lg:text-[42px] font-bold text-editorial-ink tracking-tight font-sans leading-[1.18] mb-6">
+        Teori Fungsional Kerapatan Double-Hybrid Empiris: Menjembatani Jurang Teori Fungsi Gelombang dan DFT (&lsquo;Jalan Ketiga&rsquo;)
+      </h1>
+
+      <!-- Standfirst / Lead Paragraph -->
+      <p class="text-lg sm:text-xl font-serif italic text-editorial-body leading-relaxed mb-8 border-l-2 border-editorial-accent pl-5">
+        Menyatukan keunggulan fungsional kerapatan semi-lokal dengan korelasi perturbatif orbital virtual pasca-Hartree-Fock, fungsional double-hybrid menempati anak tangga kelima dari Tangga Jacob John P. Perdew. Melalui kalibrasi parameter empiris minimalis berbobot termodinamika pada himpunan data masif GMTKN55, keluarga fungsional revDSD dan revDOD membuktikan bahwa akurasi setingkat metode komposit fungsi gelombang ab initio berbiaya tinggi dapat diraih dengan kecepatan komputasi yang praktis untuk kimia molekular kontemporer.
+      </p>
+
+      <!-- Authors & Affiliations Strip -->
+      <div class="pt-6 border-t border-editorial-line flex flex-wrap items-center justify-between gap-4 text-xs text-editorial-muted font-sans">
+        <div>
+          <div class="text-editorial-ink font-semibold text-sm">
+            Jan M. L. Martin* &amp; Golokesh Santra
+          </div>
+          <div class="mt-1 text-editorial-muted">
+            Department of Organic Chemistry, Weizmann Institute of Science, Rehovot, Israel
+          </div>
+        </div>
+        <div class="text-right">
+          <div class="text-editorial-ink font-medium">Israel Journal of Chemistry • Special Review Dedicated to Walter Thiel</div>
+          <div>Vol. 60, Hlm. 1–19 (2020) • DOI: 10.1002/ijch.201900114</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- KEY FINDINGS AT A GLANCE -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="bg-white border border-editorial-line rounded p-6 shadow-sm font-sans">
+      <h2 class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-4 flex items-center justify-between border-b border-editorial-line pb-2">
+        <span>Rangkuman Angka Kunci Kinerja Fungsional Double-Hybrid (revDSD &amp; GMTKN55)</span>
+        <span class="text-editorial-muted font-normal lowercase font-mono">Martin &amp; Santra, 2020</span>
+      </h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-left">
+        <div>
+          <div class="text-xs text-editorial-muted">Akurasi Global GMTKN55</div>
+          <div class="text-2xl font-bold text-editorial-ink mt-0.5">2.26 <span class="text-xs font-normal text-editorial-muted">kcal/mol</span></div>
+          <div class="text-[11px] text-editorial-muted mt-1">WTMAD2 xrevDSD-PBEP86-D4 (setara metode komposit G4)</div>
+        </div>
+        <div>
+          <div class="text-xs text-editorial-muted">Minimalis Parameter Empiris</div>
+          <div class="text-2xl font-bold text-editorial-ink mt-0.5">5 – 6 <span class="text-xs font-normal text-editorial-muted">Parameter</span></div>
+          <div class="text-[11px] text-editorial-muted mt-1">Jauh di bawah 16 parameter ωB97M(2) atau 29 parameter M06-2X</div>
+        </div>
+        <div>
+          <div class="text-xs text-editorial-muted">Hambatan Organologam (MOBH35)</div>
+          <div class="text-2xl font-bold text-editorial-ink mt-0.5">1.2 – 1.4 <span class="text-xs font-normal text-editorial-muted">kcal/mol</span></div>
+          <div class="text-[11px] text-editorial-muted mt-1">MAD revDOD-PBEP86-D4 tanpa korelasi same-spin</div>
+        </div>
+        <div>
+          <div class="text-xs text-editorial-muted">Presisi Frekuensi Harmonik</div>
+          <div class="text-2xl font-bold text-editorial-ink mt-0.5">11 <span class="text-xs font-normal text-editorial-muted">cm⁻¹</span></div>
+          <div class="text-[11px] text-editorial-muted mt-1">RMSD HFREQ27 DSD-PBEP86 murni tanpa faktor skala</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN ARTICLE LAYOUT (3 Columns: Left Notes + Center Article + Right Aside) -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      
+      <!-- ARTICLE TEXT (Cols 1-8) -->
+      <main class="lg:col-span-8 article-body">
+
+        <!-- EXECUTIVE SUMMARY ACCORDION -->
+        <div class="border border-editorial-line bg-white rounded p-5 mb-10">
+          <div class="flex items-center justify-between cursor-pointer select-none" onclick="toggleSummary()">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-editorial-accent"></span>
+              <h3 class="text-sm font-bold text-editorial-ink tracking-tight font-sans">
+                Ringkasan Eksekutif untuk Peneliti (4 Pilar Konseptual)
+              </h3>
+            </div>
+            <span id="summary-chevron" class="text-xs font-mono text-editorial-muted">[- tutup]</span>
+          </div>
+
+          <div id="summary-content" class="mt-4 pt-4 border-t border-editorial-line text-xs sm:text-sm font-sans text-editorial-body space-y-2.5 leading-relaxed">
+            <p><strong>1. Dikotomi Klasik WFT vs DFT dan Posisi Anak Tangga ke-5:</strong> Teori fungsi gelombang (WFT) berkonvergen sistematis menuju batas eksak namun terhambat penskalaan komputasi masif O(N⁷) untuk CCSD(T). Sebaliknya, DFT standar semi-lokal murah namun kerap terjebak galat swa-interaksi dan kegagalan dispersi. Fungsional double-hybrid (DH-DFT) menduduki anak tangga ke-5 Tangga Jacob, memadukan pertukaran eksak Hartree-Fock dan korelasi perturbatif orde dua (PT2) dari orbital virtual Kohn-Sham ke dalam kerangka fungsional semi-lokal.</p>
+            <p><strong>2. Redundansi Fisika Korelasi Same-Spin dan Fondasi DSD:</strong> Analisis mendalam permukaan energi potensial membuktikan bahwa korelasi same-spin MP2 membawa informasi fisika yang bertumpang tindih dengan koreksi dispersi jarak menengah-jauh. Keluarga fungsional DSD (<em>dispersion-corrected, spin-component-scaled, double hybrids</em>) mengurai koefisien opposite-spin (c2ab) dan same-spin (c2ss) secara independen, membebaskan DH-DFT dari ketergantungan sempit pada korelasi LYP dan membuka jalan bagi integrasi koreksi dispersi D3(BJ) maupun D4.</p>
+            <p><strong>3. Rekalibrasi Robust revDSD pada Tolok Ukur Masif GMTKN55:</strong> Berbeda dari parametrisasi awal berbasis dataset kecil yang rentan bias bobot, varian revisi (revDSD dan revDOD) dilatih secara simultan melintasi 2.459 titik energi pada himpunan data komprehensif GMTKN55. Hasilnya, fungsional seperti revDSD-PBEP86-D4 membukukan WTMAD2 spektakuler sebesar 2.33 kcal/mol (dan 2.26 kcal/mol untuk xrevDSD), bersaing ketat dengan fungsional kombinatorik berparameter rumit seperti ωB97M(2) hanya dengan berbekal 5 hingga 6 parameter linear.</p>
+            <p><strong>4. Efisiensi Skalabilitas dan Transferabilitas Lintas Sifat Molekular:</strong> Pemanfaatan aproksimasi Density Fitting (RI-MP2) mereduksi waktu langkah PT2 menjadi kurang dari sepertiga total biaya CPU. Varian revDOD (bebas same-spin) terbukti sangat ampuh mengatasi hambatan reaksi organometalik pada tolok ukur MOBH35 (MAD 1.4 kcal/mol) di mana korelasi same-spin kerap bersifat toksik. Fungsional ini juga membuktikan keunggulan murni pada frekuensi getaran harmonik (RMSD 11 cm⁻¹ tanpa penskalaan) serta pergeseran kimia NMR GIAO.</p>
+          </div>
+        </div>
+
+        <!-- TABLE OF CONTENTS (MINI JUMP NAV) -->
+        <nav class="p-4 bg-zinc-50 border border-editorial-line rounded text-xs font-sans mb-8">
+          <div class="font-bold text-editorial-ink uppercase tracking-wider mb-2">Navigasi Bab Telaah</div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-editorial-body">
+            <a href="#tangga-jacob-dft" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">01.</span> Paradoks Struktur Elektronik &amp; Tangga Jacob
+            </a>
+            <a href="#formulasi-dsd-spin" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">02.</span> Formulasi DSD &amp; Dekonvolusi Korelasi Spin
+            </a>
+            <a href="#reparametrisasi-revdsd-gmtkn55" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">03.</span> Rekalibrasi revDSD &amp; Benchmark GMTKN55
+            </a>
+            <a href="#akselerasi-dod-same-spin" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">04.</span> Akselerasi RI-MP2 &amp; Eliminasi Same-Spin (DOD)
+            </a>
+            <a href="#organometalik-frekuensi-nmr" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">05.</span> Kinetika Organologam, Frekuensi &amp; Respon NMR
+            </a>
+            <a href="#komparasi-wft-prospek" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">06.</span> Komparasi WFT Komposit &amp; Sintesis Jalan Ketiga
+            </a>
+          </div>
+        </nav>
+
+        <!-- BAB 1 -->
+        <section id="tangga-jacob-dft" class="pt-2">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            1. Paradoks Teori Struktur Elektronik: Tangga Jacob DFT dan Kemunculan Double-Hybrid
+          </h2>
+          <p class="editorial-dropcap">
+            Dalam lanskap kimia kuantum modern, pemodelan struktur elektronik bertumpu pada dua tiang penyangga utama: teori berbasis fungsi gelombang (<em>wavefunction-based ab initio theory</em>, WFT) dan teori fungsional kerapatan (<em>density functional theory</em>, DFT). Metode WFT menawarkan jalur konvergensi matematis yang terdefinisi secara ketat menuju solusi eksak persamaan Schrödinger non-relativistik. Melalui hierarki teori perturbasi Møller-Plesset (MP2), <em>coupled cluster</em> dengan eksitasi tunggal dan ganda (CCSD), hingga standar emas komputasi CCSD(T), WFT mampu mencapai akurasi kimiawi mutlak (kurang dari 1 kcal/mol). Namun, keberhasilan ini ditebus dengan biaya komputasi yang mencekik: penskalaan waktu CPU sebesar O(N⁷) terhadap ukuran sistem N membatasi penerapan kanonikal CCSD(T) hanya pada molekul-molekul berukuran sangat kecil.
+          </p>
+          <p>
+            Sebaliknya, DFT menghadirkan efisiensi penskalaan sistem yang jauh lebih ramah (umumnya O(N³) hingga O(N⁴)), menjadikannya instrumen kerja paling populer untuk eksplorasi reaksi kimia berukuran sedang hingga makromolekul hayati. Akan tetapi, efisiensi ini dibayar dengan ketidaktahuan fundamental: fungsional pertukaran-korelasi (<em>exchange-correlation</em>, XC) eksak tidak diketahui secara analitik. Fenomena ini memicu proliferasi ratusan fungsional aproksimasi yang dijuluki oleh John P. Perdew sebagai <em>the functional zoo</em>.
+          </p>
+          <p>
+            Guna menertibkan belantara fungsional tersebut, Perdew pada tahun 2001 merumuskan metafora alkitabiah yang sangat terkenal: <strong>Tangga Jacob DFT</strong> (<em>Jacob&rsquo;s Ladder of DFT</em>, Kejadian 28:10–12). Tangga ini membentang dari bumi yang fana—diumpamakan sebagai pendekatan Hartree murni tanpa korelasi dan pertukaran elektron—menuju surga fisis berupa fungsional XC eksak yang memuat seluruh interaksi kuantum banyak-tubuh tanpa cacat.
+          </p>
+
+          <!-- FIGURE 1 -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig1_jacobs_ladder_dft.png" 
+                alt="Ilustrasi Tangga Jacob Teori Fungsional Kerapatan (DFT) Menurut John P. Perdew" 
+                class="w-full max-w-xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig1_jacobs_ladder_dft.png', 'Gambar 1: Ilustrasi Tangga Jacob DFT (Perdew)')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 1 | Ilustrasi Tangga Jacob Teori Fungsional Kerapatan (DFT) menurut John P. Perdew.</span> 
+              Tingkatan anak tangga merefleksikan kompleksitas bahan fisis yang dilibatkan dalam fungsional: 
+              <strong>Anak Tangga 1:</strong> Aproksimasi Kerapatan Lokal (LDA, ρ(r)); 
+              <strong>Anak Tangga 2:</strong> Aproksimasi Gradien Tergeneralisasi (GGA, ∇ρ(r)); 
+              <strong>Anak Tangga 3:</strong> meta-GGA (mGGA, kerapatan energi kinetik τ atau ∇²ρ(r)); 
+              <strong>Anak Tangga 4:</strong> Fungsional Hibrida (menyertakan pertukaran Hartree-Fock dari orbital terisi); 
+              <strong>Anak Tangga 5:</strong> Fungsional Double-Hybrid (mengikutsertakan korelasi orbital virtual tak-terisi via PT2 atau dRPA, seperti revDSD-PBEP86-D4 dan ωB97M(2)). Karya seni mengadopsi lukisan Renaissance Prancis <em>Le Songe de Jacob</em> karya Nicolas Dipre (1460–1532).
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Martin &amp; Santra, Isr. J. Chem. 60 (2020) 1–19. (Klik gambar untuk perbesar)</div>
+            </figcaption>
+          </figure>
+
+          <p>
+            Anak tangga 1 sampai 3 merepresentasikan fungsional semi-lokal. Pada anak tangga ke-4, fungsional hibrida global (seperti B3LYP dan PBE0) serta hibrida terpisah-jarak (<em>range-separated hybrids</em>, RSH seperti CAM-B3LYP dan ωB97X-V) memasukkan fraksi pertukaran eksak Hartree-Fock (HF) yang dihitung dari orbital-orbital molekul terisi (<em>occupied orbitals</em>). Namun demikian, fungsional anak tangga ke-4 tetap mengalami keterbatasan intrinsik dalam menangani gaya dispersi jarak jauh dan eksitasi korelasi dinamis kompleks.
+          </p>
+          <p>
+            Puncak tertinggi hierarki fungsional kontemporer dihuni oleh <strong>Anak Tangga ke-5: Fungsional Double-Hybrid (DH-DFT)</strong>. Pada tingkatan ini, untuk pertama kalinya orbital-orbital virtual tak-terisi (<em>unoccupied/virtual orbitals</em>) dilibatkan secara eksplisit guna menghitung korelasi non-lokal melalui teori perturbasi orde dua (PT2) gaya Møller-Plesset atau aproksimasi fase acak langsung (dRPA). Stefan Grimme pada tahun 2006 memelopori paradigma ini secara praktis melalui fungsional B2PLYP. Kehadiran double-hybrid menghadirkan <em>Jalan Ketiga</em> (<em>A Third Way</em>): memadukan kekokohan termodinamika fungsional semi-lokal pada jarak pendek dengan presisi teori perturbasi fungsi gelombang pada jarak menengah dan jauh, menembus batas presisi yang selama ini mustahil dicapai oleh fungsional hibrida konvensional.
+          </p>
+        </section>
+
+        <!-- BAB 2 -->
+        <section id="formulasi-dsd-spin" class="pt-8">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            2. Formulasi Matematika Fungsional DSD dan Dekonvolusi Korelasi Spin
+          </h2>
+          <p class="editorial-dropcap">
+            Secara matematis dan prosedural, evaluasi fungsional double-hybrid dieksekusi dalam dua tahapan komputasi yang terpisah secara runtut:
+          </p>
+          <p>
+            <strong>Tahap Pertama (Penyelesaian Persamaan Mandiri Kohn-Sham):</strong> Himpunan orbital molekul Kohn-Sham (KS) diperoleh melalui perhitungan swa-konsisten (Self-Consistent Field, SCF) menggunakan fungsional energi perantara yang memuat fraksi pertukaran HF parsial dan korelasi semi-lokal:
+          </p>
+
+          <!-- Equation Card 1 -->
+          <div class="my-6 p-4 bg-editorial-softbg border border-editorial-line rounded font-mono text-sm space-y-3">
+            <div class="flex items-center justify-between border-b border-editorial-line pb-2">
+              <span class="text-xs uppercase font-sans font-bold text-editorial-muted">Formulasi Tahap 1 • Pembentukan Orbital Mandiri Kohn-Sham</span>
+              <span class="text-xs text-editorial-lightmuted">(Persamaan 1)</span>
+            </div>
+            <div class="text-center py-2 text-editorial-ink font-semibold">
+              E_SCF = E_1e + cX&prime; E_X,HF + (1 &minus; cX&prime;) E_X,DFT + cC,XC&prime; E_C,DFT
+            </div>
+            <div class="text-xs font-sans text-editorial-muted text-center">
+              Di mana E_1e adalah energi satu-elektron; cX&prime; dan cC,XC&prime; masing-masing merupakan fraksi pertukaran HF dan korelasi DFT yang digunakan selama iterasi pembentukan kerapatan muatan.
+            </div>
+          </div>
+
+          <p>
+            <strong>Tahap Kedua (Evaluasi Energi Double-Hybrid Pasca-SCF):</strong> Berkas orbital Kohn-Sham yang telah konvergen dari Tahap 1 kemudian digunakan untuk mengevaluasi energi total akhir fungsional double-hybrid, yang memadukan komponen pertukaran eksak, korelasi semi-lokal, suku korelasi perturbatif non-lokal (PT2), serta koreksi dispersi empiris:
+          </p>
+
+          <!-- Equation Card 2 -->
+          <div class="my-6 p-4 bg-editorial-softbg border border-editorial-line rounded font-mono text-sm space-y-3">
+            <div class="flex items-center justify-between border-b border-editorial-line pb-2">
+              <span class="text-xs uppercase font-sans font-bold text-editorial-muted">Formulasi Tahap 2 • Energi Total Double-Hybrid Terdekomposisi Spin (DSD-DH)</span>
+              <span class="text-xs text-editorial-lightmuted">(Persamaan 2)</span>
+            </div>
+            <div class="text-center py-2 text-editorial-ink font-semibold">
+              E_DH = E_1e + cX E_X,HF + (1 &minus; cX) E_X,DFT + cC,XC E_C,DFT + c2ab E_ab^postHF + c2ss (E_aa^postHF + E_bb^postHF) + E_disp
+            </div>
+            <div class="text-xs font-sans text-editorial-muted text-center">
+              c2ab dan c2ss mengontrol fraksi korelasi perturbatif spin-berlawanan (opposite-spin) dan spin-searah (same-spin), sedangkan E_disp adalah energi koreksi dispersi empiris terkalibrasi.
+            </div>
+          </div>
+
+          <p>
+            Dalam fungsional double-hybrid sederhana rintisan Grimme (B2PLYP), nilai koefisien korelasi perturbatif dibatasi secara kaku oleh konstrain simetri spin konvensional: c2ss = c2ab = c2 = 0.27, dipadukan secara eksklusif dengan korelasi semi-lokal Lee-Yang-Parr (LYP) dan pertukaran Becke 88 (B88). Namun, penelitian lanjutan oleh Sebastian Kozuch dan Jan M. L. Martin mengungkap anomali mendasar: fungsional B2PLYP hanya bekerja baik karena sifat spesifik model Colle-Salvetti yang mendasari korelasi LYP, di mana energi korelasi gas elektron seragam terpolarisasi spin penuh lenyap secara artifisial.
+          </p>
+          <p>
+            Lebih krusial lagi, Martin dan rekan-rekan membuktikan adanya <strong>redundansi fisika antara korelasi same-spin dan dispersi van der Waals</strong>. Sebagaimana divisualisasikan pada pemetaan permukaan torsi n-pentana pada Gambar 2, kontur permukaan energi korelasi same-spin CCSD memiliki topologi dan pola kelengkungan yang persis identik dengan potensial dispersi empiris non-lokal.
+          </p>
+
+          <!-- FIGURE 2 -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig2_npentane_spin_correlation_dispersion.png" 
+                alt="Perbandingan Kontur Energi Korelasi Opposite-Spin, Same-Spin, dan Dispersi pada Permukaan Torsi n-Pentana" 
+                class="w-full max-w-md h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig2_npentane_spin_correlation_dispersion.png', 'Gambar 2: Dekonvolusi Korelasi Spin dan Dispersi n-Pentana')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 2 | Perbandingan komponen korelasi spin dan kontribusi dispersi pada permukaan torsi n-pentana.</span> 
+              <strong>(Atas)</strong> Kontribusi korelasi opposite-spin CCSD (CCSDab); 
+              <strong>(Tengah)</strong> Kontribusi korelasi same-spin pasangan triplet CCSD-F12b (T pairs); 
+              <strong>(Bawah)</strong> Kontribusi energi dispersi non-lokal terhitung via fungsional NL(TPSS, b=5.0). 
+              Perhatikan kemiripan topologi kontur yang nyaris sempurna antara panel tengah (same-spin) dan panel bawah (dispersi), membuktikan redundansi parameterik bila keduanya diterapkan tanpa dekomposisi spin yang fleksibel.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Martin, J. Phys. Chem. A 117 (2013) 3118–3132 / ACS. (Klik gambar untuk perbesar)</div>
+            </figcaption>
+          </figure>
+
+          <p>
+            Temuan revolusioner ini melahirkan rumpun fungsional <strong>DSD (Dispersion-corrected, Spin-component-scaled, Double hybrids)</strong>. Dengan melepaskan belenggu konstrain simetri c2ss = c2ab, optimasi bebas menunjukkan bahwa rasio optimal c2ss / c2ab untuk korelasi GGA PBE adalah 0.12 / 0.53, dan untuk BP86 adalah 0.24 / 0.49. Artinya, sebagian besar korelasi perturbatif same-spin dapat diredam karena fungsinya telah diemban secara jauh lebih akurat dan murah oleh suku dispersi empiris seperti Grimme D3(BJ) atau D4. Fleksibilitas ini membebaskan double-hybrid dari keterikatan sempit pada korelasi LYP, membuka jalan bagi fungsional unggulan seperti DSD-PBEP86 yang secara dramatis mengungguli pendahulunya.
+          </p>
+        </section>
+
+        <!-- BAB 3 -->
+        <section id="reparametrisasi-revdsd-gmtkn55" class="pt-8">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            3. Reparametrisasi Komprehensif revDSD dan Evaluasi Benchmark Masif GMTKN55
+          </h2>
+          <p class="editorial-dropcap">
+            Generasi awal fungsional DSD (seperti DSD-PBEP86 dan DSD-BLYP yang dirilis pada tahun 2011) dikalibrasi menggunakan himpunan data pelatihan yang relatif terbatas, mencakup entalpi atomisasi W4-08, energi aktivasi reaksi DBH24, dan interaksi non-kovalen S22. Keterbatasan diversitas kimiawi ini menimbulkan hipersensitivitas bobot pada sistem logam transisi (seperti adisi oksidatif paladium) serta dimer gas mulia, memunculkan kekhawatiran bahwa fungsional tersebut hanya sekadar mencocokkan titik-titik sampel sempit (<em>fitting round pegs to square holes</em>).
+          </p>
+          <p>
+            Untuk membangun fungsional yang memiliki ketahanan kimiawi sejati (<em>chemical robustness</em>), Jan M. L. Martin dan Golokesh Santra melakukan reparametrisasi menyeluruh pada tolok ukur termokimia paling masif dan heterogen di dunia: <strong>GMTKN55</strong> (<em>General Main-group Thermochemistry, Kinetics, and Noncovalent interactions database</em>) yang dikembangkan oleh Grimme, Goerigk, dan kawan-kawan. GMTKN55 memuat 1.500 perbedaan energi unik yang terdistribusi melintasi 55 subset kimiawi dan membutuhkan 2.459 kalkulasi titik-tunggal berakurasi tinggi dengan basis set def2-QZVPPD.
+          </p>
+          <p>
+            Kinerja fungsional dievaluasi menggunakan statistik deviasi mutlak terbobot tipe 2 (<strong>WTMAD2</strong>), di mana galat rata-rata dinormalisasi terhadap skala energi masing-masing subset (56.84 kcal/mol / |ΔE|i) agar energi interaksi non-kovalen yang kecil tidak tertelan oleh besarnya entalpi atomisasi. Tabel 1 merangkum perbandingan kinerja termokimia lintas anak tangga Tangga Jacob.
+          </p>
+
+          <!-- PUBLICATION TABLE 1 -->
+          <div class="my-6">
+            <div class="text-xs font-semibold text-editorial-muted uppercase tracking-wider mb-2 font-sans">
+              Tabel 1 | Statistik Galat WTMAD2 (kcal/mol) pada Tolok Ukur GMTKN55 dan Subkategori Kunci Lintas Rung DFT
+            </div>
+            <div class="overflow-x-auto">
+              <table class="pub-table">
+                <thead>
+                  <tr class="text-editorial-ink">
+                    <th class="text-left">Fungsional XC</th>
+                    <th class="text-center font-mono">Rung</th>
+                    <th class="text-right">WTMAD2 Total</th>
+                    <th class="text-right">Termokimia</th>
+                    <th class="text-right">Barrier Height</th>
+                    <th class="text-right">Non-Kovalen</th>
+                    <th class="text-right">MOBH35 MAD</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="bg-blue-50/40 font-semibold">
+                    <td class="font-medium text-editorial-accent">ωB97M(2) (RSH-DH)</td>
+                    <td class="text-center font-mono text-xs">5</td>
+                    <td class="text-right font-mono text-editorial-accent">2.19</td>
+                    <td class="text-right font-mono">0.44</td>
+                    <td class="text-right font-mono">0.26</td>
+                    <td class="text-right font-mono">0.49</td>
+                    <td class="text-right font-mono">1.9</td>
+                  </tr>
+                  <tr class="bg-emerald-50/40 font-semibold">
+                    <td class="font-medium text-editorial-ink">xrevDSD-PBEP86-D4</td>
+                    <td class="text-center font-mono text-xs">5</td>
+                    <td class="text-right font-mono font-bold text-editorial-ink">2.26</td>
+                    <td class="text-right font-mono">0.56</td>
+                    <td class="text-right font-mono">0.27</td>
+                    <td class="text-right font-mono">0.47</td>
+                    <td class="text-right font-mono text-editorial-muted">&mdash;</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">revDSD-PBEP86-D4</td>
+                    <td class="text-center font-mono text-xs">5</td>
+                    <td class="text-right font-mono font-semibold">2.33</td>
+                    <td class="text-right font-mono">0.56</td>
+                    <td class="text-right font-mono">0.31</td>
+                    <td class="text-right font-mono">0.48</td>
+                    <td class="text-right font-mono font-semibold">1.5</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">revDOD-PBEP86-D4 (Bebas Same-Spin)</td>
+                    <td class="text-center font-mono text-xs">5</td>
+                    <td class="text-right font-mono font-semibold">2.36</td>
+                    <td class="text-right font-mono">0.59</td>
+                    <td class="text-right font-mono">0.30</td>
+                    <td class="text-right font-mono">0.47</td>
+                    <td class="text-right font-mono font-bold text-editorial-accent">1.4</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">revDSD-PBEP86-D3(BJ)</td>
+                    <td class="text-center font-mono text-xs">5</td>
+                    <td class="text-right font-mono">2.42</td>
+                    <td class="text-right font-mono">0.54</td>
+                    <td class="text-right font-mono">0.31</td>
+                    <td class="text-right font-mono">0.57</td>
+                    <td class="text-right font-mono">1.7</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">DSD-PBEP86-D3(BJ) (Original)</td>
+                    <td class="text-center font-mono text-xs">5</td>
+                    <td class="text-right font-mono">3.10</td>
+                    <td class="text-right font-mono">0.55</td>
+                    <td class="text-right font-mono">0.45</td>
+                    <td class="text-right font-mono">0.97</td>
+                    <td class="text-right font-mono">2.2</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">B2GP-PLYP-D3</td>
+                    <td class="text-center font-mono text-xs">5</td>
+                    <td class="text-right font-mono">3.19</td>
+                    <td class="text-right font-mono">0.63</td>
+                    <td class="text-right font-mono">0.42</td>
+                    <td class="text-right font-mono">0.85</td>
+                    <td class="text-right font-mono">2.3</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">B2PLYP-D3 (Grimme 2006)</td>
+                    <td class="text-center font-mono text-xs">5</td>
+                    <td class="text-right font-mono">3.90</td>
+                    <td class="text-right font-mono">0.79</td>
+                    <td class="text-right font-mono">0.63</td>
+                    <td class="text-right font-mono">0.78</td>
+                    <td class="text-right font-mono">3.0</td>
+                  </tr>
+                  <tr class="border-t border-editorial-line bg-zinc-50/60">
+                    <td class="font-medium text-editorial-ink">ωB97M-V (Terbaik Rung 4 - RSH mGGA)</td>
+                    <td class="text-center font-mono text-xs">4</td>
+                    <td class="text-right font-mono font-semibold text-editorial-ink">3.29</td>
+                    <td class="text-right font-mono">0.73</td>
+                    <td class="text-right font-mono">0.45</td>
+                    <td class="text-right font-mono">0.57</td>
+                    <td class="text-right font-mono">1.7</td>
+                  </tr>
+                  <tr class="bg-zinc-50/60">
+                    <td class="font-medium text-editorial-ink">M06-2X (Global Hybrid mGGA)</td>
+                    <td class="text-center font-mono text-xs">4</td>
+                    <td class="text-right font-mono">4.79</td>
+                    <td class="text-right font-mono">0.86</td>
+                    <td class="text-right font-mono">0.48</td>
+                    <td class="text-right font-mono">1.14</td>
+                    <td class="text-right font-mono">3.1</td>
+                  </tr>
+                  <tr class="bg-zinc-50/60">
+                    <td class="font-medium text-editorial-ink">B3LYP-D3 (Standar Industri)</td>
+                    <td class="text-center font-mono text-xs">4</td>
+                    <td class="text-right font-mono">6.50</td>
+                    <td class="text-right font-mono">1.31</td>
+                    <td class="text-right font-mono">1.14</td>
+                    <td class="text-right font-mono">1.24</td>
+                    <td class="text-right font-mono">3.8</td>
+                  </tr>
+                  <tr class="border-t border-editorial-line">
+                    <td class="font-medium text-editorial-ink">SCAN-D3 (Terbaik Rung 3 - mGGA)</td>
+                    <td class="text-center font-mono text-xs">3</td>
+                    <td class="text-right font-mono">7.95</td>
+                    <td class="text-right font-mono">1.67</td>
+                    <td class="text-right font-mono">1.95</td>
+                    <td class="text-right font-mono">1.73</td>
+                    <td class="text-right font-mono">3.8</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">PBE-D3 (Standar Rung 2 - GGA)</td>
+                    <td class="text-center font-mono text-xs">2</td>
+                    <td class="text-right font-mono">10.44</td>
+                    <td class="text-right font-mono">2.09</td>
+                    <td class="text-right font-mono">2.41</td>
+                    <td class="text-right font-mono">2.05</td>
+                    <td class="text-right font-mono">4.7</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">SPW92 (Rung 1 - LDA)</td>
+                    <td class="text-center font-mono text-xs">1</td>
+                    <td class="text-right font-mono">22.67</td>
+                    <td class="text-right font-mono">4.46</td>
+                    <td class="text-right font-mono">4.05</td>
+                    <td class="text-right font-mono">6.12</td>
+                    <td class="text-right font-mono">7.1</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <p>
+            Data pada Tabel 1 menyajikan kesimpulan empiris yang sangat gamblang: <strong>revDSD-PBEP86-D4 membukukan WTMAD2 sebesar 2.33 kcal/mol</strong>, memangkas galat fungsional hibrida standar B3LYP-D3 hingga hampir tiga kali lipat dan melampaui seluruh fungsional anak tangga ke-4 (termasuk ωB97M-V pada 3.29 kcal/mol dan M06-2X pada 4.79 kcal/mol). Peningkatan ini diraih dengan menerapkan model koreksi dispersi D4 mutakhir karya Caldeweyher dan Grimme yang memasukkan ketergantungan muatan parsial atomik dinamis dan interaksi non-lokal 3-tubuh Axilrod-Teller-Muto (ATM).
+          </p>
+          <p>
+            Yang paling memukau dari perspektif filosofi kimia kuantum, fungsional <strong>revDSD hanya membutuhkan 6 parameter empiris yang terjustifikasi secara fisik</strong>. Fungsional kombinatorik ωB97M(2) memang mencatat WTMAD2 sedikit lebih rendah (2.19 kcal/mol), namun selisih sebesar 0.07 kcal/mol tersebut berada jauh di dalam batas ketidakpastian eksperimental naskah acuan dan harus dibayar mahal dengan keterlibatan 16 parameter fitting yang kompleks.
+          </p>
+        </section>
+
+        <!-- BAB 4 -->
+        <section id="akselerasi-dod-same-spin" class="pt-8">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            4. Akselerasi Komputasi, Reduksi Penskalaan, dan Varian DOD Bebas Same-Spin
+          </h2>
+          <p class="editorial-dropcap">
+            Keberatan utama yang kerap dilontarkan terhadap adopsi luas fungsional double-hybrid adalah beban komputasinya yang dianggap setara dengan MP2 formal O(N⁵). Martin dan Santra menepis anggapan ini melalui analisis rincian alokasi waktu komputasi (<em>profiling</em>) pada kode modern.
+          </p>
+          <p>
+            Dengan menerapkan teknik resolusi identitas / pencocokan kerapatan (<strong>Resolution of the Identity / Density Fitting, RI-MP2</strong>), langkah evaluasi integral transformasi empat-pusat dua-elektron dapat dipercepat secara drastis. Pada molekul berukuran kecil hingga sedang, tahap RI-MP2 hanya mengonsumsi persentase satu digit (kurang dari 10%) dari total waktu eksekusi CPU; bahkan untuk molekul raksasa seperti isomer fulerena C60, porsi RI-MP2 mentok di kisaran 25–30%. Artinya, mayoritas waktu komputasi tetap didominasi oleh konvergensi matriks Fock iteratif SCF yang merupakan beban baku perhitungan DFT biasa.
+          </p>
+          <p>
+            Kendati demikian, untuk mendorong komputasi menuju skala polimer dan sistem supra-molekular, pemangkasan penskalaan integral virtual tetap menjadi prioritas. Tiga terobosan algoritma mutakhir dibedah secara komparatif:
+          </p>
+          <ul class="list-disc pl-6 space-y-2 text-sm sm:text-base font-serif text-editorial-body mb-6">
+            <li><strong>Orbital Alami Pasangan Terlokalisasi (DLPNO-MP2):</strong> Dikembangkan oleh Frank Neese dan Edward Valeev, pendekatan ini melokalisasi ruang orbital virtual sehingga penskalaan asimtotik tereduksi tajam menjadi O(N) linier.</li>
+            <li><strong>Transformasi Laplace SOS-MP2:</strong> Mengeliminasi korelasi same-spin dan mengevaluasi murni suku opposite-spin dalam skala waktu O(N⁴) tanpa membutuhkan lokalisasi orbital.</li>
+            <li><strong>Tensor Hypercontraction (THC):</strong> Inovasi terbaru Song dan Martinez yang memfaktorisasi tensor integral Coulomb dua-elektron, mereduksi formalitas korelasi menjadi O(N³).</li>
+          </ul>
+
+          <p>
+            Peluang percepatan ini mendorong perumusan varian <strong>DOD (Dispersion-corrected, Opposite-spin-scaled, Double hybrids)</strong>, di mana koefisien same-spin disetel nol secara absolut (c2ss = 0). Dengan menghilangkan evaluasi integral same-spin yang boros memori, varian <strong>revDOD-PBEP86-D4</strong> mempertahankan akurasi prima pada GMTKN55 (WTMAD2 2.36 kcal/mol, hanya berselisih 0.03 kcal/mol dari revDSD) hanya dengan mengandalkan <strong>5 parameter linear tunggal</strong>.
+          </p>
+
+          <!-- FIGURE 3 -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig3_dsd_scan_coefficients_trend.png" 
+                alt="Tren Linier Evolusi Koefisien Fungsional DSD-SCANx-D3 Sebagai Fungsi Fraksi Pertukaran Hartree-Fock" 
+                class="w-full max-w-2xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig3_dsd_scan_coefficients_trend.png', 'Gambar 3: Tren Linier Koefisien DSD-SCANx-D3')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 3 | Evolusi reguler koefisien optimal keluarga DSD-SCANx-D3(BJ) terhadap fraksi pertukaran HF (x).</span> 
+              Perhatikan relasi linier yang sangat ketat (koefisien determinasi R² &gt; 0.99) melintasi rentang fraksi pertukaran HF yang lebar (x = 0.50 hingga 0.80) untuk parameter korelasi DFT (cC,XC), korelasi opposite-spin (c2ab), same-spin (c2ss), dan dispersi (cDisp). Keteraturan ini membuktikan bahwa fungsional double-hybrid tidak terjebak pada kompensasi galat lokal yang kacau, melainkan bertumpu pada landasan fisis transferabilitas kerapatan yang kokoh.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: ESI Santra, Sylvetsky, &amp; Martin, J. Phys. Chem. A 123 (2019) 5129–5143 / ACS. (Klik gambar untuk perbesar)</div>
+            </figcaption>
+          </figure>
+
+          <p>
+            Keteraturan transferabilitas ini terkonfirmasi secara meyakinkan pada Gambar 3. Ketika fraksi pertukaran HF divariasikan dari 0.50 hingga 0.80 pada kerangka meta-GGA SCAN, parameter korelasi perturbatif dan dispersi berevolusi secara linier monontonik sempurna dengan R² mendekati 1.00. Fakta empiris ini menegaskan bahwa fungsional double-hybrid berbasis DSD dan DOD memiliki ketahanan parametrik yang luar biasa, di mana variasi fraksi HF sebesar ±0.05 hampir tidak mengubah kualitas hasil energi akhir.
+          </p>
+        </section>
+
+        <!-- BAB 5 -->
+        <section id="organometalik-frekuensi-nmr" class="pt-8">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            5. Validasi Melintasi Termokimia: Kompleks Organologam MOBH35, Frekuensi Harmonik, dan Respon NMR
+          </h2>
+          <p class="editorial-dropcap">
+            Ujian sejati bagi fungsional komputasi teoretis adalah kemampuannya memprediksi sifat-sifat fisis yang tidak pernah disertakan sama sekali selama proses kalibrasi parameter (<em>unseen properties &amp; out-of-domain transferability</em>). Martin dan Santra menguji keandalan ini pada tiga ranah krusial: kinetika organologam, kelengkungan permukaan energi potensial getaran, dan sifat respon magnetik NMR.
+          </p>
+          <p>
+            <strong>Tantangan Kinetika Reaksi Organologam (Tolok Ukur MOBH35):</strong> Kompleks logam transisi kerap diwarnai korelasi statis (<em>near-degeneracy</em> orbital d) yang dapat merusak kestabilan penyebut orbital pada teori perturbasi PT2. Pada tolok ukur 35 reaksi organometalik realistis MOBH35 karya Iron dan Janes, fungsional semi-lokal anak tangga 1–3 gagal total (Tabel 1). Namun, varian bebas same-spin <strong>revDOD-PBEP86-D4 mencatat kinerja terbaik dari seluruh fungsional anak tangga ke-5 dengan MAD sebesar 1.4 kcal/mol</strong> (dan turun hingga 1.2 kcal/mol melalui ekstrapolasi basis set def2-QZVPP).
+          </p>
+          <p>
+            Pembedahan mekanistik membuktikan bahwa korelasi same-spin MP2 bersifat &ldquo;beracun&rdquo; (<em>poisonous</em>) ketika berhadapan dengan sistem yang memiliki korelasi statis parsial: pada pemodelan katalis hidrogenasi rutenium Milstein, RMSD metode MP2 standar melonjak hingga 9.5 kcal/mol, sedangkan SOS-MP2 (murni opposite-spin) mampu menekan galat hingga 5.4 kcal/mol, bahkan lebih unggul dari CCSD standar (6.0 kcal/mol). Inilah alasan fisis mengapa revDOD mengungguli revDSD pada kimia organologam.
+          </p>
+
+          <!-- FIGURE 4 -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig4_hfreq_rmsd_contour_plot.png" 
+                alt="Plot Kontur RMSD Frekuensi Harmonik Database HFREQ27 Sebagai Fungsi Koefisien c2ab dan c2ss" 
+                class="w-full max-w-md h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig4_hfreq_rmsd_contour_plot.png', 'Gambar 4: Kontur RMSD Frekuensi Harmonik HFREQ27')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 4 | Plot kontur galat RMSD (cm⁻¹) untuk tolok ukur frekuensi harmonik HFREQ27 pada fungsional DSD-PBEP86.</span> 
+              Galat dipetakan sebagai fungsi dari koefisien korelasi opposite-spin (c2ab) dan same-spin (c2ss). Titik kotak menandai fungsional DSD-PBEP86-D3(BJ) original, lingkaran besar menandai revDSD-PBEP86-D3(BJ), segitiga kiri revDSD-PBEP86-D4, dan segitiga kanan revDOD-PBEP86-D4. 
+              Perhatikan bahwa seluruh varian revDSD/revDOD berkumpul tepat di dasar lembah optimal berwarna ungu (RMSD ~8.76 – 11 cm⁻¹), membuktikan bahwa reparametrisasi termodinamika GMTKN55 secara inheren meningkatkan kelengkungan fisis permukaan energi potensial tanpa memerlukan data getaran selama pelatihan.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Santra, Sylvetsky, &amp; Martin, J. Phys. Chem. A 123 (2019) 5129–5143 / ACS. (Klik gambar untuk perbesar)</div>
+            </figcaption>
+          </figure>
+
+          <p>
+            <strong>Presisi Frekuensi Harmonik &amp; Anharmonik (HFREQ27):</strong> Apakah akurasi termodinamika yang tinggi diraih dengan mengorbankan kurvatur permukaan energi potensial (PES)? Gambar 4 membuktikan kebalikannya. Pada tolok ukur spektroskopi resolusi tinggi HFREQ27, metode MP2 standar memiliki RMSD 30 cm⁻¹, PBE0 32 cm⁻¹, dan B3LYP 25 cm⁻¹. Sebaliknya, fungsional <strong>DSD-PBEP86 dan revDSD-PBEP86 mencapai akurasi luar biasa sebesar 11 cm⁻¹ secara murni tanpa membutuhkan faktor koreksi skala empiris</strong>. Formulasi ini memungkinkan perhitungan anharmonik tingkat lanjut via teori perturbasi rovibrasional orde dua (VPT2) menggunakan medan gaya kuartik semi-diagonal metode Schneider-Thiel.
+          </p>
+          <p>
+            <strong>Konstanta Perisai Kimia NMR (GIAO-CSCs):</strong> Dalam spektroskopi resonansi magnet inti, implementasi Gauge-Including Atomic Orbitals (GIAO) pada paket ORCA membuktikan bahwa DSD-PBEP86-D3(BJ) menorehkan galat relatif rata-rata (Mean Absolute Relative Error, MARE) hanya sebesar 1.9% terhadap data acuan CCSD(T), mengungguli MP2 (4.1%), SCS-MP2 (3.9%), serta fungsional meta-GGA M06-L (5.4%) dan TPSS (6.4%). Digabungkan dengan integrasi RI-MP2 dan aproksimasi rantai bola (Chain of Spheres, RIJCOSX), kalkulasi pergeseran kimia NMR berpresisi tinggi kini sanggup menjangkau molekul raksasa hingga 400 elektron pada komputer kerja standar.
+          </p>
+        </section>
+
+        <!-- BAB 6 -->
+        <section id="komparasi-wft-prospek" class="pt-8 border-t border-editorial-line mt-10">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            6. Komparasi Terhadap Metode WFT Komposit, Batasan Korelasi Statis, dan Prospek &lsquo;Jalan Ketiga&rsquo;
+          </h2>
+          <p class="editorial-dropcap">
+            Pencapaian WTMAD2 di kisaran 2.2 – 2.3 kcal/mol pada GMTKN55 menimbulkan pertanyaan fundamental: <em>sejauh mana akurasi fungsional double-hybrid anak tangga ke-5 ini mampu menandingi protokol termokimia fungsi gelombang komposit ab initio berbiaya raksasa?</em>
+          </p>
+          <p>
+            Pada evaluasi 642 energi reaksi termokimia molekul kecil hingga sedang (unsur H sampai Kr) yang dibandingkan secara serempak, protokol komposit penuh <strong>Gaussian-4 (G4) mencatat WTMAD2 sebesar 1.76 kcal/mol</strong>. Varian berbiaya lebih hemat seperti G4MP2 mencatat 2.29 kcal/mol, G3B3 membukukan 2.20 kcal/mol, dan CBS-QB3 berada pada angka 2.25 kcal/mol. Sementara itu, fungsional double-hybrid teratas seperti <strong>xrevDSD-PBEP86-D4 dan ωB97M(2) mencatat deviasi masing-masing 1.95 – 2.1 kcal/mol</strong> pada subhimpunan yang sama.
+          </p>
+          <p>
+            Fakta ini menandai tonggak sejarah baru dalam kimia komputasi: <strong>fungsional double-hybrid telah resmi memasuki domain presisi metode komposit WFT</strong>, namun dengan biaya komputasi yang jauh lebih murah, penskalaan ukuran sistem yang jauh lebih jinak, serta ketersediaan turunan analitik gradien energi pertama dan kedua yang sangat efisien untuk optimasi geometri dan perhitungan frekuensi.
+          </p>
+
+          <!-- Callout Box: Batasan Fisis Korelasi Statis -->
+          <div class="my-6 p-5 bg-[#f0f7fc] border-l-4 border-editorial-accent rounded-r font-sans">
+            <div class="font-bold text-editorial-accent text-sm mb-1.5">
+              Tumit Achilles Double-Hybrid: Korelasi Statis Tipe A dan Solusi Masa Depan
+            </div>
+            <div class="text-xs sm:text-sm text-editorial-body leading-relaxed space-y-2">
+              <p>
+                Kelemahan paling kritis dari seluruh fungsional double-hybrid berbasis PT2 terletak pada penyebut selisih energi orbital (ε_i &minus; ε_a). Pada sistem dengan celah pita mendekati nol atau kuasi-degenerasi mutlak (korelasi statis Tipe A, seperti radikal singlet biradikaloid, klaster logam valensi campuran, atau disosiasi ikatan kovalen ganda), penyebut PT2 akan meledak menuju nol, menghasilkan energi korelasi yang divergen secara katastrofik.
+              </p>
+              <p>
+                Penelitian terkini mengeksplorasi dua jalan keluar: 
+                <strong>(1) Orbital-Optimized Double Hybrids (OO-DH):</strong> Merelaksasi orbital Kohn-Sham secara langsung terhadap energi MP2 guna memitigasi kontaminasi spin radikal; 
+                <strong>(2) dRPA-Based Double Hybrids (seperti dRPA75-D3BJ dan PWPRPA):</strong> Menggantikan perturbasi MP2 dengan aproksimasi fase acak langsung (direct Ring Coupled Cluster with Doubles, drCCD) yang secara alami invarian terhadap singularitas celah pita nol dan memberikan deskripsi dispersi jarak jauh yang sangat kokoh.
+              </p>
+            </div>
+          </div>
+
+          <p>
+            Sebagai refleksi penutup, Jan M. L. Martin dan Golokesh Santra menegaskan bahwa perdebatan puluhan tahun antara mazhab fungsional murni non-empiris (ala Perdew) melawan mazhab parametrisasi radikal dengan puluhan variabel fleksibel (ala Truhlar M06/MN15) sejatinya merupakan sebuah <em>dikotomi palsu</em> (<em>false dichotomy</em>). 
+          </p>
+          <p>
+            Keluarga fungsional double-hybrid empiris seperti <strong>revDSD dan revDOD mewakili sintesis jalan tengah yang paling elegan dan pragmatis</strong>: membuktikan bahwa dengan berpijak pada pemahaman fisika kuantum yang jernih—memisahkan korelasi spin, mengeliminasi redundansi dispersi, dan mengkalibrasi parameter linear minimal (5–6 parameter) pada tolok ukur termodinamika masif—kita dapat menghadirkan instrumen komputasi presisi ultra-tinggi yang menjembatani keindahan fungsional kerapatan dengan ketelitian fungsi gelombang ab initio bagi komunitas kimia dunia.
+          </p>
+
+          <!-- CITATION BLOCK RESMI -->
+          <div class="mt-10 p-5 bg-white border border-editorial-line rounded font-sans">
+            <div class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-2">
+              Sitasi Paper Resmi (APA Format)
+            </div>
+            <p class="font-mono text-xs text-editorial-body leading-relaxed select-all">
+              Martin, J. M. L., &amp; Santra, G. (2020). Empirical Double-Hybrid Density Functional Theory: A &lsquo;Third Way&rsquo; in Between WFT and DFT. Israel Journal of Chemistry, 60(8-9), 787–804. https://doi.org/10.1002/ijch.201900114
+            </p>
+
+            <!-- Quick Copy Buttons -->
+            <div class="mt-4 flex flex-wrap gap-2">
+              <button onclick="copyCitation('apa', 'Martin, J. M. L., &amp; Santra, G. (2020). Empirical Double-Hybrid Density Functional Theory: A 'Third Way' in Between WFT and DFT. Israel Journal of Chemistry, 60(8-9), 787–804. https://doi.org/10.1002/ijch.201900114')" class="reader-toolbar-btn">
+                <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                Salin Sitasi APA
+              </button>
+              <button onclick="copyCitation('bibtex', '@article{Martin2020DoubleHybrid,
+  author = {Jan M. L. Martin and Golokesh Santra},
+  title = {Empirical Double-Hybrid Density Functional Theory: A {\textquoteleft}Third Way{\textquoteright} in Between {WFT} and {DFT}},
+  journal = {Israel Journal of Chemistry},
+  volume = {60},
+  number = {8-9},
+  pages = {787--804},
+  year = {2020},
+  publisher = {Wiley-VCH},
+  doi = {10.1002/ijch.201900114}
+}')" class="reader-toolbar-btn">
+                <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                Salin BibTeX
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- SIDEBAR NAVIGATION & GLOSSARY (Cols 9-12) -->
+      <aside class="lg:col-span-4 space-y-8 font-sans">
+        
+        <!-- STICKY CONTAINER -->
+        <div class="sticky top-20 space-y-6">
+          
+          <!-- CARD 1: DAFTAR ISI ARTIKEL (Wajib ID #toc-list untuk ScrollSpy) -->
+          <div class="bg-white border border-editorial-line rounded p-5">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-3 pb-2 border-b border-editorial-line">
+              Daftar Isi Artikel
+            </h4>
+            <nav class="space-y-1.5 text-xs text-editorial-muted" id="toc-list">
+              <a href="#tangga-jacob-dft" class="block py-1 hover:text-editorial-accent transition-colors">• 1. Paradoks Teori &amp; Tangga Jacob DFT</a>
+              <a href="#formulasi-dsd-spin" class="block py-1 hover:text-editorial-accent transition-colors">• 2. Formulasi DSD &amp; Dekonvolusi Spin</a>
+              <a href="#reparametrisasi-revdsd-gmtkn55" class="block py-1 hover:text-editorial-accent transition-colors">• 3. Rekalibrasi revDSD &amp; Tolok Ukur GMTKN55</a>
+              <a href="#akselerasi-dod-same-spin" class="block py-1 hover:text-editorial-accent transition-colors">• 4. Akselerasi RI-MP2 &amp; Varian DOD Bebas Spin</a>
+              <a href="#organometalik-frekuensi-nmr" class="block py-1 hover:text-editorial-accent transition-colors">• 5. Kompleks MOBH35, Getaran &amp; Respon NMR</a>
+              <a href="#komparasi-wft-prospek" class="block py-1 hover:text-editorial-accent transition-colors">• 6. Komparasi Komposit WFT &amp; Sintesis Jalan Ketiga</a>
+            </nav>
+          </div>
+
+          <!-- CARD 2: GLOSARIUM ISTILAH KUNCI -->
+          <div class="bg-white border border-editorial-line rounded p-5 space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-editorial-ink pb-2 border-b border-editorial-line">
+              Glosarium Istilah Kunci
+            </h4>
+            <div class="space-y-3 text-xs">
+              <div>
+                <span class="font-semibold text-editorial-ink">Double-Hybrid DFT (DH-DFT):</span>
+                <p class="text-editorial-muted mt-0.5">Fungsional anak tangga ke-5 yang memadukan pertukaran HF dan korelasi perturbatif non-lokal (PT2/dRPA) dari orbital virtual ke dalam kerangka semi-lokal.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">DSD (Dispersion-Scaled Double Hybrid):</span>
+                <p class="text-editorial-muted mt-0.5">Keluarga fungsional yang mengurai penskalaan spin-komponen (opposite-spin vs same-spin) secara mandiri untuk menghindari redundansi suku dispersi.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">GMTKN55:</span>
+                <p class="text-editorial-muted mt-0.5">Database benchmark termokimia, kinetika, dan interaksi non-kovalen masif beranggotakan 55 subset (2.459 kalkulasi) rancangan Stefan Grimme.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">WTMAD2:</span>
+                <p class="text-editorial-muted mt-0.5">Weighted Mean Absolute Deviation tipe 2, metrik statistik terstandarisasi yang menimbang galat rata-rata secara proporsional terhadap magnitudo energi subset.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">Varian DOD (Direct Opposite-spin Double):</span>
+                <p class="text-editorial-muted mt-0.5">Formulasi double-hybrid hemat komputasi dengan menyetel koefisien same-spin nol (c2ss = 0), sangat unggul untuk reaksi organologam berkorelasi statis.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 3: INDEKS GAMBAR PAPER -->
+          <div class="bg-white border border-editorial-line rounded p-5">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-3 pb-2 border-b border-editorial-line">
+              Indeks Gambar Paper
+            </h4>
+            <ul class="text-xs space-y-2 text-editorial-muted">
+              <li>
+                <a href="#tangga-jacob-dft" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 1: Ilustrasi Tangga Jacob DFT (Perdew)</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 1</span>
+                </a>
+              </li>
+              <li>
+                <a href="#formulasi-dsd-spin" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 2: Permukaan Torsi n-Pentana &amp; Redundansi Spin</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 6</span>
+                </a>
+              </li>
+              <li>
+                <a href="#akselerasi-dod-same-spin" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 3: Tren Linier Koefisien DSD-SCANx-D3</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 12</span>
+                </a>
+              </li>
+              <li>
+                <a href="#organometalik-frekuensi-nmr" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 4: Kontur RMSD Frekuensi Getaran HFREQ27</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 13</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- LIGHTBOX MODAL (For full-res image viewing) -->
+  <div id="lightbox" class="fixed inset-0 bg-black/80 z-50 hidden flex flex-col items-center justify-center p-4 backdrop-blur-sm" onclick="closeLightbox()">
+    <div class="relative max-w-5xl max-h-[90vh] bg-white rounded p-3 shadow-2xl flex flex-col" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between pb-2 mb-2 border-b border-editorial-line text-xs font-sans text-editorial-ink">
+        <span id="lightbox-caption" class="font-bold"></span>
+        <button onclick="closeLightbox()" class="p-1 hover:bg-editorial-softbg rounded text-editorial-muted hover:text-editorial-ink">
+          ✕ Tutup
+        </button>
+      </div>
+      <div class="overflow-auto max-h-[80vh] flex items-center justify-center p-2">
+        <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[75vh] object-contain">
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-editorial-line bg-white py-10 text-xs text-editorial-muted font-sans">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <span class="font-bold text-editorial-ink">TelaahSains Hub</span> &mdash; Diseminasi Riset Sains Material &amp; Komputasi Kuantum Terkurasi.
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://doi.org/10.1002/ijch.201900114" target="_blank" class="hover:underline text-editorial-accent">Paper Asli di Wiley Online Library</a>
+        <span>•</span>
+        <a href="#" class="hover:text-editorial-ink">Kembali ke Atas &uarr;</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    // Minimalist Summary Toggle
+    function toggleSummary() {
+      const content = document.getElementById('summary-content');
+      const chevron = document.getElementById('summary-chevron');
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        chevron.textContent = '[- tutup]';
+      } else {
+        content.classList.add('hidden');
+        chevron.textContent = '[+ buka]';
+      }
+    }
+  </script>
+
+  <!-- Shared Reader Experience Script -->
+  <script src="../../shared/reader.js"></script>
+
+</body>
+</html>

@@ -161,10 +161,10 @@
         <!-- Category Filter Buttons -->
         <div class="flex items-center gap-1.5 overflow-x-auto text-xs font-medium pb-1 lg:pb-0" id="filter-container">
           <button onclick="filterCategory('all')" id="btn-cat-all" class="filter-cat-btn px-3 py-1.5 rounded bg-editorial-ink text-white whitespace-nowrap transition-colors">
-            Semua (12)
+            Semua (13)
           </button>
           <button onclick="filterCategory('material')" id="btn-cat-material" class="filter-cat-btn px-3 py-1.5 rounded bg-white border border-editorial-line text-editorial-muted hover:text-editorial-ink whitespace-nowrap transition-colors">
-            Material &amp; Energi (7)
+            Material &amp; Energi (8)
           </button>
           <button onclick="filterCategory('thermo')" id="btn-cat-thermo" class="filter-cat-btn px-3 py-1.5 rounded bg-white border border-editorial-line text-editorial-muted hover:text-editorial-ink whitespace-nowrap transition-colors">
             Fisika Termoelektrik (3)
@@ -178,7 +178,7 @@
           </button>
           <button onclick="filterCategory('completed')" id="btn-cat-completed" class="filter-cat-btn px-3 py-1.5 rounded bg-white border border-editorial-line text-emerald-700 hover:text-emerald-800 whitespace-nowrap transition-colors flex items-center gap-1">
             <span>✔️ Selesai</span>
-            <span id="completed-count" class="px-1.5 py-0.2 rounded-full bg-emerald-50 text-[10px] font-bold border border-emerald-200/60">0/12</span>
+            <span id="completed-count" class="px-1.5 py-0.2 rounded-full bg-emerald-50 text-[10px] font-bold border border-emerald-200/60">0/13</span>
           </button>
         </div>
 
@@ -1038,6 +1038,71 @@
         </a>
       </article>
 
+      <!-- CARD 13: Empirical Double-Hybrid Density Functional Theory (Martin & Santra) -->
+      <article class="paper-card bg-white border border-editorial-line rounded p-6 flex flex-col justify-between" data-paper-item data-paper-id="13" data-category="material" data-tags="dft" data-keywords="double hybrid dft wft jacob ladder perdew martin santra gmtkn55 wtmad2 revdsd revdod b2plyp dsd pbep86 dispersion d4 ri-mp2 mobh35 weizmann wiley">
+        <div>
+          <!-- Card Header & Badge -->
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-editorial-accent font-sans">
+              Kimia Komputasi &amp; Double-Hybrid
+            </span>
+            <div class="flex items-center gap-1.5">
+              <span class="font-mono text-xs text-editorial-muted">#13</span>
+              <button onclick="toggleBookmark('13', event)" data-bookmark-btn="13" class="text-zinc-300 hover:text-amber-500 transition-colors p-1" title="Tandai untuk dibaca nanti">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+              </button>
+              <button onclick="toggleReadStatus('13', event)" data-read-btn="13" class="text-zinc-300 hover:text-emerald-600 transition-colors p-1" title="Tandai sudah selesai dibaca">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Paper Title -->
+          <h2 class="text-lg font-bold text-editorial-ink font-sans leading-snug mb-3">
+            <a href="papers/13-empirical-double-hybrid-dft/index.html" class="hover:text-editorial-accent transition-colors">
+              Teori Fungsional Kerapatan Double-Hybrid Empiris: Menjembatani Jurang Teori Fungsi Gelombang dan DFT (&lsquo;Jalan Ketiga&rsquo;)
+            </a>
+          </h2>
+
+          <!-- Excerpt -->
+          <p class="text-sm font-serif italic text-editorial-body leading-relaxed mb-4">
+            Menyatukan fungsional semi-lokal dengan korelasi perturbatif orbital virtual (PT2/dRPA) pada anak tangga ke-5 Tangga Jacob. Melalui dekomposisi korelasi spin dan kalibrasi masif GMTKN55, keluarga revDSD dan revDOD meraih akurasi setara WFT komposit (WTMAD2 2.26&ndash;2.33 kcal/mol) hanya dengan 5&ndash;6 parameter linear.
+          </p>
+
+          <!-- Thumbnail Image Preview -->
+          <div class="border border-editorial-line/80 rounded bg-editorial-softbg p-2 mb-4 overflow-hidden flex items-center justify-center">
+            <img src="papers/13-empirical-double-hybrid-dft/assets/fig1_jacobs_ladder_dft.png" alt="Ilustrasi Tangga Jacob Teori Fungsional Kerapatan DFT" class="max-h-36 w-auto object-contain">
+          </div>
+
+          <!-- Highlight Metrics Strip -->
+          <div class="grid grid-cols-3 gap-2 py-3 border-y border-editorial-line text-center text-xs font-sans mb-4">
+            <div>
+              <div class="text-[10px] text-editorial-muted uppercase">WTMAD2 Global</div>
+              <div class="font-bold text-editorial-accent font-mono">2.26 kcal/mol</div>
+            </div>
+            <div>
+              <div class="text-[10px] text-editorial-muted uppercase">Parameter Linear</div>
+              <div class="font-bold text-emerald-700 font-mono">5 &ndash; 6 Param</div>
+            </div>
+            <div>
+              <div class="text-[10px] text-editorial-muted uppercase">Barrier MOBH35</div>
+              <div class="font-bold text-editorial-ink font-mono">1.4 kcal/mol</div>
+            </div>
+          </div>
+
+          <!-- Author Byline -->
+          <div class="text-xs text-editorial-muted mb-6">
+            <span class="font-semibold text-editorial-ink">Jan M. L. Martin* &amp; Golokesh Santra</span> • Weizmann Institute of Science (Israel)
+          </div>
+        </div>
+
+        <!-- Read Action Button -->
+        <a href="papers/13-empirical-double-hybrid-dft/index.html" class="w-full py-2.5 px-4 bg-editorial-softbg hover:bg-editorial-accent hover:text-white border border-editorial-line hover:border-editorial-accent rounded text-xs font-bold text-editorial-ink text-center transition-all flex items-center justify-center gap-1.5">
+          <span>Buka Telaah Lengkap</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </article>
+
     </div>
     </div>
     <!-- END OF PAPER GRID CONTAINER -->
@@ -1564,6 +1629,49 @@
           </a>
         </td>
       </tr>
+      <!-- ROW 13: Empirical Double-Hybrid Density Functional Theory (Martin & Santra) -->
+      <tr class="border-b border-editorial-line hover:bg-zinc-50/80 transition-colors" data-paper-item data-paper-id="13" data-category="material" data-tags="dft" data-keywords="double hybrid dft wft jacob ladder perdew martin santra gmtkn55 wtmad2 revdsd revdod b2plyp dsd pbep86 dispersion d4 ri-mp2 mobh35 weizmann wiley">
+        <td class="py-3.5 px-3 text-center align-top">
+          <div class="font-mono font-bold text-xs text-editorial-ink mb-1">#13</div>
+          <div class="flex items-center justify-center gap-1">
+            <button onclick="toggleBookmark('13', event)" data-bookmark-btn="13" class="text-zinc-300 hover:text-amber-500 transition-colors p-0.5" title="Tandai simpan">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+            </button>
+            <button onclick="toggleReadStatus('13', event)" data-read-btn="13" class="text-zinc-300 hover:text-emerald-600 transition-colors p-0.5" title="Tandai selesai">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </button>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <a href="papers/13-empirical-double-hybrid-dft/index.html" class="font-bold text-editorial-ink hover:text-editorial-accent font-sans leading-snug block mb-1.5 text-xs">
+            Teori Fungsional Kerapatan Double-Hybrid Empiris: Menjembatani Jurang Teori Fungsi Gelombang dan DFT (&lsquo;Jalan Ketiga&rsquo;)
+          </a>
+          <span class="inline-block font-mono text-[10px] text-editorial-muted bg-zinc-100 border border-editorial-line/60 px-1.5 py-0.5 rounded">Isr. J. Chem. (Wiley, 2020)</span>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <div class="text-[11px] font-semibold text-editorial-accent mb-1.5">Kimia Komputasi &amp; Double-Hybrid</div>
+          <div class="flex flex-wrap gap-1">
+            <span class="text-[10px] bg-zinc-100 text-zinc-600 px-1.5 py-0.5 rounded font-mono font-medium">#DFT-Kuantum</span>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top">
+          <div class="space-y-1 text-[11px]">
+            <div><span class="text-editorial-muted">WTMAD2 GMTKN55:</span> <strong class="text-editorial-accent font-mono">2.26 kcal/mol</strong></div>
+            <div><span class="text-editorial-muted">Efisiensi Param:</span> <strong class="text-emerald-700 font-mono">5 &ndash; 6 Parameter</strong></div>
+            <div><span class="text-editorial-muted">MAD MOBH35:</span> <strong class="text-editorial-ink font-mono">1.4 kcal/mol (DOD)</strong></div>
+          </div>
+        </td>
+        <td class="py-3.5 px-4 align-top text-[11px] text-editorial-muted leading-relaxed">
+          <div class="font-semibold text-editorial-ink">J. M. L. Martin*, G. Santra</div>
+          <div class="text-[10px] mt-0.5">Weizmann Institute of Science (Israel)</div>
+        </td>
+        <td class="py-3.5 px-3 text-center align-top whitespace-nowrap">
+          <a href="papers/13-empirical-double-hybrid-dft/index.html" class="inline-flex items-center gap-1 px-3 py-1.5 bg-editorial-softbg hover:bg-editorial-accent hover:text-white border border-editorial-line hover:border-editorial-accent rounded text-[11px] font-bold text-editorial-ink transition-all shadow-xs">
+            <span>Buka</span>
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </td>
+      </tr>
         </tbody>
       </table>
     </div>
@@ -1637,7 +1745,10 @@ paper-hub/<br>
 &nbsp; &nbsp; ├── 11-oxygen-doped-li6ps5cl-sei-mlip/ # Paper 11: Doping Oksigen SEI Li6PS5Cl MLIP<br>
 &nbsp; &nbsp; │ &nbsp; ├── index.html<br>
 &nbsp; &nbsp; │ &nbsp; └── assets/ (fig1–fig7)<br>
-&nbsp; &nbsp; └── 12-pbe-hse-neural-functional/ &nbsp; &nbsp; # Paper 12: Prediksi Celah Pita HSE Neural Functional<br>
+&nbsp; &nbsp; ├── 12-pbe-hse-neural-functional/ &nbsp; &nbsp; # Paper 12: Prediksi Celah Pita HSE Neural Functional<br>
+&nbsp; &nbsp; │ &nbsp; ├── index.html<br>
+&nbsp; &nbsp; │ &nbsp; └── assets/ (fig1–fig4)<br>
+&nbsp; &nbsp; └── 13-empirical-double-hybrid-dft/ &nbsp; # Paper 13: Double-Hybrid DFT 'Jalan Ketiga' WFT-DFT<br>
 &nbsp; &nbsp; &nbsp; &nbsp; ├── index.html<br>
 &nbsp; &nbsp; &nbsp; &nbsp; └── assets/ (fig1–fig4)
         </div>
