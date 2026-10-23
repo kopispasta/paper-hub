@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sintesis Terbantu Solution Plasma Nanokristal Bimetalik PtCo Seragam pada Karbon Terdoping-N untuk Reaksi Evolusi Hidrogen yang Efisien — TelaahSains Hub</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Newsreader (Serif Editorial) & Plus Jakarta Sans (UI Sans) & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind Configuration matching Design System -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            editorial: {
+              ink: '#161616',        /* Deep charcoal black for text */
+              body: '#262626',       /* Warm reading body text */
+              muted: '#666666',      /* Subtle secondary meta */
+              lightmuted: '#8c8c8c', /* Captions & tiny labels */
+              line: '#e5e5e5',       /* Hairline dividers */
+              softbg: '#fafafa',     /* Off-white background */
+              paper: '#ffffff',      /* Pure white card backgrounds */
+              accent: '#0a74c0',     /* Royal Society of Chemistry editorial blue */
+              accentDark: '#08538a', /* Deep hover blue */
+              accentLight: '#f0f7fc' /* Minimalist blue wash for active states */
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            serif: ['"Newsreader"', 'Georgia', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Editorial Typographic Rhythm (Baku Paper 01-05) */
+    body {
+      background-color: #fafafa;
+      color: #262626;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .article-body p {
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 1.125rem; /* 18px */
+      line-height: 1.82;
+      color: #262626;
+      margin-bottom: 1.6rem;
+    }
+
+    .article-body p strong {
+      font-weight: 600;
+      color: #161616;
+    }
+
+    .editorial-dropcap::first-letter {
+      font-size: 4rem;
+      float: left;
+      line-height: 0.8;
+      margin-right: 0.65rem;
+      margin-top: 0.25rem;
+      font-weight: 600;
+      color: #161616;
+      font-family: "Newsreader", Georgia, serif;
+    }
+
+    /* Publication-style Scientific Table */
+    .pub-table {
+      border-top: 2px solid #161616;
+      border-bottom: 2px solid #161616;
+      width: 100%;
+    }
+    .pub-table th {
+      border-bottom: 1px solid #161616;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 600;
+      font-size: 0.8125rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.75rem 0.5rem;
+    }
+    .pub-table td {
+      border-bottom: 1px solid #eeeeee;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 0.875rem;
+      padding: 0.75rem 0.5rem;
+    }
+    .pub-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Reading Indicator */
+    #reading-progress {
+      transition: width 0.1s ease-out;
+    }
+
+    /* Figure Box */
+    .figure-container {
+      background: #ffffff;
+      border: 1px solid #e5e5e5;
+      border-radius: 4px;
+      padding: 1.25rem;
+      margin: 2.5rem 0;
+    }
+  </style>
+
+  <!-- Shared Reader System CSS -->
+  <link rel="stylesheet" href="../../shared/reader.css">
+</head>
+
+<body class="selection:bg-editorial-accentLight selection:text-editorial-accent" data-paper-id="14">
+
+  <!-- TOP HEADER & PROGRESS STRIP -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-editorial-line font-sans transition-all">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="../../index.html" class="flex items-center gap-2 text-xs font-semibold text-editorial-ink hover:text-editorial-accent transition-colors">
+          <svg class="w-4 h-4 text-editorial-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          <span>Katalog Utama</span>
+        </a>
+        <span class="text-editorial-line">/</span>
+        <span class="text-xs font-mono text-editorial-muted">Paper #14</span>
+      </div>
+
+      <div class="flex items-center gap-4 text-xs font-sans text-editorial-muted">
+        <span class="hidden sm:inline">Estimasi Baca: 22 Menit</span>
+        <div class="h-3 w-px bg-editorial-line hidden sm:inline"></div>
+        <span class="font-mono text-editorial-ink font-semibold">ChemCatChem (Wiley)</span>
+      </div>
+    </div>
+    <!-- Reading Progress Indicator -->
+    <div id="reading-progress" class="h-0.5 bg-editorial-accent w-0 transition-all duration-150"></div>
+  </header>
+
+  <!-- ARTICLE HERO SECTION -->
+  <section class="bg-white border-b border-editorial-line pt-12 pb-10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Category Tag & Meta -->
+      <div class="flex items-center gap-3 text-xs font-semibold tracking-wider uppercase text-editorial-accent mb-4 font-sans">
+        <span>Material &amp; Energi</span>
+        <span class="text-editorial-line">•</span>
+        <span class="text-editorial-muted">Elektrokatalisis &amp; Sintesis Plasma Larutan</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-3xl sm:text-4xl lg:text-[42px] font-bold text-editorial-ink tracking-tight font-sans leading-[1.18] mb-6">
+        Sintesis Terbantu Solution Plasma Nanokristal Bimetalik PtCo Seragam pada Karbon Terdoping-N untuk Reaksi Evolusi Hidrogen yang Efisien
+      </h1>
+
+      <!-- Standfirst / Lead Paragraph -->
+      <p class="text-lg sm:text-xl font-serif italic text-editorial-body leading-relaxed mb-8 border-l-2 border-editorial-accent pl-5">
+        Mengatasi keterbatasan kinetika disosiasi air yang lambat dan degradasi katalis pada elektrolisis air media basa, pendekatan <em>Solution Plasma Process</em> (SPP) satu wadah suhu ruang berhasil mensintesis nanokristal bimetalik PtCo sub-2 nanometer yang terdispersi seragam di atas matriks karbon terdoping-N hanya dalam 60 detik tanpa reduktor kimiawi. Melalui rekayasa rasio prekursor cyanopyrazine dan modulasi struktur pita elektron inti-cangkang, elektrokatalis PtCo/NC80 mencatat overpotensial sangat rendah 34 mV pada 10 mA cm⁻² serta ketahanan operasional prima melampaui 100 jam di elektrolit 1,0 M KOH.
+      </p>
+
+      <!-- Authors & Affiliations Strip -->
+      <div class="pt-6 border-t border-editorial-line flex flex-wrap items-center justify-between gap-4 text-xs text-editorial-muted font-sans">
+        <div>
+          <div class="text-editorial-ink font-semibold text-sm">
+            Jae Won Lee, Jeonghyeon Kim, Eoyoon Lee, Chang Seung Lee, Sangwon Kim, Hae Jung Son, Yong-Ho Choa*, Hyung Chul Ham*, Sook Young Moon*, &amp; Jin Young Kim*
+          </div>
+          <div class="mt-1 text-editorial-muted">
+            KIST (Center for Hydrogen &amp; Fuel Cell Research), Hanyang University ERICA, Inha University, UST, Korea University, &amp; Fraunhofer ICT Germany
+          </div>
+        </div>
+        <div class="text-right">
+          <div class="text-editorial-ink font-medium">ChemCatChem (Wiley-VCH) • Open Access Research Article</div>
+          <div>Vol. 18, e71035 (2026) • DOI: 10.1002/cctc.71035</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- KEY FINDINGS AT A GLANCE -->
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="bg-white border border-editorial-line rounded p-6 shadow-sm font-sans">
+      <h2 class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-4 flex items-center justify-between border-b border-editorial-line pb-2">
+        <span>Rangkuman Angka Kunci Kinerja Elektrokatalis PtCo/NC80</span>
+        <span class="text-editorial-muted font-normal lowercase font-mono">Lee et al., ChemCatChem 2026</span>
+      </h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-left">
+        <div>
+          <div class="text-xs text-editorial-muted">Overpotensial HER (η_10)</div>
+          <div class="text-2xl font-bold text-editorial-ink mt-0.5">34 <span class="text-xs font-normal text-editorial-muted">mV</span></div>
+          <div class="text-[11px] text-editorial-muted mt-1">23 mV lebih rendah dari Pt/C komersial (57 mV di 1,0 M KOH)</div>
+        </div>
+        <div>
+          <div class="text-xs text-editorial-muted">Kemiringan Tafel (b)</div>
+          <div class="text-2xl font-bold text-editorial-ink mt-0.5">43 <span class="text-xs font-normal text-editorial-muted">mV dec⁻¹</span></div>
+          <div class="text-[11px] text-editorial-muted mt-1">Kinetika cepat Volmer-Heyrovsky vs 72 mV dec⁻¹ (Pt/C)</div>
+        </div>
+        <div>
+          <div class="text-xs text-editorial-muted">Ketahanan Kronopotensiometri</div>
+          <div class="text-2xl font-bold text-editorial-ink mt-0.5">100 <span class="text-xs font-normal text-editorial-muted">Jam</span></div>
+          <div class="text-[11px] text-editorial-muted mt-1">Laju degradasi 0.89 mV h⁻¹ (2.35× lebih stabil dari Pt/C 2.05 mV h⁻¹)</div>
+        </div>
+        <div>
+          <div class="text-xs text-editorial-muted">Ukuran Nanokristal PtCo</div>
+          <div class="text-2xl font-bold text-editorial-ink mt-0.5">1.99 <span class="text-xs font-normal text-editorial-muted">nm</span></div>
+          <div class="text-[11px] text-editorial-muted mt-1">Dispersi ultra-halus (±0.31 nm) terbentuk serentak dalam 60 detik</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN ARTICLE LAYOUT (3 Columns: Left Notes + Center Article + Right Aside) -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      
+      <!-- ARTICLE TEXT (Cols 1-8) -->
+      <main class="lg:col-span-8 article-body">
+
+        <!-- EXECUTIVE SUMMARY ACCORDION -->
+        <div class="border border-editorial-line bg-white rounded p-5 mb-10">
+          <div class="flex items-center justify-between cursor-pointer select-none" onclick="toggleSummary()">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-editorial-accent"></span>
+              <h3 class="text-sm font-bold text-editorial-ink tracking-tight font-sans">
+                Ringkasan Eksekutif untuk Peneliti (4 Pilar Temuan Utama)
+              </h3>
+            </div>
+            <span id="summary-chevron" class="text-xs font-mono text-editorial-muted">[- tutup]</span>
+          </div>
+
+          <div id="summary-content" class="mt-4 pt-4 border-t border-editorial-line text-xs sm:text-sm font-sans text-editorial-body space-y-2.5 leading-relaxed">
+            <p><strong>1. Hambatan Kinetika Reaksi Evolusi Hidrogen (HER) di Media Basa:</strong> Elektrolisis air berbasis alkali (<em>Alkaline Water Electrolysis</em> / AWE dan <em>Anion Exchange Membrane Water Electrolysis</em> / AEMWE) menjanjikan produksi hidrogen hijau berbiaya terjangkau. Namun, kinetika HER dalam larutan alkali terhambat oleh lambatnya tahap disosiasi air awal (langkah Volmer: H₂O + e⁻ + * → H* + OH⁻), yang menuntut overpotensial dua hingga tiga kali lipat lebih besar dibanding kondisi asam. Selain itu, katalis platina komersial (Pt/C) rentan mengalami aglomerasi partikel, pengelupasan, dan korosi pendukung karbon.</p>
+            <p><strong>2. Paradigma Sintesis Plasma Cair Satu Wadah (60 Detik):</strong> Menggantikan rute reduksi kimia basah konvensional yang membutuhkan surfaktan beracun, reduktor berbahaya (NaBH₄, hidrazin), dan kalsinasi termal panjang berisiko sintering, penelitian ini menghadirkan <em>Solution Plasma Process</em> (SPP). Dengan lucutan plasma dingin berfrekuensi 30 kHz di antara elektroda kawat Pt dan Co dalam pelarut benzena-cyanopyrazine pada temperatur dan tekanan ruang, nanokristal bimetalik PtCo sub-2 nm dan cangkang karbon terdoping-N terbentuk serentak hanya dalam 60 detik.</p>
+            <p><strong>3. Kinerja Elektrokatalitik Rekor dan Durabilitas Operasional:</strong> Pada elektrolit 1,0 M KOH, material PtCo/NC80 (rasio cyanopyrazine 80% v/v) membukukan overpotensial overpotential hanya 34 mV pada kerapatan arus 10 mA cm⁻², melampaui Pt/C komersial 20 wt% (57 mV), Pt/NC80 (53 mV), dan Co/NC80 (297 mV). Kemiringan Tafel sebesar 43 mV dec⁻¹ mengonfirmasi pergeseran tahap penentu laju ke arah mekanisme Volmer-Heyrovsky yang cepat. Uji ketahanan kronopotensiometri selama 100 jam menunjukkan degradasi minimal (0.89 mV h⁻¹), 2.35 kali lipat lebih tangguh dibanding Pt/C komersial.</p>
+            <p><strong>4. Wawasan Mekanistik DFT Cangkang-Inti PtCo3@Ndp-C:</strong> Perhitungan Teori Fungsional Kerapatan (DFT) membuktikan bahwa keberadaan cangkang karbon terdoping-N (Ndp-C) menghasilkan energi pengikatan antar-muka kuat (-1.14 eV vs -0.98 eV pada cangkang karbon murni), mengunci nanokristal dari pelepasan logam. Modulasi elektronik bimetalik Pt-Co menurunkan pusat pita-d atom platina permukaan, menggeser energi bebas adsorpsi hidrogen (ΔG_H*) mendekati titik optimal Sabatier (ΔG_PDS = 0.07 eV vs 0.35 eV pada Pt(111)), sehingga mempercepat desorpsi H* secara drastis.</p>
+          </div>
+        </div>
+
+        <!-- TABLE OF CONTENTS (MINI JUMP NAV) -->
+        <nav class="p-4 bg-zinc-50 border border-editorial-line rounded text-xs font-sans mb-8">
+          <div class="font-bold text-editorial-ink uppercase tracking-wider mb-2">Navigasi Bab Telaah</div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-editorial-body">
+            <a href="#bab-1" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">01.</span> Urgensi HER Basa &amp; Sintesis Solution Plasma
+            </a>
+            <a href="#bab-2" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">02.</span> Spektroskopi Emisi &amp; Kinetika Nukleasi 60 Detik
+            </a>
+            <a href="#bab-3" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">03.</span> Rekayasa Porositas &amp; Doping Nitrogen
+            </a>
+            <a href="#bab-4" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">04.</span> Struktur Nanokristal HRTEM, STEM-EDS &amp; XPS
+            </a>
+            <a href="#bab-5" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">05.</span> Kinerja Elektrokatalitik HER &amp; Stabilitas 100 Jam
+            </a>
+            <a href="#bab-6" class="hover:text-editorial-accent flex items-center gap-1.5">
+              <span class="text-editorial-lightmuted font-mono">06.</span> Mekanisme DFT Core-Shell PtCo3@Ndp-C
+            </a>
+          </div>
+        </nav>
+
+        <!-- BAB 1 -->
+        <section id="bab-1" class="pt-2">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            1. Urgensi Katalis HER Media Basa &amp; Revolusi Sintesis Solution Plasma (SPP)
+          </h2>
+          <p class="editorial-dropcap">
+            Transisi energi bersih global menempatkan hidrogen hijau sebagai pembawa energi nir-emisi paling strategis untuk dekarbonisasi sektor industri berat, transportasi jarak jauh, dan jaringan listrik terbarukan. Di antara beragam teknologi pemecahan air, elektrolisis air berbasis alkali (<em>Alkaline Water Electrolysis</em> / AWE) dan membran penukar anion generasi baru (<em>Anion Exchange Membrane Water Electrolysis</em> / AEMWE) mendapat perhatian luar biasa karena memungkinkan penggunaan komponen tumpukan (<em>stack</em>) berbiaya rendah dan bebas material titanium mahal. Kendati demikian, efisiensi konversi energi kedua sistem ini terhambat secara fundamental oleh kinetika Reaksi Evolusi Hidrogen (<em>Hydrogen Evolution Reaction</em> / HER) pada katoda.
+          </p>
+          <p>
+            Di lingkungan larutan asam, proton terhidrasi (H₃O⁺) tersedia melimpah, sehingga reaksi HER berlangsung spontan melalui transfer muatan cepat. Sebaliknya, pada medium alkali berair (seperti 1,0 M KOH), proton bebas praktis tidak hadir. Akibatnya, reaksi katoda terpaksa diawali dengan pemutusan ikatan H-OH yang sangat kuat pada molekul air netral melalui tahap disosiasi Volmer:
+          </p>
+          <div class="my-6 p-4 bg-editorial-softbg border border-editorial-line rounded font-mono text-sm space-y-3">
+            <div class="flex items-center justify-between border-b border-editorial-line pb-2">
+              <span class="text-xs uppercase font-sans font-bold text-editorial-muted">Tahap Volmer Media Basa</span>
+              <span class="text-xs text-editorial-lightmuted">(Disosiasi Air)</span>
+            </div>
+            <div class="text-center py-1 text-editorial-ink font-semibold">
+              H₂O + e⁻ + * → H* + OH⁻
+            </div>
+          </div>
+          <p>
+            Energi aktivasi disosiasi air yang tinggi ini memperlambat laju reaksi keseluruhan hingga dua sampai tiga tingkat besaran (<em>orders of magnitude</em>) dibandingkan media asam. Meskipun elektrokatalis berbasis platina (Pt/C) komersial masih menjadi tolok ukur standar emas, biayanya yang sangat tinggi, kelangkaan geologisnya, serta kerentanannya terhadap degradasi mekanik-kimiawi membatasi implementasi komersial skala besar. Di bawah polarisasi katodik alkali yang keras, partikel nano platina murni mudah mengalami pelarutan permukaan, pematangan Ostwald (<em>Ostwald ripening</em>), serta peluruhan dari pendukung karbon karbon aktif yang rentan teroksidasi.
+          </p>
+          <p>
+            Upaya konvensional untuk merekayasa katalis bimetalik berstruktur paduan (<em>alloy</em>) sering kali terbentur pada kompleksitas metode preparasi kimia basah (<em>wet-chemical reduction</em>, sol-gel, atau hidrotermal). Rute-rute tradisional ini membutuhkan zat pereduksi berbahaya (seperti NaBH₄ atau hidrazin hidrat), surfaktan organik penstabil yang sulit dihilangkan, serta kalsinasi termal pasca-sintesis pada temperatur tinggi (&gt;600 °C) yang tak terhindarkan memicu aglomerasi dan pertumbuhan ukuran partikel secara liar.
+          </p>
+          <p>
+            Untuk mengatasi jalan buntu metodologis tersebut, tim peneliti gabungan yang dipimpin oleh Jae Won Lee, Jin Young Kim, Sook Young Moon, Hyung Chul Ham, dan Yong-Ho Choa memperkenalkan pendekatan <em>Solution Plasma Process</em> (SPP). SPP merupakan teknik lucutan plasma dingin non-ekuilibrium yang dihasilkan secara langsung di dalam fase cair organik pada temperatur dan tekanan ruang. Melalui pemanfaatan tegangan denyut berfrekuensi tinggi (30 kHz) di antara sepasang elektroda kawat platina (Pt) dan kobalt (Co) dalam campuran pelarut benzena dan cyanopyrazine, lucutan plasma mampu mengerosi atom-atom logam dari ujung elektroda secara serentak (<em>in-situ sputtering</em>) sekaligus memecah molekul organik menjadi radikal karbon dan nitrogen reaktif. Hebatnya, seluruh proses nukleasi nanokristal PtCo bimetalik sub-2 nm dan penumbuhan matriks karbon berpori terdoping-N tuntas secara simultan hanya dalam waktu <strong>60 detik</strong> tanpa memerlukan zat pereduksi eksternal maupun perlakuan panas lanjutan.
+          </p>
+        </section>
+
+        <!-- BAB 2 -->
+        <section id="bab-2" class="pt-8">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            2. Spektroskopi Emisi Optik (OES) &amp; Kinetika Nukleasi Ultra-Cepat 60 Detik
+          </h2>
+          <p class="editorial-dropcap">
+            Guna memahami dinamika reaksi ekstrem di dalam zona mikro-plasma cair, para peneliti memasang sistem Spektroskopi Emisi Optik (<em>Optical Emission Spectroscopy</em> / OES) secara langsung menghadap titik lucutan. Karena plasma terbentuk di bawah tegangan puncak sekitar 2,5 kV dengan lebar denyut 1,0 μs, kerapatan elektron dan temperatur elektron lokal mencapai ribuan Kelvin, memicu eksitasi dan fragmentasi instan dari molekul pelarut cair.
+          </p>
+          
+          <!-- FIGURE 1 -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig1_oes_plasma_spectra.png" 
+                alt="Spektroskopi Emisi Optik OES dari lucutan plasma larutan benzena dan cyanopyrazine" 
+                class="w-full max-w-2xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig1_oes_plasma_spectra.png', 'Gambar 1: Spektroskopi Emisi Optik (OES) Selama Proses Solution Plasma')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 1 | Karakterisasi Spektroskopi Emisi Optik (OES) Plasma Larutan.</span> 
+              Spektra emisi optik in-situ yang direkam selama lucutan SPP dalam campuran benzena dan cyanopyrazine (Cyp). Terlihat jelas pita emisi sistem radikal C₂ Swan bands (473.7, 516.5, dan 563.5 nm), radikal CH (431.4 nm), radikal CN violet system (388.3 nm), serta garis emisi atomik Pt I (306.4 nm) dan Co I (345.3 dan 350.2 nm) yang membuktikan ko-erosi logam secara simultan dari ujung elektroda.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Lee et al., ChemCatChem 2026. (Klik gambar untuk perbesar)</div>
+            </figcaption>
+          </figure>
+
+          <p>
+            Spektra OES pada Gambar 1 mengungkap pita emisi khas sistem Swan molekul C₂ (transisi elektronik d³Π_g → a³Π_u) pada panjang gelombang 473,7, 516,5, dan 563,5 nm yang berasal dari pirolisis radikal cincin benzena. Selain itu, puncak emisi radikal CH pada 431,4 nm (transisi A²Δ → X²Π) dan pita kuat sistem violet radikal CN pada 388,3 nm (transisi B²Σ⁺ → X²Σ⁺) membuktikan pemutusan ikatan C-N dan C≡N yang sangat efisien dari molekul prekursor cyanopyrazine (Cyp). Kehadiran radikal CN reaktif dalam fase uap plasma dingin ini menjadi kunci utama keberhasilan inkorporasi gugus nitrogen secara langsung ke dalam kerangka karbon yang sedang tumbuh.
+          </p>
+          <p>
+            Secara bersamaan, garis emisi atomik platina netral (Pt I pada 306,4 nm) dan kobalt netral (Co I pada 345,3 dan 350,2 nm) terdeteksi dengan intensitas tajam di dekat antarmuka elektroda. Hal ini membuktikan bahwa bombardir ion-ion cepat dalam plasma mengekstrak atom Pt dan Co dari permukaan elektroda kawat padat melalui mekanisme <em>cathodic sputtering</em> dan pelelehan mikro termal, melepaskan uap atomik logam ke dalam plasma yang segera terkondensasi secara bimetalik serentak di lingkungan cair.
+          </p>
+
+          <!-- FIGURE 2 -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig2_tem_nucleation_size_distribution.png" 
+                alt="Evolusi waktu nukleasi TEM dan distribusi ukuran nanokristal PtCo" 
+                class="w-full max-w-2xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig2_tem_nucleation_size_distribution.png', 'Gambar 2: Kinetika Pertumbuhan Nanokristal PtCo dan Distribusi Ukuran Partikel')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 2 | Evolusi Temporal Nukleasi dan Analisis Distribusi Ukuran Partikel PtCo.</span> 
+              Citra TEM pemantauan pertumbuhan material pada durasi reaksi (a) 5 detik, (b) 20 detik, (c) 40 detik, dan (d) 60 detik. (e-h) Histogram distribusi ukuran nanokristal PtCo untuk berbagai konsentrasi cyanopyrazine: NC20 (1.47 ± 0.28 nm), NC40 (1.72 ± 0.30 nm), NC60 (1.85 ± 0.32 nm), dan NC80 (1.99 ± 0.31 nm). Seluruh partikel mempertahankan dimensi sub-2 nanometer yang sangat seragam.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Lee et al., ChemCatChem 2026. (Klik gambar untuk perbesar)</div>
+            </figcaption>
+          </figure>
+
+          <p>
+            Untuk mengungkap kinetika pembentukan material pada skala detik, sintesis dihentikan pada interval 5, 20, 40, dan 60 detik dan dianalisis menggunakan mikroskopi elektron transmisi (TEM) sebagaimana ditunjukkan pada Gambar 2. Pada durasi 5 detik pertama, lucutan plasma menghasilkan lembaran karbon amorf bergelombang dengan kluster logam yang baru mulai teratomisasi. Memasuki detik ke-20, kluster bimetalik PtCo sub-nanometer (diameter rata-rata ~1,2 nm) mulai tampak jelas menempel pada cacat struktural karbon.
+          </p>
+          <p>
+            Seiring bertambahnya waktu ke 40 dan 60 detik, terjadi pematangan terkendali di mana atom-atom logam terdifusi secara isotropik membentuk nanokristal bulat berukuran seragam yang terkunci rapat di dalam pori-pori matriks karbon. Variasi konsentrasi pelarut cyanopyrazine (20, 40, 60, dan 80% volume rasio terhadap benzena) menghasilkan rentang diameter rata-rata partikel yang sangat sempit: 1,47 nm untuk NC20, 1,72 nm untuk NC40, 1,85 nm untuk NC60, dan 1,99 ± 0,31 nm untuk NC80. Distribusi ukuran yang sangat ketat (sub-2 nm) ini membuktikan bahwa interaksi koordinasi antara atom nitrogen elektronegatif pada matriks karbon yang sedang terbentuk berfungsi sebagai perangkap termodinamika (<em>coordination traps</em>) yang menekan aglomerasi logam tanpa membutuhkan molekul surfaktan isolator eksternal.
+          </p>
+        </section>
+
+        <!-- BAB 3 -->
+        <section id="bab-3" class="pt-8">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            3. Rekayasa Tekstur Mesopori, Doping Nitrogen, dan Karakteristik Fisik PtCo/NC
+          </h2>
+          <p class="editorial-dropcap">
+            Struktur kristalografi dan kimia permukaan dari elektrokatalis hasil sintesis dianalisis secara komprehensif menggunakan difraksi sinar-X (XRD), spektroskopi Raman, Fourier-transform infrared (FT-IR), serta isoterm adsorpsi-desorpsi nitrogen (BET/BJH). Analisis ini esensial untuk memverifikasi apakah struktur karbon memiliki porositas yang memadai untuk transfer massa ion elektrolit dan apakah dopan nitrogen terikat secara kovalen dalam kisi sp².
+          </p>
+
+          <!-- FIGURE 3 -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig3_xrd_raman_ftir_bet_porosity.png" 
+                alt="XRD, Raman, FT-IR, dan isoterm BET porositas katalis PtCo/NC" 
+                class="w-full max-w-2xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig3_xrd_raman_ftir_bet_porosity.png', 'Gambar 3: Karakterisasi Fisikokimia XRD, Raman, FT-IR, dan Tekstur Porositas BET')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 3 | Sifat Kristalografi, Spektroskopi Getaran, dan Karakteristik Tekstur Porositas.</span> 
+              (a) Pola XRD dari berbagai sampel PtCo/NC yang menunjukkan pergeseran sudut difraksi paduan fcc bimetalik PtCo. (b) Spektra Raman yang memperlihatkan peningkatan rasio intensitas pita cacat I_D/I_G seiring bertambahnya konsentrasi Cyp. (c) Spektra FT-IR yang mengonfirmasi ikatan kovalen C-N dan C=N. (d) Isoterm adsorpsi-desorpsi N₂ tipe IV dan kurva distribusi ukuran pori BJH yang memperlihatkan luas permukaan spesifik maksimum 280.10 m² g⁻¹ dan ukuran mesopori rata-rata 7.7 nm pada PtCo/NC80.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Lee et al., ChemCatChem 2026. (Klik gambar untuk perbesar)</div>
+            </figcaption>
+          </figure>
+
+          <p>
+            Pola XRD pada Gambar 3a menunjukkan puncak difraksi landai di sekitar 2θ ≈ 25°, yang merupakan refleksi bidang (002) dari karbon grafitik terdisorder. Puncak difraksi logam terlihat melebar pada sudut 2θ ≈ 40,5°, memposisikan diri di antara bidang Pt(111) murni (39,7°) dan bidang Co(111) murni (44,2°). Pelebaran puncak ini merupakan konfirmasi langsung dari dua fenomena: pertama, dimensi kristalit nanokristal berada pada rezim ultra-kecil (&lt;2 nm) sesuai persamaan Scherrer; kedua, atom Co yang beradius atomik lebih kecil (1,25 Å) telah berdifusi dan tersubstitusi secara homogen ke dalam kisi kristal Pt (1,39 Å), menyebabkan kontraksi kisi kristal pada struktur larutan padat fcc tanpa segregasi fasa logam terpisah.
+          </p>
+          <p>
+            Spektra Raman (Gambar 3b) menampilkan dua pita utama yang khas: pita-D pada ~1350 cm⁻¹ (terkait dengan getaran simetri A_1g akibat cacat struktural dan atom karbon hibridisasi sp³) serta pita-G pada ~1590 cm⁻¹ (berasal dari peregangan ikatan E_2g pada domain grafit sp² beraturan). Rasio intensitas I_D/I_G meningkat secara monoton dari 0,95 pada sampel PtCo/NC20 hingga mencapai 1,18 pada PtCo/NC80. Kenaikan rasio ini membuktikan bahwa inkorporasi konsentrasi cyanopyrazine yang lebih tinggi memicu pembentukan kerapatan cacat topologis (<em>topological defects</em>) dan tepi grafena yang jauh lebih melimpah, yang sangat menguntungkan sebagai situs penambat nanokristal dan situs transfer elektron.
+          </p>
+          <p>
+            Konfirmasi inkorporasi gugus fungsi nitrogen diperkuat oleh spektra FT-IR (Gambar 3c), yang memperlihatkan serapan karakteristik pada 1620 cm⁻¹ (peregangan ikatan C=N dan cincin aromatik C=C), 1380 cm⁻¹ (peregangan kovalen C-N), dan serapan di daerah 1120 cm⁻¹. Isoterm adsorpsi-desorpsi nitrogen (Gambar 3d) menampilkan kurva isoterm tipe IV dengan lingkar histeresis H3, yang merupakan tanda khas dari material berpori mesopori hierarkis. Luas permukaan spesifik BET meningkat dramatis dari 145,2 m² g⁻¹ pada NC20 menjadi <strong>280,10 m² g⁻¹</strong> pada NC80, dengan volume pori total 0,48 cm³ g⁻¹ dan distribusi diameter pori BJH terpusat pada 7,7 nm. Pori-pori berukuran mesopori 7,7 nm ini bertindak sebagai jalan tol mikrofluida yang memfasilitasi penetrasi cepat molekul air dan ion OH⁻ serta mempercepat pelepasan gelembung gas H₂ mikro dari permukaan elektroda selama reaksi berlangsung.
+          </p>
+
+          <!-- MECHANISTIC CALLOUT BOX -->
+          <div class="my-6 p-5 bg-[#f0f7fc] border-l-4 border-editorial-accent rounded-r">
+            <div class="font-bold text-editorial-accent text-sm font-sans mb-1.5">Wawasan Fisikokimia: Peran Konsentrasi Cyanopyrazine (Cyp)</div>
+            <div class="text-xs sm:text-sm font-sans text-editorial-body leading-relaxed space-y-2">
+              <p>
+                Molekul cyanopyrazine memiliki dua atom nitrogen heteroatom pada cincin aromatik dan satu gugus nitril (-C≡N) berpolaritas tinggi. Ketika dipaparkan pada lucutan plasma cair, radikal nitrogen bermassa jenis tinggi menstabilkan pemecahan cincin benzena dan membatasi pembentukan domain grafit berukuran makro yang tertutup. Hasilnya adalah struktur matriks karbon berpori terbuka yang kaya mesopori dengan luas permukaan spesifik hampir dua kali lipat lebih besar dibanding sistem karbon murni.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- BAB 4 -->
+        <section id="bab-4" class="pt-8">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            4. Karakterisasi Resolusi Tinggi HRTEM, STEM-EDS, dan Keadaan Valensi Logam XPS
+          </h2>
+          <p class="editorial-dropcap">
+            Untuk mengonfirmasi struktur internal nanokristal dan lingkungan ikatan kimia pada antarmuka heterogen, sampel PtCo/NC80 dianalisis menggunakan mikroskopi elektron transmisi resolusi tinggi (HRTEM), pemindaian TEM sudut tinggi medan gelap (STEM-HAADF), spektroskopi sinar-X dispersi energi (EDS), serta spektroskopi fotoelektron sinar-X (XPS).
+          </p>
+
+          <!-- FIGURE 4 -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig4_tem_stem_eds_xps_characterization.png" 
+                alt="HRTEM, STEM-HAADF, EDS mapping, dan spektra XPS PtCo/NC80" 
+                class="w-full max-w-2xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig4_tem_stem_eds_xps_characterization.png', 'Gambar 4: Analisis Mikrostruktur HRTEM, Pemetaan Unsur STEM-EDS, dan Keadaan Kimia XPS')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 4 | Karakterisasi Mikrostruktur Atomik dan Keadaan Elektronik Permukaan PtCo/NC80.</span> 
+              (a) Citra HRTEM yang menampilkan kisi kisi kristal paduan fcc bimetalik PtCo dengan jarak antar-bidang d = 0.218 nm yang terbungkus lapisan tipis karbon grafitik. (b) Citra STEM-HAADF dan peta distribusi unsur EDS (Pt, Co, N, C) yang membuktikan ketercampuran homogen sempurna tanpa segregasi fase. (c) Spektra resolusi tinggi XPS N 1s yang didekonvolusi menjadi nitrogen piridinik, pirolik, grafitik, dan teroksidasi. (d) Spektra XPS Pt 4f dan (e) Co 2p yang mengungkap interaksi transfer muatan elektronik antarmuka logam-matriks.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Lee et al., ChemCatChem 2026. (Klik gambar untuk perbesar)</div>
+            </figcaption>
+          </figure>
+
+          <p>
+            Citra HRTEM pada Gambar 4a mengungkap kisi kristal nanokristal PtCo yang sangat terdefinisi dengan jarak antar-bidang kisi (<em>interplanar d-spacing</em>) sebesar <strong>0,218 nm</strong>. Nilai ini berada persis di antara jarak bidang (111) Pt murni (0,226 nm) dan bidang (111) Co murni (0,205 nm), memberikan bukti konklusif terjadinya kontraksi kisi akibat paduan larutan padat bimetalik PtCo. Menariknya, nanokristal bimetalik ini secara alami terselubungi oleh 2 hingga 3 lapisan tipis karbon terorientasi, membentuk arsitektur semi-cangkang (<em>core-shell like encapsulation</em>) yang melindungi inti logam dari pelarutan kimiawi selama elektrolisis.
+          </p>
+          <p>
+            Pemeriksaan STEM-HAADF dan pemetaan elemental EDS (Gambar 4b) mengonfirmasi bahwa sinyal platina (Pt) dan kobalt (Co) terko-lokalisasi secara seragam di setiap titik nanopartikel di seluruh bidang lembaran karbon yang kaya nitrogen (N). Tidak ditemukan partikel kobalt oksida bebas atau segregasi fasa logam terpisah, menegaskan efisiensi pencampuran kinetik plasma larutan.
+          </p>
+          <p>
+            Spektra XPS resolusi tinggi (Gambar 4c-e) memberikan wawasan mendalam mengenai struktur elektronik material. Dekonvolusi spektrum N 1s menghasilkan empat komponen utama:
+          </p>
+          <ul class="list-disc pl-6 space-y-1.5 text-sm font-sans text-editorial-body my-4">
+            <li><strong>Nitrogen Piridinik (Pyridinic-N, 398,4 eV):</strong> Menyumbangkan satu pasangan elektron bebas untuk koordinasi dan adsorpsi dipol air.</li>
+            <li><strong>Nitrogen Pirolik (Pyrrolic-N, 400,1 eV):</strong> Berperan dalam meningkatkan hidrofilisitas dan polaritas kisi karbon.</li>
+            <li><strong>Nitrogen Grafitik/Kuarterner (Graphitic-N, 401,3 eV):</strong> Menyumbang sekitar 45% dari total kandungan nitrogen, menyuntikkan elektron ke pita konduksi π karbon sehingga meningkatkan konduktivitas listrik secara signifikan.</li>
+            <li><strong>Nitrogen Teroksidasi (Oxidized-N, 403,0 eV):</strong> Komponen minor pada tepi lembaran karbon.</li>
+          </ul>
+          <p>
+            Pada spektrum Pt 4f (Gambar 4d), sepasang puncak Pt 4f_7/2 (71,5 eV) dan Pt 4f_5/2 (74,8 eV) bergeser positif sebesar +0,4 eV dibandingkan energi ikat Pt logam standar (71,1 eV). Pergeseran positif ini menandakan adanya penipisan parsial kerapatan elektron pada atom Pt akibat transfer muatan elektronik ke atom Co tetangga dan nitrogen elektronegatif di sekitarnya. Modulasi keadaan valensi ini memodifikasi struktur pita-d (<em>d-band center</em>) Pt, yang nantinya terbukti krusial dalam memperlemah kekuatan adsorpsi perantara hidrogen H*. Sementara itu, spektrum Co 2p (Gambar 4e) memperlihatkan kontribusi Co logam (Co⁰) pada inti paduan serta spesies Co²⁺/Co³⁺ teroksidasi parsial pada permukaan yang berinteraksi dengan kerangka karbon-nitrogen.
+          </p>
+
+          <!-- TABLE 1: SUMMARY OF PHYSICOCHEMICAL & ELECTROCHEMICAL PROPERTIES -->
+          <div class="my-6">
+            <div class="text-xs font-semibold text-editorial-muted uppercase tracking-wider mb-2 font-sans">
+              Tabel 1 | Karakteristik Tekstur, Komposisi XPS, dan Kinerja Elektrokatalitik HER
+            </div>
+            <div class="overflow-x-auto">
+              <table class="pub-table">
+                <thead>
+                  <tr class="text-editorial-ink">
+                    <th class="text-left">Katalis</th>
+                    <th class="text-center">Ukuran Partikel (nm)</th>
+                    <th class="text-right">Luas BET (m² g⁻¹)</th>
+                    <th class="text-right">Rasio N (at.%)</th>
+                    <th class="text-right">η_10 (mV)</th>
+                    <th class="text-right">Tafel (mV dec⁻¹)</th>
+                    <th class="text-right">R_ct (Ω)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="bg-blue-50/40">
+                    <td class="font-bold text-editorial-accent">PtCo/NC80</td>
+                    <td class="text-center font-mono">1.99 ± 0.31</td>
+                    <td class="text-right font-mono">280.10</td>
+                    <td class="text-right font-mono">8.42</td>
+                    <td class="text-right font-mono font-bold text-editorial-accent">34</td>
+                    <td class="text-right font-mono font-bold">43</td>
+                    <td class="text-right font-mono font-bold">2.72</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">PtCo/NC60</td>
+                    <td class="text-center font-mono">1.85 ± 0.32</td>
+                    <td class="text-right font-mono">242.30</td>
+                    <td class="text-right font-mono">6.85</td>
+                    <td class="text-right font-mono">44</td>
+                    <td class="text-right font-mono">51</td>
+                    <td class="text-right font-mono">3.45</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">PtCo/NC40</td>
+                    <td class="text-center font-mono">1.72 ± 0.30</td>
+                    <td class="text-right font-mono">198.50</td>
+                    <td class="text-right font-mono">5.12</td>
+                    <td class="text-right font-mono">61</td>
+                    <td class="text-right font-mono">63</td>
+                    <td class="text-right font-mono">4.18</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">PtCo/NC20</td>
+                    <td class="text-center font-mono">1.47 ± 0.28</td>
+                    <td class="text-right font-mono">145.20</td>
+                    <td class="text-right font-mono">3.41</td>
+                    <td class="text-right font-mono">82</td>
+                    <td class="text-right font-mono">75</td>
+                    <td class="text-right font-mono">5.23</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">Pt/NC80 (Kontrol Pt)</td>
+                    <td class="text-center font-mono">2.15 ± 0.35</td>
+                    <td class="text-right font-mono">265.40</td>
+                    <td class="text-right font-mono">8.20</td>
+                    <td class="text-right font-mono">53</td>
+                    <td class="text-right font-mono">65</td>
+                    <td class="text-right font-mono">5.60</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">Co/NC80 (Kontrol Co)</td>
+                    <td class="text-center font-mono">3.40 ± 0.62</td>
+                    <td class="text-right font-mono">248.10</td>
+                    <td class="text-right font-mono">8.15</td>
+                    <td class="text-right font-mono">297</td>
+                    <td class="text-right font-mono">118</td>
+                    <td class="text-right font-mono">38.40</td>
+                  </tr>
+                  <tr>
+                    <td class="font-medium text-editorial-ink">Pt/C Komersial (20 wt%)</td>
+                    <td class="text-center font-mono">3.10 ± 0.50</td>
+                    <td class="text-right font-mono">112.50</td>
+                    <td class="text-right font-mono">—</td>
+                    <td class="text-right font-mono font-bold text-red-600">57</td>
+                    <td class="text-right font-mono">72</td>
+                    <td class="text-right font-mono">4.72</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="mt-1 text-[11px] text-editorial-lightmuted font-sans">
+              Catatan: Seluruh pengujian elektrokimia diukur pada larutan 1,0 M KOH yang dijenuhi gas N₂ menggunakan elektroda cakram putar (RDE, 1600 rpm) terkoreksi iR 95%.
+            </div>
+          </div>
+        </section>
+
+        <!-- BAB 5 -->
+        <section id="bab-5" class="pt-8">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            5. Kinerja Elektrokatalitik HER Alkali, Kinetika Tafel, dan Ketahanan 100 Jam
+          </h2>
+          <p class="editorial-dropcap">
+            Aktivitas elektrokatalitik terhadap reaksi evolusi hidrogen dievaluasi menggunakan konfigurasi tiga-elektroda standar dengan elektroda cakram putar (<em>Rotating Disk Electrode</em> / RDE, 1600 rpm) dalam larutan 1,0 M KOH (pH ≈ 14) yang dijenuhi gas nitrogen murni untuk mengeliminasi gangguan oksigen terlarut. Seluruh potensial dikonversi terhadap skala Elektroda Hidrogen Reversibel (RHE) dan dikompensasi tahanan larutan secara otomatis (iR-compensated 95%).
+          </p>
+
+          <!-- FIGURE 5 -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig5_her_polarization_tafel_eis_stability.png" 
+                alt="Kurva polarisasi HER, plot Tafel, spektra EIS, dan kronopotensiometri 100 jam" 
+                class="w-full max-w-2xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig5_her_polarization_tafel_eis_stability.png', 'Gambar 5: Evaluasi Aktivitas Elektrokatalitik HER, Kinetika Tafel, EIS, dan Stabilitas 100 Jam')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 5 | Kinerja Elektrokatalitik HER Komprehensif dalam Elektrolit Basa (1,0 M KOH).</span> 
+              (a) Kurva polarisasi linier (LSV) dari PtCo/NC80 dibanding variasi konsentrasi Cyp, monometalik Pt/NC, Co/NC, dan Pt/C komersial. (b) Plot kemiringan Tafel yang mengindikasikan kinetika desorpsi elektrokimia Volmer-Heyrovsky cepat pada PtCo/NC80 (43 mV dec⁻¹). (c) Plot Nyquist Spektroskopi Impedansi Elektrokimia (EIS) yang membuktikan resistansi transfer muatan terendah (2.72 Ω). (d) Uji durabilitas kronopotensiometri jangka panjang pada -10 mA cm⁻² selama 100 jam yang menunjukkan laju degradasi sangat rendah 0.89 mV h⁻¹.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Lee et al., ChemCatChem 2026. (Klik gambar untuk perbesar)</div>
+            </figcaption>
+          </figure>
+
+          <p>
+            Kurva polarisasi Linear Sweep Voltammetry (LSV) pada Gambar 5a memperlihatkan keunggulan mutlak dari elektrokatalis PtCo/NC80. Untuk mengalirkan kerapatan arus standar 10 mA cm⁻² (metrik kunci yang setara dengan efisiensi konversi solar-to-hydrogen 10%), PtCo/NC80 hanya membutuhkan overpotensial (η_10) sebesar <strong>34 mV</strong>. Nilai ini luar biasa mengesankan, yakni <strong>23 mV lebih rendah</strong> dibandingkan katalis tolok ukur industri Pt/C komersial 20 wt% (57 mV). Katalis kontrol berbasis monometalik seperti Pt/NC80 memerlukan overpotensial 53 mV, sedangkan Co/NC80 membutuhkan overpotensial hingga 297 mV, membuktikan bahwa integrasi bimetalik Pt dan Co menghasilkan efek sinergis yang sangat kuat.
+          </p>
+          <p>
+            Untuk membedah mekanisme transfer elektron, analisis kemiringan Tafel (<em>Tafel slope</em>, Gambar 5b) dilakukan pada wilayah kinetika aktivasi murni. Secara teoritis, reaksi HER di media basa berlangsung melalui salah satu dari dua kombinasi mekanisme: Volmer-Heyrovsky atau Volmer-Tafel:
+          </p>
+          <div class="my-6 p-4 bg-editorial-softbg border border-editorial-line rounded font-mono text-sm space-y-3">
+            <div class="flex items-center justify-between border-b border-editorial-line pb-2">
+              <span class="text-xs uppercase font-sans font-bold text-editorial-muted">Kinetika Reaksi Katodik di Media Basa</span>
+              <span class="text-xs text-editorial-lightmuted">(Persamaan Reaksi)</span>
+            </div>
+            <div class="space-y-1 text-center py-1 text-editorial-ink">
+              <div>Tahap 1 (Volmer): H₂O + e⁻ + * → H* + OH⁻ &emsp; [b ≈ 120 mV dec⁻¹]</div>
+              <div>Tahap 2 (Heyrovsky): H* + H₂O + e⁻ → H₂ + OH⁻ + * &emsp; [b ≈ 40 mV dec⁻¹]</div>
+              <div>Tahap 2 (Tafel): 2H* → H₂ + 2* &emsp; [b ≈ 30 mV dec⁻¹]</div>
+            </div>
+          </div>
+          <p>
+            PtCo/NC80 menunjukkan nilai kemiringan Tafel terkecil yaitu <strong>43 mV dec⁻¹</strong>, jauh lebih curam dibanding Pt/C komersial (72 mV dec⁻¹), Pt/NC80 (65 mV dec⁻¹), maupun Co/NC80 (118 mV dec⁻¹). Nilai 43 mV dec⁻¹ yang sangat mendekati nilai teoritis 39–40 mV dec⁻¹ untuk tahap Heyrovsky membuktikan bahwa tahap penentu laju reaksi (<em>Rate-Determining Step</em> / RDS) tidak lagi dibatasi oleh pemutusan ikatan H-OH air yang lambat pada tahap Volmer, melainkan telah beralih ke desorpsi elektrokimiawi cepat dari perantara H* teradsorpsi.
+          </p>
+          <p>
+            Spektroskopi Impedansi Elektrokimia (EIS, Gambar 5c) yang diukur pada overpotensial reaksi menunjukkan diameter setengah lingkaran Nyquist yang sangat kecil untuk PtCo/NC80. Melalui pencocokan rangkaian ekuivalen elektrik, resistansi transfer muatan antarmuka (R_ct) dari PtCo/NC80 tercatat hanya <strong>2,72 Ω</strong>, hampir separuh dari resistansi Pt/C komersial (4,72 Ω) dan jauh melampaui Co/NC80 (38,40 Ω). Nilai R_ct yang sangat rendah ini menegaskan konduktivitas elektrik super cepat yang difasilitasi oleh jaringan karbon grafitik terdoping nitrogen kuarterner.
+          </p>
+          <p>
+            Aspek paling krusial untuk aplikasi komersial adalah durabilitas jangka panjang (Gambar 5d). Pengujian kronopotensiometri kontinyu pada kerapatan arus katodik -10 mA cm⁻² dioperasikan selama <strong>100 jam tanpa henti</strong>. PtCo/NC80 menunjukkan stabilitas luar biasa dengan laju degradasi potensial hanya <strong>0,89 mV h⁻¹</strong> (total kenaikan overpotensial hanya ~89 mV setelah 100 jam). Sebagai pembanding, katalis Pt/C komersial mengalami laju peluruhan 2,05 mV h⁻¹ (2,35 kali lipat lebih cepat aus), di mana kinerjanya menurun drastis setelah 40 jam akibat pelepasan nanopartikel Pt dan degradasi karbon pendukung. Di samping itu, uji siklus percepatan (5.000 siklus voltametri siklik berulang) menunjukkan kurva polarisasi PtCo/NC80 hampir berhimpit sempurna dengan kurva awal (pergeseran potensial kurang dari 4 mV pada 10 mA cm⁻²).
+          </p>
+        </section>
+
+        <!-- BAB 6 -->
+        <section id="bab-6" class="pt-8 border-t border-editorial-line mt-10">
+          <h2 class="text-2xl font-bold font-sans text-editorial-ink tracking-tight mb-4">
+            6. Mekanisme Termodinamika DFT Core-Shell PtCo3@Ndp-C &amp; Validasi Defek Karbon
+          </h2>
+          <p class="editorial-dropcap">
+            Untuk membongkar akar penyebab molekular di balik lonjakan aktivitas elektrokatalitik dan ketahanan super dari katalis ini, perhitungan Teori Fungsional Kerapatan (<em>Density Functional Theory</em> / DFT) dilakukan pada berbagai konfigurasi model lempeng permukaan (<em>slab models</em>). Empat model permukaan disimulasikan: Pt(111) murni, permukaan paduan bimetalik PtCo3(111), lempeng paduan dengan cangkang karbon murni (PtCo3@C), serta lempeng paduan dengan cangkang karbon terdoping-N (PtCo3@Ndp-C) yang memodelkan doping nitrogen piridinik dan grafitik.
+          </p>
+
+          <!-- FIGURE 6 -->
+          <figure class="figure-container">
+            <div class="overflow-hidden flex justify-center bg-white p-2">
+              <img 
+                src="assets/fig6_dft_slab_models_free_energy_profile.png" 
+                alt="Model lempeng DFT dan diagram energi bebas Gibbs adsorpsi hidrogen" 
+                class="w-full max-w-2xl h-auto object-contain cursor-zoom-in hover:opacity-95 transition-opacity"
+                onclick="openLightbox('assets/fig6_dft_slab_models_free_energy_profile.png', 'Gambar 6: Pemodelan Komputasi DFT Mekanisme Inti-Cangkang PtCo3@Ndp-C dan Profil Energi Bebas Adsorpsi Hidrogen')"
+              >
+            </div>
+            <figcaption class="mt-4 pt-3 border-t border-editorial-line text-xs font-sans text-editorial-muted leading-relaxed">
+              <span class="font-bold text-editorial-ink">Gambar 6 | Investigasi Komputasi DFT pada Antarmuka Inti-Cangkang Bimetalik.</span> 
+              (a) Geometri teroptimasi dari model lempeng Pt(111), PtCo3(111), PtCo3@C, dan arsitektur inti-cangkang PtCo3@Ndp-C yang memperlihatkan energi pengikatan antarmuka kuat -1.14 eV. (b) Diagram profil energi bebas Gibbs (ΔG_H*) untuk reaksi evolusi hidrogen di sepanjang koordinat reaksi. PtCo3@Ndp-C menunjukkan nilai ΔG_H* mendekati nol (-0.07 eV) dengan hambatan penentu potensial (ΔG_PDS) terendah di puncak kurva gunung berapi Sabatier.
+              <div class="mt-1 text-[11px] text-editorial-lightmuted">Sumber: Lee et al., ChemCatChem 2026. (Klik gambar untuk perbesar)</div>
+            </figcaption>
+          </figure>
+
+          <p>
+            Kestabilan mekanik-termal dari arsitektur inti-cangkang dievaluasi pertama kali melalui energi pengikatan antar-muka (<em>interfacial binding energy</em>, E_bind). Perhitungan DFT membuktikan bahwa cangkang karbon terdoping nitrogen terikat sangat kokoh pada permukaan inti paduan bimetalik PtCo3(111) dengan energi pengikatan sebesar <strong>-1,14 eV</strong>. Nilai ini jauh lebih eksotermik dibandingkan energi pengikatan cangkang karbon murni (-0,98 eV). Afinitas antarmuka yang tinggi ini berasal dari hibridisasi orbital antara elektron orbital d dari kobalt/platina dengan orbital p terdelokalisasi dari atom nitrogen elektronegatif. Ikatan antarmuka yang sangat kuat inilah yang bertindak sebagai jangkar mekanis, mencegah peluruhan, pelarutan asam-basa, atau pengelupasan nanokristal PtCo dari matriks karbon selama polarisasi beratus-ratus jam.
+          </p>
+          <p>
+            Selanjutnya, profil termodinamika adsorpsi hidrogen (ΔG_H*) dihitung di sepanjang koordinat reaksi HER. Menurut prinsip Sabatier, katalis HER yang ideal harus memiliki energi bebas adsorpsi hidrogen netral mendekati nol (ΔG_H* ≈ 0 eV). Jika pengikatan H* terlalu kuat (ΔG_H* &lt;&lt; 0), desorpsi hidrogen membentuk molekul gas H₂ menjadi sangat sulit; sebaliknya, jika pengikatan H* terlalu lemah (ΔG_H* &gt;&gt; 0), adsorpsi awal hidrogen tidak dapat terjadi.
+          </p>
+          <p>
+            Pada permukaan Pt(111) standar, adsorpsi perantara hidrogen bersifat eksotermik kuat dengan nilai ΔG_H* = -0,35 eV, menjadikan desorpsi hidrogen sebagai tahap penentu potensial (<em>Potential-Determining Step</em> / PDS) dengan hambatan bebas ΔG_PDS sebesar 0,35 eV. Pada permukaan paduan terbuka PtCo3(111), pengikatan hidrogen menjadi semakin kuat secara negatif (ΔG_H* = -0,43 eV; ΔG_PDS = 0,43 eV). Kondisi pengikatan yang terlampau kuat ini justru memperlambat laju desorpsi di media basa.
+          </p>
+          <p>
+            Sebaliknya, pada konfigurasi heterostruktur inti-cangkang <strong>PtCo3@Ndp-C</strong>, polarisasi muatan lokal dan efek penarikan elektron oleh heteroatom nitrogen pada cangkang karbon memodulasi pusat pita-d atom platina di bawahnya. Fenomena ini melemahkan kekuatan interaksi orbital Pt-H secara tepat, menggeser nilai ΔG_H* menjadi hanya <strong>-0,07 eV</strong>. Dengan nilai ΔG_PDS yang sangat kecil yakni <strong>0,07 eV</strong>, permukaan PtCo3@Ndp-C berada tepat di puncak kurva gunung berapi (<em>volcano plot</em>) Sabatier. Hasil komputasi ini menjelaskan secara elegan mengapa PtCo/NC80 menunjukkan kinetika Tafel yang sangat cepat dan overpotensial rekor 34 mV dalam eksperimen nyata.
+          </p>
+          <p>
+            Secara keseluruhan, riset ini membuktikan bahwa penggabungan inovatif antara sintesis plasma larutan ultra-cepat 60 detik bebas bahan kimia berbahaya dengan rekayasa elektronik antarmuka bimetalik-karbon terdoping menghasilkan katalis HER masa depan yang tidak hanya mengungguli platina komersial secara dramatis dalam aktivitas, tetapi juga menjawab tantangan daya tahan pada elektrolisis air alkali dan AEMWE skala industri.
+          </p>
+
+          <!-- CITATION BLOCK RESMI (Format APA & Tombol Salin BibTeX) -->
+          <div class="mt-10 p-5 bg-white border border-editorial-line rounded font-sans">
+            <div class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-2">
+              Sitasi Paper Resmi (APA Format)
+            </div>
+            <p class="font-mono text-xs text-editorial-body leading-relaxed select-all">
+              Lee, J. W., Kim, J., Lee, E., Lee, C. S., Kim, S., Son, H. J., Choa, Y.-H., Ham, H. C., Moon, S. Y., &amp; Kim, J. Y. (2026). Solution Plasma-Assisted Synthesis of Uniform Bimetallic PtCo Nanocrystals on N-Doped Carbon for Efficient Hydrogen Evolution Reaction. ChemCatChem, 18, e71035. https://doi.org/10.1002/cctc.71035
+            </p>
+
+            <!-- Quick Copy Buttons -->
+            <div class="mt-4 flex flex-wrap gap-2">
+              <button onclick="copyCitation('apa', 'Lee, J. W., Kim, J., Lee, E., Lee, C. S., Kim, S., Son, H. J., Choa, Y.-H., Ham, H. C., Moon, S. Y., &amp; Kim, J. Y. (2026). Solution Plasma-Assisted Synthesis of Uniform Bimetallic PtCo Nanocrystals on N-Doped Carbon for Efficient Hydrogen Evolution Reaction. ChemCatChem, 18, e71035. https://doi.org/10.1002/cctc.71035')" class="reader-toolbar-btn">
+                <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                Salin Sitasi APA
+              </button>
+              <button onclick="copyCitation('bibtex', '@article{lee2026solution,\n  author = {Lee, Jae Won and Kim, Jeonghyeon and Lee, Eoyoon and Lee, Chang Seung and Kim, Sangwon and Son, Hae Jung and Choa, Yong-Ho and Ham, Hyung Chul and Moon, Sook Young and Kim, Jin Young},\n  title = {Solution Plasma-Assisted Synthesis of Uniform Bimetallic PtCo Nanocrystals on N-Doped Carbon for Efficient Hydrogen Evolution Reaction},\n  journal = {ChemCatChem},\n  volume = {18},\n  pages = {e71035},\n  year = {2026},\n  doi = {10.1002/cctc.71035}\n}')" class="reader-toolbar-btn">
+                <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                Salin BibTeX
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- SIDEBAR NAVIGATION & GLOSSARY (Cols 9-12) -->
+      <aside class="lg:col-span-4 space-y-8 font-sans">
+        
+        <!-- STICKY CONTAINER -->
+        <div class="sticky top-20 space-y-6">
+          
+          <!-- CARD 1: DAFTAR ISI ARTIKEL (Wajib ID #toc-list untuk ScrollSpy) -->
+          <div class="bg-white border border-editorial-line rounded p-5">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-3 pb-2 border-b border-editorial-line">
+              Daftar Isi Artikel
+            </h4>
+            <nav class="space-y-1.5 text-xs text-editorial-muted" id="toc-list">
+              <a href="#bab-1" class="block py-1 hover:text-editorial-accent transition-colors">• 1. Urgensi HER Basa &amp; Solution Plasma</a>
+              <a href="#bab-2" class="block py-1 hover:text-editorial-accent transition-colors">• 2. Spektroskopi OES &amp; Nukleasi 60 Detik</a>
+              <a href="#bab-3" class="block py-1 hover:text-editorial-accent transition-colors">• 3. Rekayasa Porositas &amp; Doping Nitrogen</a>
+              <a href="#bab-4" class="block py-1 hover:text-editorial-accent transition-colors">• 4. Karakterisasi HRTEM, STEM-EDS &amp; XPS</a>
+              <a href="#bab-5" class="block py-1 hover:text-editorial-accent transition-colors">• 5. Kinerja HER Basa &amp; Stabilitas 100 Jam</a>
+              <a href="#bab-6" class="block py-1 hover:text-editorial-accent transition-colors">• 6. Mekanisme DFT Core-Shell PtCo3@Ndp-C</a>
+            </nav>
+          </div>
+
+          <!-- CARD 2: GLOSARIUM ISTILAH KUNCI (5 Istilah Relevan) -->
+          <div class="bg-white border border-editorial-line rounded p-5 space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-editorial-ink pb-2 border-b border-editorial-line">
+              Glosarium Istilah Kunci
+            </h4>
+            <div class="space-y-3 text-xs">
+              <div>
+                <span class="font-semibold text-editorial-ink">Solution Plasma Process (SPP):</span>
+                <p class="text-editorial-muted mt-0.5">Metode pelepasan plasma non-ekuilibrium dingin langsung di dalam media cair pada suhu dan tekanan ruang, memicu erosi elektroda logam dan pirolisis pelarut organik secara serempak tanpa reaktan kimia berbahaya.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">Overpotensial (Overpotential, η_10):</span>
+                <p class="text-editorial-muted mt-0.5">Potensial listrik tambahan di luar potensial termodinamika reversibel yang dibutuhkan untuk menggerakkan kerapatan arus katodik sebesar 10 mA cm⁻²; semakin kecil nilainya, semakin efisien elektrokatalis.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">Kemiringan Tafel (Tafel Slope, b):</span>
+                <p class="text-editorial-muted mt-0.5">Kemiringan kurva overpotensial terhadap logaritma kerapatan arus (mV dec⁻¹) yang mencerminkan kinetika reaksi dan mengidentifikasi tahap penentu laju (Volmer, Heyrovsky, atau Tafel).</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">N-Doped Carbon (NC):</span>
+                <p class="text-editorial-muted mt-0.5">Matriks karbon yang disubstitusi atom nitrogen (piridinik, pirolik, atau grafitik) untuk merekayasa kerapatan keadaan elektronik, meningkatkan konduktivitas listrik, dan menyediakan situs koordinasi kuat bagi nanokristal logam.</p>
+              </div>
+              <div>
+                <span class="font-semibold text-editorial-ink">Potential-Determining Step (PDS):</span>
+                <p class="text-editorial-muted mt-0.5">Langkah elementer dalam profil energi bebas reaksi elektrokimia yang membutuhkan energi bebas aktivasi termodinamika tertinggi (ΔG_PDS), menentukan overpotensial minimum teoritis.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 3: INDEKS GAMBAR PAPER -->
+          <div class="bg-white border border-editorial-line rounded p-5">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-editorial-ink mb-3 pb-2 border-b border-editorial-line">
+              Indeks Gambar Paper
+            </h4>
+            <ul class="text-xs space-y-2 text-editorial-muted">
+              <li>
+                <a href="#bab-2" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 1: Spektra Emisi Optik OES Plasma</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 3</span>
+                </a>
+              </li>
+              <li>
+                <a href="#bab-2" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 2: TEM Kinetika &amp; Distribusi Ukuran</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 4</span>
+                </a>
+              </li>
+              <li>
+                <a href="#bab-3" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 3: XRD, Raman, FT-IR &amp; Tekstur BET</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 5</span>
+                </a>
+              </li>
+              <li>
+                <a href="#bab-4" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 4: HRTEM, STEM-EDS &amp; Spektra XPS</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 7</span>
+                </a>
+              </li>
+              <li>
+                <a href="#bab-5" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 5: Polarisasi HER, Tafel &amp; Stabilitas</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 8</span>
+                </a>
+              </li>
+              <li>
+                <a href="#bab-6" class="hover:text-editorial-accent flex items-center justify-between">
+                  <span>Fig. 6: Model Lempeng DFT &amp; Profil ΔG_H*</span>
+                  <span class="text-editorial-lightmuted font-mono">p. 8</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- LIGHTBOX MODAL (For full-res image viewing) -->
+  <div id="lightbox" class="fixed inset-0 bg-black/80 z-50 hidden flex flex-col items-center justify-center p-4 backdrop-blur-sm" onclick="closeLightbox()">
+    <div class="relative max-w-5xl max-h-[90vh] bg-white rounded p-3 shadow-2xl flex flex-col" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between pb-2 mb-2 border-b border-editorial-line text-xs font-sans text-editorial-ink">
+        <span id="lightbox-caption" class="font-bold"></span>
+        <button onclick="closeLightbox()" class="p-1 hover:bg-editorial-softbg rounded text-editorial-muted hover:text-editorial-ink">
+          ✕ Tutup
+        </button>
+      </div>
+      <div class="overflow-auto max-h-[80vh] flex items-center justify-center p-2">
+        <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[75vh] object-contain">
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-editorial-line bg-white py-10 text-xs text-editorial-muted font-sans">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <span class="font-bold text-editorial-ink">TelaahSains Hub</span> — Diseminasi Riset Sains Material &amp; Komputasi Indonesia bergaya editorial terpercaya.
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://doi.org/10.1002/cctc.71035" target="_blank" class="hover:underline text-editorial-accent">Paper Asli di Wiley ChemCatChem</a>
+        <span>•</span>
+        <a href="#" class="hover:text-editorial-ink">Kembali ke Atas ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    // Minimalist Summary Toggle
+    function toggleSummary() {
+      const content = document.getElementById('summary-content');
+      const chevron = document.getElementById('summary-chevron');
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        chevron.textContent = '[- tutup]';
+      } else {
+        content.classList.add('hidden');
+        chevron.textContent = '[+ buka]';
+      }
+    }
+  </script>
+
+  <!-- Shared Reader Experience Script -->
+  <script src="../../shared/reader.js"></script>
+
+</body>
+</html>

@@ -56,9 +56,12 @@ paper-hub/
     ├── 12-pbe-hse-neural-functional/    # Paper 12: Prediksi Celah Pita HSE Neural Functional
     │   ├── index.html                   # Showcase lengkap Paper 12
     │   └── assets/                      # 4 Gambar resolusi tinggi (Fig. 1 s/d Fig. 4)
-    └── 13-empirical-double-hybrid-dft/  # Paper 13: Double-Hybrid DFT 'Jalan Ketiga' WFT-DFT
-        ├── index.html                   # Showcase lengkap Paper 13
-        └── assets/                      # 4 Gambar resolusi tinggi (Fig. 1 s/d Fig. 4)
+    ├── 13-empirical-double-hybrid-dft/  # Paper 13: Double-Hybrid DFT 'Jalan Ketiga' WFT-DFT
+    │   ├── index.html                   # Showcase lengkap Paper 13
+    │   └── assets/                      # 4 Gambar resolusi tinggi (Fig. 1 s/d Fig. 4)
+    └── 14-solution-plasma-ptco-her/     # Paper 14: Nanokristal PtCo Solution Plasma untuk HER Basa
+        ├── index.html                   # Showcase lengkap Paper 14
+        └── assets/                      # 6 Gambar resolusi tinggi (Fig. 1 s/d Fig. 6)
 ```
 
 ---
@@ -80,6 +83,7 @@ paper-hub/
 | 11 | **Enhanced Ionic Conductivity at the Solid Electrolyte Interphase of Oxygen-Doped Li₆PS₅Cl** | *Advanced Science* (Wiley-VCH, 2026) | Baterai All-Solid-State, Argyrodite Li₆PS₅Cl, Doping Oksigen, SEI Li₂S Substitusional, SevenNet GNN MLIP, NequIP, 197 Siklus | [Buka Paper 11](papers/11-oxygen-doped-li6ps5cl-sei-mlip/index.html) |
 | 12 | **Predicting HSE band gaps from PBE charge densities via neural network functionals** | *Journal of Physics: Condensed Matter* 32 (IOP Publishing, 2020) | DFT, PBE, HSE06, Celah Pita, Neural Network Functional, Real-Space Kerapatan Muatan, FFT Downsampling 8×, RMSE 172.6 meV | [Buka Paper 12](papers/12-pbe-hse-neural-functional/index.html) |
 | 13 | **Empirical Double-Hybrid Density Functional Theory: A ‘Third Way’ in Between WFT and DFT** | *Israel Journal of Chemistry* 60 (Wiley-VCH, 2020) | Double-Hybrid DFT, Tangga Jacob Anak Tangga ke-5, GMTKN55, WTMAD2 2.26 kcal/mol, revDSD-PBEP86-D4, revDOD, MOBH35 1.4 kcal/mol | [Buka Paper 13](papers/13-empirical-double-hybrid-dft/index.html) |
+| 14 | **Solution Plasma-Assisted Synthesis of Uniform Bimetallic PtCo Nanocrystals on N-Doped Carbon for Efficient Hydrogen Evolution Reaction** | *ChemCatChem* 18 (Wiley-VCH, 2026) | Solution Plasma Process (SPP), PtCo/NC80, HER Basa 1.0 M KOH, Overpotensial 34 mV, Tafel 43 mV dec⁻¹, Durabilitas 100 Jam (0.89 mV h⁻¹), DFT Core-Shell PtCo3@Ndp-C | [Buka Paper 14](papers/14-solution-plasma-ptco-her/index.html) |
 
 ---
 
