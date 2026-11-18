@@ -1,0 +1,354 @@
+/* ============================================================
+   TelaahSains Hub: English Learning Tutor (3D Word-Flip & Bilingual)
+   Integrates with shared/reader.css theme variables (Paper, Sepia, Dark)
+   ============================================================ */
+
+/* --- 1. MODE SWITCHER SUB-BAR --- */
+#ts-lang-bar {
+  background-color: var(--bg-subtle);
+  border-bottom: 1px solid var(--border-color);
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.ts-lang-bar-inner {
+  max-width: min(96vw, 1420px);
+  margin: 0 auto;
+  padding: 0.45rem 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+}
+
+.ts-lang-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.ts-lang-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background-color: var(--accent-color);
+  flex-shrink: 0;
+}
+
+.ts-lang-controls {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 2px;
+  gap: 2px;
+}
+
+.ts-mode-btn {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.3rem 0.65rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+}
+
+.ts-mode-btn:hover {
+  color: var(--text-heading);
+  background-color: var(--bg-subtle);
+}
+
+.ts-mode-btn.is-active {
+  background-color: var(--accent-color);
+  color: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.ts-mode-badge {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.65rem;
+  opacity: 0.9;
+}
+
+/* --- 2. SENTENCE PAIR LAYOUT (EN vs BILINGUAL) --- */
+
+/* Default (EN Clean & EN <-> ID Word-Flip): inline flow, ID hidden */
+body.lang-mode-en .ts-pair,
+body.lang-mode-flip .ts-pair {
+  display: inline;
+}
+
+body.lang-mode-en .ts-id,
+body.lang-mode-flip .ts-id {
+  display: none !important;
+}
+
+/* Ensure space between inline sentences when in EN / Flip mode */
+body.lang-mode-en .ts-pair + .ts-pair::before,
+body.lang-mode-flip .ts-pair + .ts-pair::before {
+  content: " ";
+}
+
+/* Mode 3: Bilingual Sentence-by-Sentence */
+body.lang-mode-bilingual .ts-pair {
+  display: block;
+  margin-bottom: 0.95rem;
+}
+
+body.lang-mode-bilingual .ts-pair:last-child {
+  margin-bottom: 0;
+}
+
+body.lang-mode-bilingual .ts-en {
+  display: block;
+}
+
+body.lang-mode-bilingual .ts-id {
+  display: block;
+  margin-top: 0.32rem;
+  padding: 0.35rem 0.75rem;
+  border-left: 2px solid var(--accent-color);
+  background-color: var(--bg-callout);
+  color: var(--text-muted);
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.58;
+  border-radius: 0 4px 4px 0;
+}
+
+/* Compact bilingual styling inside headings, captions, cards, and table headers */
+h1 .ts-id,
+figcaption .ts-id,
+.pub-table .ts-id,
+aside .ts-id,
+.ts-compact .ts-id {
+  font-size: 0.78rem !important;
+  line-height: 1.45 !important;
+  padding: 0.25rem 0.55rem !important;
+  margin-top: 0.25rem !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+}
+
+/* Protect editorial dropcap in bilingual mode so ID translation does not inherit dropcap */
+body.lang-mode-bilingual .editorial-dropcap::first-letter {
+  font-size: 3.4rem;
+}
+
+body.lang-mode-bilingual .editorial-dropcap .ts-id::first-letter {
+  font-size: inherit !important;
+  float: none !important;
+  line-height: inherit !important;
+  margin: 0 !important;
+  font-weight: inherit !important;
+  font-family: inherit !important;
+}
+
+/* --- 3. INTERACTIVE WORD TOKENS --- */
+body.lang-mode-en .ts-word {
+  cursor: inherit;
+  border-bottom: none;
+}
+
+body.lang-mode-flip .ts-word,
+body.lang-mode-bilingual .ts-word {
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background-color 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+  border-bottom: 1px dotted transparent;
+}
+
+body.lang-mode-flip .ts-word:hover,
+body.lang-mode-bilingual .ts-word:hover {
+  background-color: var(--bg-callout);
+  border-bottom-color: var(--accent-color);
+  color: var(--text-heading);
+}
+
+body.lang-mode-flip .ts-word.is-active,
+body.lang-mode-bilingual .ts-word.is-active {
+  background-color: var(--accent-color);
+  color: #ffffff !important;
+  border-bottom-color: transparent;
+  padding: 0 2px;
+  border-radius: 3px;
+}
+
+/* --- 4. FLOATING 3D FLIP-CARD POPOVER --- */
+#ts-flip-card {
+  position: fixed;
+  z-index: 60;
+  width: 280px;
+  max-width: calc(100vw - 24px);
+  perspective: 950px;
+  pointer-events: auto;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+#ts-flip-card.hidden {
+  display: none;
+}
+
+.ts-card-inner {
+  position: relative;
+  width: 100%;
+  min-height: 148px;
+  transform-style: preserve-3d;
+  transition: transform 0.46s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+}
+
+#ts-flip-card.is-flipped .ts-card-inner {
+  transform: rotateY(180deg);
+}
+
+.ts-card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 0.85rem 0.95rem;
+  box-shadow: 0 14px 32px -6px rgba(0, 0, 0, 0.16), 0 4px 10px -2px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ts-card-back {
+  transform: rotateY(180deg);
+  border-top: 3px solid var(--accent-color);
+}
+
+.ts-card-front {
+  border-top: 3px solid var(--text-heading);
+}
+
+.ts-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.ts-card-badge {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.12rem 0.45rem;
+  border-radius: 4px;
+  background-color: var(--bg-callout);
+  color: var(--accent-color);
+}
+
+.ts-card-close {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  line-height: 1;
+  padding: 0.2rem 0.35rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.ts-card-close:hover {
+  background-color: var(--bg-subtle);
+  color: var(--text-heading);
+}
+
+.ts-card-word {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  line-height: 1.25;
+  word-break: break-word;
+}
+
+.ts-card-lemma {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+
+.ts-card-meaning {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  line-height: 1.38;
+  margin: 0.2rem 0;
+}
+
+.ts-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 0.55rem;
+  padding-top: 0.45rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.ts-card-hint {
+  font-size: 0.65rem;
+  color: var(--text-faint);
+}
+
+.ts-save-btn {
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-subtle);
+  color: var(--text-heading);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  padding: 0.25rem 0.55rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.ts-save-btn:hover {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: #ffffff;
+}
+
+.ts-save-btn.is-saved {
+  background-color: #10b981;
+  border-color: #10b981;
+  color: #ffffff;
+}
+
+@media (max-width: 640px) {
+  .ts-lang-bar-inner {
+    padding: 0.45rem 0.85rem;
+  }
+  .ts-lang-label span:not(.ts-lang-dot) {
+    display: none;
+  }
+  .ts-mode-btn {
+    padding: 0.28rem 0.5rem;
+    font-size: 0.68rem;
+  }
+}

@@ -115,7 +115,7 @@
 
   function getAllPapersNotes() {
     const res = {};
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= 20; i++) {
       const pid = String(i).padStart(2, '0');
       const n = localStorage.getItem('telaahsains_notes_' + pid);
       if (n) {
@@ -562,6 +562,27 @@
     showToast('Catatan berhasil ditambahkan!');
   }
   window.submitNewNote = submitNewNote;
+
+  window.addReaderNote = function (text) {
+    const meta = getPaperMetadata();
+    if (!meta.paperId) return false;
+    const clean = String(text || '').trim();
+    if (!clean) return false;
+
+    const notes = getPaperNotes(meta.paperId);
+    const newNote = {
+      id: 'note_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4),
+      text: clean,
+      done: false,
+      createdAt: Date.now()
+    };
+
+    notes.unshift(newNote);
+    savePaperNotes(meta.paperId, notes);
+    renderNotesList(meta.paperId);
+    showToast('Kosakata tersimpan ke Catatan!');
+    return true;
+  };
 
   function togglePaperNoteDone(noteId) {
     const meta = getPaperMetadata();
